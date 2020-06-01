@@ -1,0 +1,112 @@
+.today-details {
+    margin:0px 20px;
+}
+.date-bar {
+    background-color: #f2f2f2;
+    line-height: 50px;
+    font-weight: 1000;
+    padding-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px transparent;
+}
+.category-button {
+    line-height: 50px;
+    background-color: transparent;
+    font-size: 1.1rem;
+    padding-left: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px transparent;
+    text-transform: capitalize;
+}
+.category-button:hover {
+    background-color: whitesmoke;
+}
+.button-bar {
+        background-color: transparent;
+        line-height: 50px;
+        font-weight: 1000;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        border: 1px transparent;
+}
+.date-button {
+    margin-bottom: 10px;
+}
+.today-item-list{
+    border: 1px solid rgb(51, 51, 51,0.1);
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    min-width: 50px;
+    width: 70px;
+    height: 90px;;
+}
+.today-list {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    overflow-x: auto !important;
+    flex: 1 1 0% !important;
+}
+.table-list-row{
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    margin-top: -1px !important;
+}
+.table-new-row {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    margin-top: -1px !important;
+    flex-direction: column;
+}
+.table-item {
+    min-width: 85px !important;
+    width: 85px !important;
+    box-sizing: border-box !important;
+    color: rgb(115, 115, 115) !important;
+    height: 85px !important;
+    padding: 10px 13px !important;
+    background: rgb(204, 204, 204) !important;
+    border-right: 1px solid rgb(229, 229, 229) !important;
+}
+.table-item:hover {
+    background: rgb(204, 204, 204,0.3) !important;
+}
+.today-item-list p {
+    box-sizing: border-box !important;
+    font-weight: 200;
+    font-family: 'sans-serif';
+    color:black;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    line-height: 3px;
+}
+.table-item p {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 5px !important;
+}
+.places-list{
+    box-sizing: border-box !important;
+    color: inherit !important;
+}
+.places-list-item {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    height: 85px !important;
+    width: 120px !important;
+    position: relative !important;
+    padding: 10px 8px !important;
+    border-right: 1px solid rgb(229, 229, 229)
+}
+.table {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: flex !important;
+}

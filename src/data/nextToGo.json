@@ -1,0 +1,128 @@
+[
+  {
+    "Category": "Racing",
+    "Race_Slot": "R2",
+    "Duration": "25m",
+    "Location": "Lyon Parilly",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Racing",
+    "Race_Slot": "R3",
+    "Duration": "55m",
+    "Location": "Lyon Parilly",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Racing",
+    "Race_Slot": "R4",
+    "Duration": "1h 25m",
+    "Location": "Lyon Parilly",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Racing",
+    "Race_Slot": "R5",
+    "Duration": "1h 55m",
+    "Location": "Lyon Parilly",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Racing",
+    "Race_Slot": "R1",
+    "Duration": "11h",
+    "Location": "Gold Coast",
+    "Location_Code": "(QLD)"
+  },
+  {
+    "Category": "Racing",
+    "Race_Slot": "R1",
+    "Duration": "12h",
+    "Location": "Goulburn",
+    "Location_Code": "(NSW)"
+  },
+  {
+    "Category": "GreyHound",
+    "Race_Slot": "R1",
+    "Duration": "19h",
+    "Location": "Geelong",
+    "Location_Code": "(VIC)"
+  },
+  {
+    "Category": "GreyHound",
+    "Race_Slot": "R1",
+    "Duration": "19h",
+    "Location": "Richmond",
+    "Location_Code": "(NSW)"
+  },
+  {
+    "Category": "GreyHound",
+    "Race_Slot": "R2",
+    "Duration": "19h",
+    "Location": "Geelong",
+    "Location_Code": "(VIC)"
+  },
+  {
+    "Category": "GreyHound",
+    "Race_Slot": "R2",
+    "Duration": "19h",
+    "Location": "Richmond",
+    "Location_Code": "(NSW)"
+  },
+  {
+    "Category": "GreyHound",
+    "Race_Slot": "R3",
+    "Duration": "19h",
+    "Location": "Geelong",
+    "Location_Code": "(VIC)"
+  },
+  {
+    "Category": "GreyHound",
+    "Race_Slot": "R3",
+    "Duration": "20h",
+    "Location": "Richmond",
+    "Location_Code": "(NSW)"
+  },
+  {
+    "Category": "Harness",
+    "Race_Slot": "R8",
+    "Duration": "10m",
+    "Location": "Meslay Du Main",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Harness",
+    "Race_Slot": "R1",
+    "Duration": "40m",
+    "Location": "Graignes",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Harness",
+    "Race_Slot": "R2",
+    "Duration": "1h 10m",
+    "Location": "Graignes",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Harness",
+    "Race_Slot": "R3",
+    "Duration": "1h 40m",
+    "Location": "Graignes",
+    "Location_Code": "(FRA)"
+  },
+  {
+    "Category": "Harness",
+    "Race_Slot": "R1",
+    "Duration": "13h",
+    "Location": "Albion Park",
+    "Location_Code": "(QLD)"
+  },
+  {
+    "Category": "Harness",
+    "Race_Slot": "R2",
+    "Duration": "13h",
+    "Location": "Albion Park",
+    "Location_Code": "(QLD)"
+  }
+]

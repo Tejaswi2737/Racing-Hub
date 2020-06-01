@@ -1,0 +1,14 @@
+{
+    "stake_cents":100,
+    "bet_created":"Sun, 03 May 2020 16:44:53 GMT",
+    "payout_cents":42,
+    "bet_status":"settled_won",
+    "bet_fh":"sk_integ_100",
+    "bet_ticket":"1b51c3aab03ba41edcd12c9aea79cb3a5661d0c003f165d966a2baab5436eb61",
+    "boxed_runners":[
+       1,
+       2,
+       3
+    ],
+    "bet_pool_fh":"2020-05-04_racing_harness_test-do-not-bet-on_1_t"
+ }
