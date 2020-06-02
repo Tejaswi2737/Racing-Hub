@@ -54,11 +54,14 @@
 }
 
 .table-list-row {
-    display: table-row;
-}
-/* .table-list-row ::before {
     display: inline-table;
-  } */
+    box-sizing: border-box !important;
+    color: inherit !important;
+}
+.table-list-row ::before {
+    display: table-row-group !important;
+    content: none;
+}
 .table-item {
     min-width: 85px !important;
     width: 85px !important;

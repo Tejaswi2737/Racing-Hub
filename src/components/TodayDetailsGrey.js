@@ -4,7 +4,7 @@ import { fetchNextRace,fetchTodayGrey } from "../actions";
 import "./NextRace.css";
 import TodayRacingDetails from  "./TodayRacingDetails";
 import "./TodayDetails.css"
-import TodayDetails from './TodayDetails';
+// import TodayDetails from './TodayDetails';
 const TodayDetailsGrey = (props)=>{
     props.fetchNextRace();
     props.fetchTodayGrey();

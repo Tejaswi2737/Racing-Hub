@@ -3,30 +3,30 @@ import todayRacing from "../data/todayRacing.json";
 import todayRacingGrey from "../data/todayRacingGrey.json";
 import todayRacingHarness from "../data/todayRacingHarness.json";
 
-export const fetchTodayRacing =  () => {
+export const fetchTodayRacing =  (props) => {
+  console.log(props)
+  switch(props) {
+    case 'todayRacingHarness':
+      Response=todayRacingHarness;
+      break;
+    case 'todayRacingGrey':
+      Response=todayRacingGrey;
+      break;
+    case 'todayRacing':
+      Response=todayRacing
+      break;
+    default:
+      Response= null;
+      break;
+  };
   return function (dispatch) {
     dispatch({
       type: 'FETCH_TODAY_RACING',
-      payload: todayRacing
+      payload: Response
     });
   }
 };
-export const fetchTodayGrey =  () => {
-  return function (dispatch) {
-    dispatch({
-      type: 'FETCH_TODAY_GREY',
-      payload: todayRacingGrey
-    });
-  }
-};
-export const fetchTodayHarness =  () => {
-  return function (dispatch) {
-    dispatch({
-      type: 'FETCH_TODAY_HARNESS',
-      payload: todayRacingHarness
-    });
-  }
-};
+
 export const fetchNextRace =  () => {
   return function (dispatch) {
     dispatch({
@@ -35,7 +35,22 @@ export const fetchNextRace =  () => {
     });
   }
 };
-
+// export const fetchTodayGrey =  () => {
+//   return function (dispatch) {
+//     dispatch({
+//       type: 'FETCH_TODAY_GREY',
+//       payload: todayRacingGrey
+//     });
+//   }
+// };
+// export const fetchTodayHarness =  () => {
+//   return function (dispatch) {
+//     dispatch({
+//       type: 'FETCH_TODAY_HARNESS',
+//       payload: todayRacingHarness
+//     });
+//   }
+// };
 // async dispatch => {
 //   const response= await "../data/todayRacingHarness.json"
 //   dispatch({

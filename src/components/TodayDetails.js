@@ -1,20 +1,19 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { connect } from 'react-redux';
 import { fetchNextRace,
-    fetchTodayRacing,
-    fetchTodayGrey,
-    fetchTodayHarness 
-} from "../actions";
-import "./NextRace.css";
+    fetchTodayRacing} from "../actions";
+import "./TodayDetails.css"
 import TodayRacingDetails from  "./TodayRacingDetails";
 
-
-import "./TodayDetails.css"
 const TodayDetails = (props)=>{
     props.fetchNextRace();
-    props.fetchTodayRacing();
-    props.fetchTodayGrey();
-    props.fetchTodayHarness();
+    const [fetchToday,setfetchToday]=useState('todayRacing')
+    const fetchTodayRaceInfo=(fetchToday)=> {
+        props.fetchTodayRacing(fetchToday);
+    }
+    useEffect(() => {
+        {fetchTodayRaceInfo(fetchToday)}; // this will fire on every change :(
+    }, [fetchToday]);
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
@@ -46,15 +45,18 @@ const TodayDetails = (props)=>{
                     </div>
                     <div className="category-bar">
                         <div className="button-bar">
-                            <button className="category-button">Racing</button>
-                            <button onClick={()=>racingInfo(props.todayRacingGrey)}
+                            <button onClick={()=>setfetchToday('todayRacing')}
+                             className="category-button">Racing</button>
+                            <button onClick={()=>setfetchToday('todayRacingGrey')}
                             className="category-button">GreyHound</button>
-                            <button className="category-button">Harness</button>
+                            {console.log(fetchToday)}
+                            <button onClick={()=>setfetchToday('todayRacingHarness')}
+                             className="category-button">Harness</button>
                         </div>
                     </div>
                 </div>
                 <div className="today-racing-table">
-                    {racingInfo(props.todayRacingGrey)}
+                    {racingInfo(props.todayRacing)}
                 </div>
             </div>
         </div>
@@ -70,5 +72,5 @@ const mapStateToProps=(state)=> {
     }
 }
 export default connect(mapStateToProps, { 
-    fetchNextRace,fetchTodayRacing,
-    fetchTodayGrey,fetchTodayHarness } )(TodayDetails);
+    fetchNextRace,fetchTodayRacing} 
+    )(TodayDetails);
