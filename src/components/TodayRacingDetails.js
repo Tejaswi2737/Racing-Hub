@@ -1,5 +1,6 @@
 import React from 'react';
 import "./TodayDetails.css";
+
 const TodayRacingDetails=(props)=> {
     var counts = {};
     for (var i = 0; i < props.todayRacing.length; i++) {
@@ -44,5 +45,5 @@ const TodayRacingDetails=(props)=> {
             {renderTodayRacingDetail()}
         </div>
     )
-}
+};
 export default TodayRacingDetails;
