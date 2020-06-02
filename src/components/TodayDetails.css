@@ -50,27 +50,30 @@
 .table-rem-row {
     box-sizing: border-box !important;
     color: inherit !important;
-    display: inline-table;
-}
-
-.table-list-row {
-    display: inline-table;
-    box-sizing: border-box !important;
-    color: inherit !important;
-}
-.table-list-row ::before {
-    display: table-row-group !important;
-    content: none;
-}
-.table-item {
     min-width: 85px !important;
     width: 85px !important;
+    display: inline-block !important;
+    text-align: left !important;
+    overflow: hidden !important;
+}
+.table-item-row {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    margin-top: -1px !important;
+}
+
+.table-item {
+    min-width: 85px !important;
+    max-width: 85px !important;
     box-sizing: border-box !important;
     color: rgb(115, 115, 115) !important;
     height: 85px !important;
     padding: 10px 13px !important;
     background: rgb(204, 204, 204) !important;
     border-right: 1px solid rgb(229, 229, 229) !important;
+    margin: 0px;
 }
 .table-item:hover {
     background: rgb(204, 204, 204,0.3) !important;
@@ -88,6 +91,7 @@
     box-sizing: border-box !important;
     color: inherit !important;
 }
+
 .places-list-item {
     box-sizing: border-box !important;
     color: inherit !important;
@@ -96,6 +100,14 @@
     position: relative !important;
     padding: 10px 8px !important;
     border-right: 1px solid rgb(229, 229, 229)
+}
+.places-list-item p {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 40px !important;
 }
 .table {
     box-sizing: border-box !important;

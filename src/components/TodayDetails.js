@@ -49,7 +49,6 @@ const TodayDetails = (props)=>{
                              className="category-button">Racing</button>
                             <button onClick={()=>setfetchToday('todayRacingGrey')}
                             className="category-button">GreyHound</button>
-                            {console.log(fetchToday)}
                             <button onClick={()=>setfetchToday('todayRacingHarness')}
                              className="category-button">Harness</button>
                         </div>

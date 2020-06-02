@@ -4,7 +4,6 @@ import todayRacingGrey from "../data/todayRacingGrey.json";
 import todayRacingHarness from "../data/todayRacingHarness.json";
 
 export const fetchTodayRacing =  (props) => {
-  console.log(props)
   switch(props) {
     case 'todayRacingHarness':
       Response=todayRacingHarness;

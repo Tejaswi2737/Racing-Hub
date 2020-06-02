@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchNextRace,fetchTodayGrey } from "../actions";
 import "./NextRace.css";
 import TodayRacingDetails from  "./TodayRacingDetails";
-import "./TodayDetails.css"
+import "./TodayDetails.css";
 
 const TodayDetailsGrey = (props)=>{
     props.fetchNextRace();
