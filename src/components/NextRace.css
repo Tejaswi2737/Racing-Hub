@@ -1,5 +1,8 @@
 .page-items  {
-    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space:nowrap; */
 }
 .item-title {
     border: 1px solid black;

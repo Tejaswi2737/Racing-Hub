@@ -63,8 +63,7 @@
     flex-wrap: nowrap !important;
     margin-top: -1px !important;
 }
-
-.table-item {
+.table-item, .table-item-open {
     min-width: 85px !important;
     max-width: 85px !important;
     box-sizing: border-box !important;
@@ -75,23 +74,37 @@
     border-right: 1px solid rgb(229, 229, 229) !important;
     margin: 0px;
 }
+.table-item-open {
+    background: transparent !important;
+}
 .table-item:hover {
     background: rgb(204, 204, 204,0.3) !important;
 }
-
-.table-item p {
+.table-item p , .table-item-open p{
     box-sizing: border-box !important;
     color: inherit !important;
     display: block !important;
     font-size: 14px !important;
     font-weight: 600 !important;
     line-height: 5px !important;
+    text-overflow: clip;
+}
+.table-item-results  {
+    box-sizing: border-box !important;
+    color: inherit !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 20px !important;
+    position: relative !important;
+    left: 0px !important;
+    width: 70px !important;
+    white-space: nowrap !important;
 }
 .places-list{
     box-sizing: border-box !important;
     color: inherit !important;
 }
-
 .places-list-item {
     box-sizing: border-box !important;
     color: inherit !important;

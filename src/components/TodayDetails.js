@@ -5,9 +5,10 @@ import { fetchNextRace,
 import "./TodayDetails.css"
 import TodayRacingDetails from  "./TodayRacingDetails";
 
-const TodayDetails = (props)=>{
+const TodayDetails = (props,ownProps)=>{
+    console.log(ownProps.detail)
     props.fetchNextRace();
-    const [fetchToday,setfetchToday]=useState('todayRacing')
+    const [fetchToday,setfetchToday]=useState(props.detail)
     const fetchTodayRaceInfo=(fetchToday)=> {
         props.fetchTodayRacing(fetchToday);
     }
@@ -62,12 +63,13 @@ const TodayDetails = (props)=>{
         );
 }; 
 
-const mapStateToProps=(state)=> {
+const mapStateToProps=(state,ownProps)=> {
     return{ 
         next:state.next,
         todayRacing:state.todayRacing,
         todayRacingGrey:state.todayRacingGrey,
-        todayRacingHarness:state.todayRacingHarness
+        todayRacingHarness:state.todayRacingHarness,
+        detail:ownProps.detail
     }
 }
 export default connect(mapStateToProps, { 

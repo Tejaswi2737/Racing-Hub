@@ -4,24 +4,25 @@ import todayRacingGrey from "../data/todayRacingGrey.json";
 import todayRacingHarness from "../data/todayRacingHarness.json";
 
 export const fetchTodayRacing =  (props) => {
+  var data={};
   switch(props) {
     case 'todayRacingHarness':
-      Response=todayRacingHarness;
+      data=todayRacingHarness;
       break;
     case 'todayRacingGrey':
-      Response=todayRacingGrey;
+      data=todayRacingGrey;
       break;
     case 'todayRacing':
-      Response=todayRacing
+      data=todayRacing
       break;
     default:
-      Response= null;
+      data= null;
       break;
   };
   return function (dispatch) {
     dispatch({
       type: 'FETCH_TODAY_RACING',
-      payload: Response
+      payload: data
     });
   }
 };
