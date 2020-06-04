@@ -1,0 +1,82 @@
+*:after, *:before {
+    box-sizing: border-box;
+}
+.meeting-race-selector {
+    position: relative;
+}
+.race-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.pane {
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.15);
+}
+.meeting-info {
+    background-color: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+}
+.meeting-info-meeting-selector {
+    font-size: 12px;
+    line-height: 20px;
+    color: #333333;
+    font-weight: 600;
+    padding: 0 15px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 4px solid #f2f2f2;
+    box-sizing: border-box;
+    padding-right: 10px;
+    white-space: nowrap;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.meeting-info, .meeting-info-race-type {
+    font-size: 17px;
+    line-height: 20px;
+    padding-right: 5px;
+}
+.meeting-info-race-selector-wrapper {
+    display: flex;
+    overflow-x: auto;
+    flex-grow: 1;
+}
+.meeting-info-race-selector {
+    border-bottom: 4px solid #f2f2f2;
+    box-sizing: border-box;
+    height: 55px;
+    display: flex;
+    flex-grow: 1;
+}
+.meeting-info-race-closed {
+    color: #333333;
+    background-color: #f2f2f2;
+    height: 100%;
+}
+.meeting-info-race {
+    font-size: 17px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #3a982c;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    justify-content: center;
+
+}
+.meeting-info-race-results {
+    font-size: 10px;
+    color: black;
+    line-height: 20px;
+    line-height: 20px;
+    white-space: pre-wrap;
+}
+
