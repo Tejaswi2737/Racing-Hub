@@ -8,10 +8,9 @@ const RaceDetailsPage=()=> {
         <div>
             <Header/>
             <NextList/>
-            <div className="left-column">
-                <RaceDetails/>
-            </div>
+            <RaceDetails/>
         </div>
     )
 }
+
 export default RaceDetailsPage

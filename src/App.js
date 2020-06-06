@@ -22,7 +22,7 @@ function App() {
             <Route path="/Today/R" exact component={TodayR}/> 
             <Route path="/Today/G" exact component={TodayG}/> 
             <Route path="/Today/H" exact component={TodayH}/> 
-            <Route path="/Today/place/Slot" exact component={RaceDetailsPage}/>
+            <Route path="/RaceDetail" exact component={RaceDetailsPage}/>
         </Switch>
       </div>
     </Router>

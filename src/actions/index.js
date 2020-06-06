@@ -2,6 +2,7 @@ import nextData from "../data/nextToGo.json";
 import todayRacing from "../data/todayRacing.json";
 import todayRacingGrey from "../data/todayRacingGrey.json";
 import todayRacingHarness from "../data/todayRacingHarness.json";
+import raceDetailsResults from "../data/RaceDetailsResults.json";
 
 export const fetchTodayRacing =  (props) => {
   var data={};
@@ -32,6 +33,14 @@ export const fetchNextRace =  () => {
     dispatch({
       type: 'FETCH_NEXT_RACE',
       payload: nextData
+    });
+  }
+};
+export const fetchRaceDetails =  (dispatch) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'FETCH_RACE_DETAIL',
+      payload: raceDetailsResults
     });
   }
 };

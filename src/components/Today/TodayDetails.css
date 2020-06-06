@@ -17,16 +17,19 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 1px transparent;
     text-transform: capitalize;
+    /* color: black; */
+    text-decoration: none;
 }
 .category-button:hover {
     background-color: whitesmoke;
 }
 .button-bar {
-        background-color: transparent;
-        line-height: 50px;
-        font-weight: 1000;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        border: 1px transparent;
+    background-color: transparent;
+    line-height: 50px;
+    font-weight: 1000;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: 1px transparent;
+    /* color: black; */
 }
 .date-button {
     margin-bottom: 10px;

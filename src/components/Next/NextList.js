@@ -5,6 +5,7 @@ import "./NextRace.css";
 
 const NextList = (props)=>{
     props.fetchNextRace();
+    console.log(props.next)
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
@@ -14,7 +15,8 @@ const NextList = (props)=>{
                         {item.Race_Slot} Time Left-{item.Duration}</p>
                     </div> 
              )}
-         ))
+         )
+         )
          );
     });
     return(

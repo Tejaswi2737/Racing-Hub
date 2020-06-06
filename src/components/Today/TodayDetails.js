@@ -16,6 +16,7 @@ const TodayDetails = (props,ownProps)=>{
     useEffect(() => {
         {fetchTodayRaceInfo(fetchToday)}; // this will fire on every change :(
     }, [fetchToday]);
+    console.log(props.next)
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
@@ -47,12 +48,15 @@ const TodayDetails = (props,ownProps)=>{
                     </div>
                     <div className="category-bar">
                         <div className="button-bar">
-                            <button onClick={()=><Link to="/Today/R"/>}
-                             className="category-button">Racing</button>
-                            <button onClick={()=>setfetchToday('todayRacingGrey')}
-                            className="category-button">GreyHound</button>
-                            <button onClick={()=>setfetchToday('todayRacingHarness')}
-                             className="category-button">Harness</button>
+                            <Link to="/Today/R" className="category-button">
+                                Racing
+                            </Link>
+                            <Link to="/Today/G" className="category-button">
+                                GreyHound
+                            </Link>
+                            <Link to="/Today/H" className="category-button">
+                                Harness
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -65,11 +69,12 @@ const TodayDetails = (props,ownProps)=>{
 }; 
 
 const mapStateToProps=(state,ownProps)=> {
+    console.log(state)
     return{ 
         next:state.next,
         todayRacing:state.todayRacing,
-        todayRacingGrey:state.todayRacingGrey,
-        todayRacingHarness:state.todayRacingHarness,
+        // todayRacingGrey:state.todayRacingGrey,
+        // todayRacingHarness:state.todayRacingHarness,
         detail:ownProps.detail
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./TodayDetails.css";
+import { Link} from "react-router-dom";
 
-import Race_Detail from "../Race_Detail";
 const TodayRacingDetails=(props)=> {
     var counts = {};
     var places=[]
@@ -11,24 +11,25 @@ const TodayRacingDetails=(props)=> {
     }
     var block=0
     var num=0;
-    const nextPage=(place_name,slots_list)=>{
-        console.log(place_name)
-        return(
-            <div>
-                <Race_Detail place={place_name} slots={slots_list}/>
-            </div>
-        )
-    }
-    const changePageDetails=(event,slots)=>{
-        var place_name=event.currentTarget.id
-        var place_location=Object.keys(counts).indexOf(place_name);
-        var places_list=slots[place_location+1]
-        var slots_list=[]
-        {places_list.map(item=>{
-            slots_list.push(item.Race_Slot,item.Status)
-        })}
-        {nextPage(place_name,slots_list)}
-    };
+    // const nextPage=(place_name,slots_list)=>{
+    //     console.log(place_name)
+    //     return(
+    //         <div>
+    //             <Link to="/RaceDetail">
+    //             </Link>
+    //         </div>
+    //     )
+    // }
+    // const changePageDetails=(event,counts)=>{
+    //     var place_name=event.currentTarget.id
+    //     var place_location=Object.keys(counts).indexOf(place_name);
+    //     var places_list=slots[place_location+1]
+    //     var slots_list=[]
+    //     {places_list.map(item=>{
+    //         slots_list.push(item.Race_Slot,item.Status)
+    //     })}
+    //     {nextPage(place_name,slots_list)}
+    // };
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
                 num=num+1;
@@ -48,17 +49,18 @@ const TodayRacingDetails=(props)=> {
                         <div className="table-item-row">
                             {slots[block].map(items=>{
                                 return( 
-                                    <div onClick={(event)=>{
-                                        changePageDetails(event,slots)}} 
-                                        className='table-rem-row'
-                                        id={items.Location}
-                                    >
-                                        <div className={(items.Status=='Open')?'table-item-open':'table-item'}>
-                                            <p className="table-item-slot">{items.Race_Slot}</p>
-                                            <p className="table-item-time">{items.Time}</p>
-                                            <p className="table-item-results">{items.Result}</p>
-                                        </div>
-                                    </div>  
+                                    <Link className='table-rem-row' params={{place:items.Location}} 
+                                    to="/RaceDetail">
+                                        <div className='table-rem-row'
+                                            id={items.Location}
+                                            onClick={()=><Link to={{pathname: "/RaceDetail",params: {place: 'place'}}}/>}>
+                                            <div className={(items.Status=='Open')?'table-item-open':'table-item'}>
+                                                <p className="table-item-slot">{items.Race_Slot}</p>
+                                                <p className="table-item-time">{items.Time}</p>
+                                                <p className="table-item-results">{items.Result}</p>
+                                            </div>
+                                        </div>  
+                                    </Link>
                                 )
                             })}
                         </div>
