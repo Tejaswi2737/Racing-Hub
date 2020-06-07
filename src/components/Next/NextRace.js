@@ -1,6 +1,8 @@
 import React,{ useState,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import { Link,Route} from "react-router-dom";
+
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MediaQuery from 'react-responsive'
@@ -53,30 +55,33 @@ const NextRace = (props)=>{
                 return(
                     <>
                     <MediaQuery query='(min-width: 500px)'>
-                        <Grid item xs ={4} className="next-section" >
-                            <Paper className={classes.paper}  className="next-item">                        
+                        <Grid item xs ={4} className="next-section" >  
+                            <Link className={classes.paper}  className="next-item"
+                                to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>                        
                                 <p>{item.Race_Slot}</p>
                                 <p>{item.Duration}</p>
                                 <p>{item.Location} {item.Location_Code}</p>
-                            </Paper> 
+                            </Link> 
                         </Grid>
                     </MediaQuery>
                     <MediaQuery query='(max-width: 500px)'>
                         <Grid item xs ={6} className="next-section" >
-                            <Paper className={classes.paper}  className="next-item">                        
+                            <Link className={classes.paper}  className="next-item"
+                                to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>                        
                                 <p>{item.Race_Slot}</p>
                                 <p>{item.Duration}</p>
                                 <p>{item.Location} {item.Location_Code}</p>
-                            </Paper> 
+                            </Link> 
                         </Grid>
                     </MediaQuery>  
                     <MediaQuery query='(max-width: 1400px)'>
                         <Grid item xs ={4} className="next-section" >
-                            <Paper className={classes.paper}  className="next-item">                        
+                            <Link className={classes.paper}  className="next-item"
+                                to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>                        
                                 <p>{item.Race_Slot}</p>
                                 <p>{item.Duration}</p>
                                 <p>{item.Location} {item.Location_Code}</p>
-                            </Paper> 
+                            </Link> 
                         </Grid>
                     </MediaQuery>  
                     </>                
@@ -88,11 +93,12 @@ const NextRace = (props)=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <div className="next-item-list">                        
+                    <Link className="next-item-list" to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>
+
                         <p>{item.Location} {item.Location_Code}-
                         {item.Race_Slot} Time Left-{item.Duration}</p>
-                    </div> 
-             )}
+                        </Link>             
+                        )}
          ))
          );
     });

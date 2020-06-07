@@ -285,3 +285,290 @@ html {
 .race-table .right {
     text-align: right;
 }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+td {
+    line-height: 20px;
+    padding: 0 5px;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.runner-metadata-list {
+    color: #737373;
+    display: block;
+    font-size: 10px;
+    line-height: 11px;
+    margin-right: 3px;
+}
+.runner-metadata-list dt+dd {
+    margin-left: 3px;
+    padding-left: 0;
+}
+
+.runner-metadata-list dt, .runner-metadata-list dd {
+    margin: -3px;
+    margin-bottom: 0;
+    padding: 3px;
+    padding-bottom: 0;
+}
+.runner-metadata-list dd {
+    display: inline-block;
+}
+.runner-metadata-list dt {
+    font-weight: 600;
+    display: inline-block;
+}
+.result-section .result-odds-header, .result-section .result-fixed-odds, .result-section .result-tote-odds, .result-section .result-dividends {
+    width: 120px;
+}
+.race-table .right {
+    text-align: right;
+}
+.result-section .result-win, .result-section .result-place, .result-section .result-pool-odds {
+    font-weight: 600;
+}
+.race-table {
+    margin-top: 10px;
+    table-layout: auto;
+    width: 100%;
+}
+.pane {
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.15);
+}
+.result-header pool-header th {
+    font-size: 10px;
+    line-height: 20px;
+    background-color: #f7f6f6;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    color: #272727;
+    padding: 0 10px;
+}
+.race-runners-wrapper .pseudo-header {
+    border-top: 1px solid #e6e6e6;
+}
+.race-runners-wrapper.results {
+    margin-top: 10px;
+}
+.race-runners-wrapper  .labels-wrapper {
+    text-align: right;
+}
+.race-runners-wrapper .pseudo-header .row {
+    border: 0;
+    margin-top: 0;
+}
+.race-runners-wrapper .row {
+    display: table;
+    position: relative;
+    table-layout: fixed;
+    width: 100%;
+    min-height: 45px;
+}
+.race-runners-wrapper .pseudo-header .number-cell {
+    background-color: white;
+    padding-left: 3px;
+}
+.race-runners-wrapper .pseudo-header, .cell.active, .race-runners-wrapper, .pseudo-header, .cell, .active {
+    color: #737373;
+    white-space: nowrap;
+}
+.race-runners-wrapper .pseudo-header .cell {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 400;
+    color: #737373;
+    padding-bottom: 0;
+    vertical-align: baseline;
+}
+.race-runners-wrapper .cell {
+    font-size: 14px;
+    line-height: 20px;
+    display: table-cell;
+    padding: 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.race-runners-wrapper .pseudo-body {
+    border-bottom: 1px solid #e6e6e6;
+}
+.race-runners-wrapper .pseudo-body .row {
+    border-top: 1px solid #e6e6e6;
+    cursor: default;
+}
+.race-runners-wrapper .number-cell {
+    background: #333;
+    color: white;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 30px;
+}
+.race-runners-wrapper .runner-name-metadata-wrapper {
+    display: block;
+    line-height: 15px;
+    width: auto;
+}
+.race-runners-wrapper .runner-name-wrapper {
+    font-size: 14px;
+    line-height: 18px;
+    white-space: normal;
+}
+.race-runners-wrapper .runner-name-wrapper .runner-name {
+    font-weight: 600;
+    display: table-cell;
+    vertical-align: middle;
+}
+.runner-metadata-list {
+    color: #737373;
+    display: block;
+    font-size: 10px;
+    line-height: 11px;
+    margin-right: 3px;
+}
+.runner-metadata-list dt, .runner-metadata-list dd {
+    margin: -3px;
+    margin-bottom: 0;
+    padding: 3px;
+    padding-bottom: 0;
+}
+.runner-metadata-list dt+dd {
+    margin-left: 3px;
+    padding-left: 0;
+}
+.runner-metadata-list dt {
+    font-weight: 600;
+    display: inline-block;
+}
+.race-runners-wrapper .price-cell.hidden {
+    display: table-cell !important;
+}
+.race-runners-wrapper .price-cell.closed {
+    color: #737373;
+}
+.race-runners-wrapper .price-cell {
+    font-weight: 600;
+    border-left: 1px solid #e6e6e6;
+    color: #3a982c;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 70px;
+}
+.animate-change {
+    height: 20px;
+    position: relative;
+    width: 100%;
+}
+.animate-odd {
+    height: 20px;
+    position: absolute;
+    width: 100%;
+}
+.race-runners-wrapper .price-cell.closed {
+    color: #737373;
+}
+.race-runners-wrapper .price-cell:last-child {
+    border-right: 0;
+}
+.race-runners-wrapper .cell {
+    font-size: 14px;
+    line-height: 20px;
+    display: table-cell;
+    padding: 10px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.race-runners-wrapper .price-cell .return-value {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+
+.tabbed-sections .tabs-nav {
+    font-size: 20;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    display: block;
+}
+.tabbed-sections .tabs-nav a:hover, .tabbed-sections .tabs-nav a.active {
+    background: #008542;
+    color: white;
+}
+.tabbed-sections .tabs-nav a {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    -webkit-transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+    transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 20px;
+    background: #333;
+    color: #f7f6f6;
+    text-decoration: none;
+    opacity: 1;
+    box-shadow: none;
+}
+.tabbed-sections .tabs-section.active {
+    display: block;
+}
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+.pools-section .pools-list {
+    font-size: 0;
+    width: 100%;
+}
+ol, ul {
+    list-style: none;
+}
+@media (max-width: 1200px){
+.pools-section, .pools-list li {
+    width: 50%;
+}}
+.pools-section .pools-list li {
+    font-size: 14px;
+    line-height: 20px;
+    display: inline-block;
+    padding-right: 20px;
+    vertical-align: top;
+}
+.pools-section .pools-list li, .amount-span {
+    float: right;
+}
+.tabbed-sections .tabs-section {
+    display: none;
+    padding: 10px 20px;
+    min-height: 120px;
+    border: 2px solid #008542;
+    background: white;
+}

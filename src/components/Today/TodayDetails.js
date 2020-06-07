@@ -20,10 +20,10 @@ const TodayDetails = (props,ownProps)=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <div className="next-item-list">                        
+                    <Link className="next-item-list" to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>
                         <p>{item.Location} {item.Location_Code}-
                         {item.Race_Slot} Time Left-{item.Duration}</p>
-                    </div> 
+                    </Link> 
              )}
          ))
          );

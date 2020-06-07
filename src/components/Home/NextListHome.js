@@ -11,7 +11,7 @@ const NextListHome = (props)=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <a className="next-item-list-home">                        
+                    <Link to="/RaceDetail" className="next-item-list-home">                        
                         <p>{item.Location} {item.Location_Code}</p>
                         <div className="race-details-container">
                             <span className="race-detail">
@@ -21,7 +21,7 @@ const NextListHome = (props)=>{
                                 {item.Duration}
                             </span>                            
                         </div>
-                    </a> 
+                    </Link> 
              )}
          ))
          );

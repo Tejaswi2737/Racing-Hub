@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link,Route} from "react-router-dom";
+
 import { fetchNextRace } from "../../actions";
 import "./NextRace.css";
 
@@ -10,10 +12,11 @@ const NextList = (props)=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <div className="next-item-list">                        
-                        <p>{item.Location} {item.Location_Code}-
-                        {item.Race_Slot} Time Left-{item.Duration}</p>
-                    </div> 
+                    <Link className="next-item-list" to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>
+                            <p>{item.Location} {item.Location_Code}-
+                            {item.Race_Slot} Time Left-{item.Duration}</p>
+                    </Link>
+
              )}
          )
          )

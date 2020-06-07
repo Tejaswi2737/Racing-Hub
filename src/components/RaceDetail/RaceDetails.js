@@ -21,7 +21,7 @@ const RaceDetails = (props)=>{
     var exotic_list={}
     {props.racingDetail.exoticResults?props.racingDetail.exoticResults.map(item=>{
         exotic_list=item;
-    }): exotic_list=[]}
+    }): exotic_list=[]};
     return (
         <main className="page-content">
             <div className="left-column">
@@ -38,12 +38,15 @@ const RaceDetails = (props)=>{
                                     <div className="meeting-info-race-selector">     
                                         {items_list?items_list.map(item=>{
                                             return(
-                                                <a className="meeting-info-race meeting-info-race-selected meeting-info-race-closed ">
-                                                        R{item.raceNumber}  
-                                                        <span className="meeting-info-race-results">
-                                                            {item.raceStatus="paying"?item.results:item.raceStartTime.split("T")[1]} 
-                                                        </span>
-                                                </a>
+                                                <div onClick={()=>alert('clicked')}>
+                                                    <a className="meeting-info-race meeting-info-race-selected meeting-info-race-closed">
+                                                            R{item.raceNumber}  
+                                                            <span className="meeting-info-race-results">
+                                                                {item.raceStatus="paying"?item.results:item.raceStartTime.split("T")[1]} 
+                                                            </span>
+                                                    </a>
+                                                </div>
+
                                         )}):""}
                                     </div>
                                 </div>
@@ -107,7 +110,7 @@ const RaceDetails = (props)=>{
                                             </tr>
                                         </thead>
                                         <tbody className="">
-                                            {results_list?results_list.map(item=>{  
+                                            {props.racingDetail.raceStatus=="Paying"?results_list.map(item=>{  
                                                 console.log(item)
                                                 return(
                                                     <tr className="result-item">
@@ -145,7 +148,7 @@ const RaceDetails = (props)=>{
                                             )}):""}
                                         </tbody>
                                     </table>
-                                    <table className="race-table-pane">
+                                    <table className="race-table pane">
                                         <thead className="">
                                             <tr className="result-header pool-header">
                                                 <th className="details-header">
@@ -160,7 +163,7 @@ const RaceDetails = (props)=>{
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {props.racingDetail.exoticResults?props.racingDetail.exoticResults.map(exotic_item=>
+                                            {props.racingDetail.raceStatus=="Paying"?props.racingDetail.exoticResults.map(exotic_item=>
                                                 {
                                                     return(
                                                         <tr className="result-item thin">
@@ -190,13 +193,11 @@ const RaceDetails = (props)=>{
                                                 }):""}
                                         </tbody>
                                     </table>
-                                    <div>
+                                    <div className="race-runners-wrapper results">
                                         <div className="pseudo-table">
                                             <div className="pseudo-header">
                                                 <div className="labels-wrapper">
-                                                    {/* <span className="odds-label double">
 
-                                                    </span> */}
                                                     <span className="odds-label double">
                                                         TOTE
                                                     </span>
@@ -245,19 +246,19 @@ const RaceDetails = (props)=>{
                                                                         {runner_item.trainerName}
                                                                     </dd>
                                                                 </div>
-                                                                <div className="cell price-cell win-cell animate-field-653 wrappable unselectable closed">
-                                                                    <div className="animate-change">
-                                                                        <div className="animate-odd">
-                                                                            ${runner_item.returnWin}
-                                                                        </div>
-                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="cell price-cell win-cell animate-field-653 wrappable unselectable closed">
+                                                            <div className="animate-change">
+                                                                <div className="animate-odd">
+                                                                    ${runner_item.returnWin}
                                                                 </div>
-                                                                <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                                                    <div className="animate-change">
-                                                                        <div className="animate-odd">
-                                                                            ${runner_item.returnPlace}
-                                                                        </div>
-                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                                            <div className="animate-change">
+                                                                <div className="animate-odd">
+                                                                    ${runner_item.returnPlace}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -270,6 +271,36 @@ const RaceDetails = (props)=>{
                                 </section>
                             </div>
                         </div>
+                        <div className="page-section-pane">
+                            <div className="info-table">
+                                <div className="tabbed-sections">
+                                    <nav className="tabs-nav">
+                                        <a className="active">
+                                            Pools
+                                        </a>
+                                    </nav>
+                                    <section className="tabs-section active">
+                                        <section className="section">
+                                            <ul className="pools-list">
+                                                {props.racingDetail.poolTotals?props.racingDetail.poolTotals.map(total_item=>{
+                                                    return(
+                                                        <li>
+                                                        <span>
+                                                            {total_item.wageringProduct}
+                                                        </span>
+                                                        <span className="amount-span">
+                                                            {total_item.poolTotal}
+                                                        </span>
+                                                    </li>
+
+                                                    )
+                                                    }):""}
+                                            </ul>
+                                        </section>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>                       
                     </div>
                 </ui-view>
             </div>
