@@ -263,10 +263,10 @@
          "raceClassConditions":"N1.5L4",
          "raceName":"NORTHFIELD PARK F&M PACE MS",
          "raceStartTime":"2020-06-06T23:39:00.000Z",
-         "raceStatus":"Normal",
+         "raceStatus":"Paying",
          "raceDistance":1609,
          "hasParimutuel":true,
-         "hasFixedOdds":true,
+         "hasFixedOdds":false,
          "broadcastChannel":"Sky Racing 2",
          "broadcastChannels":[
             "Sky Racing 2"
@@ -278,17 +278,23 @@
          "willHaveFixedOdds":true,
          "allIn":false,
          "cashOutEligibility":"Disabled",
-         "allowBundle":true,
+         "allowBundle":false,
          "results":[
-
+            [
+               5
+            ],
+            [
+               3
+            ],
+            [
+               1
+            ],
+            [
+               2
+            ]
          ],
          "scratchings":[
 
-         ],
-         "multiLegApproximates":[
-            {
-               "wageringProduct":"RunningDouble"
-            }
          ],
          "isPromotionAvailable":false,
          "isPromotionAvailableInVenueMode":false
@@ -297,11 +303,11 @@
          "raceNumber":6,
          "raceClassConditions":"FM-CON",
          "raceName":"NORTHFIELD PARK F&M PACE MS",
-         "raceStartTime":"2020-06-06T23:54:00.000Z",
+         "raceStartTime":"2020-06-07T00:00:00.000Z",
          "raceStatus":"Normal",
          "raceDistance":1609,
          "hasParimutuel":true,
-         "hasFixedOdds":false,
+         "hasFixedOdds":true,
          "broadcastChannel":"Sky Racing 2",
          "broadcastChannels":[
             "Sky Racing 2"
@@ -313,7 +319,7 @@
          "willHaveFixedOdds":true,
          "allIn":false,
          "cashOutEligibility":"Disabled",
-         "allowBundle":false,
+         "allowBundle":true,
          "results":[
 
          ],
@@ -322,6 +328,11 @@
                "runnerNumber":4,
                "runnerName":"JUST A FRIEND",
                "bettingStatus":"Scratched"
+            }
+         ],
+         "multiLegApproximates":[
+            {
+               "wageringProduct":"RunningDouble"
             }
          ],
          "isPromotionAvailable":false,

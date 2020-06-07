@@ -16,7 +16,6 @@ const TodayDetails = (props,ownProps)=>{
     useEffect(() => {
         {fetchTodayRaceInfo(fetchToday)}; // this will fire on every change :(
     }, [fetchToday]);
-    console.log(props.next)
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
@@ -69,7 +68,6 @@ const TodayDetails = (props,ownProps)=>{
 }; 
 
 const mapStateToProps=(state,ownProps)=> {
-    console.log(state)
     return{ 
         next:state.next,
         todayRacing:state.todayRacing,

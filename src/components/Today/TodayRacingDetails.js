@@ -1,24 +1,22 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import "./TodayDetails.css";
-import { Link} from "react-router-dom";
+import { Link,Route} from "react-router-dom";
+// import { Redirect } from 'react-router';
+// import { createHistory } from "../..history";
 
 const TodayRacingDetails=(props)=> {
     var counts = {};
     var places=[]
     var slots=[];
+    // const [venue, setVenue] = useState('');
+    // const [venue_slot, setvenue_slot] = useState('');
     for (var c = 0; c < props.todayRacing.length; c++) {
         counts[props.todayRacing[c].Location] = 1 + (counts[props.todayRacing[c].Location] || 0);
     }
     var block=0
     var num=0;
     // const nextPage=(place_name,slots_list)=>{
-    //     console.log(place_name)
-    //     return(
-    //         <div>
-    //             <Link to="/RaceDetail">
-    //             </Link>
-    //         </div>
-    //     )
+    //     return <Link push to="/RaceDetail" />
     // }
     // const changePageDetails=(event,counts)=>{
     //     var place_name=event.currentTarget.id
@@ -28,8 +26,12 @@ const TodayRacingDetails=(props)=> {
     //     {places_list.map(item=>{
     //         slots_list.push(item.Race_Slot,item.Status)
     //     })}
-    //     {nextPage(place_name,slots_list)}
+    //     // setVenue(place_location)
+    //     // setvenue_slot(slots_list)
     // };
+    // useEffect(() => {
+    //     return(history.push('/profile'))
+    // }, [venue,venue_slot])
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
                 num=num+1;
@@ -48,12 +50,13 @@ const TodayRacingDetails=(props)=> {
                     return(
                         <div className="table-item-row">
                             {slots[block].map(items=>{
+                                {console.log(counts)}
                                 return( 
-                                    <Link className='table-rem-row' params={{place:items.Location}} 
-                                    to="/RaceDetail">
+                                    <Link to={{pathname:"/RaceDetail" ,state:items.Location,place:items.Race_Slot}} className='table-rem-row'>
                                         <div className='table-rem-row'
-                                            id={items.Location}
-                                            onClick={()=><Link to={{pathname: "/RaceDetail",params: {place: 'place'}}}/>}>
+                                            id={items.Location}>
+                                            {/* // onClick={(event)=>{changePageDetails(event,counts)}}> */}
+                                            {/* // <Link to={{pathname: "/RaceDetail",params: {place: 'place'}}}/>}> */}
                                             <div className={(items.Status=='Open')?'table-item-open':'table-item'}>
                                                 <p className="table-item-slot">{items.Race_Slot}</p>
                                                 <p className="table-item-time">{items.Time}</p>
