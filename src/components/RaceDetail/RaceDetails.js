@@ -5,7 +5,12 @@ import "./RaceDetails.css";
 const RaceDetails = (props,ownProps)=>{
     props.fetchMeetingDetails();
     console.log(props.slot)
-    var initialValue=parseInt(props.slot)
+    
+    if (parseInt(props.slot)){
+        var initialValue=parseInt(props.slot)
+    } else {
+        var initialValue=1
+    }
     const [venue_slot, setvenue_slot] = useState(initialValue);
     console.log(venue_slot)
     var races_list=[props.meetingDetails.races];

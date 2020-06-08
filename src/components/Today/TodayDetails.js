@@ -16,18 +16,6 @@ const TodayDetails = (props,ownProps)=>{
     useEffect(() => {
         {fetchTodayRaceInfo(fetchToday)}; // this will fire on every change :(
     }, [fetchToday]);
-    const renderToday=(()=>{
-        return (        
-            (props.next.map(item => {
-                 return(
-                    <Link className="next-item-list" to={{pathname:"/RaceDetail" ,state:item.Location,slot:item.Race_Slot}}>
-                        <p>{item.Location} {item.Location_Code}-
-                        {item.Race_Slot} Time Left-{item.Duration}</p>
-                    </Link> 
-             )}
-         ))
-         );
-    });
     const racingInfo=(props)=>{
         return(
             <TodayRacingDetails todayRacing={props}/>
@@ -35,9 +23,6 @@ const TodayDetails = (props,ownProps)=>{
     }
     return(
         <div>
-            <div className="next-list">
-                {renderToday()}
-            </div>
             <div className="today-details">
                 <div className="date-button">
                     <div className="date-category">

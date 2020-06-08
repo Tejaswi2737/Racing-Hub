@@ -89,24 +89,9 @@ const NextRace = (props)=>{
         ))
         );
     };
-    const renderToday=(()=>{
-        return (        
-            (props.next.map(item => {
-                 return(
-                    <Link className="next-item-list" to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>
-
-                        <p>{item.Location} {item.Location_Code}-
-                        R{item.Race_Slot} Time Left-{item.Duration}</p>
-                        </Link>             
-                        )}
-         ))
-         );
-    });
     return(
         <div>
-            <div className="next-list">
-                {renderToday()}
-            </div>
+
             <div className={classes.root}>
                 <h1>Racing</h1>
                 <Grid container spacing={3}>
