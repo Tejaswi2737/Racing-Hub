@@ -8,8 +8,13 @@ import raceDetailsResults3 from "../data/raceDetailsResults3.json";
 import raceDetailsResults4 from "../data/raceDetailsResults4.json";
 import raceDetailsResults5 from "../data/raceDetailsResults5.json";
 import raceDetailsResults6 from "../data/raceDetailsResults6.json";
+import raceDetailsResults7 from "../data/raceDetailsResults7.json";
+import raceDetailsResults8 from "../data/raceDetailsResults8.json";
+import raceDetailsResults9 from "../data/raceDetailsResults9.json";
+import raceDetailsResults10 from "../data/raceDetailsResults10.json";
+import raceDetailsResults11 from "../data/raceDetailsResults11.json";
+import raceDetailsResults12 from "../data/raceDetailsResults12.json";
 import meetingDetails from "../data/meetingDetails.json";
-import RaceResults_Format from "../data/RaceResults_Format.json";
 
 export const fetchTodayRacing =  (props) => {
   var data={};
@@ -55,7 +60,7 @@ export const fetchRaceDetails =  (props) => {
   var data={}
   switch(props) {
     case 1:
-      data=RaceResults_Format;
+      data=raceDetailsResults1;
       break;
     case 2:
       data=raceDetailsResults2;
@@ -71,9 +76,27 @@ export const fetchRaceDetails =  (props) => {
       break;
     case 6:
       data=raceDetailsResults6;
-      break;      
+      break;   
+    case 7:
+      data=raceDetailsResults7;
+      break;
+    case 8:
+        data=raceDetailsResults8;
+        break;
+    case 9:
+        data=raceDetailsResults9;
+        break;
+    case 10:
+        data=raceDetailsResults10;
+        break;
+    case 11:
+        data=raceDetailsResults11;
+        break;
+    case 12:
+        data=raceDetailsResults12;
+        break;            
     default:
-      data= RaceResults_Format;
+      data= null;
       break;
   };
   return function (dispatch) {

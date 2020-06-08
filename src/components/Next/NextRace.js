@@ -57,8 +57,8 @@ const NextRace = (props)=>{
                     <MediaQuery query='(min-width: 500px)'>
                         <Grid item xs ={4} className="next-section" >  
                             <Link className={classes.paper}  className="next-item"
-                                to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>                        
-                                <p>{item.Race_Slot}</p>
+                                to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>                        
+                                <p>R{item.Race_Slot}</p>
                                 <p>{item.Duration}</p>
                                 <p>{item.Location} {item.Location_Code}</p>
                             </Link> 
@@ -67,8 +67,8 @@ const NextRace = (props)=>{
                     <MediaQuery query='(max-width: 500px)'>
                         <Grid item xs ={6} className="next-section" >
                             <Link className={classes.paper}  className="next-item"
-                                to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>                        
-                                <p>{item.Race_Slot}</p>
+                                to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>                        
+                                <p>R{item.Race_Slot}</p>
                                 <p>{item.Duration}</p>
                                 <p>{item.Location} {item.Location_Code}</p>
                             </Link> 
@@ -77,8 +77,8 @@ const NextRace = (props)=>{
                     <MediaQuery query='(max-width: 1400px)'>
                         <Grid item xs ={4} className="next-section" >
                             <Link className={classes.paper}  className="next-item"
-                                to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>                        
-                                <p>{item.Race_Slot}</p>
+                                to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>                        
+                                <p>R{item.Race_Slot}</p>
                                 <p>{item.Duration}</p>
                                 <p>{item.Location} {item.Location_Code}</p>
                             </Link> 
@@ -93,10 +93,10 @@ const NextRace = (props)=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <Link className="next-item-list" to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>
+                    <Link className="next-item-list" to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>
 
                         <p>{item.Location} {item.Location_Code}-
-                        {item.Race_Slot} Time Left-{item.Duration}</p>
+                        R{item.Race_Slot} Time Left-{item.Duration}</p>
                         </Link>             
                         )}
          ))

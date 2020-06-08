@@ -52,13 +52,13 @@ const TodayRacingDetails=(props)=> {
                             {slots[block].map(items=>{
                                 {console.log(counts)}
                                 return( 
-                                    <Link to={{pathname:"/RaceDetail" ,state:items.Location,place:items.Race_Slot}} className='table-rem-row'>
+                                    <Link to={{pathname:"/RaceDetail" ,state:items.Location,slot:items.Race_Slot}} className='table-rem-row'>
                                         <div className='table-rem-row'
                                             id={items.Location}>
                                             {/* // onClick={(event)=>{changePageDetails(event,counts)}}> */}
                                             {/* // <Link to={{pathname: "/RaceDetail",params: {place: 'place'}}}/>}> */}
                                             <div className={(items.Status=='Open')?'table-item-open':'table-item'}>
-                                                <p className="table-item-slot">{items.Race_Slot}</p>
+                                                <p className="table-item-slot">R{items.Race_Slot}</p>
                                                 <p className="table-item-time">{items.Time}</p>
                                                 <p className="table-item-results">{items.Result}</p>
                                             </div>

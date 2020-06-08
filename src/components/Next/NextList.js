@@ -12,11 +12,10 @@ const NextList = (props)=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <Link className="next-item-list" to={{pathname:"/RaceDetail" ,state:item.Location,place:item.Location_Code}}>
+                    <Link className="next-item-list" to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>
                             <p>{item.Location} {item.Location_Code}-
-                            {item.Race_Slot} Time Left-{item.Duration}</p>
+                            R{item.Race_Slot} Time Left-{item.Duration}</p>
                     </Link>
-
              )}
          )
          )

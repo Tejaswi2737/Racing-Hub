@@ -18,7 +18,7 @@
     "prizeMoney":"$7455.00",
     "raceStatus":"Paying",
     "results":[
-        [
+        
             {
                 "place":1,
                 "runnerName":"JERAMAYA",
@@ -52,7 +52,7 @@
                 "trainerName":"B Farmer",
                 "totePlace":"$1.30"
             }
-        ]
+        
     ],
     "exoticResults":[
         {
