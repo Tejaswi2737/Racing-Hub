@@ -4,12 +4,11 @@ import NextList from '../Next/NextList';
 import RaceDetails from '../RaceDetail/RaceDetails';
 import "./RaceDetails.css"
 const RaceDetailsPage=(props)=> {
-    console.log(props.location.slot)
     return (
         <div>
             <Header/>
             <NextList/>
-            <RaceDetails slot={props.location.slot}/>
+            <RaceDetails slot={props.location.slot} place={props.location.place}/>
         </div>
     )
 }

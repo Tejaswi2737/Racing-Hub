@@ -4,7 +4,6 @@ import { fetchNextRace } from "../actions"
 import "./NextRace.css"
 class NextRace extends React.Component {
     componentDidMount() {
-        console.log(this.props.next)
         this.props.fetchNextRace();    
     };
     renderSwitchRacing(item) { 
@@ -79,7 +78,6 @@ class NextRace extends React.Component {
     }
 }
 const mapStateToProps=(state)=> {
-    console.log(state)
     return{ next:state.next}
 }
 export default connect(mapStateToProps, { fetchNextRace } )(NextRace);

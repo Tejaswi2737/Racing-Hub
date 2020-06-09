@@ -4,22 +4,26 @@ import { fetchMeetingDetails,fetchRaceDetails} from "../../actions";
 import "./RaceDetails.css";
 const RaceDetails = (props,ownProps)=>{
     props.fetchMeetingDetails();
-    console.log(props.slot)
-    
+    console.log(props.venue)
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
     } else {
-        var initialValue=1
+        initialValue=1
     }
+    if ((props.venue)){
+        var initialValuePlace=(props.venue)
+    } else {
+        initialValuePlace=""
+    }
+    const [venue, setvenue] = useState(initialValuePlace);
     const [venue_slot, setvenue_slot] = useState(initialValue);
-    console.log(venue_slot)
     var races_list=[props.meetingDetails.races];
     useEffect(() => {
         setvenue_slot(initialValue)
-    }, [initialValue])
+    }, [initialValue,initialValuePlace])
     useEffect(() => {
         props.fetchRaceDetails(venue_slot);
-    }, [venue_slot])
+    }, [venue_slot,venue])
     races_list=Object.values(races_list);
     var items_list={}
     {races_list?races_list.map(item=>{
@@ -43,7 +47,6 @@ const RaceDetails = (props,ownProps)=>{
             </thead>
             <tbody className="">
                 {props.racingDetail.results.map(item=>{  
-                    console.log(item)
                     return(
                         <tr className="result-item">
                             <td className="result-position">
@@ -225,11 +228,15 @@ const RaceDetails = (props,ownProps)=>{
                     <div className="meeting-info-race-selector">     
                         {items_list?items_list.map(item=>{
                             return(
-                                <div onClick={()=>setvenue_slot(item.raceNumber)}>
-                                    <a className="meeting-info-race meeting-info-race-selected meeting-info-race-closed">
+                                <div onClick={()=>{setvenue_slot(item.raceNumber)
+                                setvenue(item.Location)}}>
+                                    <a className=
+                                    {item.raceStatus=="Paying"?
+                                    "meeting-info-race meeting-info-race-selected meeting-info-race-closed":
+                                    "meeting-info-race meeting-info-race-selected meeting-info-race-open"}>
                                             R{item.raceNumber}  
-                                            <span className="meeting-info-race-results">
-                                                {item.raceStatus="paying"?item.results:item.raceStartTime.split("T")[1]} 
+                                            <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
+                                                {item.raceStatus=="Paying"?item.results:item.raceStartTime} 
                                             </span>
                                     </a>
                                 </div>
@@ -260,7 +267,6 @@ const RaceDetails = (props,ownProps)=>{
                             <div className="race-heading">
                                 <div className="race-number">
                                     R{props.racingDetail.raceNumber}
-
                                 </div>
                                 <div className="race-header-race-time-not-open">
                                     {props.racingDetail.raceStartTime}
@@ -345,11 +351,11 @@ const RaceDetails = (props,ownProps)=>{
 };
 
 const mapStateToProps=(state,ownProps)=> {
-    console.log(ownProps)
     return{ 
         slot:ownProps.slot,
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
+        venue:ownProps.place
     }
 }
 export default connect(mapStateToProps, { 

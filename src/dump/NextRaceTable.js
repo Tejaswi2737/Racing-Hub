@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 const NextRaceTable = (props)=>{
     const classes = useStyles();
     props.fetchNextRace()
-    console.log(props)
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
     const [nextRaceHarness,setnextRaceHarness]=useState([]);

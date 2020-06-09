@@ -1,10 +1,10 @@
 import React,{ useState,useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { Link,Route} from "react-router-dom";
-
+import { Link} from "react-router-dom";
+import Moment from 'react-moment';
+import 'moment-timezone';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import MediaQuery from 'react-responsive'
 
 import { fetchNextRace } from "../../actions";
@@ -33,11 +33,11 @@ const NextRace = (props)=>{
 
     const fetchResources=()=>{
         {props.next.map(item =>{
-            switch(item.Category) {
-                case 'Racing' :
+            switch(item.raceType) {
+                case 'R' :
                     setnextRace(oldArray => [...oldArray, item]);
                     break
-                case 'GreyHound' :
+                case 'G' :
                     setnextRaceGrey(oldArray => [...oldArray, item]);
                     break
                 default:
@@ -49,41 +49,28 @@ const NextRace = (props)=>{
     useEffect(()=> {
         fetchResources(props.next);
     },[props.next]);
+    const duration=(raceStartTime)=>{ 
+        var left=<Moment date={raceStartTime} durationFromNow/>
+        return(
+            left
+        )
+    };
+    
     const renderTodayTableList=(state) =>{
         return (        
            (state.map(item => {
                 return(
                     <>
-                    <MediaQuery query='(min-width: 500px)'>
-                        <Grid item xs ={4} className="next-section" >  
-                            <Link className={classes.paper}  className="next-item"
-                                to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>                        
-                                <p>R{item.Race_Slot}</p>
-                                <p>{item.Duration}</p>
-                                <p>{item.Location} {item.Location_Code}</p>
-                            </Link> 
-                        </Grid>
-                    </MediaQuery>
-                    <MediaQuery query='(max-width: 500px)'>
-                        <Grid item xs ={6} className="next-section" >
-                            <Link className={classes.paper}  className="next-item"
-                                to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>                        
-                                <p>R{item.Race_Slot}</p>
-                                <p>{item.Duration}</p>
-                                <p>{item.Location} {item.Location_Code}</p>
-                            </Link> 
-                        </Grid>
-                    </MediaQuery>  
-                    <MediaQuery query='(max-width: 1400px)'>
-                        <Grid item xs ={4} className="next-section" >
-                            <Link className={classes.paper}  className="next-item"
-                                to={{pathname:"/RaceDetail", slot:item.Race_Slot}}>                        
-                                <p>R{item.Race_Slot}</p>
-                                <p>{item.Duration}</p>
-                                <p>{item.Location} {item.Location_Code}</p>
-                            </Link> 
-                        </Grid>
-                    </MediaQuery>  
+                        <MediaQuery query='(max-width: 1400px)'>
+                            <Grid item xs ={4} className="next-section" >
+                                <Link className={classes.paper}  className="next-item"
+                                    to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>                        
+                                    <p>R{item.raceNumber}</p>
+                                    {duration(item.raceStartTime)}
+                                    <p>{item.meetingName} ({item.meetingCode})</p>
+                                </Link> 
+                            </Grid>
+                        </MediaQuery>  
                     </>                
             )}
         ))
@@ -91,13 +78,12 @@ const NextRace = (props)=>{
     };
     return(
         <div>
-
-            <div className={classes.root}>
+            <div className="next-data">
                 <h1>Racing</h1>
                 <Grid container spacing={3}>
                     {renderTodayTableList(nextRace)}
                 </Grid>
-                <h1>GreyHounds</h1>
+                <h1>GreyHound</h1>
                 <Grid container spacing={3}>
                     {renderTodayTableList(nextRaceGrey)}
                 </Grid>

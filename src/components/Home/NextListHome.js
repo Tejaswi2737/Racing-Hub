@@ -1,24 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
-
+import Moment from 'react-moment';
+import 'moment-timezone';
 import { fetchNextRace } from "../../actions";
 import "./NextListHome.css";
 
 const NextListHome = (props)=>{
     props.fetchNextRace();
+    const duration=(raceStartTime)=>{ 
+        var left=<Moment date={raceStartTime} durationFromNow/>
+        return(
+            left
+        )
+    };
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
                  return(
-                    <Link to={{pathname:"/RaceDetail", slot:item.Race_Slot}} className="next-item-list-home">                        
-                        <p>{item.Location} {item.Location_Code}</p>
+                    <Link to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}} className="next-item-list-home">                        
+                        <p>{item.meetingName} ({item.location})</p>
                         <div className="race-details-container">
                             <span className="race-detail">
-                                R{item.Race_Slot}
+                                R{item.raceNumber}
                             </span>
                             <span className="race-detail">
-                                {item.Duration}
+                                {duration(item.raceStartTime)}
                             </span>                            
                         </div>
                     </Link> 

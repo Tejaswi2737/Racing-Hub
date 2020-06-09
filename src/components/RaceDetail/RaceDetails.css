@@ -56,6 +56,11 @@
     background-color: #f2f2f2;
     height: 100%;
 }
+.meeting-info-race-open {
+    color: #333333;
+    background-color: transparent;
+    height: 100%;
+}
 .meeting-info-race {
     font-size: 17px;
     line-height: 20px;
@@ -67,11 +72,18 @@
     flex-direction: column;
     text-decoration: none;
     justify-content: center;
-
 }
 .meeting-info-race-results {
     font-size: 10px;
     color: black;
+    line-height: 20px;
+    line-height: 20px;
+    white-space: pre-wrap;
+    letter-spacing: 2px;
+}
+.meeting-info-race-time{
+    font-size: 10px;
+    color: #3a982c;
     line-height: 20px;
     line-height: 20px;
     white-space: pre-wrap;

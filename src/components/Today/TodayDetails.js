@@ -7,7 +7,6 @@ import "./TodayDetails.css"
 import TodayRacingDetails from  "./TodayRacingDetails";
 
 const TodayDetails = (props,ownProps)=>{
-    console.log(ownProps.detail)
     props.fetchNextRace();
     const [fetchToday,setfetchToday]=useState(props.detail)
     const fetchTodayRaceInfo=(fetchToday)=> {

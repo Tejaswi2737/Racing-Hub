@@ -4,9 +4,6 @@ import { slide as Menu } from 'react-burger-menu';
 import "./Menu.css";
 
 const MenuView=()=> {
-  const showSettings =(event) =>{
-    event.preventDefault();
-  }
     return (
       <Menu className="icon-hamburger-menu">
         <Link exact to="/next-to-go" >
