@@ -1,14 +1,13 @@
-import React,{ useState,useEffect } from 'react';
+import React,{ useState,useEffect,useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import Moment from 'react-moment';
 import 'moment-timezone';
 import Grid from '@material-ui/core/Grid';
 import MediaQuery from 'react-responsive'
-
 import { fetchNextRace } from "../../actions";
 import "./NextRace.css";
+import NextList from './NextListOther';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
   }));
 const NextRace = (props)=>{
     const classes = useStyles();
-    props.fetchNextRace();
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
     const [nextRaceHarness,setnextRaceHarness]=useState([]);
@@ -43,17 +41,27 @@ const NextRace = (props)=>{
                 default:
                     setnextRaceHarness(oldArray => [...oldArray, item]);
                     break        
-                }
+                };
         })}
     };
     useEffect(()=> {
         fetchResources(props.next);
     },[props.next]);
+ 
     const duration=(raceStartTime)=>{ 
-        var left=<Moment date={raceStartTime} durationFromNow/>
-        return(
-            left
-        )
+        var left=(Date.now()-new Date(raceStartTime))
+        var delta=Math.abs(left/1000)
+         var days = Math.floor(delta / 86400);
+         delta -= days * 86400;
+         var hours = Math.floor(delta / 3600) % 24;
+         delta -= hours * 3600;
+         var minutes = Math.floor(delta / 60) % 60;
+         delta -= minutes * 60;
+         if (left>0){
+             hours=-hours
+         }
+         var seconds = Math.floor(delta % 60);  
+         return (hours+'h'+minutes+'m'+seconds+'s')
     };
     
     const renderTodayTableList=(state) =>{
@@ -61,12 +69,12 @@ const NextRace = (props)=>{
            (state.map(item => {
                 return(
                     <>
-                        <MediaQuery query='(max-width: 1400px)'>
+                        <MediaQuery query='(min-width: 100px)'>
                             <Grid item xs ={4} className="next-section" >
                                 <Link className={classes.paper}  className="next-item"
                                     to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>                        
                                     <p>R{item.raceNumber}</p>
-                                    {duration(item.raceStartTime)}
+                                    <time>{duration(item.raceStartTime)}</time>    
                                     <p>{item.meetingName} ({item.meetingCode})</p>
                                 </Link> 
                             </Grid>
@@ -96,7 +104,4 @@ const NextRace = (props)=>{
         );
 }; 
 
-const mapStateToProps=(state)=> {
-    return{ next:state.next}
-}
-export default connect(mapStateToProps, { fetchNextRace } )(NextRace);
+export default NextRace

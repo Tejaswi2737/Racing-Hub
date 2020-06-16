@@ -1,290 +1,290 @@
 [
   {
-    "raceStartTime": "2020-06-09T06:56:00.000Z",
-    "raceNumber": 6,
+    "raceStartTime": "2020-06-16T11:18:00.000Z",
+    "raceNumber": 10,
     "raceType": "G",
-    "meetingName": "HORSHAM",
+    "meetingName": "SANDOWN PARK",
     "location": "VIC",
-    "meetingCode": "HOR"
+    "meetingCode": "SAN"
   },
   {
-    "raceStartTime": "2020-06-09T06:59:00.000Z",
-    "raceNumber": 1,
-    "raceType": "H",
-    "meetingName": "MELTON",
-    "location": "VIC",
-    "meetingCode": "MLT"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:00:00.000Z",
-    "raceNumber": 3,
-    "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:04:00.000Z",
+    "raceStartTime": "2020-06-16T11:19:00.000Z",
     "raceNumber": 5,
     "raceType": "G",
-    "meetingName": "IPSWICH",
-    "location": "QLD",
-    "meetingCode": "IPS"
+    "meetingName": "SUNDERLAND",
+    "location": "GBR",
+    "meetingCode": "SND"
   },
   {
-    "raceStartTime": "2020-06-09T07:07:00.000Z",
-    "raceNumber": 7,
-    "raceType": "H",
-    "meetingName": "MENANGLE",
-    "location": "NSW",
-    "meetingCode": "MEN"
+    "raceStartTime": "2020-06-16T11:20:00.000Z",
+    "raceNumber": 4,
+    "raceType": "R",
+    "meetingName": "COMPIEGNE",
+    "location": "FRA",
+    "meetingCode": "CME"
   },
   {
-    "raceStartTime": "2020-06-09T07:12:00.000Z",
-    "raceNumber": 9,
+    "raceStartTime": "2020-06-16T11:22:00.000Z",
+    "raceNumber": 8,
     "raceType": "G",
-    "meetingName": "GEELONG",
-    "location": "VIC",
-    "meetingCode": "GEL"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:15:00.000Z",
-    "raceNumber": 1,
-    "raceType": "H",
-    "meetingName": "LEETON",
-    "location": "NSW",
-    "meetingCode": "LTN"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:20:00.000Z",
-    "raceNumber": 7,
-    "raceType": "G",
-    "meetingName": "HORSHAM",
-    "location": "VIC",
-    "meetingCode": "HOR"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:23:00.000Z",
-    "raceNumber": 10,
-    "raceType": "H",
     "meetingName": "ALBION PARK",
     "location": "QLD",
     "meetingCode": "ABK"
   },
   {
-    "raceStartTime": "2020-06-09T07:28:00.000Z",
-    "raceNumber": 6,
-    "raceType": "G",
-    "meetingName": "IPSWICH",
-    "location": "QLD",
-    "meetingCode": "IPS"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:30:00.000Z",
+    "raceStartTime": "2020-06-16T11:25:00.000Z",
     "raceNumber": 4,
-    "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:31:00.000Z",
-    "raceNumber": 10,
-    "raceType": "G",
-    "meetingName": "GEELONG",
-    "location": "VIC",
-    "meetingCode": "GEL"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:34:00.000Z",
-    "raceNumber": 2,
     "raceType": "H",
-    "meetingName": "MELTON",
-    "location": "VIC",
-    "meetingCode": "MLT"
+    "meetingName": "LA CAPELLE",
+    "location": "FRA",
+    "meetingCode": "CAP"
   },
   {
-    "raceStartTime": "2020-06-09T07:39:00.000Z",
-    "raceNumber": 8,
-    "raceType": "G",
-    "meetingName": "HORSHAM",
-    "location": "VIC",
-    "meetingCode": "HOR"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:42:00.000Z",
-    "raceNumber": 8,
-    "raceType": "H",
-    "meetingName": "MENANGLE",
-    "location": "NSW",
-    "meetingCode": "MEN"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:47:00.000Z",
+    "raceStartTime": "2020-06-16T11:26:00.000Z",
     "raceNumber": 7,
     "raceType": "G",
-    "meetingName": "IPSWICH",
-    "location": "QLD",
-    "meetingCode": "IPS"
-  },
-  {
-    "raceStartTime": "2020-06-09T07:49:00.000Z",
-    "raceNumber": 2,
-    "raceType": "H",
-    "meetingName": "LEETON",
+    "meetingName": "DAPTO",
     "location": "NSW",
-    "meetingCode": "LTN"
+    "meetingCode": "DAP"
   },
   {
-    "raceStartTime": "2020-06-09T07:54:00.000Z",
+    "raceStartTime": "2020-06-16T11:30:00.000Z",
+    "raceNumber": 5,
+    "raceType": "G",
+    "meetingName": "MANDURAH",
+    "location": "WA",
+    "meetingCode": "MRD"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:34:00.000Z",
+    "raceNumber": 8,
+    "raceType": "G",
+    "meetingName": "ANGLE PARK",
+    "location": "SA",
+    "meetingCode": "ANG"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:34:00.000Z",
+    "raceNumber": 5,
+    "raceType": "G",
+    "meetingName": "PERRY BARR",
+    "location": "GBR",
+    "meetingCode": "PEB"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:35:00.000Z",
+    "raceNumber": 4,
+    "raceType": "R",
+    "meetingName": "VAAL",
+    "location": "ZAF",
+    "meetingCode": "VAA"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:38:00.000Z",
     "raceNumber": 11,
     "raceType": "G",
-    "meetingName": "GEELONG",
+    "meetingName": "SANDOWN PARK",
     "location": "VIC",
-    "meetingCode": "GEL"
+    "meetingCode": "SAN"
   },
   {
-    "raceStartTime": "2020-06-09T07:56:00.000Z",
+    "raceStartTime": "2020-06-16T11:42:00.000Z",
+    "raceNumber": 9,
+    "raceType": "G",
+    "meetingName": "ALBION PARK",
+    "location": "QLD",
+    "meetingCode": "ABK"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:45:00.000Z",
     "raceNumber": 1,
-    "raceType": "H",
-    "meetingName": "GLOBE DERBY",
-    "location": "SA",
-    "meetingCode": "GLD"
+    "raceType": "R",
+    "meetingName": "BEVERLEY",
+    "location": "GBR",
+    "meetingCode": "BEV"
   },
   {
-    "raceStartTime": "2020-06-09T08:00:00.000Z",
+    "raceStartTime": "2020-06-16T11:45:00.000Z",
+    "raceNumber": 7,
+    "raceType": "H",
+    "meetingName": "PENRITH",
+    "location": "NSW",
+    "meetingCode": "PEN"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:45:00.000Z",
+    "raceNumber": 12,
+    "raceType": "R",
+    "meetingName": "KAWASAKI",
+    "location": "JPN",
+    "meetingCode": "KAW"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:49:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "SUNDERLAND",
+    "location": "GBR",
+    "meetingCode": "SND"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:50:00.000Z",
+    "raceNumber": 8,
+    "raceType": "G",
+    "meetingName": "DAPTO",
+    "location": "NSW",
+    "meetingCode": "DAP"
+  },
+  {
+    "raceStartTime": "2020-06-16T11:50:00.000Z",
     "raceNumber": 5,
     "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
+    "meetingName": "COMPIEGNE",
+    "location": "FRA",
+    "meetingCode": "CME"
   },
   {
-    "raceStartTime": "2020-06-09T08:01:00.000Z",
-    "raceNumber": 9,
+    "raceStartTime": "2020-06-16T11:54:00.000Z",
+    "raceNumber": 6,
     "raceType": "G",
-    "meetingName": "HORSHAM",
-    "location": "VIC",
-    "meetingCode": "HOR"
+    "meetingName": "MANDURAH",
+    "location": "WA",
+    "meetingCode": "MRD"
   },
   {
-    "raceStartTime": "2020-06-09T08:04:00.000Z",
+    "raceStartTime": "2020-06-16T12:00:00.000Z",
+    "raceNumber": 1,
+    "raceType": "R",
+    "meetingName": "GOWRAN PARK",
+    "location": "IRL",
+    "meetingCode": "GNK"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:07:00.000Z",
+    "raceNumber": 5,
+    "raceType": "H",
+    "meetingName": "LA CAPELLE",
+    "location": "FRA",
+    "meetingCode": "CAP"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:10:00.000Z",
+    "raceNumber": 5,
+    "raceType": "R",
+    "meetingName": "VAAL",
+    "location": "ZAF",
+    "meetingCode": "VAA"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:13:00.000Z",
     "raceNumber": 8,
-    "raceType": "G",
-    "meetingName": "IPSWICH",
-    "location": "QLD",
-    "meetingCode": "IPS"
-  },
-  {
-    "raceStartTime": "2020-06-09T08:07:00.000Z",
-    "raceNumber": 3,
     "raceType": "H",
-    "meetingName": "MELTON",
-    "location": "VIC",
-    "meetingCode": "MLT"
-  },
-  {
-    "raceStartTime": "2020-06-09T08:13:00.000Z",
-    "raceNumber": 12,
-    "raceType": "G",
-    "meetingName": "GEELONG",
-    "location": "VIC",
-    "meetingCode": "GEL"
-  },
-  {
-    "raceStartTime": "2020-06-09T08:20:00.000Z",
-    "raceNumber": 3,
-    "raceType": "H",
-    "meetingName": "LEETON",
+    "meetingName": "PENRITH",
     "location": "NSW",
-    "meetingCode": "LTN"
+    "meetingCode": "PEN"
   },
   {
-    "raceStartTime": "2020-06-09T08:30:00.000Z",
+    "raceStartTime": "2020-06-16T12:15:00.000Z",
+    "raceNumber": 2,
+    "raceType": "R",
+    "meetingName": "BEVERLEY",
+    "location": "GBR",
+    "meetingCode": "BEV"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:25:00.000Z",
     "raceNumber": 6,
     "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
+    "meetingName": "COMPIEGNE",
+    "location": "FRA",
+    "meetingCode": "CME"
   },
   {
-    "raceStartTime": "2020-06-09T08:30:00.000Z",
+    "raceStartTime": "2020-06-16T12:30:00.000Z",
+    "raceNumber": 2,
+    "raceType": "R",
+    "meetingName": "GOWRAN PARK",
+    "location": "IRL",
+    "meetingCode": "GNK"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:42:00.000Z",
+    "raceNumber": 6,
+    "raceType": "H",
+    "meetingName": "LA CAPELLE",
+    "location": "FRA",
+    "meetingCode": "CAP"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:45:00.000Z",
+    "raceNumber": 3,
+    "raceType": "R",
+    "meetingName": "BEVERLEY",
+    "location": "GBR",
+    "meetingCode": "BEV"
+  },
+  {
+    "raceStartTime": "2020-06-16T12:50:00.000Z",
+    "raceNumber": 6,
+    "raceType": "R",
+    "meetingName": "VAAL",
+    "location": "ZAF",
+    "meetingCode": "VAA"
+  },
+  {
+    "raceStartTime": "2020-06-16T13:17:00.000Z",
+    "raceNumber": 7,
+    "raceType": "H",
+    "meetingName": "LA CAPELLE",
+    "location": "FRA",
+    "meetingCode": "CAP"
+  },
+  {
+    "raceStartTime": "2020-06-16T13:52:00.000Z",
+    "raceNumber": 8,
+    "raceType": "H",
+    "meetingName": "LA CAPELLE",
+    "location": "FRA",
+    "meetingCode": "CAP"
+  },
+  {
+    "raceStartTime": "2020-06-16T14:27:00.000Z",
+    "raceNumber": 1,
+    "raceType": "H",
+    "meetingName": "LYON PARILLY",
+    "location": "FRA",
+    "meetingCode": "LPY"
+  },
+  {
+    "raceStartTime": "2020-06-16T15:02:00.000Z",
     "raceNumber": 2,
     "raceType": "H",
-    "meetingName": "GLOBE DERBY",
-    "location": "SA",
-    "meetingCode": "GLD"
+    "meetingName": "LYON PARILLY",
+    "location": "FRA",
+    "meetingCode": "LPY"
   },
   {
-    "raceStartTime": "2020-06-09T08:37:00.000Z",
+    "raceStartTime": "2020-06-16T15:37:00.000Z",
+    "raceNumber": 3,
+    "raceType": "H",
+    "meetingName": "LYON PARILLY",
+    "location": "FRA",
+    "meetingCode": "LPY"
+  },
+  {
+    "raceStartTime": "2020-06-16T16:12:00.000Z",
     "raceNumber": 4,
     "raceType": "H",
-    "meetingName": "MELTON",
-    "location": "VIC",
-    "meetingCode": "MLT"
-  },
-  {
-    "raceStartTime": "2020-06-09T09:00:00.000Z",
-    "raceNumber": 7,
-    "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
-  },
-  {
-    "raceStartTime": "2020-06-09T09:30:00.000Z",
-    "raceNumber": 8,
-    "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
-  },
-  {
-    "raceStartTime": "2020-06-09T09:40:00.000Z",
-    "raceNumber": 1,
-    "raceType": "R",
-    "meetingName": "NANTES",
+    "meetingName": "LYON PARILLY",
     "location": "FRA",
-    "meetingCode": "NTS"
+    "meetingCode": "LPY"
   },
   {
-    "raceStartTime": "2020-06-09T10:00:00.000Z",
-    "raceNumber": 1,
-    "raceType": "R",
-    "meetingName": "KENILWORTH",
-    "location": "ZAF",
-    "meetingCode": "KEN"
-  },
-  {
-    "raceStartTime": "2020-06-09T10:05:00.000Z",
-    "raceNumber": 9,
-    "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
-  },
-  {
-    "raceStartTime": "2020-06-09T10:10:00.000Z",
-    "raceNumber": 2,
-    "raceType": "R",
-    "meetingName": "NANTES",
+    "raceStartTime": "2020-06-16T16:45:00.000Z",
+    "raceNumber": 5,
+    "raceType": "H",
+    "meetingName": "LYON PARILLY",
     "location": "FRA",
-    "meetingCode": "NTS"
-  },
-  {
-    "raceStartTime": "2020-06-09T10:30:00.000Z",
-    "raceNumber": 2,
-    "raceType": "R",
-    "meetingName": "KENILWORTH",
-    "location": "ZAF",
-    "meetingCode": "KEN"
-  },
-  {
-    "raceStartTime": "2020-06-09T10:40:00.000Z",
-    "raceNumber": 10,
-    "raceType": "R",
-    "meetingName": "KAWASAKI",
-    "location": "JPN",
-    "meetingCode": "KAW"
+    "meetingCode": "LPY"
   }
  ]

@@ -1,4 +1,6 @@
 import nextData from "../data/nextToGo.json";
+import nextDataHome from "../data/nexttogoHome.json";
+
 import todayRacing from "../data/todayRacing.json";
 import todayRacingGrey from "../data/todayRacingGrey.json";
 import todayRacingHarness from "../data/todayRacingHarness.json";
@@ -45,6 +47,14 @@ export const fetchNextRace =  () => {
     dispatch({
       type: 'FETCH_NEXT_RACE',
       payload: nextData
+    });
+  }
+};
+export const fetchNextRaceHome =  () => {
+  return function (dispatch) {
+    dispatch({
+      type: 'FETCH_NEXT_RACE_HOME',
+      payload: nextDataHome
     });
   }
 };

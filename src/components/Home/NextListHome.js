@@ -3,29 +3,37 @@ import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { fetchNextRace } from "../../actions";
+import { fetchNextRaceHome } from "../../actions";
 import "./NextListHome.css";
 
 const NextListHome = (props)=>{
-    props.fetchNextRace();
-    const duration=(raceStartTime)=>{ 
-        var left=<Moment date={raceStartTime} durationFromNow/>
-        return(
-            left
+    props.fetchNextRaceHome();
+    const duration=(raceStartTime)=>
+    { 
+       const dateToFormat = raceStartTime
+       console.log(dateToFormat.split("T")[1].split(".")[0])
+       var timenow=   
+                <Moment local>
+                    {raceStartTime}
+                </Moment>
+       console.log(timenow.props.children.split("T")[1].split(".")[0])
+       return( 
+        (timenow.props.children.split("T")[1].split(".")[0])
         )
     };
     const renderToday=(()=>{
         return (        
-            (props.next.map(item => {
+            (props.nextHome.map(item => {
                  return(
                     <Link to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}} className="next-item-list-home">                        
+                        <time>{duration(item.raceStartTime)}</time>
                         <p>{item.meetingName} ({item.location})</p>
                         <div className="race-details-container">
                             <span className="race-detail">
-                                R{item.raceNumber}
+                                {item.raceDistance}m
                             </span>
                             <span className="race-detail">
-                                {duration(item.raceStartTime)}
+                                {item.trackCondition} 
                             </span>                            
                         </div>
                     </Link> 
@@ -98,6 +106,6 @@ const NextListHome = (props)=>{
 }; 
 
 const mapStateToProps=(state)=> {
-    return{ next:state.next}
+    return{ nextHome:state.nextHome}
 }
-export default connect(mapStateToProps, { fetchNextRace } )(NextListHome);
+export default connect(mapStateToProps, { fetchNextRaceHome } )(NextListHome);

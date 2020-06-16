@@ -1,18 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
-import Moment from 'react-moment';
-import 'moment-timezone';
-import { fetchNextRace } from "../../actions";
+
 import "./NextRace.css";
 
 const NextList = (props)=>{
-    props.fetchNextRace();
-    const duration=(raceStartTime)=>{ 
-        var left=<Moment date={raceStartTime} durationFromNow/>
-        return(
-            left
-        )
+    const duration=(raceStartTime)=>{
+        var left=(Date.now()-new Date(raceStartTime))
+        var delta=Math.abs(left/1000)
+         var days = Math.floor(delta / 86400);
+         delta -= days * 86400;
+         var hours = Math.floor(delta / 3600) % 24;
+         delta -= hours * 3600;
+         var minutes = Math.floor(delta / 60) % 60;
+         delta -= minutes * 60;
+         if (left>0){
+             hours=-hours
+         }
+         var seconds = Math.floor(delta % 60);  
+         return (hours+'h'+minutes+'m'+seconds+'s')
     };
     const renderToday=(()=>{
         return (        
@@ -30,10 +35,8 @@ const NextList = (props)=>{
                             </time>      
                         </Link>
                      </div>
-             )}
-         )
-         )
-         );
+                )})
+         ));
     });
     return(
         <div>
@@ -41,10 +44,7 @@ const NextList = (props)=>{
                 {renderToday()}
             </div>
         </div>
+        
         );
 }; 
-
-const mapStateToProps=(state)=> {
-    return{ next:state.next}
-}
-export default connect(mapStateToProps, { fetchNextRace } )(NextList);
+export default NextList
