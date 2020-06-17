@@ -5,7 +5,7 @@ import "./NextRace.css";
 
 const NextList = (props)=>{
     const duration=(raceStartTime)=>{
-        var left=(Date.now()+27900*899-new Date(raceStartTime))
+        var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
         var days = Math.floor(delta / 86400);
         delta -= days * 86400;
@@ -13,11 +13,8 @@ const NextList = (props)=>{
         delta -= hours * 3600;
         var minutes = Math.floor(delta / 60) % 60;
         delta -= minutes * 60;
-        if (left>0){
-            hours=-hours
-        }
         var seconds = Math.floor(delta % 60); 
-        if (hours==0 && minutes>0){
+        if (hours==0 && (minutes>0||minutes<0)){
             if (left>0) {
                 return (-minutes+'m'+seconds+'s')
             }
@@ -29,7 +26,12 @@ const NextList = (props)=>{
             }
             return (seconds+'s')
         }
-        if (hours>0) return (hours+'h'+minutes+'m')
+        if (hours>0 || hours<0) {
+            if (left>0 ) {
+                return(-hours+'h'+minutes+'m')
+            }
+            else return (hours+'h'+minutes+'m')
+        }
     };
     const renderToday=(()=>{
         return (        

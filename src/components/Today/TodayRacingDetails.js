@@ -1,6 +1,7 @@
 import React from 'react';
 import "./TodayDetails.css";
 import { Link} from "react-router-dom";
+import Moment from 'react-moment';
 const TodayRacingDetails=(props)=> {
     var counts = {};
     var places=[]
@@ -19,20 +20,41 @@ const TodayRacingDetails=(props)=> {
         delta -= hours * 3600;
         var minutes = Math.floor(delta / 60) % 60;
         delta -= minutes * 60;
-        if (left>0){
-             hours=-hours
-        }
         var seconds = Math.floor(delta % 60);
-        if (hours>0) {
-             return (hours+'h'+minutes+'m')
-        } 
-        if (hours<0 && minutes>5){
-             return (minutes+'m')
+        if (hours>0 || hours<0) {
+            if (left>0 ) {
+                return(-hours+'h'+minutes+'m')
+            }
+            else return (hours+'h'+minutes+'m')
         }
-        if (hours<0&& minutes<5) {
-             return((hours+'h'+minutes+'m'+seconds+'s'))
+        if (hours==0 && minutes>=5){
+            if (left>0){
+                return (-minutes+'m')
+            }
+            else return(minutes+'m')
+        } 
+        if (hours==0 && (minutes<=5||minutes>=-5) 
+            && (minutes>0||minutes<0)) {
+            if (left>0) {
+                return((-minutes+'m'+seconds+'s'))
+            } else return((minutes+'m'+seconds+'s'))
         }  
+        if (hours==0 && minutes==0) {
+            if (left>0) {
+                return(-seconds+'s')
+            }
+            else return((seconds+'s'))
+        } 
     };
+    const startTime=(st)=>{
+        var current=new Date(st)
+        console.log(current.getMinutes())
+        if (current.getMinutes()<9) {
+            console.log("1")
+         return (current.getHours()+":0"+current.getMinutes())
+        }
+        else return (current.getHours()+":"+current.getMinutes())
+    }
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
                 num=num+1;
@@ -58,7 +80,7 @@ const TodayRacingDetails=(props)=> {
                                             <div className={(items.Status=='Open')?'table-item-open':'table-item'}>
                                                 <p className="table-item-slot">R{items.Race_Slot}</p>
                                                 <p className="table-item-time">
-                                                    {items.Time}
+                                                    {startTime(items.Time)}   
                                                 </p>
                                                 <p className="table-item-results">
                                                     {items.Status=="Open"?duration(items.Time):items.Result}

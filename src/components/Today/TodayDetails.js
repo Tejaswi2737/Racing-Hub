@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import { fetchNextRace,
@@ -15,6 +15,28 @@ const TodayDetails = (props,ownProps)=>{
     useEffect(() => {
         {fetchTodayRaceInfo(fetchToday)}; // this will fire on every change :(
     }, [fetchToday]);
+
+    
+    const [showLoading, setShowLoading] = useState(false)
+    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+    useEffect(
+       () => {
+         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
+         return () => {
+           clearInterval(timerToClearSomewhere.current)
+         }
+       },
+       [showLoading]
+     )
+     setTimeout(()=>{
+        setShowLoading(false)
+        return () => {
+            clearInterval(timerToClearSomewhere.current)
+          }
+     },1000)
+
+
+
     const racingInfo=(props)=>{
         return(
             <TodayRacingDetails todayRacing={props}/>
