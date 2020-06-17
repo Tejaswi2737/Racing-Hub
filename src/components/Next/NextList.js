@@ -16,9 +16,15 @@ const NextList = (props)=>{
         var seconds = Math.floor(delta % 60); 
         if (hours==0 && (minutes>0||minutes<0)){
             if (left>0) {
-                return (-minutes+'m'+seconds+'s')
+                if (seconds==0){
+                    return(-minutes+'m')
+                } else return (-minutes+'m'+seconds+'s')
             }
-           else return (minutes+'m'+seconds+'s')
+           else {
+            if (seconds==0){
+                return(minutes+'m')
+            } else return (minutes+'m'+seconds+'s')
+            }
         }
         if (hours==0 && minutes==0) {
             if (left>0){
@@ -28,9 +34,16 @@ const NextList = (props)=>{
         }
         if (hours>0 || hours<0) {
             if (left>0 ) {
-                return(-hours+'h'+minutes+'m')
+                if (minutes==0){
+                    return(-hours+'h')
+                }
+                else return(-hours+'h'+minutes+'m')
             }
-            else return (hours+'h'+minutes+'m')
+            else {
+                if (minutes==0){
+                    return(hours+'h')
+                }
+            } return (hours+'h'+minutes+'m')
         }
     };
     const renderToday=(()=>{

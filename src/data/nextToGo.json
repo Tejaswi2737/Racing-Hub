@@ -1,235 +1,27 @@
 [
   {
-    "raceStartTime": "2020-06-17T09:00:00.000Z",
-    "raceNumber": 4,
-    "raceType": "H",
-    "meetingName": "BENDIGO",
-    "location": "VIC",
-    "meetingCode": "BEN"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:00:00.000Z",
-    "raceNumber": 7,
-    "raceType": "R",
-    "meetingName": "FUNABASHI",
-    "location": "JPN",
-    "meetingCode": "FUN"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:05:00.000Z",
-    "raceNumber": 1,
-    "raceType": "G",
-    "meetingName": "WENTWORTH PARK",
-    "location": "NSW",
-    "meetingCode": "WWP"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:08:00.000Z",
-    "raceNumber": 2,
-    "raceType": "G",
-    "meetingName": "CRANBOURNE",
-    "location": "VIC",
-    "meetingCode": "CRB"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:10:00.000Z",
-    "raceNumber": 5,
-    "raceType": "H",
-    "meetingName": "BATHURST",
-    "location": "NSW",
-    "meetingCode": "BAT"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:15:00.000Z",
-    "raceNumber": 2,
-    "raceType": "G",
-    "meetingName": "ROCKHAMPTON",
-    "location": "QLD",
-    "meetingCode": "ROC"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:18:00.000Z",
-    "raceNumber": 2,
-    "raceType": "G",
-    "meetingName": "BALLARAT",
-    "location": "VIC",
-    "meetingCode": "BAL"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:20:00.000Z",
-    "raceNumber": 5,
-    "raceType": "H",
-    "meetingName": "REDCLIFFE",
-    "location": "QLD",
-    "meetingCode": "RED"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:25:00.000Z",
-    "raceNumber": 2,
-    "raceType": "G",
-    "meetingName": "WENTWORTH PARK",
-    "location": "NSW",
-    "meetingCode": "WWP"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:27:00.000Z",
-    "raceNumber": 2,
-    "raceType": "G",
-    "meetingName": "SWINDON",
-    "location": "GBR",
-    "meetingCode": "SWI"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:28:00.000Z",
-    "raceNumber": 3,
-    "raceType": "G",
-    "meetingName": "CRANBOURNE",
-    "location": "VIC",
-    "meetingCode": "CRB"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:30:00.000Z",
-    "raceNumber": 5,
-    "raceType": "H",
-    "meetingName": "BENDIGO",
-    "location": "VIC",
-    "meetingCode": "BEN"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:30:00.000Z",
-    "raceNumber": 8,
-    "raceType": "R",
-    "meetingName": "FUNABASHI",
-    "location": "JPN",
-    "meetingCode": "FUN"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:35:00.000Z",
-    "raceNumber": 3,
-    "raceType": "G",
-    "meetingName": "ROCKHAMPTON",
-    "location": "QLD",
-    "meetingCode": "ROC"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:38:00.000Z",
-    "raceNumber": 3,
-    "raceType": "G",
-    "meetingName": "BALLARAT",
-    "location": "VIC",
-    "meetingCode": "BAL"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:40:00.000Z",
-    "raceNumber": 6,
-    "raceType": "H",
-    "meetingName": "BATHURST",
-    "location": "NSW",
-    "meetingCode": "BAT"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:43:00.000Z",
-    "raceNumber": 1,
-    "raceType": "R",
-    "meetingName": "GREYVILLE",
-    "location": "ZAF",
-    "meetingCode": "GYL"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:45:00.000Z",
-    "raceNumber": 3,
-    "raceType": "G",
-    "meetingName": "WENTWORTH PARK",
-    "location": "NSW",
-    "meetingCode": "WWP"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:47:00.000Z",
-    "raceNumber": 3,
-    "raceType": "G",
-    "meetingName": "SWINDON",
-    "location": "GBR",
-    "meetingCode": "SWI"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:48:00.000Z",
-    "raceNumber": 4,
-    "raceType": "G",
-    "meetingName": "CRANBOURNE",
-    "location": "VIC",
-    "meetingCode": "CRB"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:50:00.000Z",
-    "raceNumber": 6,
-    "raceType": "H",
-    "meetingName": "REDCLIFFE",
-    "location": "QLD",
-    "meetingCode": "RED"
-  },
-  {
-    "raceStartTime": "2020-06-17T09:55:00.000Z",
-    "raceNumber": 1,
-    "raceType": "R",
-    "meetingName": "ANGERS",
-    "location": "FRA",
-    "meetingCode": "AGS"
-  },
-  {
-    "raceStartTime": "2020-06-17T10:00:00.000Z",
-    "raceNumber": 6,
-    "raceType": "H",
-    "meetingName": "BENDIGO",
-    "location": "VIC",
-    "meetingCode": "BEN"
-  },
-  {
-    "raceStartTime": "2020-06-17T10:00:00.000Z",
-    "raceNumber": 9,
-    "raceType": "R",
-    "meetingName": "FUNABASHI",
-    "location": "JPN",
-    "meetingCode": "FUN"
-  },
-  {
-    "raceStartTime": "2020-06-17T10:10:00.000Z",
-    "raceNumber": 7,
-    "raceType": "H",
-    "meetingName": "BATHURST",
-    "location": "NSW",
-    "meetingCode": "BAT"
-  },
-  {
-    "raceStartTime": "2020-06-17T10:15:00.000Z",
-    "raceNumber": 2,
-    "raceType": "R",
-    "meetingName": "GREYVILLE",
-    "location": "ZAF",
-    "meetingCode": "GYL"
-  },
-  {
-    "raceStartTime": "2020-06-17T10:20:00.000Z",
-    "raceNumber": 7,
-    "raceType": "H",
-    "meetingName": "REDCLIFFE",
-    "location": "QLD",
-    "meetingCode": "RED"
-  },
-  {
-    "raceStartTime": "2020-06-17T10:20:00.000Z",
-    "raceNumber": 1,
-    "raceType": "H",
-    "meetingName": "JAGERSRO",
-    "location": "SWE",
-    "meetingCode": "JAG"
-  },
-  {
     "raceStartTime": "2020-06-17T10:25:00.000Z",
-    "raceNumber": 2,
-    "raceType": "R",
-    "meetingName": "ANGERS",
-    "location": "FRA",
-    "meetingCode": "AGS"
+    "raceNumber": 5,
+    "raceType": "G",
+    "meetingName": "WENTWORTH PARK",
+    "location": "NSW",
+    "meetingCode": "WWP"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:27:00.000Z",
+    "raceNumber": 5,
+    "raceType": "G",
+    "meetingName": "SWINDON",
+    "location": "GBR",
+    "meetingCode": "SWI"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:28:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "CRANBOURNE",
+    "location": "VIC",
+    "meetingCode": "CRB"
   },
   {
     "raceStartTime": "2020-06-17T10:30:00.000Z",
@@ -240,12 +32,44 @@
     "meetingCode": "BEN"
   },
   {
+    "raceStartTime": "2020-06-17T10:30:00.000Z",
+    "raceNumber": 2,
+    "raceType": "R",
+    "meetingName": "ANGERS",
+    "location": "FRA",
+    "meetingCode": "AGS"
+  },
+  {
     "raceStartTime": "2020-06-17T10:35:00.000Z",
     "raceNumber": 10,
     "raceType": "R",
     "meetingName": "FUNABASHI",
     "location": "JPN",
     "meetingCode": "FUN"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:35:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "ROCKHAMPTON",
+    "location": "QLD",
+    "meetingCode": "ROC"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:37:00.000Z",
+    "raceNumber": 5,
+    "raceType": "G",
+    "meetingName": "NEWCASTLE UK",
+    "location": "GBR",
+    "meetingCode": "NUK"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:38:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "BALLARAT",
+    "location": "VIC",
+    "meetingCode": "BAL"
   },
   {
     "raceStartTime": "2020-06-17T10:40:00.000Z",
@@ -256,12 +80,44 @@
     "meetingCode": "BAT"
   },
   {
+    "raceStartTime": "2020-06-17T10:42:00.000Z",
+    "raceNumber": 1,
+    "raceType": "G",
+    "meetingName": "CANNINGTON",
+    "location": "WA",
+    "meetingCode": "CNP"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:45:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "WENTWORTH PARK",
+    "location": "NSW",
+    "meetingCode": "WWP"
+  },
+  {
     "raceStartTime": "2020-06-17T10:45:00.000Z",
     "raceNumber": 2,
-    "raceType": "H",
+    "raceType": "R",
     "meetingName": "JAGERSRO",
     "location": "SWE",
     "meetingCode": "JAG"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:47:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "SWINDON",
+    "location": "GBR",
+    "meetingCode": "SWI"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:48:00.000Z",
+    "raceNumber": 7,
+    "raceType": "G",
+    "meetingName": "CRANBOURNE",
+    "location": "VIC",
+    "meetingCode": "CRB"
   },
   {
     "raceStartTime": "2020-06-17T10:50:00.000Z",
@@ -286,5 +142,149 @@
     "meetingName": "ANGERS",
     "location": "FRA",
     "meetingCode": "AGS"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:55:00.000Z",
+    "raceNumber": 7,
+    "raceType": "G",
+    "meetingName": "ROCKHAMPTON",
+    "location": "QLD",
+    "meetingCode": "ROC"
+  },
+  {
+    "raceStartTime": "2020-06-17T10:57:00.000Z",
+    "raceNumber": 6,
+    "raceType": "G",
+    "meetingName": "NEWCASTLE UK",
+    "location": "GBR",
+    "meetingCode": "NUK"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:00:00.000Z",
+    "raceNumber": 8,
+    "raceType": "H",
+    "meetingName": "BENDIGO",
+    "location": "VIC",
+    "meetingCode": "BEN"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:10:00.000Z",
+    "raceNumber": 11,
+    "raceType": "R",
+    "meetingName": "FUNABASHI",
+    "location": "JPN",
+    "meetingCode": "FUN"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:10:00.000Z",
+    "raceNumber": 3,
+    "raceType": "R",
+    "meetingName": "JAGERSRO",
+    "location": "SWE",
+    "meetingCode": "JAG"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:19:00.000Z",
+    "raceNumber": 9,
+    "raceType": "H",
+    "meetingName": "REDCLIFFE",
+    "location": "QLD",
+    "meetingCode": "RED"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:20:00.000Z",
+    "raceNumber": 1,
+    "raceType": "R",
+    "meetingName": "BEVERLEY",
+    "location": "GBR",
+    "meetingCode": "BEV"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:25:00.000Z",
+    "raceNumber": 4,
+    "raceType": "R",
+    "meetingName": "ANGERS",
+    "location": "FRA",
+    "meetingCode": "AGS"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:30:00.000Z",
+    "raceNumber": 4,
+    "raceType": "R",
+    "meetingName": "GREYVILLE",
+    "location": "ZAF",
+    "meetingCode": "GYL"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:35:00.000Z",
+    "raceNumber": 4,
+    "raceType": "R",
+    "meetingName": "JAGERSRO",
+    "location": "SWE",
+    "meetingCode": "JAG"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:50:00.000Z",
+    "raceNumber": 2,
+    "raceType": "R",
+    "meetingName": "BEVERLEY",
+    "location": "GBR",
+    "meetingCode": "BEV"
+  },
+  {
+    "raceStartTime": "2020-06-17T11:50:00.000Z",
+    "raceNumber": 1,
+    "raceType": "H",
+    "meetingName": "MAURE DE BRETAGNE",
+    "location": "FRA",
+    "meetingCode": "MDB"
+  },
+  {
+    "raceStartTime": "2020-06-17T12:20:00.000Z",
+    "raceNumber": 2,
+    "raceType": "H",
+    "meetingName": "MAURE DE BRETAGNE",
+    "location": "FRA",
+    "meetingCode": "MDB"
+  },
+  {
+    "raceStartTime": "2020-06-17T13:05:00.000Z",
+    "raceNumber": 3,
+    "raceType": "H",
+    "meetingName": "MAURE DE BRETAGNE",
+    "location": "FRA",
+    "meetingCode": "MDB"
+  },
+  {
+    "raceStartTime": "2020-06-17T13:43:00.000Z",
+    "raceNumber": 4,
+    "raceType": "H",
+    "meetingName": "MAURE DE BRETAGNE",
+    "location": "FRA",
+    "meetingCode": "MDB"
+  },
+  {
+    "raceStartTime": "2020-06-17T14:15:00.000Z",
+    "raceNumber": 5,
+    "raceType": "H",
+    "meetingName": "MAURE DE BRETAGNE",
+    "location": "FRA",
+    "meetingCode": "MDB"
+  },
+  {
+    "raceStartTime": "2020-06-17T14:32:00.000Z",
+    "raceNumber": 2,
+    "raceType": "H",
+    "meetingName": "CAEN",
+    "location": "FRA",
+    "meetingCode": "CAE"
+  },
+  {
+    "raceStartTime": "2020-06-17T14:50:00.000Z",
+    "raceNumber": 6,
+    "raceType": "H",
+    "meetingName": "MAURE DE BRETAGNE",
+    "location": "FRA",
+    "meetingCode": "MDB"
   }
  ]
