@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,useRef} from 'react';
 import { connect } from 'react-redux';
 import { fetchMeetingDetails,fetchRaceDetails} from "../../actions";
 import "./RaceDetails.css";
@@ -29,6 +29,98 @@ const RaceDetails = (props,ownProps)=>{
     {races_list?races_list.map(item=>{
          items_list=item;
     }): items_list=[]};
+
+
+
+    
+    const [showLoading, setShowLoading] = useState(false)
+    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+    useEffect(
+       () => {
+         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
+         return () => {
+           clearInterval(timerToClearSomewhere.current)
+         }
+       },
+       [showLoading]
+     )
+     setTimeout(()=>{
+        setShowLoading(false)
+        return () => {
+            clearInterval(timerToClearSomewhere.current)
+          }
+     },1000)
+
+
+     const duration=(raceStartTime)=>{ 
+        console.log(raceStartTime)
+        var left=(Date.now()-new Date(raceStartTime))
+        var delta=Math.abs(left/1000)
+        var days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+        var hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+        var minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+        var seconds = Math.floor(delta % 60);
+        if (hours>0 || hours<0) {
+            if (left>0 ) {
+                if (minutes==0){
+                    return(-hours+'h')
+                }
+                else return(-hours+'h'+minutes+'m')
+            }
+            else {
+                if (minutes==0){
+                    return(hours+'h')
+                }
+            } return (hours+'h'+minutes+'m')
+        }
+        if (hours==0 && minutes>=5){
+            if (left>0){
+                return (-minutes+'m')
+            }
+            else return(minutes+'m')
+        } 
+        if (hours==0 && (minutes<=5||minutes>=-5) 
+            && (minutes>0||minutes<0)) {
+                if (left>0) {
+                    if (seconds==0){
+                        return(-minutes+'m')
+                    } else return (-minutes+'m'+seconds+'s')
+                }
+               else {
+                if (seconds==0){
+                    return(minutes+'m')
+                } else return (minutes+'m'+seconds+'s')
+                }
+        }  
+        if (hours==0 && minutes==0) {
+            if (left>0) {
+                return(-seconds+'s')
+            }
+            else return((seconds+'s'))
+        } 
+    };
+
+
+
+
+
+
+    const startTime=(st)=>{
+        var current=new Date(st)
+        console.log(current.getMinutes())
+        if (current.getMinutes()<9) {
+            console.log("1")
+         return (current.getHours()+":0"+current.getMinutes())
+        }
+        else return (current.getHours()+":"+current.getMinutes())
+    }
+
+
+
+
     const resultsTable=(props)=>{
         return(
             <table className="race-table pane">
@@ -269,7 +361,7 @@ const RaceDetails = (props,ownProps)=>{
                                     R{props.racingDetail.raceNumber}
                                 </div>
                                 <div className="race-header-race-time-not-open">
-                                    {props.racingDetail.raceStartTime}
+                                    {startTime(props.racingDetail.raceStartTime)}
                                 </div>
                             </div>
                             <div className="race-info-wrapper">
@@ -278,7 +370,11 @@ const RaceDetails = (props,ownProps)=>{
 
                                 </div>
                                 <ul className="race-metadata-list">
-                                <li className="status.text">{props.racingDetail.raceStatus}</li>
+                                <li className="status.text">
+                                    {props.racingDetail.raceStatus=="Paying"?
+                                    props.racingDetail.raceStatus:
+                                    duration(props.racingDetail.raceStartTime)}
+                                </li>
                                     <li>{props.racingDetail.raceDistance}m</li>
                                     <li>{props.racingDetail.prizeMoney}</li>
                                 </ul>

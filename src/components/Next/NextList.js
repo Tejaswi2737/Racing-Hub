@@ -46,6 +46,9 @@ const NextList = (props)=>{
             } return (hours+'h'+minutes+'m')
         }
     };
+
+
+
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
@@ -58,7 +61,10 @@ const NextList = (props)=>{
                                     {item.meetingName} ({item.location}) - R{item.raceNumber}
                                 </span>
                             </div>
-                            <time className="next-to-go-bar-time-to-start next-to-go-bar-race-close-to-start">
+                            <time className=
+                            {(Date.now()-new Date(item.raceStartTime)>-5*60000)?
+                                                "next-to-go-bar-race-close-to-start":
+                                                "next-to-go-bar-time-to-start"}>
                                 {duration(item.raceStartTime)}
                             </time>      
                         </Link>

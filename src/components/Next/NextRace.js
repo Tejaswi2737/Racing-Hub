@@ -23,6 +23,7 @@ const NextRace = (props)=>{
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
     const [nextRaceHarness,setnextRaceHarness]=useState([]);
+    const [firstTime, setfirstTime] = useState()
 
     const fetchResources=()=>{
         {props.next.map(item =>{
@@ -42,7 +43,12 @@ const NextRace = (props)=>{
     useEffect(()=> {
         fetchResources(props.next);
     },[props.next]);
- 
+     useEffect(() => {
+        if (props.next.length>0){
+            {props.next[0].raceStartTime?setfirstTime(props.next[0].raceStartTime):setfirstTime()}
+        }
+    }, [props.next])
+    console.log(firstTime)
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
@@ -97,10 +103,13 @@ const NextRace = (props)=>{
         return (        
            (state.map(item => {
                 return(
+                    
                     <>
+                    
                         <MediaQuery query='(min-width: 100px)'>
-                            <Grid item xs ={4} className="next-section" >
-                                <Link className={classes.paper}  className="next-item"
+                            <Grid item xs ={4} className="next-section">
+                                <Link className={classes.paper}  className={item.raceStartTime==firstTime?
+                            "next-item-first":"next-item"}
                                     to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    

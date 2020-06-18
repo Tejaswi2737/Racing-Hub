@@ -67,7 +67,7 @@
     margin-top: -1px !important;
     line-height: 20px;
 }
-.table-item, .table-item-open {
+.table-item, .table-item-open,  .table-item-open-color {
     min-width: 85px !important;
     max-width: 85px !important;
     box-sizing: border-box !important;
@@ -80,6 +80,10 @@
 }
 .table-item-open {
     background: transparent !important;
+}
+.table-item-open-color {
+    background-color: #f25824 !important;
+    color: white!important;
 }
 .table-item:hover {
     background: rgb(204, 204, 204,0.3) !important;

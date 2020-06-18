@@ -62,9 +62,7 @@ const TodayRacingDetails=(props)=> {
     };
     const startTime=(st)=>{
         var current=new Date(st)
-        console.log(current.getMinutes())
         if (current.getMinutes()<9) {
-            console.log("1")
          return (current.getHours()+":0"+current.getMinutes())
         }
         else return (current.getHours()+":"+current.getMinutes())
@@ -91,7 +89,12 @@ const TodayRacingDetails=(props)=> {
                                     <Link to={{pathname:"/RaceDetail" ,place:items.Location,slot:items.Race_Slot, place: items.Location}} className='table-rem-row'>
                                         <div className='table-rem-row'
                                             id={items.Location}>
-                                            <div className={(items.Status=='Open')?'table-item-open':'table-item'}>
+                                            {console.log(Date.now()-new Date(items.Time))}
+                                            <div 
+                                            className={(items.Status!='Open')?'table-item':
+                                            (Date.now()-new Date(items.Time)>-60000)?
+                                                "table-item-open-color":
+                                            'table-item-open'}>
                                                 <p className="table-item-slot">R{items.Race_Slot}</p>
                                                 <p className="table-item-time">
                                                     {startTime(items.Time)}   
