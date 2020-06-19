@@ -1,6 +1,7 @@
 import React,{useEffect,useState,useRef} from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
+import MediaQuery from 'react-responsive';
 
 import { fetchMeetingDetails,
     fetchRaceDetails,
@@ -651,7 +652,9 @@ const RaceDetails = (props,ownProps)=>{
                     </div>
                 </ui-view>
             </div>
-            <BetSlipHome/>
+            <MediaQuery query='(min-width: 800px)'>
+                <BetSlipHome/>
+            </MediaQuery>
         </main>
     );
 };

@@ -1,5 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 
 import { fetchNextRace } from "../../actions";
 
@@ -32,21 +33,30 @@ const NextScreen=(props) =>{
           }
      },1000)
     return (
-          <ui-view>
-              <Header/>
-              <NextList next={props.next}/>
-              <main className="page-content">
-                  <div className="left-column">
-                      <ui-view>
-                          <nav className="menuItems">
-                          
-                          <NextRace next={props.next}/>
-                          </nav>
-                      </ui-view>
-                  </div>
-                  <BetSlipHome/>
-              </main>
-          </ui-view>      
+            <>
+                <MediaQuery query='(min-width: 800px)'>
+                    <ui-view>
+                        <Header/>
+                        <NextList next={props.next}/>
+                        <main className="page-content">
+                            <div className="left-column">
+                                <ui-view>
+                                    <nav className="menuItems">
+                                    
+                                        <NextRace next={props.next}/>
+                                    </nav>
+                                </ui-view>
+                            </div>
+                            <BetSlipHome/>
+                        </main>
+                    </ui-view>          
+                </MediaQuery>
+                <MediaQuery query='(max-width: 800px)'>
+                    <Header/>
+                    <NextList next={props.next}/>
+                    <NextRace next={props.next}/>
+                </MediaQuery>
+            </>
     )
 }
 // export default NextScreen;
