@@ -1,7 +1,7 @@
 import React from 'react';
 import "./TodayDetails.css";
 import { Link} from "react-router-dom";
-import Moment from 'react-moment';
+
 const TodayRacingDetails=(props)=> {
     var counts = {};
     var places=[]
@@ -111,6 +111,7 @@ const TodayRacingDetails=(props)=> {
                     )
                 }          
     }})))};
+    console.log(counts)
     const renderTodayRacingDetail=(()=>{
         return (   
             <div class="table">

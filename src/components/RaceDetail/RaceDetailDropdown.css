@@ -1,0 +1,12 @@
+.navigation-sections-wrapper expanded{
+    z-index: 199;
+}
+.navigation-sections-wrapper.expanded {
+    display: block;
+    opacity: 1;
+}
+element.style {
+    top: 154px;
+    left: 20px;
+    width: 843.333px;
+}

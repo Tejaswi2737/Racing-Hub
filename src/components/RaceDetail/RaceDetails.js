@@ -1,29 +1,33 @@
 import React,{useEffect,useState,useRef} from 'react';
 import { connect } from 'react-redux';
+import { Link} from "react-router-dom";
+
 import { fetchMeetingDetails,fetchRaceDetails} from "../../actions";
 import "./RaceDetails.css";
+
+
 const RaceDetails = (props,ownProps)=>{
     props.fetchMeetingDetails();
-    console.log(props.venue)
+    console.log(props.place)
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
     } else {
         initialValue=1
     }
-    if ((props.venue)){
-        var initialValuePlace=(props.venue)
+    if ((props.place)){
+        var initialValuePlace=(props.place)
     } else {
         initialValuePlace=""
     }
-    const [venue, setvenue] = useState(initialValuePlace);
-    const [venue_slot, setvenue_slot] = useState(initialValue);
+    const [place, setplace] = useState(initialValuePlace);
+    const [place_slot, setplace_slot] = useState(initialValue);
     var races_list=[props.meetingDetails.races];
     useEffect(() => {
-        setvenue_slot(initialValue)
+        setplace_slot(initialValue)
     }, [initialValue,initialValuePlace])
     useEffect(() => {
-        props.fetchRaceDetails(venue_slot);
-    }, [venue_slot,venue])
+        props.fetchRaceDetails(place_slot);
+    }, [place_slot,place])
     races_list=Object.values(races_list);
     var items_list={}
     {races_list?races_list.map(item=>{
@@ -224,7 +228,6 @@ const RaceDetails = (props,ownProps)=>{
                     })}
             </tbody>
         </table>
-
         )
     };
     const runnerInfo=(props)=>{
@@ -233,7 +236,6 @@ const RaceDetails = (props,ownProps)=>{
             <div className="pseudo-table">
                 <div className="pseudo-header">
                     <div className="labels-wrapper">
-
                         <span className="odds-label double">
                             TOTE
                         </span>
@@ -246,11 +248,55 @@ const RaceDetails = (props,ownProps)=>{
                             Runner
                         </div>
                         <div className="cell price-cell hidden">
+                            
+                        </div>
+                        <div className="cell price-cell hidden">
                             Win
                         </div>
                         <div className="cell price-cell hidden">
                             Place
                         </div>
+                        {(props.type=="Quinella"||props.type=="Duet")?
+                                <div className="cell price-cell hidden">
+                                    1st Box
+                                </div>
+                            :(props.type=="Trifecta")?
+                            <>
+                                <div className="cell price-cell hidden">
+                                    1st Box
+                                </div>
+                                <div className="cell price-cell hidden">
+                                    2nd
+                                </div>
+                                <div className="cell price-cell hidden">
+                                    3rd
+                                </div>
+                            </>
+                            :(props.type=="First4")?
+                            <>
+                                <div className="cell price-cell hidden">
+                                    1st Box
+                                </div>
+                                <div className="cell price-cell hidden">
+                                    2nd
+                                </div>
+                                <div className="cell price-cell hidden">
+                                    3rd
+                                </div>
+                                <div className="cell price-cell hidden">
+                                    4th
+                                </div>
+                            </>:(props.type=="Exacta")?
+                            <>
+                                <div className="cell price-cell hidden">
+                                    1st Box
+                                </div>
+                                <div className="cell price-cell hidden">
+                                    2nd
+                                </div>         
+                            </> :""              
+                        }
+
                     </div>
                 </div>
                 <div className="pseudo-body">
@@ -260,6 +306,8 @@ const RaceDetails = (props,ownProps)=>{
                             <div className="cell number-cell">
                                 {runner_item.runnerNumber}
                             </div>
+
+
                             <div className="cell name-cell">
                                 <div className="runner-name-metadata-wrapper">
                                     <div className="runner-name-wrapper">
@@ -285,6 +333,9 @@ const RaceDetails = (props,ownProps)=>{
                                 </div>
                             </div>
                             <div className="cell price-cell win-cell animate-field-653 wrappable unselectable closed">
+                                
+                            </div>
+                            <div className="cell price-cell win-cell animate-field-653 wrappable unselectable closed">
                                 <div className="animate-change">
                                     <div className="animate-odd">
                                         ${runner_item.returnWin}
@@ -298,6 +349,117 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
+
+                            {(props.type=="Quinella"||props.type=="Duet")?
+                                <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                    <div className="animate-change">
+                                        <div className="animate-odd">
+                                        <input
+                                                name="isGoing"
+                                                type="checkbox"
+                                                />                                    
+                                        </div>
+                                    </div>
+                                </div>
+                                :(props.type=="Trifecta")?
+                                <>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>
+                                :(props.type=="First4")?
+                                <>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>:(props.type=="Exacta")?
+                                <>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
+                                        <div className="animate-change">
+                                            <div className="animate-odd">
+                                            <input
+                                                    name="isGoing"
+                                                    type="checkbox"
+                                                    />                                    
+                                            </div>
+                                        </div>
+                                </div>      
+                                </> :""              
+                            }
                         </div>
                         )
                     }):""}
@@ -307,12 +469,14 @@ const RaceDetails = (props,ownProps)=>{
     
         )
     };
+
+
     const raceSlots=(props)=>{
         return(                        
         <div className="meeting-race-selector">
             <div className="meeting-info">
                 <button className="meeting-info-meeting-selector">
-                    <div className="meeting-info-description">
+                    <div className="meeting-info-description" >
                         Place
                     </div>
                 </button>
@@ -320,8 +484,8 @@ const RaceDetails = (props,ownProps)=>{
                     <div className="meeting-info-race-selector">     
                         {items_list?items_list.map(item=>{
                             return(
-                                <div onClick={()=>{setvenue_slot(item.raceNumber)
-                                setvenue(item.Location)}}>
+                                <div onClick={()=>{setplace_slot(item.raceNumber)
+                                setplace(item.Location)}}>
                                     <a className=
                                     {item.raceStatus=="Paying"?
                                     "meeting-info-race meeting-info-race-selected meeting-info-race-closed":
@@ -387,6 +551,7 @@ const RaceDetails = (props,ownProps)=>{
     };
 
     const poolTot=(props)=>{
+        console.log(props)
         return(
             <div className="page-section-pane">
             <div className="info-table">
@@ -419,7 +584,38 @@ const RaceDetails = (props,ownProps)=>{
         </div>    
         )
     };
-
+    const racetypes=[{"name":"Win/Place","url":"/RaceDetail/Win"},
+    {"name":"Quinella","url":"/RaceDetail/Quinella"},
+    {"name":"Trifecta","url":"/RaceDetail/Trifecta"},
+    {"name":"First 4","url":"/RaceDetail/First4"},
+    {"name":"Exacta","url":"/RaceDetail/Exacta"},
+    {"name":"Duet","url":"/RaceDetail/Duet"}]
+    
+    const placeBets=(props)=>{
+        console.log(props)
+        return(
+            <div className="bet-type-carousel">
+                <ul className="tbc-nav-tabular-list bet-type-carousel-list">
+                    {racetypes.map(item=>{
+                        return(
+                            <li className="tbc-nav-tabular-list-item">
+                                <Link  to={{pathname:item.url,
+                                    slot:place_slot,
+                                place:place}} 
+                                className="tbc-nav-tabular-item-link">
+                                    <div className="bet-type-carousel-description">
+                                        {item.name}
+                                    </div>
+                                    <div className="bet-type-carousel-legs">
+                                    </div>
+                                 </Link>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        )
+    };
     return (
         <main className="page-content">
             <div className="left-column">
@@ -427,9 +623,10 @@ const RaceDetails = (props,ownProps)=>{
                     <div>
                         {raceSlots(props)}
                         {raceName(props)}
-                        <div className="page-section-pane">
+                        <div className="page-section pane">
                         </div>
-                        <div className="page-section-pane">
+                        <div className="page-section pane">
+                            {props.racingDetail.raceStatus=="Open"?placeBets():""}
                             <div className="race-results-wrapper">
                                 <section className="runners-section result-section">
                                     {props.racingDetail.raceStatus=="Paying"?resultsTable(props):""}
@@ -451,7 +648,8 @@ const mapStateToProps=(state,ownProps)=> {
         slot:ownProps.slot,
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
-        venue:ownProps.place
+        place:ownProps.place,
+        type:ownProps.type
     }
 }
 export default connect(mapStateToProps, { 

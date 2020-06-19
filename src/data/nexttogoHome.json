@@ -1,6 +1,6 @@
 [
     {
-         "raceStartTime":"2020-06-17T01:45:00.000Z",
+         "raceStartTime":"2020-06-18T01:45:00.000Z",
          "raceNumber":6,
          "raceName":"PUMP & ENGINEERING SERVICES LTD STAKES",
          "raceDistance":527,
@@ -12,7 +12,7 @@
             "venueMnemonic":"MAA"
       },
       {
-         "raceStartTime":"2020-06-17T01:55:00.000Z",
+         "raceStartTime":"2020-06-18T01:55:00.000Z",
          "raceNumber":10,
          "raceName":"NORTHFIELD PARK TROT MS",
          "raceDistance":1609,
@@ -24,7 +24,7 @@
             "venueMnemonic":"NFP"
       },
       {
-         "raceStartTime":"2020-06-17T01:59:00.000Z",
+         "raceStartTime":"2020-06-18T01:59:00.000Z",
          "raceNumber":1,
          "raceName":"MADSEN MEATS MAIDEN",
          "raceDistance":411,
@@ -36,7 +36,7 @@
             "venueMnemonic":"CSO"
       },
       {
-         "raceStartTime":"2020-06-17T02:03:00.000Z",
+         "raceStartTime":"2020-06-18T02:03:00.000Z",
          "raceNumber":7,
          "raceName":"MAYHOUNDS RACING RETIREMENT PROJECT",
          "raceDistance":318,

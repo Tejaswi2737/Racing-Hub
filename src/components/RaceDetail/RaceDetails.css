@@ -61,6 +61,16 @@
     background-color: transparent;
     height: 100%;
 }
+/* .meeting-info-race-closed:active {
+    color: white;
+    background-color: black;
+    height: 100%;
+}
+.meeting-info-race-open:active {
+    color: white;
+    background-color: black;
+    height: 100%;
+} */
 .meeting-info-race {
     font-size: 17px;
     line-height: 20px;
@@ -72,6 +82,16 @@
     flex-direction: column;
     text-decoration: none;
     justify-content: center;
+}
+.meeting-info-race-closed:active {
+    border-bottom: 4px solid black;
+    box-sizing: content-box;
+    
+}
+.meeting-info-race-open:active {
+    border-bottom: 4px solid #3a982c;
+    box-sizing: content-box;
+    
 }
 .meeting-info-race-results {
     font-size: 10px;
@@ -373,6 +393,16 @@ table {
     color: #272727;
     padding: 0 10px;
 }
+.odds-label {
+    font-size: 10px;
+    line-height: 20px;
+    color: #737373;
+    display: inline-block;
+    margin-right: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 120px;
+}
 .race-runners-wrapper .pseudo-header {
     border-top: 1px solid #e6e6e6;
 }
@@ -393,6 +423,20 @@ table {
     width: 100%;
     min-height: 45px;
 }
+.pseudo-table{
+    overflow-x: scroll;
+}
+.pseudo-body{
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: auto;
+    text-overflow: clip;
+}
+.name-cell{
+    min-width: 200px !important;
+    display: inline-block;
+}
 .race-runners-wrapper .pseudo-header .number-cell {
     background-color: white;
     padding-left: 3px;
@@ -408,6 +452,7 @@ table {
     color: #737373;
     padding-bottom: 0;
     vertical-align: baseline;
+    min-width: 40vw !important;
 }
 .race-runners-wrapper .cell {
     font-size: 14px;
@@ -486,6 +531,7 @@ table {
     position: relative;
     text-align: center;
     width: 70px;
+    left: auto;
 }
 .animate-change {
     height: 20px;
@@ -509,13 +555,14 @@ table {
     display: table-cell;
     padding: 10px;
     vertical-align: middle;
-    white-space: nowrap;
+    white-space: pre-wrap;
+    
 }
 .race-runners-wrapper .price-cell .return-value {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex;
+    display: inline-flex;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -583,4 +630,92 @@ ol, ul {
     min-height: 120px;
     border: 2px solid #008542;
     background: white;
+}
+
+
+
+
+
+.bet-type-carousel {
+    justify-content: flex-start;
+    height: 40px;
+}
+.bet-type-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.bet-type-carousel .bet-type-carousel-list {
+    align-items: center;
+    height: 100%;
+    width: 80%;
+}
+.bet-type-carousel-list {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    justify-content: start;
+}
+.tbc-nav-tabular-list {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    list-style-type: none;
+}
+ol, ul {
+    list-style: none;
+}
+.bet-type-carousel .bet-type-carousel-list .bet-type-carousel-item {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    height: 100%;
+    border-right: 1px solid #e6e6e6;
+    min-width: 84px;
+    overflow: hidden;
+}
+@media (max-width: 1200px){
+.tbc-nav-tabular-list .tbc-nav-tabular-list-item.active {
+    transition: none;
+}
+}
+.bet-type-carousel, .bet-type-carousel-list, .bet-type-carousel-item ,.tbc-nav-tabular-item-link {
+    padding: 13px 15px;
+    line-height: 1;
+}
+.tbc-nav-tabular-item-link {
+    color: black;
+    border-right: 1px solid #e6e6e6;
+    flex-shrink: 0;
+    position: relative;
+    font-size: 14px;
+    font-family: sans-serif;
+    line-height: 20px;
+    font-weight: 600;
+    height: 100%;
+}
+.tbc-nav-tabular-list-item:active {
+    background-color: #008542;
+    color: white;
+    transition: background-color 0s ease-in-out;
+}
+/* .tbc-nav-tabular-list-item:hover {
+    background-color: grey;
+    color: white;
+    transition: background-color 0s ease-in-out;
+} */
+
+.tbc-nav-tabular-list .tbc-nav-tabular-list-item {
+    align-items: center;
+    color: black;
+    display: flex;
+}
+.bet-type-carousel-description {
+    flex-basis: 100%;
 }

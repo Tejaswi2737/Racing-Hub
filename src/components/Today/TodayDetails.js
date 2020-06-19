@@ -36,7 +36,6 @@ const TodayDetails = (props,ownProps)=>{
      },1000)
 
 
-
     const racingInfo=(props)=>{
         return(
             <TodayRacingDetails todayRacing={props}/>
@@ -77,8 +76,6 @@ const mapStateToProps=(state,ownProps)=> {
     return{ 
         next:state.next,
         todayRacing:state.todayRacing,
-        // todayRacingGrey:state.todayRacingGrey,
-        // todayRacingHarness:state.todayRacingHarness,
         detail:ownProps.detail
     }
 }

@@ -1,0 +1,38 @@
+.side-panel {
+    z-index: 150;
+}
+.side-panel {
+    -webkit-tap-highlight-color: transparent;
+    cursor: default;
+    margin: 0;
+    overflow: visible;
+    position: relative;
+}
+.side-panel .inner-side-panel.loaded {
+    opacity: 1;
+}
+.side-panel .inner-side-panel {
+    background: #f2f2f2;
+    position: fixed;
+    bottom: 0;
+    top: 60px;
+    width: 360px;
+    -webkit-transition: opacity .1s linear;
+    transition: opacity .1s linear;
+    opacity: 0;
+    left:80%;
+    width:20%
+}
+.side-panel .inner-side-panel {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: column nowrap;
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+}
+.pane {
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.15);
+}

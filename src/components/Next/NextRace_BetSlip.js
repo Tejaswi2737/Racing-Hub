@@ -4,6 +4,8 @@ import { Link} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import MediaQuery from 'react-responsive'
 
+import "./NextRace.css";
+
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -17,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'nowrap',
         transform: 'translateZ(0)',
       },
-  }));
+  })
+);
+
 const NextRace = (props)=>{
     const classes = useStyles();
     const [nextRace,setnextRace]=useState([]);
@@ -25,7 +29,6 @@ const NextRace = (props)=>{
     const [nextRaceHarness,setnextRaceHarness]=useState([]);
     const [firstTime, setfirstTime] = useState();
     const [firstNumber, setfirstNumber] = useState()
-
     const fetchResources=()=>{
         {props.next.map(item =>{
             switch(item.raceType) {
@@ -41,16 +44,18 @@ const NextRace = (props)=>{
                 };
         })}
     };
+
     useEffect(()=> {
         fetchResources(props.next);
     },[props.next]);
+
      useEffect(() => {
         if (props.next.length>0){
             {props.next[0].raceStartTime?setfirstTime(props.next[0].raceStartTime):setfirstTime()}
             {props.next[0].raceNumber?setfirstNumber(props.next[0].raceNumber):setfirstNumber()}
         }
     }, [props.next])
-    console.log(firstTime)
+
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
@@ -104,28 +109,83 @@ const NextRace = (props)=>{
     const renderTodayTableList=(state) =>{
         return (        
            (state.map(item => {
-                return(
+                return( 
+                    <Link to="/RaceDetail" className="navigation-entry next-to-go-race next-to-jump">
+                        <div>
+                            <p className="next-to-go-meeting-info next-to-go-code"> 
+                                R{item.raceNumber}
+                            </p>
+                            <p className="next-to-go-meeting-info next-to-go-time">
+                                <time className="time-label">
+                                    <span>
+                                        {duration(item.raceStartTime)}
+                                    </span>
+                                </time>
+                            </p>
+                            <p className="next-to-go-meeting-info next-to-go-meeting">
+                                <span className="next-to-go-location">
+                                    {item.meetingName} ({item.meetingCode})
+                                </span>
+                            </p>
+                        </div>
+                    </Link>
                     
-                    <>
-                        <MediaQuery query='(min-width: 100px)'>
-                            <Grid item xs ={4} className="next-section">
-                                <Link className={classes.paper}  className={
-                                    (item.raceStartTime==firstTime&&item.raceNumber==firstNumber)?
-                            "next-item-first":"next-item"}
-                                    to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>                        
-                                    <p>R{item.raceNumber}</p>
-                                    <time>{duration(item.raceStartTime)}</time>    
-                                    <p>{item.meetingName} ({item.meetingCode})</p>
-                                </Link> 
-                            </Grid>
-                        </MediaQuery>  
-                    </>                
-            )}
+
+
+
+                    // <>
+                    //     <MediaQuery query='(min-width: 100px)'>
+                    //         <Grid item xs ={4} className="next-section">
+                    //             <Link className={classes.paper}  className=
+                    //             {(item.raceStartTime==firstTime && item.raceNumber==firstNumber)?
+                    //         "next-item-first":"next-item"}
+                    //                 to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>                        
+                    //                 <p>R{item.raceNumber}</p>
+                    //                 <time>{duration(item.raceStartTime)}</time>    
+                    //                 <p>{item.meetingName} ({item.meetingCode})</p>
+                    //             </Link> 
+                    //         </Grid>
+                    //     </MediaQuery>  
+                    // </>                
+                )}
         ))
         );
     };
+
     return(
-        <div>
+        <div className="navigation-group">
+            <section className="next-to-go-section navigation-section">
+                <h1 className="navigation-section-heading">
+                    <span className="navigation-section-title">
+                        Racing
+                    </span>
+                </h1>
+                <nav className="navigation-entries">
+                    {renderTodayTableList(nextRace.slice(0,6))}
+                </nav>
+                <h1 className="navigation-section-heading">
+                    <span className="navigation-section-title">
+                        GreyHound
+                    </span>
+                </h1>
+                <nav className="navigation-entries">
+                    {renderTodayTableList(nextRaceGrey.slice(0,6))}
+                </nav>
+                <h1 className="navigation-section-heading">
+                    <span className="navigation-section-title">
+                        Harness
+                    </span>
+                </h1>
+                <nav className="navigation-entries">
+                    {renderTodayTableList(nextRaceHarness.slice(0,6))}
+                </nav>
+            </section>
+              
+
+
+
+{/* 
+
             <div className="next-data">
                 <h1>Racing</h1>
                 <Grid container spacing={3}>
@@ -139,7 +199,7 @@ const NextRace = (props)=>{
                 <Grid container spacing={3}>
                     {renderTodayTableList(nextRaceHarness.slice(0,6))}
                 </Grid>
-            </div>
+            </div> */}
         </div>
         );
 }; 
