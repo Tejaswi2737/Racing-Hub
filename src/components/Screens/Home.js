@@ -8,8 +8,7 @@ const Home=() =>{
     return (
         <ui-view>
             <Header/>
-            <NextListHome/>
-            {/* <main className="page-content">
+            <main className="page-content">
                 <div className="left-column">
                     <ui-view>
                         <nav className="menuItems">
@@ -18,7 +17,7 @@ const Home=() =>{
                     </ui-view>
                 </div>
                 <BetSlipHome/>
-            </main> */}
+            </main>
         </ui-view>
     )
 }

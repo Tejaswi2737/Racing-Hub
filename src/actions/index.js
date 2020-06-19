@@ -20,6 +20,10 @@ import raceDetailsResults11 from "../data/raceDetailsResults11.json";
 import raceDetailsResults12 from "../data/raceDetailsResults12.json";
 import meetingDetails from "../data/meetingDetails.json";
 
+
+import winPlaceBet from "../data/win_place_bet.json";
+
+
 export const fetchTodayRacing =  (props) => {
   var data={};
   switch(props) {
@@ -118,6 +122,18 @@ export const fetchRaceDetails =  (props) => {
     })
   }
 };
+
+
+export const fetchWinPlaceBet =  () => {
+  return function (dispatch) {
+    dispatch({
+      type: 'FETCH_WIN_PLACE_BET',
+      payload: winPlaceBet
+    });
+  }
+};
+
+
 // export const fetchTodayGrey =  () => {
 //   return function (dispatch) {
 //     dispatch({

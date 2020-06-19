@@ -6,6 +6,7 @@ import { fetchNextRace } from "../../actions";
 import Header from '../Nav/Header';
 import NextRace from '../Next/NextRace';
 import NextList from '../Next/NextList';
+import BetSlipHome from '../BetSlip/BetSlipHome';
 
 const NextScreen=(props) =>{
     props.fetchNextRace();
@@ -31,12 +32,21 @@ const NextScreen=(props) =>{
           }
      },1000)
     return (
-        <div>
-            <Header/>
-            {/* {showLoading?<NextList next={props.next}/>:<NextList next={props.next}/>} */}
-            <NextList next={props.next}/>
-            <NextRace next={props.next}/>
-        </div>
+          <ui-view>
+              <Header/>
+              <NextList next={props.next}/>
+              <main className="page-content">
+                  <div className="left-column">
+                      <ui-view>
+                          <nav className="menuItems">
+                          
+                          <NextRace next={props.next}/>
+                          </nav>
+                      </ui-view>
+                  </div>
+                  <BetSlipHome/>
+              </main>
+          </ui-view>      
     )
 }
 // export default NextScreen;

@@ -6,10 +6,13 @@ import todayRacing from './todayRacing';
 import racingDetail from './racingDetail';
 import meetingDetails from './meetingDetails';
 
+import winPlaceBetreducer from "./winPlaceBetreducer";
+
 export default combineReducers({
     next: nextReducer,
     nextHome:nextReducerHome,
     todayRacing: todayRacing,
     racingDetail: racingDetail,
-    meetingDetails: meetingDetails
+    meetingDetails: meetingDetails,
+    winPlaceBet: winPlaceBetreducer
 });

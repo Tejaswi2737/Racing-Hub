@@ -138,7 +138,8 @@
     height: 55px;
     white-space: nowrap;
 }
-.page-content .left-column {
+
+/* .page-content .left-column {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -154,7 +155,12 @@
     flex-direction: column;
     min-height: -webkit-calc(100vh - 50px);
     min-height: calc(100vh - 50px);
+} */
+.left-column {
+    float: left;
+    width: 80%;
 }
+
 .page-section {
     margin-top: 10px;
     width: 100%;
@@ -719,3 +725,7 @@ ol, ul {
 .bet-type-carousel-description {
     flex-basis: 100%;
 }
+
+
+
+

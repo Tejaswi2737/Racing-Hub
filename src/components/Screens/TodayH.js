@@ -7,6 +7,7 @@ import { fetchNextRace } from "../../actions";
 import Header from '../Nav/Header'
 import TodayDetails from '../Today/TodayDetails'
 import NextList from '../Next/NextList'
+import BetSlipHome from '../BetSlip/BetSlipHome';
 
 const TodayH=(props)=> {
     props.fetchNextRace();
@@ -28,11 +29,20 @@ const TodayH=(props)=> {
           }
         })
     return (
-        <div>
-            <Header/>
-            <NextList next={props.next}/>
-            <TodayDetails detail='todayRacingHarness'/>
-        </div>
+      <ui-view>
+        <Header/>
+          <NextList next={props.next}/>
+          <main className="page-content">
+              <div className="left-column">
+                  <ui-view>
+                      <nav className="menuItems">
+                        <TodayDetails detail='todayRacingHarness'/>
+                      </nav>
+                  </ui-view>
+              </div>
+              <BetSlipHome/>
+          </main>
+      </ui-view>  
     )
 }
 const mapStateToProps=(state)=> {

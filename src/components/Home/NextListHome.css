@@ -12,7 +12,7 @@
     margin: 0 0;
 }
 .left-column {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -26,7 +26,7 @@
     -ms-flex-direction: column;
     flex-direction: column;
     min-height: -webkit-calc(100vh - 50px);
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 50px); */
 }
 .home-page-navigation {
     position: relative;

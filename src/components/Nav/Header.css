@@ -2,7 +2,6 @@
     z-index: 200;
     background: #008542;
     width: 100vw !important;
-    position: relative;
 }
 .content-wrapper {
     -webkit-box-align: center;
