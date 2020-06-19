@@ -1,11 +1,12 @@
 .side-panel {
     z-index: 150;
+    overflow-y: scroll;
 }
 .side-panel {
     -webkit-tap-highlight-color: transparent;
     cursor: default;
     margin: 0;
-    overflow: visible;
+    overflow-y: scroll;
     position: relative;
 }
 .side-panel .inner-side-panel.loaded {
@@ -67,4 +68,492 @@ button {
     border: 0;
     cursor: pointer;
     overflow: visible;
+}
+
+
+
+
+
+/* Styling for the bet card start */
+
+/* .bet-builder .bet-builder-has-bet {
+    flex: 1;
+    overflow-y: scroll;
+}
+.bet-builder {
+    position: relative;
+} */
+/* .bet-builder .bet-builder-has-bet .bet-builder-state {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+} */
+/* .bet-builder, .bet-builder-has-bet, .bet-builder-state , .inner-bet-builder-state {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+} */
+ /* .bet-builder-bet-slip {
+    top: 63px;
+} */
+/* .bet-builder .bet-builder-bet-slip {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+} */
+/* .bet-builder .bet-builder-bet-slip .bet-cards-wrapper {
+    margin-bottom: 10px;
+} */
+/* .bet-builder-has-bet{
+    bottom: 10px !important;
+} */
+.bet-card {
+    background: white;
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+    color: black;
+    display: block;
+    margin: 10px 0 0;
+    max-width: 100%;
+    position: relative;
+    transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+    display: block;
+}
+.bet-card .bet-card-header {
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+}
+.bet-card .bet-card-header {
+    display: inline-block;
+    font-size: 0;
+    min-height: 30px;
+    padding: 7.5px 10px 0;
+    position: relative;
+    width: 100%;
+}
+.bet-card .bet-card-title {
+    flex-grow: 1;
+}
+.bet-card .bet-card-title {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    min-width: 80px;
+    overflow: hidden;
+}
+.bet-card .bet-card-type.tote {
+    background-color: rgba(241,87,33,0.03);
+    border-color: #f25824;
+    color: #f25824;
+    font-size: 7px;
+}
+.bet-card .bet-card-type.tote {
+    background-color: rgba(241,87,33,0.03);
+    border-color: #f25824;
+    color: #f25824;
+    font-size: 7px;
+}
+.bet-card .bet-card-type {
+    border: 1px solid;
+    border-radius: 2px;
+    font-size: 10px;
+    height: 15px;
+    line-height: 15px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 20px;
+}
+.bet-card-body {
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 10px 10px;
+    position: relative;
+    width: 100%;
+}
+.bet-card-race-information, .bet-card-selections, .bet-additional-info, .position-indices {
+    line-height: 18px;
+}
+.bet-card-selections .bet-card-label {
+    color: #737373;
+    min-width: 40px;
+}
+.bet-card-selections .bet-card-label, .bet-card-racing-parlay-formula-places .bet-card-label {
+    display: inline-block;
+    text-align: left;
+}
+.bet-card-selections .bet-card-label+span {
+    margin-left: 15px;
+}
+
+
+
+/* bet form */
+
+.bet-card-form {
+    font-size: 12px;
+}
+.bet-additional-info-list, .bet-card-form {
+    margin: 5px 0 0;
+}
+.common-form, .sg-form {
+    /* margin-top: 20px; */
+    font-size: 0;
+}
+ol, ul {
+    list-style: none;
+}
+.bet-card-info {
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.bet-card-form .bet-card-info label {
+    display: inline-block;
+}
+/* .bet-card-info .bet-info-value {
+    line-height: 15px;
+    width: 60px;
+} */
+.bet-card-info label {
+    color: #737373;
+    font-size: 12px;
+    line-height: 15px;
+}
+.bet-card-body label {
+    font-weight: normal;
+}
+.common-form label, .sg-form label {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: #333;
+}
+label {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+}
+.bet-card-input {
+    display: inline-block;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.bet-card-body .stake-input {
+    display: block;
+    position: relative;
+}
+.bet-card-body .stake-input .currency {
+    font-size: 12px;
+    line-height: 20px;
+    left: 10px;
+    line-height: 50px;
+    position: absolute;
+}
+.bet-card-body .common-textfield.stake-input-has-focus, .bet-card-body .common-dropdown.stake-input-has-focus {
+    border-color: #6bb261;
+}
+.bet-card .common-textfield, .multi-bet-card .common-textfield {
+    color: black;
+    line-height: 15px;
+    margin: 5px;
+}
+.bet-card-body .common-textfield {
+    max-width: 100px;
+}
+.bet-card-body .common-textfield, .bet-card-body .common-dropdown {
+    font-size: 12px;
+    line-height: 20px;
+    border-color: #e6e6e6;
+    border-width: 1px;
+    padding-left: 15px;
+}
+.side-panel .common-textfield {
+    max-width: 100px;
+}
+.side-panel .common-textfield, .side-panel .common-dropdown {
+    font-size: 10px;
+    line-height: 20px;
+    border-color: #e6e6e6;
+    border-width: 1px;
+    height: 40px;
+    padding-left: 15px;
+}
+.bet-card-info {
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.bet-card-info .bet-info-value {
+    line-height: 15px;
+    width: 60px;
+}
+.bet-card-form .bet-card-info label {
+    display: inline-block;
+}
+.bet-card-info .bet-info-label {
+    color: #737373;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin: 0;
+    text-transform: capitalize;
+    white-space: nowrap;
+    width: 100px;
+}
+.bet-card-info label {
+    color: #737373;
+    font-size: 12px;
+    line-height: 15px;
+}
+.bet-card-body label {
+    font-weight: normal;
+}
+.bet-card-form .bet-card-info label {
+    float: left;;
+}
+.bet-card-info .bet-info-value {
+    color: black;
+    display: inline-block;
+    font-size: large;
+}
+.keypad-menu {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.bet-builder-keypad {
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+    box-shadow: 0 -4px 4px 0 rgba(115,115,115,0.15);
+    font-size: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+    transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+}
+.bet-builder-keypad .common-button {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 20px;
+    background: white;
+    border: 1px solid #e6e6e6;
+    border-left: 0;
+    border-radius: 0;
+    border-top: 0;
+    color: #272727;
+    padding: 10px;
+    width: 25%;
+    bottom: 20px;
+}
+ .keypad-close-button.large {
+    width: 75%;
+}
+[ng-click] {
+    cursor: pointer;
+}
+
+
+/* footer */
+
+.bet-card-footer {
+    font-size: 10px;
+    line-height: 20px;
+    border-top: 1px solid #e6e6e6;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    height: 100%;
+}
+.bet-card-footer-actions {
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 30px;
+}
+.bet-card-remove {
+    color: #272727;
+    font-size: 14px;
+    margin-left: auto;
+    padding-right: 10px;
+}
+[ng-click] {
+    cursor: pointer;
+}
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'styleguide' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+}
+
+
+
+
+
+
+
+
+
+.bet-builder-state {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+.inner-bet-builder-state {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.bet-builder-bet-slip {
+    top: 63px;
+}
+.bet-builder-bet-slip {
+    height: 100%;
+    width: 100%;
+}
+.bet-builder .bet-builder-bet-slip .bet-cards-wrapper {
+    margin-bottom: 10px;
+}
+.bet-cards-wrapper{
+    overflow-y: scroll;
+}
+.bet-builder-keypad {
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
+    box-shadow: 0 -4px 4px 0 rgba(115,115,115,0.15);
+    font-size: 0;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+    transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
+}
+menu {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+ .bet-builder-footer {
+    background: white;
+    box-shadow: 0 -4px 4px 0 rgba(0,0,0,0.15);
+    overflow: auto;
+    padding: 10px;
+    min-width: 23vw;
+}
+
+.bet-builder .bet-builder-footer .summary-list {
+    font-size: 14px;
+    line-height: 20px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: auto;
+}
+ol, ul {
+    list-style: none;
+}
+.bet-builder, .bet-builder-footer .summary-list li {
+    display: table-row;
+}
+.summary-list h1, .summary-list p {
+    display: table-cell;
+}
+.bet-builder ,.bet-builder-footer .summary-list .bet-builder-footer-key-info {
+    padding-left: 10px;
+    text-align: left;
+}
+.bet-builder ,.bet-builder-footer .bet-summary-menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.bet-builder, .build .change-bet-button, .bet-builder .intercept .change-bet-button {
+    -webkit-box-flex: initial;
+    -webkit-flex-grow: initial;
+    -ms-flex-positive: initial;
+    flex-grow: initial;
+}
+.bet-builder, .bet-builder-footer .bet-builder-button {
+    background: #3a982c;
+    border: 1px solid #318125;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    line-height: 40px;
+}
+.bet-builder, .bet-builder-footer .change-bet-button {
+    background: 0;
+    border: 1px solid #ccc;
+    color: #737373;
+}
+.side-panel-messages-wrapper{
+    padding-top:30px;
+    margin-bottom: 250px;
+    overflow-y: scroll;
+}
+.side-panel-messages-wrapper-closed{
+    padding-top:30px;
+    margin-bottom: 140px;
+    overflow-y: scroll;
+}
+
+.bet-builder-actions-wrapper{
+    position: fixed;
+    /* padding-bottom: 20px; */
+    bottom: 0px;
+}
+.bet-builder.bet-builder-has-bet .bet-builder-state .inner-bet-builder-state {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

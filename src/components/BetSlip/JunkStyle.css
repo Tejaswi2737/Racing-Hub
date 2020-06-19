@@ -1,0 +1,128 @@
+
+
+
+.bet-builder bet-builder-has-bet {
+    flex: 1;
+    overflow: auto;
+}
+
+
+.bet-builder {
+    position: relative;
+}
+
+
+.bet-builder bet-builder-has-bet {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    left: 0;
+}
+
+
+
+.bet-builder bet-builder-has-bet{
+    overflow-y: scroll;
+}
+
+/* Footer ALl page  */
+.bet-builder{
+    background: white;
+    box-shadow: 0 -4px 4px 0 rgba(0,0,0,0.15);
+    overflow-y: scroll;
+    padding-right: 20px;
+    position: relative;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 100px;
+
+}
+/* .bet-builder bet-builder-has-bet {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+} */
+.bet-builder-footer{
+    background: white;
+    box-shadow: 0 -4px 4px 0 rgba(0,0,0,0.15);
+    overflow: auto;
+    padding-right: 20px;
+    width: 100%;
+    position: fixed;
+    bottom: 20px;
+}
+.bet-builder, .bet-builder-footer, .summary-list {
+    font-size: 14px;
+    line-height: 20px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: auto;
+}
+.bet-builder, .bet-builder-footer, .summary-list li {
+    display: table-row;
+}
+
+.bet-builder, .bet-builder-footer, .summary-list h1{
+    display: table-cell;
+}
+.bet-builder, .bet-builder-footer, .summary-list p {
+    display: table-cell;
+}
+.page-content .left-column {
+    overflow: hidden;
+    padding: 0 20px;
+}
+.bet-builder, .bet-builder-footer ,.summary-list ,.bet-builder-footer-key-info {
+    padding-left: 10px;
+    text-align: left;
+}
+.bet-builder, .bet-builder-footer, .bet-builder-footer-key-info {
+    font-weight: 600;
+}
+
+.bet-builder .bet-builder-footer, .bet-summary-menu {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    flex-direction: row;
+
+    flex-wrap: nowrap;
+}
+.bet-builder .build .change-bet-button, .bet-builder .intercept .change-bet-button {
+
+    flex-grow: initial;
+}
+.bet-builder .bet-builder-footer .change-bet-button {
+    background: 0;
+    border: 1px solid #ccc;
+    color: #737373;
+}
+.bet-builder-bet-now-button {
+    background: #3a982c;
+    border: 1px solid #318125;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    line-height: 40px;
+}
+.bet-builder-button  {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    transition: color .15s linear,background .15s linear,transform 0 linear;
+    padding: 0 10px;
+    line-height: 30px;
+    border: 0;
+    color: black;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: 0;
+    display: inline-block;
+}
