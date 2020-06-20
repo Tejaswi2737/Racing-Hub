@@ -1,12 +1,83 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react';
+import { connect } from 'react-redux';
 import "./BetSlip.css"
-import { values } from 'lodash'
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const BetSlipHome=() =>{
 
+
+import { fetchMeetingDetails,
+    fetchRaceDetails,
+    fetchWinPlaceBet} from "../../actions";
+import { toInteger } from 'lodash';
+
+
+
+const BetSlipHome=(props) =>{
+    props.fetchWinPlaceBet();
     const [showCurrency, setshowCurrency] = useState(false)
+    const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
+    const [BetSlipPendingJson, setBetSlipPendingJson] = useState({});
+    const [BetSlipSingle, setBetSlipSingle] = useState();
+    const [fetched, setfetched] = useState(false);
+    const [fetchedSingle, setfetchedSingle] = useState(false);
+
+    const [deleted,setdeleted]=useState(false)
+    const [startSlip, setstartSlip] = useState(false)
+    const [BetSlipSingleSubmitted, setBetSlipSubmitted] = useState();
+    const [betDone, setbetDone] = useState(false);
+
+    const [WinMoney, setWinMoney] = useState(0);
+    const [PlaceMoney, setPlaceMoney] = useState(0);
+    const [ManualPlace, setManualPlace] = useState(0);
+    const [ManualWin, setManualWin] = useState(0);
+    const [typeBet, settypeBet] = useState('');
+
+    const doneBet=(item)=>{
+        if (betDone){
+            if (WinMoney>0.5||PlaceMoney>0.5) {
+                setBetSlipDoneJson([BetSlipSingleSubmitted])
+                if (BetSlipPendingJson.length==1){
+                    setstartSlip(false)
+                    BetSlipPendingJson({})
+                }
+                else (setBetSlipPendingJson(BetSlipPendingJson.filter(e1=> { return e1 != item })))
+            }
+        }    
+        setbetDone(false)
+    };    
+    useEffect(() => {
+        setfetched(true)
+    }, [props])
+
+    useEffect(() => {
+        if (fetched) {
+            setBetSlipSingle(props.winPlace)
+            setfetchedSingle(true)
+        }
+    }, [fetched])
     
+
+    useEffect(() => {
+        if (fetchedSingle){
+            setBetSlipPendingJson(BetSlipSingle)
+            setstartSlip(true) 
+        }
+    }, [fetchedSingle]);
+
+
+
+    useEffect(() => {
+        setWinMoney(0)
+        setPlaceMoney(0)
+    }, [showCurrency]);
+
+    const deleteSingleBet=(item)=>{
+        if (BetSlipPendingJson.length==1){
+            setstartSlip(false)
+        }
+        setBetSlipPendingJson(BetSlipPendingJson.filter(e1=> { return e1 != item }))
+    };
+
     const betSlipHeader=()=>{
         return(
             <header className="side-panel-title-bar">
@@ -24,7 +95,13 @@ const BetSlipHome=() =>{
         )
     };
 
-    const betSlipPlaceInput=(props)=>{
+    const betSlipPlaceInput=(props,WinMoney)=>{
+        const manualChangePlaceAmount=(e)=>{
+            setManualPlace(e.target.value)
+        }
+        const manualChangeWinAmount=(e)=>{
+            setManualWin(e.target.value)
+        }
         return(
             <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
                 <ul className="">
@@ -39,8 +116,14 @@ const BetSlipHome=() =>{
                                         <span className="currency">
                                             $
                                         </span>
-                                        <input type="decimal" 
-                                        onClick={()=>{setshowCurrency(true)}}
+                                        <input 
+                                        type={Number}
+                                        onClick={()=>{
+                                            setshowCurrency(true)
+                                            settypeBet('Win')
+                                        }} 
+                                        value={WinMoney}
+                                        onChange={(e)=>manualChangeWinAmount(e)}
                                             className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                         </input>
                                     </span>
@@ -59,8 +142,14 @@ const BetSlipHome=() =>{
                                         <span className="currency">
                                             $
                                         </span>
-                                        <input type="decimal" 
-                                        onClick={()=>{setshowCurrency(true)}}
+                                        <input 
+                                        type={Number}
+                                        onClick={()=>{
+                                            setshowCurrency(true)
+                                            settypeBet('Place')
+                                        }}
+                                        onChange={(e)=>manualChangePlaceAmount(e)}
+                                        value={PlaceMoney}
                                         className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                         </input>
                                     </span>
@@ -85,75 +174,89 @@ const BetSlipHome=() =>{
         )
     };
 
-    const betSlipBetDetail =(props)=>{
+    const betSlipBetDetail =(WinMoney)=>{
         return(
-
+            <>
+            {(startSlip)?BetSlipPendingJson.map(item=>{
+                return(
                     <div className="card">
-                        {/* for the bet slips */}
-                        <div className="">
-                            <parimutuel className="">
-                                <section className="bet-card">
-                                    <header className="bet-card-header">
-                                        <h1 className="bet-card-title">
-                                            Win/Place
-                                        </h1>
-                                        <span className="bet-card-type tote">
-                                            TOTE
-                                        </span>
-                                    </header>
-                                    <div className="bet-card-body">
-                                        <div className="bet-additional-info">
-                                            <ul className="bet-card-race-information">
-                                                <li>
-                                                    MENANGLE 
-                                                    <span className="">
-                                                        {' '+ '(NSW)'}
-                                                    </span>
-                                                    <span>
-                                                        {' '+'RACE 3'}
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                            <ul className="bet-card-selections">
-                                                <li>
-                                                    <p className="bet-card-label">
-                                                        Selections
-                                                    </p>
-                                                    <span className="bet-card-selection">
-                                                        1
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        {betSlipPlaceInput()}
+                    <div className="">
+                        <parimutuel className="">
+                            <section className="bet-card">
+                                <header className="bet-card-header">
+                                    <h1 className="bet-card-title">
+                                        Win/Place
+                                    </h1>
+                                    <span className="bet-card-type tote">
+                                        TOTE
+                                    </span>
+                                </header>
+                                <div className="bet-card-body">
+                                    <div className="bet-additional-info">
+                                        <ul className="bet-card-race-information">
+                                            <li>
+                                                MENANGLE 
+                                                <span className="">
+                                                    {' '+ '(NSW)'}
+                                                </span>
+                                                <span>
+                                                    {' '+'RACE 3'}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <ul className="bet-card-selections">
+                                            <li>
+                                                <p className="bet-card-label">
+                                                    Selections
+                                                </p>
+                                                <span className="bet-card-selection">
+                                                    1
+                                                </span>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <footer className="bet-card-footer">
-                                        <div className="bet-card-footer-actions">
-                                            <button className="bet-card-remove">
-                                                <i className="icon-remove" style={{height:'5rem'}}>
-                                                    <RiDeleteBin6Line/>
-                                                </i>
-                                            </button>
-                                        </div>
-                                    </footer>
-                                </section>
-                            </parimutuel>
-                        </div>
+                                    {betSlipPlaceInput(props,WinMoney)}
+                                </div>
+                                <footer className="bet-card-footer">
+                                    <div className="bet-card-footer-actions">
+                                        <button className="bet-card-remove">
+                                            <i onClick={()=>{deleteSingleBet(item)
+                                                        setdeleted(true)}}
+                                            className="icon-remove" style={{height:'5rem'}}>
+                                                <RiDeleteBin6Line/>
+                                            </i>
+                                        </button>
+                                    </div>
+                                </footer>
+                            </section>
+                        </parimutuel>
                     </div>
+                </div>
+                )
+            })
+        :""}
+        </>
         )
     }
-    const currencyOpen=()=>{
-        const currency=[{"amount":"50","denom":"c"},
-        {"amount":"1","denom":"d"},
-        {"amount":"5","denom":"d"},
-        {"amount":"10","denom":"d"},
-        {"amount":"20","denom":"d"},
-        {"amount":"50","denom":"d"},
-        {"amount":"100","denom":"d"},
-        {"amount":"500","denom":"d"},
-         ]
-        console.log("open")
-        console.log(currency)
+    const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
+        const currency=[
+            {"amount":"50","denom":"c"},
+            {"amount":1,"denom":"d"},
+            {"amount":5,"denom":"d"},
+            {"amount":10,"denom":"d"},
+            {"amount":20,"denom":"d"},
+            {"amount":50,"denom":"d"},
+            {"amount":100,"denom":"d"},
+            {"amount":500,"denom":"d"},
+        ]
+        const setCentMoney=(coin) =>{
+            if (typeBet=='Win') setWinMoney(WinMoney+coin.amount/100);
+            if (typeBet=='Place')  setPlaceMoney(PlaceMoney+coin.amount/100)
+        }
+        const setDollarMoney=(coin) =>{
+            if (typeBet=='Win') setWinMoney(WinMoney+coin.amount);
+            if (typeBet=='Place') setPlaceMoney(PlaceMoney+coin.amount)
+        }
         return(
             <div className="bet-builder-actions-wrapper">
                 <div className="bet-builder-keypad">
@@ -161,14 +264,21 @@ const BetSlipHome=() =>{
                     <menu className="keypad-menu">
                         {currency.map(coin=>{
                         return(
-                        <button className="common-button">
-                            {(coin.denom=="d")?'+'+'$'+coin.amount:'+'+coin.amount+'c'}
+                        <button className="common-button"
+                            onClick={()=>
+                                {(coin.denom=='c')?setCentMoney(coin):setDollarMoney(coin)}}
+                            >
+                            {(coin.denom==="d")?'+'+'$'+coin.amount:'+'+coin.amount+'c'}
                         </button>)})}
-                        <button onClick={()=>setshowCurrency(false)}
+                        <button onClick={()=>{
+                            setshowCurrency(false)
+                            setbetDone(true)
+                            }}
                         className="common-button keypad-close-button large">
                             Done/Close
                         </button>
-                        <button className="common-button">
+                        <button onClick={()=>{typeBet=='Win'?setWinMoney(0):setPlaceMoney(0)}}
+                        className="common-button">
                             Clear
                         </button>
                     </menu>
@@ -196,7 +306,11 @@ const BetSlipHome=() =>{
                         </li>
                     </ul>
                     <menu  className="bet-summary-menu">
-                        <button  className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
+                        <button  onClick={()=>{
+                            setstartSlip(false)
+                            setshowCurrency(false)
+                            setBetSlipDoneJson({})}}
+                        className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
                             Delete All
                         </button>
                         <button  className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
@@ -208,7 +322,6 @@ const BetSlipHome=() =>{
             </div>
             )
     };
-    console.log(showCurrency)
     return (
         <div className="side-panel toggleable">
             <div className="inner-side-panel pane loaded">
@@ -219,13 +332,11 @@ const BetSlipHome=() =>{
                             <div className={showCurrency?"side-panel-messages-wrapper":"side-panel-messages-wrapper-closed"}>
                                 <div className="bet-builder-bet-slip">
                                     <div className="bet-cards-wrapper">
-                                        {betSlipBetDetail()}
-                                        {betSlipBetDetail()}
-                                        {betSlipBetDetail()}
+                                        {betSlipBetDetail(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                     </div>
                                 </div>
                             </div>
-                            {currencyOpen()}
+                            {currencyOpen(WinMoney, PlaceMoney,BetSlipDoneJson,typeBet)}
                         </div>
                     </div>
                 </div>
@@ -234,4 +345,15 @@ const BetSlipHome=() =>{
         </div>
     );
 }
-export default BetSlipHome;
+// export default BetSlipHome;
+
+const mapStateToProps=(state)=> {
+    return{ 
+        winPlace:state.winPlaceBet,
+    }
+}
+export default connect(mapStateToProps, 
+    { 
+        fetchWinPlaceBet
+    })
+    (BetSlipHome);

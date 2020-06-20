@@ -6,7 +6,7 @@
    "meeting":{
       "meetingName":"NORTHFIELD PARK",
       "venueMnemonic":"NFP",
-      "meetingDate":"2020-06-18",
+      "meetingDate":"2020-06-20",
       "location":"USA",
       "raceType":"H",
       "sellCode":{
@@ -14,7 +14,7 @@
          "scheduledType":"H"
       }
    },
-   "raceStartTime":"2020-06-18T11:26:00.000Z",
+   "raceStartTime":"2020-06-20T11:26:00.000Z",
    "prizeMoney":"$5205.00",
    "raceStatus":"Open",
    "results":[

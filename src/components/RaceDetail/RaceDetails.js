@@ -15,8 +15,9 @@ import "./RaceDetails.css";
 
 
 const RaceDetails = (props,ownProps)=>{
+
+    const BetTemplate=props.fetchWinPlaceBet()
     props.fetchMeetingDetails();
-    console.log(props.place)
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
     } else {
@@ -63,7 +64,6 @@ const RaceDetails = (props,ownProps)=>{
 
 
      const duration=(raceStartTime)=>{ 
-        console.log(raceStartTime)
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
         var days = Math.floor(delta / 86400);
@@ -115,9 +115,7 @@ const RaceDetails = (props,ownProps)=>{
 
     const startTime=(st)=>{
         var current=new Date(st)
-        console.log(current.getMinutes())
         if (current.getMinutes()<9) {
-            console.log("1")
          return (current.getHours()+":0"+current.getMinutes())
         }
         else return (current.getHours()+":"+current.getMinutes())
@@ -563,7 +561,6 @@ const RaceDetails = (props,ownProps)=>{
     };
 
     const poolTot=(props)=>{
-        console.log(props)
         return(
             <div className="page-section-pane">
             <div className="info-table">
@@ -605,7 +602,6 @@ const RaceDetails = (props,ownProps)=>{
     {"name":"Duet","url":"/RaceDetail/Duet"}]
     
     const placeBets=(props)=>{
-        console.log(props)
         return(
             <div className="bet-type-carousel">
                 <ul className="tbc-nav-tabular-list bet-type-carousel-list">
