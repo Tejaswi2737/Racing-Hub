@@ -1,8 +1,37 @@
-import React from 'react';
+import React,{useState} from 'react';
 import "./TodayDetails.css";
 import { Link} from "react-router-dom";
 
+
+import BetSlipStore from "../../context/BetSlipContext";
+
 const TodayRacingDetails=(props)=> {
+
+    // var contextType=BetSlipStore;
+    // const betSlipTemplateWin=contextType._currentValue.betSlipFormatWin;
+    // const betSlipTemplatePlace=contextType._currentValue.betSlipFormatPlace;
+    // const betSlipPlace={
+    //     "bet_fh": "tk_integ_",
+    //     "bet_pool_fh": "",
+    //     "stake_cents": 0,
+    //     "combinations":[
+    //     {
+    //     "place":1,
+    //     "runners":[]
+    //     }
+    //     ]
+    //   };
+    // const betSlipWin={
+    //     "bet_fh": "tk_integ_",
+    //     "bet_pool_fh": "",
+    //     "stake_cents": 0,
+    //     "combinations":[
+    //     {
+    //     "place":1,
+    //     "runners":[]
+    //     }
+    //     ]
+    //   };
     var counts = {};
     var places=[]
     var slots=[];
@@ -67,8 +96,24 @@ const TodayRacingDetails=(props)=> {
         }
         else return (current.getHours()+":"+current.getMinutes())
     }
+    // const betSlipFormat=(item)=>{
+    //     if (item.raceType=='R') {
+    //         var type='racing'
+    //     }
+    //     if (item.raceType=='G') {
+    //         var type='greyhound'
+    //     }
+    //     if (item.raceType=='H') {
+    //         var type='harness'
+    //     }
+    //     betSlipWin.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
+    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w';
+    //     betSlipPlace.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
+    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+    // };
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
+                // {betSlipFormat(item)}
                 num=num+1;
                 var show=false;
                 if (num===1) {
@@ -85,11 +130,20 @@ const TodayRacingDetails=(props)=> {
                     return(
                         <div className="table-item-row">
                             {slots[block].map(items=>{
+                                // {betSlipFormat(items)}
                                 return( 
-                                    <Link to={{pathname:"/RaceDetail" ,place:items.Location,slot:items.Race_Slot, place: items.Location}} className='table-rem-row'>
+                                    <Link to={{
+                                        pathname:"/RaceDetail", 
+                                        slot:items.raceNumber, 
+                                        place: items.meetingName,
+                                        bet_pool_fh_1:items.raceStartTime.slice(0,6)+'_'+
+                                        "racing_"+items.raceType+'_'+items.meetingName+'_'+items.location+'_'+items.raceNumber+'_'+'w',
+                                        bet_pool_fh_2:items.raceStartTime.slice(0,6)+'_'+
+                                        "racing_"+items.raceType+'_'+items.meetingName+'_'+items.location+'_'+items.raceNumber+'_'+'p'
+                                }} 
+                                    className='table-rem-row'>
                                         <div className='table-rem-row'
                                             id={items.Location}>
-                                            {console.log(Date.now()-new Date(items.Time))}
                                             <div 
                                             className={(items.Status!='Open')?'table-item':
                                             (Date.now()-new Date(items.Time)>-60000)?
@@ -111,7 +165,6 @@ const TodayRacingDetails=(props)=> {
                     )
                 }          
     }})))};
-    console.log(counts)
     const renderTodayRacingDetail=(()=>{
         return (   
             <div class="table">
@@ -125,7 +178,7 @@ const TodayRacingDetails=(props)=> {
                     })}
                 </div>
                 <div className="today-list">
-                    {racingSlots()} 
+                    {racingSlots()}
                 </div>
             </div>
          );

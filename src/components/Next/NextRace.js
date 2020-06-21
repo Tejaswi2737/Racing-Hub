@@ -4,6 +4,11 @@ import { Link} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import MediaQuery from 'react-responsive'
 
+
+
+import BetSlipStore from "../../context/BetSlipContext";
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -19,6 +24,31 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 const NextRace = (props)=>{
+    // var contextType=BetSlipStore;
+    // const betSlipWin=contextType._currentValue.betSlipFormatWin;
+    // const betSlipPlace=contextType._currentValue.betSlipFormatPlace;
+    // const betSlipPlace={
+    //     "bet_fh": "tk_integ_",
+    //     "bet_pool_fh": "",
+    //     "stake_cents": 0,
+    //     "combinations":[
+    //     {
+    //     "place":1,
+    //     "runners":[]
+    //     }
+    //     ]
+    //   };
+    // const betSlipWin={
+    //     "bet_fh": "tk_integ_",
+    //     "bet_pool_fh": "",
+    //     "stake_cents": 0,
+    //     "combinations":[
+    //     {
+    //     "place":1,
+    //     "runners":[]
+    //     }
+    //     ]
+    //   };
     const classes = useStyles();
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
@@ -50,7 +80,6 @@ const NextRace = (props)=>{
             {props.next[0].raceNumber?setfirstNumber(props.next[0].raceNumber):setfirstNumber()}
         }
     }, [props.next])
-    console.log(firstTime)
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
@@ -101,18 +130,42 @@ const NextRace = (props)=>{
         } 
     };
     
+    // const betSlipFormat=(item)=>{
+    //     if (item.raceType=='R') {
+    //         var type='racing'
+    //     }
+    //     if (item.raceType=='G') {
+    //         var type='greyhound'
+    //     }
+    //     if (item.raceType=='H') {
+    //         var type='harness'
+    //     }
+    //     betSlipWin.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
+    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w';
+    //     betSlipPlace.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
+    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+    // };
+    
     const renderTodayTableList=(state) =>{
         return (        
            (state.map(item => {
+                // {betSlipFormat(item)}
                 return(
-                    
                     <>
                         <MediaQuery query='(min-width: 100px)'>
                             <Grid item xs ={4} className="next-section">
                                 <Link className={classes.paper}  className={
                                     (item.raceStartTime==firstTime&&item.raceNumber==firstNumber)?
                             "next-item-first":"next-item"}
-                                    to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>                        
+                                    to={{
+                                        pathname:"/RaceDetail", 
+                                        slot:item.raceNumber, 
+                                        place: item.meetingName,
+                                        bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
+                                        "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w',
+                                        bet_pool_fh_2:item.raceStartTime.slice(0,6)+'_'+
+                                        "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+                                    }}>                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    
                                     <p>{item.meetingName} ({item.meetingCode})</p>

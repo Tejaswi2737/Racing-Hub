@@ -4,7 +4,35 @@ import { Link} from "react-router-dom";
 import { fetchNextRaceHome } from "../../actions";
 import "./NextListHome.css";
 
+
+import BetSlipStore from "../../context/BetSlipContext";
+
 const NextListHome = (props)=>{
+    // var contextType=BetSlipStore;
+    // const betSlipWin=contextType._currentValue.betSlipFormatWin;
+    // const betSlipPlace=contextType._currentValue.betSlipFormatPlace;
+    // const betSlipPlace={
+    //     "bet_fh": "tk_integ_",
+    //     "bet_pool_fh": "",
+    //     "stake_cents": 0,
+    //     "combinations":[
+    //     {
+    //     "place":1,
+    //     "runners":[]
+    //     }
+    //     ]
+    //   };
+    // const betSlipWin={
+    //     "bet_fh": "tk_integ_",
+    //     "bet_pool_fh": "",
+    //     "stake_cents": 0,
+    //     "combinations":[
+    //     {
+    //     "place":1,
+    //     "runners":[]
+    //     }
+    //     ]
+    //   };
     props.fetchNextRaceHome();
     const linksList=[{"name":"Next To Go",
                         "url":"/next-to-go"},
@@ -40,7 +68,22 @@ const NextListHome = (props)=>{
             </div>
         </nav>
         )
-    }
+    };
+    // const betSlipFormat=(item)=>{
+    //     if (item.raceType=='R') {
+    //         var type='racing'
+    //     }
+    //     if (item.raceType=='G') {
+    //         var type='greyhound'
+    //     }
+    //     if (item.raceType=='H') {
+    //         var type='harness'
+    //     }
+    //     betSlipWin.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
+    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w';
+    //     betSlipPlace.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
+    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+    // };
     const renderTodayHome=((props)=>{
         return (        
             <section className="horizontal-pane">
@@ -55,7 +98,15 @@ const NextListHome = (props)=>{
                                 <div>
                                 {props.nextHome.map(item => {
                                     return(
-                                        <Link to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}} className="next-item-list-home">                        
+                                        <Link to={{
+                                            pathname:"/RaceDetail", 
+                                            slot:item.raceNumber, 
+                                            place: item.meetingName,
+                                            bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
+                                            "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w',
+                                            bet_pool_fh_2:item.raceStartTime.slice(0,6)+'_'+
+                                            "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+                                        }} className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
                                             <p>{item.meetingName} ({item.location})</p>
                                             <div className="race-details-container">
@@ -81,7 +132,6 @@ const NextListHome = (props)=>{
         <main className="page-content">
             <div className="left-column">
                 <ui-view>
-
                     <nav-bar menu-items="menuItems">
                         {renderPagesHome(linksList)}
                     </nav-bar>

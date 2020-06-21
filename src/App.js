@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import { hot } from 'react-hot-loader/root';
 
+
+import {BetSlipStore } from "./context/BetSlipContext"
 import history from "./history";
 import NextScreen from './components/Screens/NextScreen';
 import TodayR from './components/Screens/TodayR';
@@ -26,20 +28,22 @@ function App() {
   return (
     <Router history={history}>
       <div>
-        <Switch>
-            <Route path="/" exact component={Home}/>
-            <Route path="/next-to-go" exact component={NextScreen}/>
-            <Route path="/Today/R" exact component={TodayR}/> 
-            <Route path="/Today/G" exact component={TodayG}/> 
-            <Route path="/Today/H" exact component={TodayH}/> 
-            <Route path="/RaceDetail" exact component={RaceDetailsPage}/>
-            <Route path="/RaceDetail/Win" exact component={RaceDetailsPageWin}/>
-            <Route path="/RaceDetail/Quinella" exact component={RaceDetailsPageWinQuinella}/>
-            <Route path="/RaceDetail/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>
-            <Route path="/RaceDetail/First4" exact component={RaceDetailsPageWinFirst4}/>
-            <Route path="/RaceDetail/Exacta" exact component={RaceDetailsPageWinExacta}/>
-            <Route path="/RaceDetail/Duet" exact component={RaceDetailsPageWinDuet}/>  
-        </Switch>
+        <BetSlipStore>
+          <Switch>
+              <Route path="/" exact component={Home}/>
+              <Route path="/next-to-go" exact component={NextScreen}/>
+              <Route path="/Today/R" exact component={TodayR}/> 
+              <Route path="/Today/G" exact component={TodayG}/> 
+              <Route path="/Today/H" exact component={TodayH}/> 
+              <Route path="/RaceDetail" exact component={RaceDetailsPage}/>
+              <Route path="/RaceDetail/Win" exact component={RaceDetailsPageWin}/>
+              <Route path="/RaceDetail/Quinella" exact component={RaceDetailsPageWinQuinella}/>
+              <Route path="/RaceDetail/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>
+              <Route path="/RaceDetail/First4" exact component={RaceDetailsPageWinFirst4}/>
+              <Route path="/RaceDetail/Exacta" exact component={RaceDetailsPageWinExacta}/>
+              <Route path="/RaceDetail/Duet" exact component={RaceDetailsPageWinDuet}/>  
+          </Switch>
+        </BetSlipStore>
       </div>
     </Router>
   );

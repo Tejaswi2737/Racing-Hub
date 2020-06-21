@@ -7,16 +7,12 @@ import { fetchMeetingDetails,
     fetchRaceDetails,
     fetchWinPlaceBet} from "../../actions";
 
-
-
 import BetSlipHome from '../BetSlip/BetSlipHome';
 
 import "./RaceDetails.css";
 
-
 const RaceDetails = (props,ownProps)=>{
-
-    const BetTemplate=props.fetchWinPlaceBet()
+    console.log(props.bet_pool_fh_1)
     props.fetchMeetingDetails();
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
@@ -660,17 +656,17 @@ const mapStateToProps=(state,ownProps)=> {
         slot:ownProps.slot,
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
-        winPlace:state.winPlaceBet,
         place:ownProps.place,
-        type:ownProps.type
+        type:ownProps.type,
+        bet_pool_fh_1:ownProps.bet_pool_fh_1,
+        bet_pool_fh_2:ownProps.bet_pool_fh_2
     }
 }
 export default connect(mapStateToProps, 
     { 
         fetchRaceDetails,
-        fetchMeetingDetails,
-        fetchWinPlaceBet
-    })
+        fetchMeetingDetails
+        })
     (RaceDetails);
 
 

@@ -11,6 +11,7 @@ import RaceDetails from '../RaceDetail/RaceDetails';
 import "./RaceDetails.css";
 
 const RaceDetailsPage=(props)=> {
+
     props.fetchNextRace();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
@@ -33,7 +34,10 @@ const RaceDetailsPage=(props)=> {
         <div>
             <Header/>
             <NextList next={props.next}/>
-            <RaceDetails slot={props.location.slot} place={props.location.place}  type=""/>
+            <RaceDetails slot={props.location.slot} place={props.location.place}  type=""
+            bet_pool_fh_1={props.location.bet_pool_fh_1}
+            bet_pool_fh_2={props.location.bet_pool_fh_2}
+            />
         </div>
     )
 };
