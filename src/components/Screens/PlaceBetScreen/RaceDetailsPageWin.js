@@ -1,5 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 
 import { fetchNextRace } from "../../../actions";
 
@@ -7,6 +8,7 @@ import { fetchNextRace } from "../../../actions";
 import Header from '../../Nav/Header';
 import NextList from '../../Next/NextList';
 import RaceDetails from '../../RaceDetail/RaceDetails';
+import RespHeader from '../../Nav/RespHeader';
 
 import "./RaceDetails.css";
 
@@ -31,9 +33,16 @@ const RaceDetailsPageWin=(props,ownProps)=> {
      },1000)
     return (
         <div>
-            <Header/>
-            <NextList next={props.next}/>
-            <RaceDetails slot={props.location.slot} place={props.location.place} type="Win"/>
+              <MediaQuery query='(min-width: 980px)'>
+                  <RespHeader/>
+                  <NextList next={props.next}/>
+                  <RaceDetails slot={props.location.slot} place={props.location.place} type="Win"/>
+                  </MediaQuery>
+              <MediaQuery query='(max-width: 980px)'>
+                  <Header/>
+                  <NextList next={props.next}/>
+                  <RaceDetails slot={props.location.slot} place={props.location.place} type="Win"/>
+              </MediaQuery>   
         </div>
     )
 };

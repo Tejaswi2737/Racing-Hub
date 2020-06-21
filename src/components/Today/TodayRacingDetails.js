@@ -96,24 +96,8 @@ const TodayRacingDetails=(props)=> {
         }
         else return (current.getHours()+":"+current.getMinutes())
     }
-    // const betSlipFormat=(item)=>{
-    //     if (item.raceType=='R') {
-    //         var type='racing'
-    //     }
-    //     if (item.raceType=='G') {
-    //         var type='greyhound'
-    //     }
-    //     if (item.raceType=='H') {
-    //         var type='harness'
-    //     }
-    //     betSlipWin.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
-    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w';
-    //     betSlipPlace.bet_pool_fh=item.raceStartTime.slice(0,6)+'_'+
-    //     "racing_"+type+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
-    // };
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
-                // {betSlipFormat(item)}
                 num=num+1;
                 var show=false;
                 if (num===1) {
@@ -130,15 +114,15 @@ const TodayRacingDetails=(props)=> {
                     return(
                         <div className="table-item-row">
                             {slots[block].map(items=>{
-                                // {betSlipFormat(items)}
+                                console.log(Date.now()-new Date(items.Time))
                                 return( 
                                     <Link to={{
                                         pathname:"/RaceDetail", 
                                         slot:items.raceNumber, 
                                         place: items.meetingName,
-                                        bet_pool_fh_1:items.raceStartTime.slice(0,6)+'_'+
+                                        bet_pool_fh_1:items.Time.slice(0,6)+'_'+
                                         "racing_"+items.raceType+'_'+items.meetingName+'_'+items.location+'_'+items.raceNumber+'_'+'w',
-                                        bet_pool_fh_2:items.raceStartTime.slice(0,6)+'_'+
+                                        bet_pool_fh_2:items.Time.slice(0,6)+'_'+
                                         "racing_"+items.raceType+'_'+items.meetingName+'_'+items.location+'_'+items.raceNumber+'_'+'p'
                                 }} 
                                     className='table-rem-row'>
@@ -146,7 +130,9 @@ const TodayRacingDetails=(props)=> {
                                             id={items.Location}>
                                             <div 
                                             className={(items.Status!='Open')?'table-item':
-                                            (Date.now()-new Date(items.Time)>-60000)?
+                                            (-(Date.now()-new Date(items.Time))<60000
+                                            &&
+                                            -(Date.now()-new Date(items.Time))>-60000)?
                                                 "table-item-open-color":
                                             'table-item-open'}>
                                                 <p className="table-item-slot">R{items.Race_Slot}</p>

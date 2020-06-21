@@ -1,0 +1,136 @@
+header {
+	background-color: #13100d;
+	color: rgb(255, 255, 255);
+	font-family: nexa_bold;
+	padding: 30px 30px;
+	position: relative;
+}
+header > Link,
+header > Link:hover,
+header > Link:focus {
+	text-decoration: none;
+}
+#site-heading,
+#site-logo-wrapper,
+#vollie-logo,
+#vollie-tagline,
+#header-menu {
+	display: inline-block;
+    vertical-align: middle;
+}
+@media (min-width:980px) {
+	#vollie-tagline {
+		color: #88cdd3;
+		margin-left: 10px;
+		font-size: 2rem;
+		text-transform: capitalize;
+		text-decoration: none;
+		padding-left:20px;
+	}	
+}
+
+@media (max-width:980px) {
+	#vollie-tagline {
+		color: #88cdd3;
+		margin-left: 10px;
+		font-size: 2rem;
+		text-transform: capitalize;
+		text-decoration: none;
+	}	
+}
+
+#vollie-logo {
+	width: 91px;
+}
+#vollie-logo img {
+	width: 100%;
+}
+#header-menu ul {
+	list-style: none;
+}
+#header-menu, .top-menu {
+	margin-top: 0;
+    margin-bottom: 0;
+}
+@media(min-width:980px) {
+	.top-menu {
+		padding-left: 45vw;
+	}
+}
+@media(min-width:1400px) {
+	.top-menu {
+		padding-left: 65vw;
+	}
+}
+.yump-magic-hover {
+	display: inline-block;
+}
+.menu-item-link {
+    padding: 8px 12px;
+    font-size: 0.938rem;
+    padding-left: 50vw;
+}
+
+
+
+.menu-item-link.active {
+	border: 2px solid #fff;
+}
+
+.menu-item-link-account.active {
+	border-color: #88cdd3;
+}
+#menu-toggle {
+	display: none;
+}
+
+
+.menu-item-link {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.menu-item-link:hover {
+    background-color: #13100d;
+}
+
+@media (max-width: 980px) {
+	#menu-toggle {
+		display: inline-block;
+		cursor: pointer;
+	}
+	#menu-toggle span {
+		display: block;
+	    width: 23px;
+	    background-color: #88cdd3;
+	    padding: 2px;
+	    margin-bottom: 3px;
+	}
+	#menu-toggle span:last-child {
+		margin-bottom: 0px;
+	}
+	header.flex {
+		display: block;
+	}
+	#site-heading {
+		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	#header-menu {
+		display: none;
+		padding-top: 15px;
+		border-top: 1px solid #88cdd3;
+    	margin-top: 15px;
+	}
+	.yump-magic-hover {
+		display: block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}

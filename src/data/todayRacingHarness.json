@@ -3,7 +3,7 @@
     "Location": "Gosford",
     "Location_Code": "(NSW)",
     "Race_Slot": 1,
-    "Time": "2020-06-20T01:43:00.000Z",
+    "Time": "2020-06-21T12:37:00.000Z",
     "Result": "1 8 7 5",
     "Status": "Closed"
   },
@@ -11,39 +11,39 @@
     "Location": "Gosford",
     "Location_Code": "(NSW)",
     "Race_Slot": 2,
-    "Time": "2020-06-20T01:47:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Gosford",
-    "Location_Code": "(NSW)",
-    "Race_Slot": 3,
-    "Time": "2020-06-20T01:50:00.000Z",
+    "Time": "2020-06-21T12:40:00.000Z",
     "Result": "1 2 4 5",
     "Status": "Closed"
   },
   {
     "Location": "Gosford",
     "Location_Code": "(NSW)",
-    "Race_Slot": 4,
-    "Time": "2020-06-20T01:52:00.000Z",
+    "Race_Slot": 3,
+    "Time": "2020-06-21T12:45:00.000Z",
     "Result": "8 6 5 1",
     "Status": "Closed"
   },
   {
     "Location": "Gosford",
     "Location_Code": "(NSW)",
-    "Race_Slot": 5,
-    "Time": "2020-06-20T01:55:00.000Z",
+    "Race_Slot": 4,
+    "Time": "2020-06-21T12:47:00.000Z",
     "Result": "2 4 3 1",
     "Status": "Closed"
   },
   {
     "Location": "Gosford",
     "Location_Code": "(NSW)",
+    "Race_Slot": 5,
+    "Time": "2020-06-21T12:55:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Gosford",
+    "Location_Code": "(NSW)",
     "Race_Slot": 6,
-    "Time": "2020-06-20T01:56:00.000Z",
+    "Time": "2020-06-21T12:57:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -51,7 +51,7 @@
     "Location": "Gosford",
     "Location_Code": "(NSW)",
     "Race_Slot": 7,
-    "Time": "2020-06-20T02:00:00.000Z",
+    "Time": "2020-06-21T13:00:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -59,63 +59,63 @@
     "Location": "Ballarat",
     "Location_Code": "(VIC)",
     "Race_Slot": 1,
-    "Time": "2020-06-20T02:03:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Ballarat",
-    "Location_Code": "(VIC)",
-    "Race_Slot": 2,
-    "Time": "2020-06-20T02:06:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Ballarat",
-    "Location_Code": "(VIC)",
-    "Race_Slot": 3,
-    "Time": "2020-06-20T02:07:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Ballarat",
-    "Location_Code": "(VIC)",
-    "Race_Slot": 4,
-    "Time": "2020-06-20T02:10:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Ballarat",
-    "Location_Code": "(VIC)",
-    "Race_Slot": 5,
-    "Time": "2020-06-20T02:14:00.000Z",
+    "Time": "2020-06-21T13:05:00.000Z",
     "Result": "7 3 2 8",
     "Status": "Closed"
   },
   {
     "Location": "Ballarat",
     "Location_Code": "(VIC)",
-    "Race_Slot": 6,
-    "Time": "2020-06-20T02:18:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Ballarat",
-    "Location_Code": "(VIC)",
-    "Race_Slot": 7,
-    "Time": "2020-06-20T02:20:00.000Z",
+    "Race_Slot": 2,
+    "Time": "2020-06-21T13:09:00.000Z",
     "Result": "10 1 6 8",
     "Status": "Closed"
   },
   {
     "Location": "Ballarat",
     "Location_Code": "(VIC)",
+    "Race_Slot": 3,
+    "Time": "2020-06-21T13:10:00.000Z",
+    "Result": "6 7 9 2+4",
+    "Status": "Closed"
+  },
+  {
+    "Location": "Ballarat",
+    "Location_Code": "(VIC)",
+    "Race_Slot": 4,
+    "Time": "2020-06-21T13:15:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Ballarat",
+    "Location_Code": "(VIC)",
+    "Race_Slot": 5,
+    "Time": "2020-06-21T13:15:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Ballarat",
+    "Location_Code": "(VIC)",
+    "Race_Slot": 6,
+    "Time": "2020-06-21T13:19:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Ballarat",
+    "Location_Code": "(VIC)",
+    "Race_Slot": 7,
+    "Time": "2020-06-21T13:20:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Ballarat",
+    "Location_Code": "(VIC)",
     "Race_Slot": 8,
-    "Time": "2020-06-20T02:22:00.000Z",
+    "Time": "2020-06-21T13:25:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -123,127 +123,127 @@
     "Location": "Cairns",
     "Location_Code": "(QLD)",
     "Race_Slot": 1,
-    "Time": "2020-06-20T02:25:00.000Z",
-    "Result": "6 7 9 2+4",
-    "Status": "Closed"
-  },
-  {
-    "Location": "Cairns",
-    "Location_Code": "(QLD)",
-    "Race_Slot": 2,
-    "Time": "2020-06-20T02:27:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Cairns",
-    "Location_Code": "(QLD)",
-    "Race_Slot": 3,
-    "Time": "2020-06-20T02:30:00.000Z",
+    "Time": "2020-06-21T13:29:00.000Z",
     "Result": "5 1 4 3",
     "Status": "Closed"
   },
   {
     "Location": "Cairns",
     "Location_Code": "(QLD)",
-    "Race_Slot": 4,
-    "Time": "2020-06-20T02:30:00.000Z",
+    "Race_Slot": 2,
+    "Time": "2020-06-21T13:30:00.000Z",
     "Result": "4 7 3 5",
     "Status": "Closed"
   },
   {
     "Location": "Cairns",
     "Location_Code": "(QLD)",
-    "Race_Slot": 5,
-    "Time": "2020-06-20T02:34:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Cairns",
-    "Location_Code": "(QLD)",
-    "Race_Slot": 6,
-    "Time": "2020-06-20T02:37:00.000Z",
+    "Race_Slot": 3,
+    "Time": "2020-06-21T13:35:00.000Z",
     "Result": "4 6 9 1",
     "Status": "Closed"
   },
   {
     "Location": "Cairns",
     "Location_Code": "(QLD)",
-    "Race_Slot": 7,
-    "Time": "2020-06-20T02:45:00.000Z",
+    "Race_Slot": 4,
+    "Time": "2020-06-21T13:39:00.000Z",
     "Result": "6 5 11 8",
     "Status": "Closed"
   },
   {
     "Location": "Cairns",
     "Location_Code": "(QLD)",
-    "Race_Slot": 8,
-    "Time": "2020-06-20T02:55:00.000Z",
+    "Race_Slot": 5,
+    "Time": "2020-06-21T13:40:00.000Z",
     "Result": "4 1 12 11",
     "Status": "Closed"
   },
   {
-    "Location": "Belmont",
-    "Location_Code": "(WA)",
-    "Race_Slot": 1,
-    "Time": "2020-06-20T03:00:00.000Z",
+    "Location": "Cairns",
+    "Location_Code": "(QLD)",
+    "Race_Slot": 6,
+    "Time": "2020-06-21T13:49:00.000Z",
     "Result": "6 2 11 5",
     "Status": "Closed"
   },
   {
-    "Location": "Belmont",
-    "Location_Code": "(WA)",
-    "Race_Slot": 2,
-    "Time": "2020-06-20T03:05:00.000Z",
+    "Location": "Cairns",
+    "Location_Code": "(QLD)",
+    "Race_Slot": 7,
+    "Time": "2020-06-21T13:50:00.000Z",
     "Result": "4 2 9 1",
     "Status": "Closed"
   },
   {
-    "Location": "Belmont",
-    "Location_Code": "(WA)",
-    "Race_Slot": 3,
-    "Time": "2020-06-20T03:10:00.000Z",
+    "Location": "Cairns",
+    "Location_Code": "(QLD)",
+    "Race_Slot": 8,
+    "Time": "2020-06-21T14:01:00.000Z",
     "Result": "",
     "Status": "Open"
   },
   {
     "Location": "Belmont",
     "Location_Code": "(WA)",
-    "Race_Slot": 4,
-    "Time": "2020-06-20T03:12:00.000Z",
+    "Race_Slot": 1,
+    "Time": "2020-06-21T14:25:00.000Z",
     "Result": "11 13 12 9",
     "Status": "Closed"
   },
   {
     "Location": "Belmont",
     "Location_Code": "(WA)",
-    "Race_Slot": 5,
-    "Time": "2020-06-20T03:30:00.000Z",
+    "Race_Slot": 2,
+    "Time": "2020-06-21T14:42:00.000Z",
     "Result": "5 3 9 4",
     "Status": "Closed"
   },
   {
     "Location": "Belmont",
     "Location_Code": "(WA)",
-    "Race_Slot": 6,
-    "Time": "2020-06-20T03:33:00.000Z",
+    "Race_Slot": 3,
+    "Time": "2020-06-21T15:00:00.000Z",
     "Result": "8 5 6 2",
     "Status": "Closed"
   },
   {
     "Location": "Belmont",
     "Location_Code": "(WA)",
-    "Race_Slot": 7,
-    "Time": "2020-06-20T03:40:00.000Z",
+    "Race_Slot": 4,
+    "Time": "2020-06-21T15:35:00.000Z",
     "Result": "11 12 14 9",
     "Status": "Closed"
   },
   {
     "Location": "Belmont",
     "Location_Code": "(WA)",
+    "Race_Slot": 5,
+    "Time": "2020-06-21T15:50:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Belmont",
+    "Location_Code": "(WA)",
+    "Race_Slot": 6,
+    "Time": "2020-06-21T16:10:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Belmont",
+    "Location_Code": "(WA)",
+    "Race_Slot": 7,
+    "Time": "2020-06-21T16:20:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Belmont",
+    "Location_Code": "(WA)",
     "Race_Slot": 8,
-    "Time": "2020-06-20T03:47:00.000Z",
+    "Time": "2020-06-21T16:25:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -251,31 +251,31 @@
     "Location": "Bathurst",
     "Location_Code": "(NSW)",
     "Race_Slot": 1,
-    "Time": "2020-06-20T03:50:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Bathurst",
-    "Location_Code": "(NSW)",
-    "Race_Slot": 2,
-    "Time": "2020-06-20T04:00:00.000Z",
+    "Time": "2020-06-21T16:42:00.000Z",
     "Result": "6 4 5 3",
     "Status": "Closed"
   },
   {
     "Location": "Bathurst",
     "Location_Code": "(NSW)",
-    "Race_Slot": 3,
-    "Time": "2020-06-20T04:10:00.000Z",
+    "Race_Slot": 2,
+    "Time": "2020-06-21T17:02:00.000Z",
     "Result": "2 7 4 5",
     "Status": "Closed"
   },
   {
     "Location": "Bathurst",
     "Location_Code": "(NSW)",
+    "Race_Slot": 3,
+    "Time": "2020-06-21T12:37:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Bathurst",
+    "Location_Code": "(NSW)",
     "Race_Slot": 4,
-    "Time": "2020-06-20T04:15:00.000Z",
+    "Time": "2020-06-21T12:40:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -283,7 +283,7 @@
     "Location": "Bathurst",
     "Location_Code": "(NSW)",
     "Race_Slot": 5,
-    "Time": "2020-06-20T04:15:00.000Z",
+    "Time": "2020-06-21T12:45:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -291,47 +291,47 @@
     "Location": "Bathurst",
     "Location_Code": "(NSW)",
     "Race_Slot": 6,
-    "Time": "2020-06-20T01:43:00.000Z",
-    "Result": "3 9 1 12",
-    "Status": "Closed"
+    "Time": "2020-06-21T12:47:00.000Z",
+    "Result": "",
+    "Status": "Open"
   },
   {
     "Location": "Bathurst",
     "Location_Code": "(NSW)",
     "Race_Slot": 7,
-    "Time": "2020-06-20T01:47:00.000Z",
-    "Result": "2 13 10 3",
-    "Status": "Closed"
-  },
-  {
-    "Location": "Clairefontaine",
-    "Location_Code": "(FRA)",
-    "Race_Slot": 1,
-    "Time": "2020-06-20T01:50:00.000Z",
-    "Result": "1 3 2 6",
-    "Status": "Closed"
-  },
-  {
-    "Location": "Clairefontaine",
-    "Location_Code": "(FRA)",
-    "Race_Slot": 2,
-    "Time": "2020-06-20T01:52:00.000Z",
+    "Time": "2020-06-21T12:55:00.000Z",
     "Result": "",
     "Status": "Open"
   },
   {
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
+    "Race_Slot": 1,
+    "Time": "2020-06-21T12:57:00.000Z",
+    "Result": "3 9 1 12",
+    "Status": "Closed"
+  },
+  {
+    "Location": "Clairefontaine",
+    "Location_Code": "(FRA)",
+    "Race_Slot": 2,
+    "Time": "2020-06-21T13:00:00.000Z",
+    "Result": "2 13 10 3",
+    "Status": "Closed"
+  },
+  {
+    "Location": "Clairefontaine",
+    "Location_Code": "(FRA)",
     "Race_Slot": 3,
-    "Time": "2020-06-20T01:55:00.000Z",
-    "Result": "5 2 3 4",
+    "Time": "2020-06-21T13:05:00.000Z",
+    "Result": "1 3 2 6",
     "Status": "Closed"
   },
   {
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
     "Race_Slot": 4,
-    "Time": "2020-06-20T01:56:00.000Z",
+    "Time": "2020-06-21T13:09:00.000Z",
     "Result": "1 3 6 10",
     "Status": "Closed"
   },
@@ -339,7 +339,7 @@
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
     "Race_Slot": 5,
-    "Time": "2020-06-20T02:00:00.000Z",
+    "Time": "2020-06-21T13:10:00.000Z",
     "Result": "6 3 2 4",
     "Status": "Closed"
   },
@@ -347,7 +347,7 @@
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
     "Race_Slot": 6,
-    "Time": "2020-06-20T02:03:00.000Z",
+    "Time": "2020-06-21T13:15:00.000Z",
     "Result": "2 10 13 5",
     "Status": "Closed"
   },
@@ -355,7 +355,7 @@
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
     "Race_Slot": 7,
-    "Time": "2020-06-20T02:06:00.000Z",
+    "Time": "2020-06-21T13:15:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -363,39 +363,39 @@
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
     "Race_Slot": 8,
-    "Time": "2020-06-20T02:07:00.000Z",
-    "Result": "2 4 12 10",
-    "Status": "Closed"
+    "Time": "2020-06-21T13:19:00.000Z",
+    "Result": "",
+    "Status": "Open"
   },
   {
     "Location": "Clairefontaine",
     "Location_Code": "(FRA)",
     "Race_Slot": 9,
-    "Time": "2020-06-20T02:10:00.000Z",
+    "Time": "2020-06-21T13:20:00.000Z",
+    "Result": "",
+    "Status": "Open"
+  },
+  {
+    "Location": "Fonner Park",
+    "Location_Code": "(USA)",
+    "Race_Slot": 4,
+    "Time": "2020-06-21T13:25:00.000Z",
+    "Result": "2 4 12 10",
+    "Status": "Closed"
+  },
+  {
+    "Location": "Fonner Park",
+    "Location_Code": "(USA)",
+    "Race_Slot": 5,
+    "Time": "2020-06-21T13:29:00.000Z",
     "Result": "5 3 8 1",
     "Status": "Closed"
   },
   {
     "Location": "Fonner Park",
     "Location_Code": "(USA)",
-    "Race_Slot": 4,
-    "Time": "2020-06-20T02:14:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Fonner Park",
-    "Location_Code": "(USA)",
-    "Race_Slot": 5,
-    "Time": "2020-06-20T02:18:00.000Z",
-    "Result": "",
-    "Status": "Open"
-  },
-  {
-    "Location": "Fonner Park",
-    "Location_Code": "(USA)",
     "Race_Slot": 6,
-    "Time": "2020-06-20T02:20:00.000Z",
+    "Time": "2020-06-21T13:30:00.000Z",
     "Result": "",
     "Status": "Open"
   },
@@ -403,63 +403,63 @@
     "Location": "Fonner Park",
     "Location_Code": "(USA)",
     "Race_Slot": 7,
-    "Time": "2020-06-20T02:22:00.000Z",
-    "Result": "5 8 10",
-    "Status": "Closed"
+    "Time": "2020-06-21T13:35:00.000Z",
+    "Result": "",
+    "Status": "Open"
   },
   {
     "Location": "Fonner Park",
     "Location_Code": "(USA)",
     "Race_Slot": 8,
-    "Time": "2020-06-20T02:25:00.000Z",
-    "Result": "5 1 7",
-    "Status": "Closed"
+    "Time": "2020-06-21T13:39:00.000Z",
+    "Result": "",
+    "Status": "Open"
   },
   {
     "Location": "Fonner Park",
     "Location_Code": "(USA)",
     "Race_Slot": 9,
-    "Time": "2020-06-20T02:27:00.000Z",
-    "Result": "6 8 9",
-    "Status": "Closed"
+    "Time": "2020-06-21T13:40:00.000Z",
+    "Result": "",
+    "Status": "Open"
   },
   {
     "Location": "Lyon Parilly",
     "Location_Code": "(FRA)",
     "Race_Slot": 1,
-    "Time": "2020-06-20T02:30:00.000Z",
-    "Result": "7 9 4 1",
+    "Time": "2020-06-21T13:49:00.000Z",
+    "Result": "5 8 10",
     "Status": "Closed"
   },
   {
     "Location": "Lyon Parilly",
     "Location_Code": "(FRA)",
     "Race_Slot": 2,
-    "Time": "2020-06-20T02:30:00.000Z",
-    "Result": "",
-    "Status": "Open"
+    "Time": "2020-06-21T13:50:00.000Z",
+    "Result": "5 1 7",
+    "Status": "Closed"
   },
   {
     "Location": "Lyon Parilly",
     "Location_Code": "(FRA)",
     "Race_Slot": 3,
-    "Time": "2020-06-20T02:34:00.000Z",
-    "Result": "",
-    "Status": "Open"
+    "Time": "2020-06-21T14:01:00.000Z",
+    "Result": "6 8 9",
+    "Status": "Closed"
   },
   {
     "Location": "Lyon Parilly",
     "Location_Code": "(FRA)",
     "Race_Slot": 4,
-    "Time": "2020-06-20T02:37:00.000Z",
-    "Result": "",
-    "Status": "Open"
+    "Time": "2020-06-21T14:25:00.000Z",
+    "Result": "7 9 4 1",
+    "Status": "Closed"
   },
   {
     "Location": "Lyon Parilly",
     "Location_Code": "(FRA)",
     "Race_Slot": 5,
-    "Time": "2020-06-20T02:45:00.000Z",
+    "Time": "2020-06-21T14:42:00.000Z",
     "Result": "",
     "Status": "Open"
   }

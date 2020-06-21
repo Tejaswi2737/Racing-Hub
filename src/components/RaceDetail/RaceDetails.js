@@ -476,51 +476,47 @@ const RaceDetails = (props,ownProps)=>{
         )
     };
 
-    const raceSlots=(props)=>{
-        return(                        
-        <div className="meeting-race-selector">
-            <div className="meeting-info">
-                <button className="meeting-info-meeting-selector">
-                    <div className="meeting-info-description" >
-                        Place
-                    </div>
-                </button>
-                <div className="meeting-info-race-selector-wrapper">
-                    <div className="meeting-info-race-selector">     
-                        {items_list?items_list.map(item=>{
-                            return(
-                                <div onClick={()=>{setplace_slot(item.raceNumber)
-                                setplace(item.Location)}}>
-                                    <a className=
-                                    {item.raceStatus=="Paying"?
-                                    "meeting-info-race meeting-info-race-selected meeting-info-race-closed":
-                                    "meeting-info-race meeting-info-race-selected meeting-info-race-open"}>
-                                            R{item.raceNumber}  
-                                            <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
-                                                {item.raceStatus=="Paying"?item.results:item.raceStartTime} 
-                                            </span>
-                                    </a>
-                                </div>
-
-                        )}):""}
-                    </div>
-                </div>
-                <div className="meeting-info-meeting-conditions">
-                    <div className="meeting-info-track-condition">
-                        {props.racingDetail.trackCondition}   
-                    </div>
-                    <div className="meeting-info-weather-condition">
-                        <div className="meeting-info-weather-condition-description">
-                            {props.racingDetail.weatherCondition}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        )
-    };
 
     const raceName=(props)=>{
+        const raceSlots=(props)=>{
+            return(                        
+            <div className="meeting-race-selector">
+                <div className="meeting-info">
+                    <div className="meeting-info-race-selector-wrapper">
+                        <div className="meeting-info-race-selector">     
+                            {items_list?items_list.map(item=>{
+                                return(
+                                    <div onClick={()=>{setplace_slot(item.raceNumber)
+                                    setplace(item.Location)}}>
+                                        <a className=
+                                        {item.raceStatus=="Paying"?
+                                        "meeting-info-race  meeting-info-race-closed":
+                                        "meeting-info-race  meeting-info-race-open"}>
+                                                R{item.raceNumber}  
+                                                <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
+                                                    {item.raceStatus=="Paying"?item.results:item.raceStartTime} 
+                                                </span>
+                                        </a>
+                                    </div>
+    
+                            )}):""}
+                        </div>
+                    </div>
+                    {/* <div className="meeting-info-meeting-conditions">
+                        <div className="meeting-info-track-condition">
+                            {props.racingDetail.trackCondition}   
+                        </div>
+                        <div className="meeting-info-weather-condition">
+                            <div className="meeting-info-weather-condition-description">
+                                {props.racingDetail.weatherCondition}
+                            </div>
+                        </div>
+                    </div> */}
+                </div>
+            </div>
+            )
+        };
+    
         return(
             <div className="pane">
                 <div className="race-header-container">
@@ -550,7 +546,8 @@ const RaceDetails = (props,ownProps)=>{
                                 </ul>
                             </div>
                         </div>
-                    </header>
+                        {raceSlots(props)}
+                    </header>    
                 </div>
             </div>
         )
@@ -618,6 +615,7 @@ const RaceDetails = (props,ownProps)=>{
                         )
                     })}
                 </ul>
+                
             </div>
         )
     };
@@ -626,8 +624,9 @@ const RaceDetails = (props,ownProps)=>{
             <div className="left-column">
                 <ui-view>
                     <div>
-                        {raceSlots(props)}
                         {raceName(props)}
+                        
+                        
                         <div className="page-section pane">
                         </div>
                         <div className="page-section pane">

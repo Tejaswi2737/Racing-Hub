@@ -8,6 +8,7 @@ import Header from '../Nav/Header'
 import TodayDetails from '../Today/TodayDetails'
 import NextList from '../Next/NextList'
 import BetSlipHome from '../BetSlip/BetSlipHome';
+import RespHeader from '../Nav/RespHeader';
 
 const TodayR=(props)=> {
     props.fetchNextRace();
@@ -32,7 +33,7 @@ const TodayR=(props)=> {
         <>
           <MediaQuery query='(min-width: 800px)'>
             <ui-view>
-                <Header/>
+                <RespHeader/>
                 <NextList next={props.next}/>
                 <main className="page-content">
                     <div className="left-column">

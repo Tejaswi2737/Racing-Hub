@@ -8,7 +8,8 @@ import Header from '../Nav/Header';
 import NextRace from '../Next/NextRace';
 import NextList from '../Next/NextList';
 import BetSlipHome from '../BetSlip/BetSlipHome';
-
+import RespHeader from '../Nav/RespHeader';
+import "../Next/NextRace.css"
 const NextScreen=(props) =>{
     props.fetchNextRace();
 
@@ -36,13 +37,12 @@ const NextScreen=(props) =>{
             <>
                 <MediaQuery query='(min-width: 800px)'>
                     <ui-view>
-                        <Header/>
+                        <RespHeader/>
                         <NextList next={props.next}/>
                         <main className="page-content">
                             <div className="left-column">
                                 <ui-view>
                                     <nav className="menuItems">
-                                    
                                         <NextRace next={props.next}/>
                                     </nav>
                                 </ui-view>
@@ -53,8 +53,11 @@ const NextScreen=(props) =>{
                 </MediaQuery>
                 <MediaQuery query='(max-width: 800px)'>
                     <Header/>
-                    <NextList next={props.next}/>
-                    <NextRace next={props.next}/>
+                    <main className="page-items">
+                        <NextList next={props.next}/>
+                        <NextRace next={props.next}/>
+                    </main>
+
                 </MediaQuery>
             </>
     )

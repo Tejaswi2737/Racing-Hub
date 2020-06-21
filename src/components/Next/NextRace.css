@@ -1,59 +1,16 @@
 .page-items  {
-    max-width: 100vw;
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.item-title {
-    border: 1px solid black;
-    padding:0 20px;
-    margin:20px;
-    width:25%;
-    font-weight: 600;
-    font-family: 'Open Sans',sans-serif;
-    line-height: 50px;
-    background-color: transparent;
-}
-.next-item {
-    border: 4px solid rgb(51, 51, 51,0.1);
-    padding:0 20px;
-    margin:0px 40px;
-    font-weight: 600;
-    font-family: 'Open Sans';
-    line-height: 30px;
-    text-overflow: clip;
-    white-space:nowrap;
-}
-.next-item-first {
-    border: 4px solid rgb(51, 51, 51,0.1);
-    padding:0 20px;
-    margin:0px 40px;
-    font-weight: 600;
-    font-family: 'Open Sans';
-    line-height: 30px;
-    text-overflow: clip;
-    white-space:nowrap;
-    background-color: #f25824;
-    color: white;
-}
-
-.next-section {
-    display: grid;
-    grid: repeat(3) !important;
-}
-
-.next-item-list{
-    border: 1px solid rgb(51, 51, 51,0.1);
-    background-color: white;
-    padding: 10px;
-    text-overflow: ellipsis;
-    white-space:nowrap;
+.next-data{
+    margin-bottom: 40px;
 }
 .next-to-go-bar-race-list {
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
     overflow-x: auto;
-    -ms-overflow-style: none;
 }
 .next-to-go-bar-race {
     height: 100%;
@@ -65,34 +22,55 @@
 .next-to-go-bar-race-link {
     align-items: center;
     display: flex;
-    min-width: 260px;
-    width: 260px;
+    min-width: 300px;
+    width: auto;
+    box-shadow: 0 4px 40px 0 rgba(20,90,0,0.3);
+    line-height: 50px;
+    height: 5vh;
+    padding:5px;
 }
-.next-to-go-bar-race-info, .next-to-go-bar-sport-info {
+@media(max-width:500px) {
+    .next-to-go-bar-race-link{
+        min-width: 85vw;
+        min-height: 50px;
+    }
+})
+.next-to-go-bar-race-link:hover {
+    opacity: 0.8;
+    background-color: black;
+} 
+.next-to-go-bar-race-info {
     font-size: 21px;
     line-height: 40px;
     color: #333333;
     padding-left: 10px;
+    font-weight: 500;
 }
+
 .next-to-go-bar-race-info {
     display: flex;
     flex-wrap: nowrap;
     flex-grow: 1;
-    overflow: hidden;
     align-items: center;
+    text-decoration: none;
 }
-.next-to-go-bar-race-info, .next-to-go-bar-race-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-}
-.next-to-go-bar-race-name, .next-to-go-bar-sport-name {
-    font-size: 12px;
+.next-to-go-bar-race-name {
+    font-size: 14px;
     line-height: 20px;
     padding-left: 10px;
     text-transform: capitalize;
+    font-weight: 1000;
+    text-overflow: clip;
+    width: auto;
+    white-space: nowrap;
+    text-decoration: none;
+    text-transform: none;
 }
+
+.next-to-go-bar-race-name:hover {
+    color: white;
+}
+
 .next-to-go-bar-time-to-start {
     background-color: rgba(255, 187, 51, 0.2);
     color: #ffbb33;
@@ -114,18 +92,74 @@
 .next-to-go-bar-time-to-start {
     white-space: nowrap;
 }
-.next-item-list p {
+
+a {
+    text-decoration: none;
+}
+
+
+/* Next Race Start */
+
+
+.next-data h1 {
+    font-size: 30px;
     font-weight: 1000;
     font-family: 'sans-serif';
-    color:black;
-    width:40%;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-    line-height: 3px;
+    line-height: 20px;
+    padding: 20px;
+} 
+
+
+.next-section {
+    display: grid;
+    margin-right: 20px;
 }
+
+.next-item {
+    border: 4px solid rgb(51, 51, 51,0.1);
+    border-radius: 30px;
+    padding:0 20px;
+    margin:0px 40px;
+    font-weight: 600;
+    font-family: 'Open Sans';
+    line-height: 30px;
+    text-overflow: clip;
+    white-space:nowrap;
+    min-width: 20vw;
+}
+@media (max-width:600px) {
+    .next-item{
+    min-width: 38vw;
+    margin-right: 10px;
+}
+}
+.next-item-first {
+    border: 4px solid rgb(48, 80, 51,0.1);
+    border-radius: 30px;
+    padding:0 20px;
+    margin:0px 40px;
+    font-weight: 600;
+    font-family: 'Open Sans';
+    line-height: 30px;
+    text-overflow: clip;
+    white-space:nowrap;
+    background-color: #f25824;
+    color: white;
+    min-width: 20vw;
+}
+@media (max-width:600px) {
+    .next-item-first{
+    min-width: 38vw;
+    margin-right: 10px;
+}
+}
+
 .next-item p {
     white-space:pre-wrap;
 }
+
+
+
 .next-item time {
     font-weight: 600;
     color: #f25824;
@@ -135,263 +169,13 @@
     border: 4px solid green;
 }
 * {
-    max-width: 100%;
+    max-width: 100vw;
 }
 a {
     text-decoration: none;
     color: black;
 }
-.next-data h1 {
-    font-size: 30px;
-    font-weight: 1000;
-    font-family: 'sans-serif';
-    line-height: 20px;
-    padding: 20px;
-}
 
 
 
-/* 
-.page-items  {
-    max-width: 100vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.item-title {
-    border: 1px solid black;
-    padding:0 20px;
-    margin:20px;
-    width:25%;
-    font-weight: 600;
-    font-family: 'Open Sans',sans-serif;
-    line-height: 50px;
-    background-color: transparent;
-}
-.next-item {
-    border: 4px solid rgb(51, 51, 51,0.1);
-    padding:0 20px;
-    margin:0px 40px;
-    font-weight: 600;
-    font-family: 'Open Sans';
-    line-height: 30px;
-    text-overflow: clip;
-    white-space:nowrap;
-}
-.next-item-first {
-    border: 4px solid rgb(51, 51, 51,0.1);
-    padding:0 20px;
-    margin:0px 40px;
-    font-weight: 600;
-    font-family: 'Open Sans';
-    line-height: 30px;
-    text-overflow: clip;
-    white-space:nowrap;
-    background-color: #f25824;
-    color: white;
-}
 
-.next-section {
-    display: grid;
-    grid: repeat(3) !important;
-}
-
-.next-item-list{
-    border: 1px solid rgb(51, 51, 51,0.1);
-    background-color: white;
-    padding: 10px;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-}
-.next-to-go-bar-race-list {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-}
-.next-to-go-bar-race {
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-}
-.next-to-go-bar-race-link {
-    align-items: center;
-    display: flex;
-    min-width: 260px;
-    width: 260px;
-}
-.next-to-go-bar-race-info, .next-to-go-bar-sport-info {
-    font-size: 21px;
-    line-height: 40px;
-    color: #333333;
-    padding-left: 10px;
-}
-.next-to-go-bar-race-info {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-    overflow: hidden;
-    align-items: center;
-}
-.next-to-go-bar-race-info, .next-to-go-bar-race-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-}
-.next-to-go-bar-race-name, .next-to-go-bar-sport-name {
-    font-size: 12px;
-    line-height: 20px;
-    padding-left: 10px;
-    text-transform: capitalize;
-}
-.next-to-go-bar-time-to-start {
-    background-color: rgba(255, 187, 51, 0.2);
-    color: #ffbb33;
-    width: auto;
-    padding: 0px;
-}
-.next-to-go-bar-race-close-to-start {
-    background-color: rgba(58, 152, 44, 0.2);
-    color: #3a982c;
-    width: auto;
-    padding: 0px;
-}
-
-
-
-.next-to-go-bar-time-to-start, .next-to-go-bar-race-close-to-start {
-    font-size: 12px;
-    line-height: 20px;
-    border-radius: 3px;
-    padding-right: 10px;
-}
-.next-to-go-bar-time-to-start {
-    white-space: nowrap;
-}
-.next-item-list p {
-    font-weight: 1000;
-    font-family: 'sans-serif';
-    color:black;
-    width:40%;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-    line-height: 3px;
-}
-.next-item p {
-    white-space:pre-wrap;
-    text-decoration: none;
-};
-
-.next-item time {
-        font-weight: 600;
-        color: #f25824;
-};
-
-.next-item:hover {
-    border: 4px solid green;
-};
-
-* {
-    max-width: 100%;
-};
-
-Link {
-    text-decoration: none;
-    color: black;
-};
-
-.next-data h1 {
-    font-size: 30px;
-    font-weight: 1000;
-    font-family: 'sans-serif';
-    line-height: 20px;
-    padding: 20px;
-}; */
-/* *{
-    text-decoration: none;
-} */
-/* 
-.navigation-group {
-    padding: 0 20px 20px;
-}
-
-*, *:after, *:before {
-    box-sizing: border-box;
-}
-.navigation-group  .navigation-section {
-    margin-top: 10px;
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
-    display: block;
-}
-.navigation-group ,.navigation-section-heading {
-    font-weight: 600;
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    font-size: 17px;
-    line-height: 40px;
-    color: #333;
-}
-.navigation-group, .navigation-section-title {
-    margin-left: 10px;
-}
-.navigation-group, .navigation-entries {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-}
-.next-to-go-section, .navigation-entries .next-to-go-race {
-    -webkit-flex-basis: 30%;
-    -ms-flex-preferred-size: 30%;
-    flex-basis: 30%;
-}
-.next-to-go-section, .navigation-entry .next-to-jump {
-    background-color: #f25824;
-    border: 2px solid #f25824;
-    color: white;
-}
-.next-to-go-section, .next-to-go-race {
-    padding: 0;
-}
-.navigation-group, .navigation-entry {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 20px;
-    position: relative;
-    -webkit-flex-basis: 32%;
-    -ms-flex-preferred-size: 32%;
-    flex-basis: 32%;
-    display: inline-block;
-    padding: 10px;
-    border: 3px solid #e6e6e6;
-    color: #333;
-    margin-top: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-} */

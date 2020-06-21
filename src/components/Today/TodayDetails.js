@@ -64,7 +64,7 @@ const TodayDetails = (props,ownProps)=>{
                         </div>
                     </div>
                 </div>
-                <div className="today-racing-table">
+                <div>
                     {racingInfo(props.todayRacing)}
                 </div>
             </div>

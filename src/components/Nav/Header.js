@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Header.css";
+import "./Resp_Header.css"
 import { Link} from "react-router-dom";
 import MenuView from "./Menu";
 const Header=() =>{
@@ -15,8 +16,9 @@ const Header=() =>{
                                 </i>
                                 <span className="hamburger-title">
                                     <Link to="/">
-                                        <div className="menu" 
-                                        value="menu">Menu</div>
+                                        <div id="vollie-tagline">
+                                            Racing, Hub
+                                        </div>
                                     </Link>
                                     
                                 </span>

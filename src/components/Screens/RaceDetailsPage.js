@@ -1,5 +1,7 @@
 import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
+
 
 import { fetchNextRace } from "../../actions";
 
@@ -9,6 +11,7 @@ import NextList from '../Next/NextList';
 import RaceDetails from '../RaceDetail/RaceDetails';
 
 import "./RaceDetails.css";
+import RespHeader from '../Nav/RespHeader';
 
 const RaceDetailsPage=(props)=> {
 
@@ -32,12 +35,24 @@ const RaceDetailsPage=(props)=> {
      },1000)
     return (
         <div>
-            <Header/>
-            <NextList next={props.next}/>
-            <RaceDetails slot={props.location.slot} place={props.location.place}  type=""
-            bet_pool_fh_1={props.location.bet_pool_fh_1}
-            bet_pool_fh_2={props.location.bet_pool_fh_2}
-            />
+
+              <MediaQuery query='(min-width: 980px)'>
+                  <RespHeader/>
+                  <NextList next={props.next}/>
+                  <RaceDetails slot={props.location.slot} place={props.location.place}  type=""
+                  bet_pool_fh_1={props.location.bet_pool_fh_1}
+                  bet_pool_fh_2={props.location.bet_pool_fh_2}
+                  />
+              </MediaQuery>
+              <MediaQuery query='(max-width: 980px)'>
+                  <Header/>
+                  <NextList next={props.next}/>
+                  <RaceDetails slot={props.location.slot} place={props.location.place}  type=""
+                  bet_pool_fh_1={props.location.bet_pool_fh_1}
+                  bet_pool_fh_2={props.location.bet_pool_fh_2}
+                  />
+              </MediaQuery>     
+
         </div>
     )
 };

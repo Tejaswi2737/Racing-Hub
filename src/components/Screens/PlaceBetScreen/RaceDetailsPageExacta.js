@@ -1,5 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 
 import { fetchNextRace } from "../../../actions";
 
@@ -9,6 +10,7 @@ import NextList from '../../Next/NextList';
 import RaceDetails from '../../RaceDetail/RaceDetails';
 
 import "./RaceDetails.css";
+import RespHeader from '../../Nav/RespHeader';
 
 const RaceDetailsPageExacta=(props,ownProps)=> {
     props.fetchNextRace();
@@ -31,9 +33,16 @@ const RaceDetailsPageExacta=(props,ownProps)=> {
      },1000)
     return (
         <div>
-            <Header/>
-            <NextList next={props.next}/>
-            <RaceDetails slot={props.location.slot} place={props.location.place} type="Exacta"/>
+              <MediaQuery query='(min-width: 980px)'>
+                  <RespHeader/>
+                  <NextList next={props.next}/>
+                  <RaceDetails slot={props.location.slot} place={props.location.place} type="Exacta"/>
+                  </MediaQuery>
+              <MediaQuery query='(max-width: 980px)'>
+                  <Header/>
+                  <NextList next={props.next}/>
+                  <RaceDetails slot={props.location.slot} place={props.location.place} type="Exacta"/>
+              </MediaQuery>    
         </div>
     )
 };
