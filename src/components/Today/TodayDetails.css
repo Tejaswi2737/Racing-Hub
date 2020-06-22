@@ -14,13 +14,13 @@
 
 .date-bar {
     color: white;
-    background-color: #04a1d5;
+    background-color: #c0e4e8;
     line-height: 50px;
     font-weight: 1000;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px transparent;
-    /* width: 25vw; */
+    border: 1px solid black;
+    width: 25vw;
     text-align: center;
     font-size: 1.3rem;
     border-radius: 20px;
@@ -33,7 +33,7 @@
     font-size: 1.1rem;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 5px solid #88a8d3;
+    border: 1px solid black;
     /* border-top-right-radius: 80px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 80px; */
@@ -51,7 +51,7 @@
     }
 }
 .category-button:hover {
-    background-color: #88a8d3;
+    background-color: #c0e4e8;
     color: black;
     opacity: 0.7;
 }
@@ -115,9 +115,10 @@
     color: rgb(115, 115, 115) !important;
     height: 85px !important;
     padding: 10px 13px !important;
-    background: rgb(150, 200, 100,0.4) !important;
-    border: 3px solid #88a8d3 !important;
+    background: #c0e4e8;
+    border: 1px solid black !important;
     border-top-right-radius: 30px;
+    
     margin: 0px;
 }
 .table-item-open {
@@ -128,8 +129,9 @@
     color: white!important;
 }
 .table-item:hover,.table-item-open:hover,.table-item-open-color:hover {
-    background: black !important;
+    background: #c0e4e8 !important;
     color: white;
+    
 }
 
 

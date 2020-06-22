@@ -221,7 +221,8 @@ const BetSlipHome=(props) =>{
                                     <div className="bet-card-footer-actions">
                                         <button className="bet-card-remove">
                                             <i onClick={()=>{deleteSingleBet(item)
-                                                        setdeleted(true)}}
+                                                        setdeleted(true)
+                                                        setshowCurrency(false)}}
                                             className="icon-remove" style={{height:'5rem'}}>
                                                 <RiDeleteBin6Line/>
                                             </i>

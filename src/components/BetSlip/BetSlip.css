@@ -17,7 +17,7 @@
     background: #f2f2f2;
     position: fixed;
     bottom: 0;
-    top: 100px;
+    top: 20vh;
     transition: opacity .1s linear;
     opacity: 0;
 }
@@ -39,7 +39,7 @@
     flex: 1;
 }
 .toggle-button:not([disabled]).selected {
-    background: #3a982c;
+    background: #88cdd3;
     border: 0;
     color: white;
     text-decoration: none;
@@ -51,8 +51,8 @@
     border-top-left-radius: .3em;
 }
 .toggle-button-grouped button {
-    border-radius: 0;
-    border: 1px solid #3a982c;
+    /* border-radius: 0;
+    border: 1px solid #3a982c; */
     justify-content: center;
     align-items: center;
     width: 50%;
@@ -67,6 +67,7 @@ button {
 
 .toggle-button{
     color: white;
+    background-color: black;
 }
 
 
@@ -87,6 +88,9 @@ button {
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
     display: block;
+}
+.side-panel-title-bar{
+    background-color: transparent;
 }
 .bet-card .bet-card-header {
     align-items: center;
@@ -461,8 +465,8 @@ ol, ul {
     flex-grow: initial;
 }
 .bet-builder, .bet-builder-footer .bet-builder-button {
-    background: #3a982c;
-    border: 1px solid #318125;
+    background: #88cdd3;
+    border: 1px solid black;
     flex-grow: 1;
     line-height: 40px;
 }

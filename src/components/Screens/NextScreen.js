@@ -57,7 +57,6 @@ const NextScreen=(props) =>{
                         <NextList next={props.next}/>
                         <NextRace next={props.next}/>
                     </main>
-
                 </MediaQuery>
             </>
     )

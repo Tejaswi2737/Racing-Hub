@@ -64,7 +64,7 @@
 a:hover{
     opacity: 0.4;
     scale: 1.2;
-    background-color: green;
+    background-color: #88cdd3;
     color: white;
 }
 
@@ -81,7 +81,7 @@ a:hover{
         line-height: 45px;
         padding: 0 20px;
         color: white;
-        background-color: #04a1d5;
+        background-color: #88cdd3;
         border-top: 1px solid #e6e6e6;
         border-radius: 30px;
         text-align: center;
@@ -101,7 +101,7 @@ a:hover{
         line-height: 45px;
         padding: 0 20px;
         color: white;
-        background-color: #04a1d5;
+        background-color: #88cdd3;
         border-top: 1px solid #e6e6e6;
         border-radius: 30px;
         text-align: center;
@@ -113,7 +113,7 @@ a:hover{
 .page-heading:hover {
     opacity: 0.4;
     scale: 1.2;
-    background-color: green;
+    background-color: #88cdd3;
     color: white;
 }
 .page-section-heading {

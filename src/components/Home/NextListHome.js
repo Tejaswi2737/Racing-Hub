@@ -99,8 +99,8 @@ const NextListHome = (props)=>{
         <main className="page-content">
             <div className="left-column">
                 <ui-view>
-                    <img src={HomeImage} className="main-image">
-                    </img>
+                    {/* <img src={HomeImage} className="main-image">
+                    </img> */}
                     <div>
                         <div className="page-heading">
                             Ready To Take Off

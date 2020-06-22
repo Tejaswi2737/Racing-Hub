@@ -9,9 +9,9 @@
 main {
     display: block;
 }
-.page-content .left-column {
+.page-content, .left-column {
     overflow: hidden;
-    padding: 0 20px;
+    margin-top: 20px;
 }
 
 

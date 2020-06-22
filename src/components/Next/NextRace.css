@@ -1,7 +1,8 @@
-.page-items  {
+.page-content  {
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: ;
 }
 .next-data{
     margin-bottom: 40px;
@@ -37,9 +38,12 @@
     }
 })
 .next-to-go-bar-race-link:hover {
-    opacity: 0.8;
-    background-color: black;
+    opacity: 1;
+    background-color: #c0e4e8 !important;
+    color: black;
+
 } 
+
 .next-to-go-bar-race-info {
     font-size: 21px;
     line-height: 40px;
@@ -68,9 +72,6 @@
     text-transform: none;
 }
 
-.next-to-go-bar-race-name:hover {
-    color: white;
-}
 
 .next-to-go-bar-time-to-start {
     background-color: rgba(255, 187, 51, 0.2);
@@ -166,8 +167,10 @@ a {
     color: #f25824;
 }
 
-.next-item:hover {
-    border: 4px solid green;
+.next-item:hover, .next-item time:hover {
+    border: 1px solid black;
+    background-color: #c0e4e8;
+    opacity: 1;
 }
 * {
     max-width: 100vw;

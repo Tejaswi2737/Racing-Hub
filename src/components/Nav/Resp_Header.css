@@ -10,6 +10,7 @@ header > Link:hover,
 header > Link:focus {
 	text-decoration: none;
 }
+
 #site-heading,
 #site-logo-wrapper,
 #vollie-logo,
@@ -57,11 +58,14 @@ header > Link:focus {
 		padding-left: 45vw;
 	}
 }
-@media(min-width:1400px) {
+.vollie-tagline:hover {
+	background-color: black;
+}
+/* @media(min-width:1400px) {
 	.top-menu {
 		padding-left: 65vw;
 	}
-}
+} */
 .yump-magic-hover {
 	display: inline-block;
 }

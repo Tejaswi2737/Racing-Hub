@@ -649,9 +649,12 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                         <div className="page-section pane">  
                             <div className="race-results-wrapper">
+                                
                                 <section className={props.racingDetail.raceStatus=="Open"?
                                 "runners-section":"results-section"}>
                                     {props.racingDetail.raceStatus=="Open"?placeBets():""}
+                                    <div className="page-section-break">
+                                    </div>
                                     {props.racingDetail.raceStatus=="Paying"?resultsTable(props):""}
                                     {props.racingDetail.raceStatus=="Paying"?exoticTable(props):""}
                                     {runnerInfo(props)}
