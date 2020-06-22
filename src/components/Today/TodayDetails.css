@@ -13,12 +13,18 @@
 }
 
 .date-bar {
-    background-color: #88a8d3;
+    color: white;
+    background-color: #04a1d5;
     line-height: 50px;
     font-weight: 1000;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 1px transparent;
+    /* width: 25vw; */
+    text-align: center;
+    font-size: 1.3rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0 rgba(28, 141, 141, 0.4);
 }
 
 .category-button {
@@ -27,8 +33,12 @@
     font-size: 1.1rem;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid #88a8d3;
-    border-style: dotted;
+    border: 5px solid #88a8d3;
+    /* border-top-right-radius: 80px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 80px; */
+    border-radius: 20px;
+    border-style: solid;
     border-spacing: 1px;
     text-transform: capitalize;
     text-decoration: none;
@@ -37,11 +47,13 @@
 }
 @media (max-width:500px) {
     .category-button {
-        margin-left:5vw
+        margin-left:3vw
     }
 }
-.category-button:active {
+.category-button:hover {
     background-color: #88a8d3;
+    color: black;
+    opacity: 0.7;
 }
 .button-bar {
     background-color: transparent;

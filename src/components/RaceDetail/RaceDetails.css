@@ -73,6 +73,7 @@
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border: 1px solid black;
+    font-weight: 1000;
 }
 .meeting-info-race-open {
     color: #333333;
@@ -81,7 +82,7 @@
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
     border: 1px solid black;
-
+    font-weight: 1000;
 }
 
 .meeting-info-race-results {
@@ -90,6 +91,7 @@
     line-height: 20px;
     line-height: 20px;
     white-space: pre-wrap;
+    font-weight: 1000;
     letter-spacing: 2px;
 }
 .meeting-info-race-results:hover {
@@ -128,8 +130,14 @@
     display: flex;
     padding: 20px 15px;
 }
+@media (max-width:600px) {
+    .race-header-info{
+        margin-left: 0px;
+        padding-top: 30px;
+    }
+}
 .race-heading {
-    font-weight: 600;
+    font-weight: 1000;
     display: inline-block;
     font-size: 17px;
     text-align: center;
@@ -146,6 +154,7 @@
     border-top-right-radius: 5px;
     height: 33px;
     color: black;
+    margin-top: 20px;
 }
 .race-header-race-time-not-open {
     color: black;
@@ -163,12 +172,14 @@
 .race-name {
     font-size: 21px;
     line-height: 40px;
-    font-weight: 600;
+    font-weight: 1000;
+    margin-top: 10px;
 }
 .race-metadata-list {
     font-size: 1 rem;
     line-height: 20px;
     color: #333;
+    margin-top: 10px;
 }
 .status-text {
     font-weight: 600;
@@ -177,49 +188,109 @@
 .race-metadata-list li {
     display: inline-block;
     margin-right: 15px;
+    font-weight: 600;
+    border: none;
+    overflow-x: auto;
+}
+@media (max-width:600px) {
+    .race-metadata-list{
+        margin-left: -70px;
+    }
 }
 
 
-.race-table {
-    margin-top: 10px;
-    table-layout: auto;
-    width: 100%;
+
+
+
+
+/* Results page ----- Tote Results and exotic results*/
+.results-section {
+    margin-top: 30px;
 }
+
+.all-tables {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.race-table, .race-table-results{
+    min-width: 90% !important;
+
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
 .race-table th {
-    font-size: 10px;
-    line-height: 20px;
-    background-color: #f7f6f6;
+    font-size: 1rem;
+    background-color: #04a1d5;
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
-    color: #272727;
-    padding: 0 10px;
+    color: white;
+    font-weight: 700;
+    padding: 10px 10px;
+    text-align: center;
 }
-.result-position {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 20px;
-    width: 40px;
+.race-table-results th {
+    font-size: 1rem;
+    background-color: #04a1d5;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-weight: 700;
 }
-.race-table td {
-    border-bottom: 1px solid #e6e6e6;
+.race-table td,.race-table-results td {
+    border-right: 1px dashed #04a1d5;
+    border-top: 1px dashed #04a1d5;;
+    padding: 5px 10px;
+    min-height: 70px;
+    text-align: center;
+}
+.race-table td:last-child,.race-table-results td:last-child {
+    border-right: none;
     padding: 5px 10px;
 }
+
+.runner-details{
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.result-position {
+    font-weight: 1000;
+    font-size: 1.2rem;
+    width: 10%;
+}
+.result-number{
+    font-weight: 1000;
+    font-size: 1.2rem;
+    width: 10%;
+    color: orangered;
+}
+
 .runner-metadata-list {
-    color: #737373;
-    display: block;
+    color: black;
+    display: inline-block;
     font-size: 10px;
     line-height: 11px;
-    margin-right: 3px;
+    white-space: pre-wrap;
+    text-overflow: clip;
 }
-.runner-metadata-list dt, .runner-metadata-list dd {
-    margin: -3px;
-    margin-bottom: 0;
-    padding: 3px;
-    padding-bottom: 0;
+
+.full-name{
+    color: orangered;
 }
-.race-table .right {
-    text-align: right;
+
+td {
+    line-height: 40px;
+    padding: 0 5px;
 }
+
+
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
     margin: 0;
     padding: 0;
@@ -228,13 +299,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 100%;
     vertical-align: baseline;
 }
-*, *:after, *:before {
-    box-sizing: border-box;
-}
-td {
-    line-height: 20px;
-    padding: 0 5px;
-}
+
 caption, th, td {
     text-align: left;
     font-weight: normal;
@@ -244,24 +309,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-.runner-metadata-list {
-    color: #737373;
-    display: block;
-    font-size: 10px;
-    line-height: 11px;
-    margin-right: 3px;
-}
-.runner-metadata-list dt+dd {
-    margin-left: 3px;
-    padding-left: 0;
-}
 
-.runner-metadata-list dt, .runner-metadata-list dd {
-    margin: -3px;
-    margin-bottom: 0;
-    padding: 3px;
-    padding-bottom: 0;
-}
+
+
 .runner-metadata-list dd {
     display: inline-block;
 }
@@ -269,133 +319,138 @@ table {
     font-weight: 600;
     display: inline-block;
 }
-.result-section .result-odds-header, .result-section .result-fixed-odds, .result-section .result-tote-odds, .result-section .result-dividends {
-    width: 120px;
-}
-.race-table .right {
+
+
+
+
+
+/* Runner Info */
+
+
+
+
+
+/* Info table Header */
+
+
+.labels-wrapper {
     text-align: right;
 }
-.result-section .result-win, .result-section .result-place, .result-section .result-pool-odds {
-    font-weight: 600;
+.race-runners-wrapper{
+    margin-top: 30px;
 }
-.race-table {
-    margin-top: 10px;
-    table-layout: auto;
-    width: 100%;
+/* .pseudo-header {
+    background-color: #04a1d5;
+} */
+.pseudo-table{
+    margin-top: 30px;
+    overflow-x: auto;
+    margin: auto;
+    min-width: 100% !important;
 }
 
-.result-header pool-header th {
-    font-size: 10px;
-    line-height: 20px;
-    background-color: #f7f6f6;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    color: #272727;
-    padding: 0 10px;
-}
+
 .odds-label {
-    font-size: 10px;
-    line-height: 20px;
-    color: #737373;
+    color: white;
+    font-size: 1.2rem;
     display: inline-block;
-    margin-right: 15px;
-    text-align: center;
     text-transform: uppercase;
-    width: 120px;
+    font-weight: 1000;
+    height: 60px;
+
 }
-.race-runners-wrapper .pseudo-header {
-    border-top: 1px solid #e6e6e6;
+.runner-info-row {
+    display: flex;
+    background-color: transparent;
 }
-.race-runners-wrapper.results {
-    margin-top: 10px;
+
+.name-cell, .number-cell , .price-cell {
+    display: inline-flex;
+    flex-direction: row;
+    font-weight: 1000;
+    border: 1px solid black;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    left: auto;
+    width: 7.2vw !important;
+    text-align: center;
+    padding: 20px;
 }
-.race-runners-wrapper  .labels-wrapper {
-    text-align: right;
+
+.name-cell,.price-cell,.number-cell {
+    background-color: #04a1d5;
+    border: 1px solid white;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
-.race-runners-wrapper .pseudo-header .row {
-    border: 0;
-    margin-top: 0;
+.name-cell{
+    min-width: 15vw;
 }
-.race-runners-wrapper .row {
-    display: table;
-    position: relative;
-    table-layout: fixed;
-    width: 100%;
-    min-height: 45px;
+@media (max-width:500px) {
+    .name-cell, .number-cell , .price-cell {
+        min-width: 20vw;
+    }
+    .name-cell{
+        min-width: 50vw;
+    }
 }
-.pseudo-table{
-    overflow-x: scroll;
+
+
+
+/* Info table Body */
+
+.name-cell-body, .number-cell-body , .price-cell-body {
+    display: inline-flex;
+    flex-direction: row;
+    font-weight: 1000;
+    border-right: 1px dashed black;
+    color:black;
+    font-size: 1.2rem;
+    text-align: center;
+    left: auto;
+    width: auto;
+    width: 7.2vw !important;
+    text-align: center;
+    padding: 10px;
+    line-height: 40px;
+    height: 70px !important;
 }
+.number-cell-body {
+    border-radius: 30px;
+
+}
+.race-runners-wrapper .runner-name-wrapper {
+    font-size: 14px;
+    line-height: 18px;
+}
+.race-runners-wrapper .runner-name-wrapper .runner-name {
+    font-weight: 600;
+    display: table-cell;
+}
+
+.name-cell-body{
+    min-width: 15vw;
+    white-space: normal;
+
+}
+@media (max-width:500px) {
+    .name-cell-body, .number-cell-body , .price-cell-body {
+        min-width: 20vw;
+    }
+    .name-cell-body{
+        min-width: 50vw;
+        
+    }
+}
+
 .pseudo-body{
-    /* overflow: hidden; */
     text-overflow: ellipsis;
     white-space: nowrap;
     min-width: auto;
     text-overflow: clip;
 }
-.name-cell{
-    min-width: 200px !important;
-    display: inline-block;
-}
-.race-runners-wrapper .pseudo-header .number-cell {
-    background-color: white;
-    padding-left: 3px;
-}
-.race-runners-wrapper .pseudo-header, .cell.active, .race-runners-wrapper, .pseudo-header, .cell, .active {
-    color: #737373;
-    white-space: nowrap;
-}
-.race-runners-wrapper .pseudo-header .cell {
-    font-size: 12px;
-    line-height: 20px;
-    font-weight: 400;
-    color: #737373;
-    padding-bottom: 0;
-    vertical-align: baseline;
-    min-width: 40vw !important;
-}
-.race-runners-wrapper .cell {
-    font-size: 14px;
-    line-height: 20px;
-    display: table-cell;
-    padding: 10px;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-.race-runners-wrapper .pseudo-body {
-    border-bottom: 1px solid #e6e6e6;
-}
-.race-runners-wrapper .pseudo-body .row {
-    border-top: 1px solid #e6e6e6;
-    cursor: default;
-}
-.race-runners-wrapper .number-cell {
-    background: #333;
-    color: white;
-    padding-left: 0;
-    padding-right: 0;
-    text-align: center;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 30px;
-}
-.race-runners-wrapper .runner-name-metadata-wrapper {
-    display: block;
-    line-height: 15px;
-    width: auto;
-}
-.race-runners-wrapper .runner-name-wrapper {
-    font-size: 14px;
-    line-height: 18px;
-    white-space: normal;
-}
-.race-runners-wrapper .runner-name-wrapper .runner-name {
-    font-weight: 600;
-    display: table-cell;
-    vertical-align: middle;
-}
+
 .runner-metadata-list {
     color: #737373;
     display: block;
@@ -403,74 +458,91 @@ table {
     line-height: 11px;
     margin-right: 3px;
 }
-.runner-metadata-list dt, .runner-metadata-list dd {
-    margin: -3px;
-    margin-bottom: 0;
-    padding: 3px;
-    padding-bottom: 0;
+
+
+
+
+
+
+
+
+
+/* Bet Type button bar  */
+
+
+
+.bet-type-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 }
-.runner-metadata-list dt+dd {
-    margin-left: 3px;
-    padding-left: 0;
+
+.bet-type-carousel-list {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: start;
 }
-.runner-metadata-list dt {
-    font-weight: 600;
-    display: inline-block;
+.tbc-nav-tabular-list {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    list-style-type: none;
 }
-.race-runners-wrapper .price-cell.hidden {
-    display: table-cell !important;
+
+@media (max-width: 1200px){
+.tbc-nav-tabular-list .tbc-nav-tabular-list-item.active {
+    transition: none;
 }
-.race-runners-wrapper .price-cell.closed {
-    color: #737373;
 }
-.race-runners-wrapper .price-cell {
-    font-weight: 600;
-    border-left: 1px solid #e6e6e6;
-    color: #3a982c;
-    padding: 0;
+.tbc-nav-tabular-item-link {
+    padding: 20px 25px;
+    line-height: 1;
+}
+.tbc-nav-tabular-item-link {
+    color: black;
+    border-right: 1px solid grey;
+    flex-shrink: 0;
     position: relative;
-    text-align: center;
-    width: 70px;
-    left: auto;
-}
-.animate-change {
-    height: 20px;
-    position: relative;
-    width: 100%;
-}
-.animate-odd {
-    height: 20px;
-    position: absolute;
-    width: 100%;
-}
-.race-runners-wrapper .price-cell.closed {
-    color: #737373;
-}
-.race-runners-wrapper .price-cell:last-child {
-    border-right: 0;
-}
-.race-runners-wrapper .cell {
-    font-size: 14px;
+    font-size: 1.2rem;
+    font-family: sans-serif;
     line-height: 20px;
-    display: table-cell;
-    padding: 10px;
-    vertical-align: middle;
-    white-space: pre-wrap;
-    
+    font-weight: 600;
+    height: 100%;
 }
-.race-runners-wrapper .price-cell .return-value {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: inline-flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    position: relative;
+.tbc-nav-tabular-list-item:active {
+    background-color: #008542;
+    color: white;
+    transition: background-color 0s ease-in-out;
+}
+.tbc-nav-tabular-list-item:hover {
+    background-color: grey;
+    color: white;
+    transition: background-color 0s ease-in-out;
+}
+
+.tbc-nav-tabular-list .tbc-nav-tabular-list-item {
+    align-items: center;
+    color: black;
+    display: flex;
+}
+.bet-type-carousel-description {
+    flex-basis: 100%;
 }
 
 
+
+
+
+
+/* Pool Totals */
+
+.info-table {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 
 .tabbed-sections .tabs-nav {
     font-size: 20;
@@ -479,11 +551,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
 }
 .tabbed-sections .tabs-nav a:hover, .tabbed-sections .tabs-nav a.active {
-    background: #008542;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background: #04a1d5;
     color: white;
 }
 .tabbed-sections .tabs-nav a {
-    font-size: 14px;
+    font-size: 1.3rem;
     line-height: 20px;
     font-weight: 400;
     -webkit-transition: all .35s cubic-bezier(0.37,0.99,0.74,1);
@@ -507,18 +581,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     font-size: 0;
     width: 100%;
 }
-ol, ul {
-    list-style: none;
-}
-@media (max-width: 1200px){
-.pools-section, .pools-list li {
-    width: 50%;
-}}
+
 .pools-section .pools-list li {
     font-size: 14px;
     line-height: 20px;
     display: inline-block;
-    padding-right: 20px;
+    padding: 20px;
     vertical-align: top;
 }
 .pools-section .pools-list li, .amount-span {
@@ -530,96 +598,9 @@ ol, ul {
     min-height: 120px;
     border: 2px solid #008542;
     background: white;
-}
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 
-
-
-
-
-.bet-type-carousel {
-    justify-content: flex-start;
-    height: 40px;
 }
-.bet-type-carousel {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-.bet-type-carousel .bet-type-carousel-list {
-    align-items: center;
-    height: 100%;
-    width: 80%;
-}
-.bet-type-carousel-list {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -ms-overflow-style: none;
-    justify-content: start;
-}
-.tbc-nav-tabular-list {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 400;
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    list-style-type: none;
-}
-ol, ul {
-    list-style: none;
-}
-.bet-type-carousel .bet-type-carousel-list .bet-type-carousel-item {
-    font-size: 14px;
-    line-height: 20px;
-    font-weight: 600;
-    height: 100%;
-    border-right: 1px solid #e6e6e6;
-    min-width: 84px;
-    overflow: hidden;
-}
-@media (max-width: 1200px){
-.tbc-nav-tabular-list .tbc-nav-tabular-list-item.active {
-    transition: none;
-}
-}
-.bet-type-carousel, .bet-type-carousel-list, .bet-type-carousel-item ,.tbc-nav-tabular-item-link {
-    padding: 13px 15px;
-    line-height: 1;
-}
-.tbc-nav-tabular-item-link {
-    color: black;
-    border-right: 1px solid #e6e6e6;
-    flex-shrink: 0;
-    position: relative;
-    font-size: 14px;
-    font-family: sans-serif;
-    line-height: 20px;
-    font-weight: 600;
-    height: 100%;
-}
-.tbc-nav-tabular-list-item:active {
-    background-color: #008542;
-    color: white;
-    transition: background-color 0s ease-in-out;
-}
-/* .tbc-nav-tabular-list-item:hover {
-    background-color: grey;
-    color: white;
-    transition: background-color 0s ease-in-out;
-} */
-
-.tbc-nav-tabular-list .tbc-nav-tabular-list-item {
-    align-items: center;
-    color: black;
-    display: flex;
-}
-.bet-type-carousel-description {
-    flex-basis: 100%;
-}
-
-
 
 

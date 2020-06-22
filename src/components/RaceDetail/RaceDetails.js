@@ -2,6 +2,9 @@ import React,{useEffect,useState,useRef} from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import MediaQuery from 'react-responsive';
+import _ from 'lodash';
+import { Table } from 'semantic-ui-react';
+
 
 import { fetchMeetingDetails,
     fetchRaceDetails,
@@ -12,6 +15,7 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
+
     console.log(props.bet_pool_fh_1)
     props.fetchMeetingDetails();
     if (parseInt(props.slot)){
@@ -38,6 +42,13 @@ const RaceDetails = (props,ownProps)=>{
     {races_list?races_list.map(item=>{
          items_list=item;
     }): items_list=[]};
+
+  
+
+
+
+
+
 
 
     const [showLoading, setShowLoading] = useState(false)
@@ -121,16 +132,19 @@ const RaceDetails = (props,ownProps)=>{
 
     const resultsTable=(props)=>{
         return(
-            <table className="race-table pane">
-            <thead className="result-header runner-header resulted">
-                <tr className="result-header runner-header resulted">
-                    <th className="details-header">
+            <table className="race-table-results pane">
+            <thead>
+                <tr>
+                    <th >
                         Results
                     </th>
-                    <th className="">
-                        Runner
+                    <th >
+                        Number
                     </th>
-                    <th className="right result-odds-header">
+                    <th >
+                        Runner Details
+                    </th>
+                    <th>
                         Tote
                     </th>
                 </tr>
@@ -138,18 +152,21 @@ const RaceDetails = (props,ownProps)=>{
             <tbody className="">
                 {props.racingDetail.results.map(item=>{  
                     return(
-                        <tr className="result-item">
+                        <tr>
                             <td className="result-position">
                                 {item.place}
                             </td>
+                            <td className="result-number">
+                                {item.runnerNumber} 
+                            </td>
                         <td className="runner-details">
-                            {item.runnerNumber} {item.runnerName}
+                            {item.runnerName}
                             <dl className="runner-metadata-list">
                                 <dt>
                                     D
                                 </dt>
                                 <dd className="full-name">
-                                    {item.riderDriverName}
+                                    {item.riderDriverName+" "}
                                 </dd>
                                 <dt>
                                     T
@@ -159,12 +176,12 @@ const RaceDetails = (props,ownProps)=>{
                                 </dd>
                             </dl>
                         </td>
-                        <td className="right result-tote-odds">
-                            <div className="result-odds-details">
-                                <div className="result-win">
+                        <td >
+                            <div>
+                                <div>
                                     {item.toteWin}
                                 </div>
-                                <div className="result-place">
+                                <div >
                                     {item.totePlace}
                                 </div>
                             </div>
@@ -179,15 +196,15 @@ const RaceDetails = (props,ownProps)=>{
     const exoticTable=(props)=>{
         return(
             <table className="race-table pane">
-            <thead className="">
-                <tr className="result-header pool-header">
-                    <th className="details-header">
+            <thead >
+                <tr>
+                    <th>
                         Exotic Results
                     </th>
-                    <th className="result-combo-header">
+                    <th >
                         Results
                     </th>
-                    <th className="result-odds-header right">
+                    <th >
                         Dividend
                     </th>
                 </tr>
@@ -196,22 +213,22 @@ const RaceDetails = (props,ownProps)=>{
                 {props.racingDetail.exoticResults.map(exotic_item=>
                     {
                         return(
-                            <tr className="result-item thin">
+                            <tr >
                             <td>
                                 {exotic_item.wageringProduct}
                             </td>
-                            <td className="result-results">
-                                <div className="result-odds-details">
-                                    <div className="result-pool-name result-pool-selections">
+                            <td >
+                                <div >
+                                    <div>
                                         <span>
                                             {exotic_item.Results}        
                                         </span>
                                     </div>
                                 </div>
                             </td>
-                            <td className="right result-dividends">
-                                <div className="result-odds-details">
-                                    <div className="result-pool-odds">
+                            <td >
+                                <div >
+                                    <div >
                                         <span>
                                             {exotic_item.Dividend}        
                                         </span>
@@ -227,73 +244,78 @@ const RaceDetails = (props,ownProps)=>{
     };
 
 
+    const sortRunnerInforTable=(props)=> {
+
+    }
+
+
+
+
     const runnerInfoheader=(props)=>{
         return(
-            <div className="pseudo-header">
-            <div className="labels-wrapper">
-                <span className="odds-label double">
-                    TOTE
-                </span>
-            </div>
-            <div className="row">
-                <div className="cell number-cell active">
+            // <div className="pseudo-header">
+            // {/* <div className="labels-wrapper">
+            //     <span className="odds-label">
+            //         TOTE
+            //     </span>
+            // </div> */}
+            <div className="runner-info-row">
+                <div className="number-cell">
                     No
                 </div>
-                <div className="cell name-cell">
+                <div className="name-cell">
                     Runner
                 </div>
-                <div className="cell price-cell hidden">
-                    
-                </div>
-                <div className="cell price-cell hidden">
+
+                <div className="price-cell">
                     Win
                 </div>
-                <div className="cell price-cell hidden">
+                <div className="price-cell">
                     Place
                 </div>
                 {(props.type=="Quinella"||props.type=="Duet")?
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             1st Box
                         </div>
                     :(props.type=="Trifecta")?
                     <>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             1st Box
                         </div>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             2nd
                         </div>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             3rd
                         </div>
                     </>
                     :(props.type=="First4")?
                     <>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             1st Box
                         </div>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             2nd
                         </div>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             3rd
                         </div>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             4th
                         </div>
                     </>:(props.type=="Exacta")?
                     <>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             1st Box
                         </div>
-                        <div className="cell price-cell hidden">
+                        <div className="price-cell">
                             2nd
                         </div>         
                     </> :""              
                 }
 
             </div>
-        </div>
+        // </div>
         )
     };
 
@@ -302,12 +324,12 @@ const RaceDetails = (props,ownProps)=>{
             <div className="pseudo-body">
             {props.racingDetail.runners?props.racingDetail.runners.map(runner_item=>{
                 return(
-                    <div className="row">
-                    <div className="cell number-cell">
+                    <div className="row-runner">
+                    <div className="number-cell-body">
                         {runner_item.runnerNumber}
                     </div>
-                    <div className="cell name-cell">
-                        <div className="runner-name-metadata-wrapper">
+                    <div className="name-cell-body">
+                        <div >
                             <div className="runner-name-wrapper">
                                 <div className="runner-name">
                                     {runner_item.runnerName}
@@ -330,28 +352,26 @@ const RaceDetails = (props,ownProps)=>{
                             </div>
                         </div>
                     </div>
-                    <div className="cell price-cell win-cell animate-field-653 wrappable unselectable closed">
-                        
-                    </div>
-                    <div className="cell price-cell win-cell animate-field-653 wrappable unselectable closed">
-                        <div className="animate-change">
-                            <div className="animate-odd">
+
+                    <div className="price-cell-body">
+                        <div >
+                            <div >
                                 ${runner_item.returnWin}
                             </div>
                         </div>
                     </div>
-                    <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                        <div className="animate-change">
-                            <div className="animate-odd">
+                    <div className="price-cell-body">
+                        <div>
+                            <div>
                                 ${runner_item.returnPlace}
                             </div>
                         </div>
                     </div>
 
                     {(props.type=="Quinella"||props.type=="Duet")?
-                        <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                            <div className="animate-change">
-                                <div className="animate-odd">
+                        <div className="price-cell-body">
+                            <div>
+                                <div>
                                 <input
                                         name="1st"
                                         type="checkbox"
@@ -361,9 +381,9 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                         :(props.type=="Trifecta")?
                         <>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="1st"
                                             type="checkbox"
@@ -371,9 +391,9 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="2nd"
                                             type="checkbox"
@@ -381,9 +401,9 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="3rd"
                                             type="checkbox"
@@ -394,9 +414,9 @@ const RaceDetails = (props,ownProps)=>{
                         </>
                         :(props.type=="First4")?
                         <>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="1st"
                                             type="checkbox"
@@ -404,9 +424,9 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="2nd"
                                             type="checkbox"
@@ -414,9 +434,9 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="3rd"
                                             type="checkbox"
@@ -424,9 +444,9 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="4th"
                                             type="checkbox"
@@ -436,9 +456,9 @@ const RaceDetails = (props,ownProps)=>{
                             </div>
                         </>:(props.type=="Exacta")?
                         <>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="1st"
                                             type="checkbox"
@@ -446,9 +466,9 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                            <div className="cell price-cell animate-field-655 wrappable unselectable closed favourite">
-                                <div className="animate-change">
-                                    <div className="animate-odd">
+                            <div className="price-cell-body">
+                                <div>
+                                    <div>
                                     <input
                                             name="2nd"
                                             type="checkbox"
@@ -536,7 +556,7 @@ const RaceDetails = (props,ownProps)=>{
 
                                 </div>
                                 <ul className="race-metadata-list">
-                                <li className="status.text">
+                                <li className="status-text">
                                     {props.racingDetail.raceStatus=="Paying"?
                                     props.racingDetail.raceStatus:
                                     duration(props.racingDetail.raceStartTime)}
@@ -555,7 +575,7 @@ const RaceDetails = (props,ownProps)=>{
 
     const poolTot=(props)=>{
         return(
-            <div className="page-section-pane">
+            <div className="page-section pane">
             <div className="info-table">
                 <div className="tabbed-sections">
                     <nav className="tabs-nav">
@@ -623,16 +643,15 @@ const RaceDetails = (props,ownProps)=>{
         <main className="page-content">
             <div className="left-column">
                 <ui-view>
-                    <div>
+                    <div className="all-tables">
                         {raceName(props)}
-                        
-                        
                         <div className="page-section pane">
                         </div>
-                        <div className="page-section pane">
-                            {props.racingDetail.raceStatus=="Open"?placeBets():""}
+                        <div className="page-section pane">  
                             <div className="race-results-wrapper">
-                                <section className="runners-section result-section">
+                                <section className={props.racingDetail.raceStatus=="Open"?
+                                "runners-section":"results-section"}>
+                                    {props.racingDetail.raceStatus=="Open"?placeBets():""}
                                     {props.racingDetail.raceStatus=="Paying"?resultsTable(props):""}
                                     {props.racingDetail.raceStatus=="Paying"?exoticTable(props):""}
                                     {runnerInfo(props)}

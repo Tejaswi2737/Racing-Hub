@@ -47,7 +47,7 @@ const TodayDetails = (props,ownProps)=>{
                 <div className="date-button">
                     <div className="date-category">
                         <div className="date-bar">
-                            Monday 1st June
+                            Today
                         </div>
                     </div>
                     <div className="category-bar">
