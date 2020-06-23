@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 const NextRace = (props)=>{
-
     const classes = useStyles();
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
@@ -32,8 +31,36 @@ const NextRace = (props)=>{
     const [Race,setRace]=useState(true);
     const [Grey,setGrey]=useState(true);
     const [Harness,setHarness]=useState(true);
+
     const [firstTime, setfirstTime] = useState();
-    const [firstNumber, setfirstNumber] = useState()
+    const [firstNumber, setfirstNumber] = useState();
+    const [fetched, setfetched] = useState(false)
+    useEffect(() => {
+        if (props.next.length>0){
+            {props.next[0].raceStartTime?setfirstTime(props.next[0].raceStartTime):setfirstTime()}
+            {props.next[0].raceNumber?setfirstNumber(props.next[0].raceNumber):setfirstNumber()}
+            setfetched(true)
+        }
+    }, [props.next]);
+
+    const [showLoading, setShowLoading] = useState(false)
+    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+    useEffect(
+       () => {
+         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
+         return () => {
+           clearInterval(timerToClearSomewhere.current)
+         }
+       },
+       [showLoading]
+     );
+  
+     setTimeout(()=>{
+        setShowLoading(false)
+        return () => {
+            clearInterval(timerToClearSomewhere.current)
+          }
+     },1000);
 
     const fetchResources=()=>{
         {props.next.map(item =>{
@@ -53,12 +80,7 @@ const NextRace = (props)=>{
     useEffect(()=> {
         fetchResources(props.next);
     },[props.next]);
-     useEffect(() => {
-        if (props.next.length>0){
-            {props.next[0].raceStartTime?setfirstTime(props.next[0].raceStartTime):setfirstTime()}
-            {props.next[0].raceNumber?setfirstNumber(props.next[0].raceNumber):setfirstNumber()}
-        }
-    }, [props.next])
+
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
@@ -119,8 +141,8 @@ const NextRace = (props)=>{
                                 
                                 
                                 <Link className={classes.paper}  className={
-                                    (item.raceStartTime==firstTime
-                                        &&item.raceNumber==firstNumber)?
+                                    (item.raceStartTime==props.firstTime
+                                        &&item.raceNumber==props.firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
                                         pathname:"/RaceDetail", 

@@ -1,6 +1,9 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
 import Header from '../Nav/Header';
 import RespHeader from '../Nav//RespHeader';
 
@@ -9,16 +12,29 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./Home.css";
 
 const Home=() =>{
+    const scrollBarStyle = {
+        width: '100vw',
+        height: '100vh',
+      };
     return (
         <>
-            <MediaQuery query='(min-width: 980px)'>
+            
+                <MediaQuery query='(min-width: 980px)'>
+                <SimpleBar style={{ maxHeight: '100vh' }}>
+
                 <RespHeader/>
-                <NextListHome/>
-            </MediaQuery>
-            <MediaQuery query='(max-width: 980px)'>
-                <Header/>
-                <NextListHome/>
-            </MediaQuery>           
+                    <NextListHome/>
+                </SimpleBar>
+
+                </MediaQuery>
+                <MediaQuery query='(max-width: 980px)'>
+                <SimpleBar style={{ maxHeight: '100vh' }}>
+
+                    <Header/>
+                    <NextListHome/>
+                </SimpleBar>   
+                </MediaQuery>    
+            
         </>
     )
 }
@@ -43,3 +59,7 @@ export default Home;
             <Header/>
             <NextListHome/>
         </MediaQuery> */}
+
+
+
+

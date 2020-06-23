@@ -273,7 +273,7 @@ const RaceDetails = (props,ownProps)=>{
                 <div className="price-cell">
                     Place
                 </div>
-                {(props.type=="Quinella"||props.type=="Duet")?
+                {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
                         <div className="price-cell">
                             1st Box
                         </div>
@@ -311,7 +311,7 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="price-cell">
                             2nd
                         </div>         
-                    </> :""              
+                    </> :"":""              
                 }
 
             </div>
@@ -368,7 +368,7 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                     </div>
 
-                    {(props.type=="Quinella"||props.type=="Duet")?
+                    {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
                         <div className="price-cell-body">
                             <div>
                                 <div>
@@ -476,7 +476,7 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                         </div>      
-                        </> :""              
+                        </> :"":""           
                     }
                 </div>
                 )

@@ -7,22 +7,11 @@ const RespHeader=() =>{
     return (
         <header className="flex flex-vertical-center flex-space-between">
             <div id="site-heading">
-                <Link to="/" className="">
+                <Link to="/" className="title-main">
                     <div id="vollie-tagline">
                         Racing, Hub
                     </div>
                 </Link>
-                <div id="menu-toggle">
-                    <span>
-                        
-                    </span>
-                    <span>
-
-                    </span>
-                    <span>
-
-                    </span>
-                </div>
             </div>
             <nav id="header-menu">
                 <ul className="top-menu">

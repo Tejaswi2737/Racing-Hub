@@ -2,6 +2,9 @@ import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
 import { fetchNextRace } from "../../actions";
 
 import Header from '../Nav/Header'
@@ -32,6 +35,8 @@ const TodayR=(props)=> {
     return (
         <>
           <MediaQuery query='(min-width: 800px)'>
+          <SimpleBar style={{ maxHeight: '100vh' }}>
+
             <ui-view>
                 <RespHeader/>
                 <NextList next={props.next}/>
@@ -45,12 +50,16 @@ const TodayR=(props)=> {
                     </div>
                     <BetSlipHome/>
                 </main>
-            </ui-view>         
+            </ui-view>        
+            </SimpleBar> 
           </MediaQuery>
           <MediaQuery query='(max-width: 800px)'>
+          <SimpleBar style={{ maxHeight: '100vh' }}>
+
               <Header/>
               <NextList next={props.next}/>
               <TodayDetails detail='todayRacing'/>
+              </SimpleBar>
           </MediaQuery>
       </> 
     )

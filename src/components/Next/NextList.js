@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState,useEffect,useRef } from 'react';
 import { Link} from "react-router-dom";
 
 import "./NextRace.css";
@@ -6,6 +6,26 @@ import "./NextRace.css";
 import BetSlipStore from "../../context/BetSlipContext";
 
 const NextList = (props)=>{
+    const [showLoading, setShowLoading] = useState(false)
+    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+    useEffect(
+       () => {
+         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
+         return () => {
+           clearInterval(timerToClearSomewhere.current)
+         }
+       },
+       [showLoading]
+     );
+  
+     setTimeout(()=>{
+        setShowLoading(false)
+        return () => {
+            clearInterval(timerToClearSomewhere.current)
+          }
+     },1000);
+
+
 
     const duration=(raceStartTime)=>{
         var left=(Date.now()-new Date(raceStartTime))

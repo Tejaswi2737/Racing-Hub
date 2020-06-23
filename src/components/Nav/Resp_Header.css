@@ -27,6 +27,8 @@ header > Link:focus {
 		text-transform: capitalize;
 		text-decoration: none;
 		padding-left:20px;
+		font-family: 'Montserrat', sans-serif;
+
 	}	
 }
 
@@ -55,7 +57,7 @@ header > Link:focus {
 }
 @media(min-width:980px) {
 	.top-menu {
-		padding-left: 45vw;
+		padding-left: 40vw;
 	}
 }
 .vollie-tagline:hover {
@@ -68,14 +70,17 @@ header > Link:focus {
 } */
 .yump-magic-hover {
 	display: inline-block;
+	font-family: 'Montserrat', sans-serif;
 }
 .menu-item-link {
     padding: 8px 12px;
     font-size: 0.938rem;
-    padding-left: 50vw;
+    padding-left: 40vw;
 }
 
-
+.title-main:hover{
+	background-color: black;
+}
 
 .menu-item-link.active {
 	border: 2px solid #fff;
@@ -127,14 +132,21 @@ header > Link:focus {
 		justify-content: space-between;
 	}
 	#header-menu {
-		display: none;
+		display: inline-flex;
 		padding-top: 15px;
 		border-top: 1px solid #88cdd3;
     	margin-top: 15px;
 	}
 	.yump-magic-hover {
-		display: block;
+		display: inline-block;
 		padding-top: 10px;
 		padding-bottom: 10px;
 	}
 }
+
+
+* {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+

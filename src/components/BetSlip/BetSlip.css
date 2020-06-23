@@ -301,7 +301,7 @@ label {
 .bet-card-info .bet-info-value {
     color: black;
     display: inline-block;
-    font-size: large;
+    font-size: 1rem;
 }
 .keypad-menu {
     display: block;

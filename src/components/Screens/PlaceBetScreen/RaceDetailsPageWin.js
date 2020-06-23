@@ -2,6 +2,9 @@ import React,{useState,useEffect,useRef} from 'react';
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
 import { fetchNextRace } from "../../../actions";
 
 
@@ -33,6 +36,7 @@ const RaceDetailsPageWin=(props,ownProps)=> {
      },1000)
     return (
         <div>
+          <SimpleBar style={{ maxHeight: '100vh' }}>
               <MediaQuery query='(min-width: 980px)'>
                   <RespHeader/>
                   <NextList next={props.next}/>
@@ -43,6 +47,7 @@ const RaceDetailsPageWin=(props,ownProps)=> {
                   <NextList next={props.next}/>
                   <RaceDetails slot={props.location.slot} place={props.location.place} type="Win"/>
               </MediaQuery>   
+            </SimpleBar>
         </div>
     )
 };

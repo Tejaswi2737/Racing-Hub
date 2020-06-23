@@ -1,8 +1,11 @@
 import React, {useState,useEffect} from 'react';
 import { connect } from 'react-redux';
+
+
 import "./BetSlip.css"
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 
 import { fetchMeetingDetails,
@@ -80,6 +83,8 @@ const BetSlipHome=(props) =>{
 
     const betSlipHeader=()=>{
         return(
+            <SimpleBar style={{ maxHeight: '100vh' }}>
+
             <header className="side-panel-title-bar">
                 <toggle-button className="betslip-toggle">
                     <div className="toggle-button-grouped">
@@ -92,6 +97,7 @@ const BetSlipHome=(props) =>{
                     </div>
                 </toggle-button>
             </header>
+            </SimpleBar>
         )
     };
 

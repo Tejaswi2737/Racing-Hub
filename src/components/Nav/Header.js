@@ -15,7 +15,7 @@ const Header=() =>{
                                     <MenuView/>
                                 </i>
                                 <span className="hamburger-title">
-                                    <Link to="/">
+                                    <Link to="/" className="title-main">
                                         <div id="vollie-tagline">
                                             Racing, Hub
                                         </div>

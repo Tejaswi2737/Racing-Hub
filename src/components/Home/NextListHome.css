@@ -5,6 +5,9 @@
     flex: 1;
     margin: 0 0;
 }
+.root {
+    overflow-y: hidden;
+}
 .main-image {
     position: relative;
     width: 50vw;

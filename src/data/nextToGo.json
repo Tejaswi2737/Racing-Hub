@@ -1,6 +1,6 @@
 [
   {
-    "raceStartTime": "2020-06-21T12:37:00.000Z",
+    "raceStartTime": "2020-06-22T12:37:00.000Z",
     "raceNumber": 8,
     "raceType": "G",
     "meetingName": "SUNDERLAND",
@@ -8,7 +8,7 @@
     "meetingCode": "SND"
   },
   {
-    "raceStartTime": "2020-06-21T12:40:00.000Z",
+    "raceStartTime": "2020-06-22T12:40:00.000Z",
     "raceNumber": 6,
     "raceType": "R",
     "meetingName": "KENILWORTH",
@@ -16,7 +16,7 @@
     "meetingCode": "KEN"
   },
   {
-    "raceStartTime": "2020-06-21T12:45:00.000Z",
+    "raceStartTime": "2020-06-22T12:45:00.000Z",
     "raceNumber": 4,
     "raceType": "R",
     "meetingName": "REDCAR",
@@ -24,7 +24,7 @@
     "meetingCode": "RCR"
   },
   {
-    "raceStartTime": "2020-06-21T12:47:00.000Z",
+    "raceStartTime": "2020-06-22T12:47:00.000Z",
     "raceNumber": 9,
     "raceType": "G",
     "meetingName": "PERRY BARR",
@@ -32,7 +32,7 @@
     "meetingCode": "PEB"
   },
   {
-    "raceStartTime": "2020-06-21T12:55:00.000Z",
+    "raceStartTime": "2020-06-22T12:55:00.000Z",
     "raceNumber": 2,
     "raceType": "R",
     "meetingName": "KEMPTON PK",
@@ -40,7 +40,7 @@
     "meetingCode": "KNP"
   },
   {
-    "raceStartTime": "2020-06-21T12:57:00.000Z",
+    "raceStartTime": "2020-06-22T12:57:00.000Z",
     "raceNumber": 9,
     "raceType": "G",
     "meetingName": "SUNDERLAND",
@@ -48,7 +48,7 @@
     "meetingCode": "SND"
   },
   {
-    "raceStartTime": "2020-06-21T13:00:00.000Z",
+    "raceStartTime": "2020-06-22T13:00:00.000Z",
     "raceNumber": 8,
     "raceType": "R",
     "meetingName": "DUSSELDORF",
@@ -56,7 +56,7 @@
     "meetingCode": "DDF"
   },
   {
-    "raceStartTime": "2020-06-21T13:05:00.000Z",
+    "raceStartTime": "2020-06-22T13:05:00.000Z",
     "raceNumber": 5,
     "raceType": "R",
     "meetingName": "WOLVERHAMPTON",
@@ -64,7 +64,7 @@
     "meetingCode": "WOL"
   },
   {
-    "raceStartTime": "2020-06-21T13:09:00.000Z",
+    "raceStartTime": "2020-06-22T13:09:00.000Z",
     "raceNumber": 10,
     "raceType": "G",
     "meetingName": "PERRY BARR",
@@ -72,7 +72,7 @@
     "meetingCode": "PEB"
   },
   {
-    "raceStartTime": "2020-06-21T13:10:00.000Z",
+    "raceStartTime": "2020-06-22T13:10:00.000Z",
     "raceNumber": 1,
     "raceType": "R",
     "meetingName": "LEOPARDSTOWN",
@@ -80,7 +80,7 @@
     "meetingCode": "LEP"
   },
   {
-    "raceStartTime": "2020-06-21T13:15:00.000Z",
+    "raceStartTime": "2020-06-22T13:15:00.000Z",
     "raceNumber": 5,
     "raceType": "R",
     "meetingName": "REDCAR",
@@ -88,7 +88,7 @@
     "meetingCode": "RCR"
   },
   {
-    "raceStartTime": "2020-06-21T13:15:00.000Z",
+    "raceStartTime": "2020-06-22T13:15:00.000Z",
     "raceNumber": 4,
     "raceType": "H",
     "meetingName": "VINCENNES",
@@ -96,7 +96,7 @@
     "meetingCode": "VIN"
   },
   {
-    "raceStartTime": "2020-06-21T13:19:00.000Z",
+    "raceStartTime": "2020-06-22T13:19:00.000Z",
     "raceNumber": 10,
     "raceType": "G",
     "meetingName": "SUNDERLAND",
@@ -104,7 +104,7 @@
     "meetingCode": "SND"
   },
   {
-    "raceStartTime": "2020-06-21T13:20:00.000Z",
+    "raceStartTime": "2020-06-22T13:20:00.000Z",
     "raceNumber": 7,
     "raceType": "R",
     "meetingName": "KENILWORTH",
@@ -112,7 +112,7 @@
     "meetingCode": "KEN"
   },
   {
-    "raceStartTime": "2020-06-21T13:25:00.000Z",
+    "raceStartTime": "2020-06-22T13:25:00.000Z",
     "raceNumber": 3,
     "raceType": "R",
     "meetingName": "KEMPTON PK",
@@ -120,7 +120,7 @@
     "meetingCode": "KNP"
   },
   {
-    "raceStartTime": "2020-06-21T13:29:00.000Z",
+    "raceStartTime": "2020-06-22T13:29:00.000Z",
     "raceNumber": 11,
     "raceType": "G",
     "meetingName": "PERRY BARR",
@@ -128,7 +128,7 @@
     "meetingCode": "PEB"
   },
   {
-    "raceStartTime": "2020-06-21T13:30:00.000Z",
+    "raceStartTime": "2020-06-22T13:30:00.000Z",
     "raceNumber": 9,
     "raceType": "R",
     "meetingName": "DUSSELDORF",
@@ -136,7 +136,7 @@
     "meetingCode": "DDF"
   },
   {
-    "raceStartTime": "2020-06-21T13:35:00.000Z",
+    "raceStartTime": "2020-06-22T13:35:00.000Z",
     "raceNumber": 6,
     "raceType": "R",
     "meetingName": "WOLVERHAMPTON",
@@ -144,7 +144,7 @@
     "meetingCode": "WOL"
   },
   {
-    "raceStartTime": "2020-06-21T13:39:00.000Z",
+    "raceStartTime": "2020-06-22T13:39:00.000Z",
     "raceNumber": 11,
     "raceType": "G",
     "meetingName": "SUNDERLAND",
@@ -152,7 +152,7 @@
     "meetingCode": "SND"
   },
   {
-    "raceStartTime": "2020-06-21T13:40:00.000Z",
+    "raceStartTime": "2020-06-22T13:40:00.000Z",
     "raceNumber": 2,
     "raceType": "R",
     "meetingName": "LEOPARDSTOWN",
@@ -160,7 +160,7 @@
     "meetingCode": "LEP"
   },
   {
-    "raceStartTime": "2020-06-21T13:49:00.000Z",
+    "raceStartTime": "2020-06-22T13:49:00.000Z",
     "raceNumber": 12,
     "raceType": "G",
     "meetingName": "PERRY BARR",
@@ -168,7 +168,7 @@
     "meetingCode": "PEB"
   },
   {
-    "raceStartTime": "2020-06-21T13:50:00.000Z",
+    "raceStartTime": "2020-06-22T13:50:00.000Z",
     "raceNumber": 5,
     "raceType": "H",
     "meetingName": "VINCENNES",
@@ -176,7 +176,7 @@
     "meetingCode": "VIN"
   },
   {
-    "raceStartTime": "2020-06-21T14:01:00.000Z",
+    "raceStartTime": "2020-06-22T14:01:00.000Z",
     "raceNumber": 12,
     "raceType": "G",
     "meetingName": "SUNDERLAND",
@@ -184,7 +184,7 @@
     "meetingCode": "SND"
   },
   {
-    "raceStartTime": "2020-06-21T14:25:00.000Z",
+    "raceStartTime": "2020-06-22T14:25:00.000Z",
     "raceNumber": 6,
     "raceType": "H",
     "meetingName": "VINCENNES",
@@ -192,7 +192,7 @@
     "meetingCode": "VIN"
   },
   {
-    "raceStartTime": "2020-06-21T14:42:00.000Z",
+    "raceStartTime": "2020-06-22T14:42:00.000Z",
     "raceNumber": 2,
     "raceType": "H",
     "meetingName": "NANCY",
@@ -200,7 +200,7 @@
     "meetingCode": "NAN"
   },
   {
-    "raceStartTime": "2020-06-21T15:00:00.000Z",
+    "raceStartTime": "2020-06-22T15:00:00.000Z",
     "raceNumber": 7,
     "raceType": "H",
     "meetingName": "VINCENNES",
@@ -208,7 +208,7 @@
     "meetingCode": "VIN"
   },
   {
-    "raceStartTime": "2020-06-21T15:35:00.000Z",
+    "raceStartTime": "2020-06-22T15:35:00.000Z",
     "raceNumber": 8,
     "raceType": "H",
     "meetingName": "VINCENNES",
@@ -216,7 +216,7 @@
     "meetingCode": "VIN"
   },
   {
-    "raceStartTime": "2020-06-21T15:50:00.000Z",
+    "raceStartTime": "2020-06-22T15:50:00.000Z",
     "raceNumber": 9,
     "raceType": "H",
     "meetingName": "KALMAR",
@@ -224,7 +224,7 @@
     "meetingCode": "KMR"
   },
   {
-    "raceStartTime": "2020-06-21T16:10:00.000Z",
+    "raceStartTime": "2020-06-22T16:10:00.000Z",
     "raceNumber": 9,
     "raceType": "H",
     "meetingName": "VINCENNES",
@@ -232,7 +232,7 @@
     "meetingCode": "VIN"
   },
   {
-    "raceStartTime": "2020-06-21T16:20:00.000Z",
+    "raceStartTime": "2020-06-22T16:20:00.000Z",
     "raceNumber": 10,
     "raceType": "H",
     "meetingName": "KALMAR",
@@ -240,7 +240,7 @@
     "meetingCode": "KMR"
   },
   {
-    "raceStartTime": "2020-06-21T16:25:00.000Z",
+    "raceStartTime": "2020-06-22T16:25:00.000Z",
     "raceNumber": 5,
     "raceType": "H",
     "meetingName": "NANCY",
@@ -248,7 +248,7 @@
     "meetingCode": "NAN"
   },
   {
-    "raceStartTime": "2020-06-21T16:42:00.000Z",
+    "raceStartTime": "2020-06-22T16:42:00.000Z",
     "raceNumber": 11,
     "raceType": "H",
     "meetingName": "KALMAR",
@@ -256,7 +256,7 @@
     "meetingCode": "KMR"
   },
   {
-    "raceStartTime": "2020-06-21T17:02:00.000Z",
+    "raceStartTime": "2020-06-22T17:02:00.000Z",
     "raceNumber": 12,
     "raceType": "H",
     "meetingName": "KALMAR",

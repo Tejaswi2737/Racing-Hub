@@ -6,6 +6,7 @@
     padding: 12px 30px;    
     width: 100vw;
     text-decoration: none;
+    overflow-y: hidden;
 }
 
 .toggle-menu-link {

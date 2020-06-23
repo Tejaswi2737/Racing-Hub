@@ -1,8 +1,12 @@
 
+
+
 .table {
     box-sizing: border-box !important;
     color: inherit !important;
     display: flex !important;
+    font-family: inherit;
+
 }
 .today-details {
     margin:20px 20px ;
@@ -13,10 +17,10 @@
 }
 
 .date-bar {
-    color: white;
-    background-color: #c0e4e8;
+    /* color: white; */
+    /* background-color: #c0e4e8; */
     line-height: 50px;
-    font-weight: 1000;
+    font-weight: 800;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: 1px solid black;
@@ -58,7 +62,7 @@
 .button-bar {
     background-color: transparent;
     line-height: 50px;
-    font-weight: 1000;
+    font-weight: 800;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 20px;
 }
@@ -76,7 +80,7 @@
 .places-list-item {
     box-sizing: border-box !important;
     color: inherit !important;
-    height: 85px !important;
+    height: 75px !important;
     width: 120px !important;
     position: relative !important;
     padding: 10px 8px !important;
@@ -103,17 +107,17 @@
 }
 
 .table-rem-row {
-    min-width: 85px !important;
-    width: 85px !important;
+    min-width: 75px !important;
+    width: 75px !important;
     text-align: left !important;
 }
 
 
 .table-item, .table-item-open,  .table-item-open-color {
-    min-width: 85px !important;
-    max-width: 85px !important;
+    min-width: 75px !important;
+    max-width: 75px !important;
     color: rgb(115, 115, 115) !important;
-    height: 85px !important;
+    height: 75px !important;
     padding: 10px 13px !important;
     background: #c0e4e8;
     border: 1px solid black !important;
@@ -137,7 +141,7 @@
 
 .table-item p , .table-item-open p{
     font-size: 14px !important;
-    font-weight: 1000 !important;
+    font-weight: 800 !important;
     line-height: 20px !important;
     white-space: nowrap !important;
 }
