@@ -55,27 +55,28 @@
 .col-sm-4 {
     margin-bottom: 30px;
 }
-@media (min-width: 768px) {
-    .col-sm-4 {
-        display: inline-block;
-        width: 33.33333333%;
-        padding-left: 20px;
-        border-radius: 30px;    
-    }
-}
-
-a:hover{
-    opacity: 0.4;
-    scale: 1.2;
-    background-color: #88cdd3;
-    color: white;
-}
-
 .pane {
     background: white;
     box-shadow: 0 4px 40px 0 rgba(20,90,0,0.15);
     border-radius: 30px;
 }
+@media (min-width: 768px) {
+    .col-sm-4 {
+        display: inline-block;
+        width: 30%;
+        margin-left: 20px;
+        border-radius: 30px;    
+    }
+}
+
+a:hover{
+    opacity: 0.8;
+    background-color: #88cdd3;
+    color: white;
+    transform: scale(0.8);
+}
+
+
 @media (min-width:980px ) {
     .page-heading{
         font-weight: 600;
@@ -115,7 +116,7 @@ a:hover{
 
 .page-heading:hover {
     opacity: 0.4;
-    scale: 1.2;
+    
     background-color: #88cdd3;
     color: white;
 }
@@ -162,4 +163,6 @@ a:hover{
     width: 45px;
     font-size: 12px;
 }
-
+.next-item-list-home:hover {
+    transform: scale(0.9) !important;
+}

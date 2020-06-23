@@ -72,7 +72,7 @@
     height: 100%;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    border: 1px solid black;
+    border: 4px solid rgb(51, 51, 51,0.1);
     font-weight: 1000;
 }
 .meeting-info-race-open {
@@ -81,10 +81,16 @@
     height: 100%;
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
-    border: 1px solid black;
+    border: 4px solid rgb(51, 51, 51,0.1);
     font-weight: 1000;
 }
-
+.meeting-info-race-closed:hover {
+    cursor: pointer;
+    
+}
+.meeting-info-race-open:hover {
+    cursor: pointer;
+}
 .meeting-info-race-results {
     font-size: 12px;
     color: black;
@@ -345,12 +351,17 @@ table {
     background-color: #88cdd3;
 } */
 .pseudo-table{
-    margin-top: 30px;
     overflow-x: auto;
     margin: auto;
-    min-width: 100% !important;
+    /* min-width: 100% !important; */
+    width: auto;
+    margin-left: 10px;
 }
 
+.page-section {
+    min-width: 100% !important;
+
+}
 
 .odds-label {
     color: white;
@@ -364,6 +375,7 @@ table {
 .runner-info-row {
     display: flex;
     background-color: transparent;
+    min-width: 100% !important;
 }
 
 .name-cell, .number-cell , .price-cell {
@@ -383,11 +395,15 @@ table {
 .name-cell,.price-cell,.number-cell {
     background-color: #88cdd3;
     border: 1px solid white;
+    min-width: 15vw;
     /* border-top-left-radius: 30px;
     border-top-right-radius: 30px; */
 }
+.number-cell {
+    min-width: 10vw;
+}
 .name-cell{
-    min-width: 15vw;
+    min-width: 20vw;
 }
 @media (max-width:500px) {
     .name-cell, .number-cell , .price-cell {
@@ -406,21 +422,27 @@ table {
     display: inline-flex;
     flex-direction: row;
     font-weight: 1000;
-    border-right: 1px solid black;
+    /* border-right: 1px solid black; */
     color:black;
     font-size: 1.2rem;
     text-align: center;
     left: auto;
     width: auto;
     width: 7.2vw !important;
-    text-align: center;
+    text-align: left;
     padding: 10px;
     line-height: 40px;
     height: 70px !important;
 }
-.number-cell-body {
-    /* border-radius: 30px; */
 
+.name-cell-body,.price-cell-body,.number-cell-body {
+    /* border: 1px solid black; */
+    min-width: 15vw;
+    /* border-top-left-radius: 30px;
+    border-top-right-radius: 30px; */
+}
+.number-cell-body {
+    min-width: 10vw;
 }
 .race-runners-wrapper .runner-name-wrapper {
     font-size: 14px;
@@ -432,8 +454,8 @@ table {
 }
 
 .name-cell-body{
-    min-width: 15vw;
-    white-space: normal;
+    min-width: 20vw;
+    /* white-space: normal; */
 
 }
 @media (max-width:500px) {
@@ -520,11 +542,13 @@ table {
     background-color: #008542;
     color: white;
     transition: background-color 0s ease-in-out;
+    cursor: default;
 }
 .tbc-nav-tabular-list-item:hover {
     background-color: grey;
     color: white;
     transition: background-color 0s ease-in-out;
+    cursor: default;
 }
 
 .tbc-nav-tabular-list .tbc-nav-tabular-list-item {

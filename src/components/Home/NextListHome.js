@@ -74,14 +74,14 @@ const NextListHome = (props)=>{
                                         }} className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
                                             <p>{item.meetingName} ({item.location})</p>
-                                            <div className="race-details-container">
+                                            {/* <div className="race-details-container">
                                                 <span className="race-detail">
                                                     {item.raceDistance}m
                                                 </span>
                                                 <span className="race-detail">
                                                     {item.trackCondition} 
                                                 </span>                            
-                                            </div>
+                                            </div> */}
                                         </Link> 
                                 )})}
                                 </div>

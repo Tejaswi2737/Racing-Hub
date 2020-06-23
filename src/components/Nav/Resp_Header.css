@@ -57,7 +57,7 @@ header > Link:focus {
 }
 @media(min-width:980px) {
 	.top-menu {
-		padding-left: 40vw;
+		padding-left: 25vw;
 	}
 }
 .vollie-tagline:hover {

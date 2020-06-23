@@ -110,6 +110,8 @@
     min-width: 75px !important;
     width: 75px !important;
     text-align: left !important;
+    border-top-right-radius: 30px;
+
 }
 
 
@@ -120,9 +122,8 @@
     height: 75px !important;
     padding: 10px 13px !important;
     background: #c0e4e8;
-    border: 1px solid black !important;
+    border: 4px solid rgb(51, 51, 51,0.1);
     border-top-right-radius: 30px;
-    
     margin: 0px;
 }
 .table-item-open {
@@ -132,12 +133,18 @@
     background-color: #f25824 !important;
     color: white!important;
 }
-.table-item:hover,.table-item-open:hover,.table-item-open-color:hover {
+.table-item-open:hover,.table-item-open-color:hover {
     background: #c0e4e8 !important;
     color: white;
-    
+    border: 1px solid black;
+    opacity: 1;  
 }
-
+.table-item:hover{
+    background: white !important;
+    color: black;
+    border: 1px solid black;
+    opacity: 1;  
+}
 
 .table-item p , .table-item-open p{
     font-size: 14px !important;
