@@ -45,11 +45,11 @@ const TodayDetails = (props,ownProps)=>{
         <div>
             <div className="today-details">
                 <div className="date-button">
-                    <div className="date-category">
+                    {/* <div className="date-category">
                         <div className="date-bar">
                             Today
                         </div>
-                    </div>
+                    </div> */}
                     <div className="category-bar">
                         <div className="button-bar">
                             <Link to="/Today/R" className="category-button">

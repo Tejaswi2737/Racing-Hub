@@ -30,26 +30,28 @@
     flex-wrap: nowrap;
 }
 .meeting-info-race-selector-wrapper {
-    display: flex;
-    overflow-x: auto;
-    padding-left: 20px;
+    /* display: flex; */
+    
+    /* padding-left: 0px;
+    margin-right: 60px; */
 }
 .meeting-info-race-selector {
     display: flex;
     flex-grow: 1;
     margin-left: 00px;
-    padding-right: 70px;
-    padding-left: 70px;
+    padding-right: 10px;
+    padding-left: 80px;
     align-items: center;
+    overflow-x: auto;
 }
 
 
 .meeting-info-race {
-    font-size: 17px;
+    font-size: 0.8rem;
     line-height: 20px;
     font-weight: 600;
     color: #e6e6e6;
-    padding: 0 15px;
+    padding: 0 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -58,18 +60,18 @@
     
 }
 .meeting-info-race:active {
-    background-color: black;
-    color: white;
+    opacity: 0.8;
+    transform: scale(0.9);
 }
 .meeting-info-race:hover {
-    background-color: black;
-    color: white;
+    opacity: 0.8;
+    transform: scale(0.9);
 }
 
 .meeting-info-race-closed {
     color: rgb(115, 115, 115);
     background-color: #e6e6e6;
-    height: 100%;
+    height: 40px;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
     border: 4px solid rgb(51, 51, 51,0.1);
@@ -78,18 +80,21 @@
 .meeting-info-race-open {
     color: #333333;
     background-color: #88cdd3;
-    height: 100%;
+    height: 40px;
     border-top-right-radius: 30px;
     border-bottom-left-radius: 30px;
     border: 4px solid rgb(51, 51, 51,0.1);
-    font-weight: 1000;
+    font-weight: 1000;                                           
 }
 .meeting-info-race-closed:hover {
     cursor: pointer;
-    
+    opacity: 0.8;
+    transform: scale(0.9);
 }
 .meeting-info-race-open:hover {
-    cursor: pointer;
+    cursor: pointer;                                                                                    
+    opacity: 0.8;
+    transform: scale(0.9);
 }
 .meeting-info-race-results {
     font-size: 12px;
@@ -104,12 +109,13 @@
     color: white;
 }
 .meeting-info-race-time{
-    font-size: 12px;
-    font-weight: 1000;
+    font-size: 0.7rem;
+    font-weight: 600;
     color: black;
     line-height: 20px;
     line-height: 20px;
     white-space: pre-wrap;
+    text-align: right;
 }
 .meeting-info-race-time:hover {
     color: white;
@@ -134,7 +140,7 @@
 }
 .race-header-info {
     display: flex;
-    padding: 20px 15px;
+    padding: 0 15px;
 }
 @media (max-width:600px) {
     .race-header-info{
@@ -176,16 +182,16 @@
     color: black;
 }
 .race-name {
-    font-size: 21px;
+    font-size: 1rem;
     line-height: 40px;
     font-weight: 1000;
     margin-top: 10px;
 }
 .race-metadata-list {
-    font-size: 1 rem;
+    font-size: 0.7rem;
     line-height: 20px;
     color: #333;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 .status-text {
     font-weight: 600;
@@ -264,7 +270,7 @@
 
 .runner-details{
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
 }
 
 .result-position {
@@ -352,10 +358,10 @@ table {
 } */
 .pseudo-table{
     overflow-x: auto;
-    margin: auto;
+    overflow-y: hidden;
     /* min-width: 100% !important; */
-    width: auto;
     margin-left: 10px;
+    padding-bottom: 40px;
 }
 
 .page-section {
@@ -376,6 +382,7 @@ table {
     display: flex;
     background-color: transparent;
     min-width: 100% !important;
+    height: 40px;
 }
 
 .name-cell, .number-cell , .price-cell {
@@ -418,13 +425,13 @@ table {
 
 /* Info table Body */
 
-.name-cell-body, .number-cell-body , .price-cell-body {
+.name-cell-body, .number-cell-body , .price-cell-body,.price-cell-body-first {
     display: inline-flex;
     flex-direction: row;
     font-weight: 1000;
     /* border-right: 1px solid black; */
     color:black;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     text-align: center;
     left: auto;
     width: auto;
@@ -435,17 +442,18 @@ table {
     height: 70px !important;
 }
 
-.name-cell-body,.price-cell-body,.number-cell-body {
+.name-cell-body,.price-cell-body,.number-cell-body,.price-cell-body-first {
     /* border: 1px solid black; */
     min-width: 15vw;
     /* border-top-left-radius: 30px;
     border-top-right-radius: 30px; */
 }
+
 .number-cell-body {
     min-width: 10vw;
 }
 .race-runners-wrapper .runner-name-wrapper {
-    font-size: 14px;
+    font-size: 0.8rem;
     line-height: 18px;
 }
 .race-runners-wrapper .runner-name-wrapper .runner-name {
@@ -455,19 +463,25 @@ table {
 
 .name-cell-body{
     min-width: 20vw;
+    /* margin-top: 10px !important; */
     /* white-space: normal; */
 
 }
 @media (max-width:500px) {
-    .name-cell-body, .number-cell-body , .price-cell-body {
+    .name-cell-body, .number-cell-body , .price-cell-body , .price-cell-body-first{
         min-width: 20vw;
     }
     .name-cell-body{
         min-width: 50vw;
-        
     }
 }
 
+.price-cell-body-first{
+    padding-left: 10vw !important;
+}
+.row-runner{
+    height: 40px;
+}
 .pseudo-body{
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -481,6 +495,7 @@ table {
     font-size: 10px;
     line-height: 11px;
     margin-right: 3px;
+
 }
 
 
@@ -502,6 +517,9 @@ table {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    border-radius: 30px;
+    margin-left: 30px;
+    background-color: transparent;
 }
 
 .bet-type-carousel-list {
@@ -511,6 +529,7 @@ table {
     overflow-x: auto;
     overflow-y: hidden;
     justify-content: start;
+    background-color: transparent;
 }
 .tbc-nav-tabular-list {
     display: flex;
@@ -525,18 +544,18 @@ table {
 }
 }
 .tbc-nav-tabular-item-link {
-    padding: 20px 25px;
+    padding: 10px 20px;
     line-height: 1;
 }
 .tbc-nav-tabular-item-link {
     color: black;
-    border-right: 1px solid grey;
+    border: 4px solid rgb(51, 51, 51,0.1);
     flex-shrink: 0;
     position: relative;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 20px;
     font-weight: 600;
-    height: 100%;
+    min-height: 30px;
 }
 .tbc-nav-tabular-list-item:active {
     background-color: #008542;
@@ -545,7 +564,7 @@ table {
     cursor: default;
 }
 .tbc-nav-tabular-list-item:hover {
-    background-color: grey;
+    background-color: white;
     color: white;
     transition: background-color 0s ease-in-out;
     cursor: default;

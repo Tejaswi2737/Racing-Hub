@@ -353,9 +353,9 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                     </div>
 
-                    <div className="price-cell-body">
+                    <div className="price-cell-body-first">
                         <div >
-                            <div >
+                            <div className="first-price">
                                 ${runner_item.returnWin}
                             </div>
                         </div>

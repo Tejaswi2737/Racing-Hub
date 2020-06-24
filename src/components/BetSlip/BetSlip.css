@@ -278,11 +278,8 @@ label {
 }
 .bet-card-info .bet-info-label {
     color: #737373;
-    display: -webkit-inline-box;
-    display: -webkit-inline-flex;
-    display: -ms-inline-flexbox;
     display: inline-flex;
-    margin: 0;
+    margin-top: 10px;
     text-transform: capitalize;
     white-space: nowrap;
     width: 100px;
@@ -301,7 +298,7 @@ label {
 .bet-card-info .bet-info-value {
     color: black;
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.7rem;
 }
 .keypad-menu {
     display: block;

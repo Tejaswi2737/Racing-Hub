@@ -14,5 +14,7 @@
     flex-direction: column;
     min-height: -webkit-calc(100vh - 50px);
     min-height: calc(100vh - 50px);
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+
 }
