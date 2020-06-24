@@ -3,20 +3,30 @@ import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import MediaQuery from 'react-responsive';
 import _ from 'lodash';
-import { Table } from 'semantic-ui-react';
+// import { Table } from 'semantic-ui-react';
 
 
 import { fetchMeetingDetails,
     fetchRaceDetails,
-    fetchWinPlaceBet} from "../../actions";
+    fetchWinPlaceBet,
+    addBetSlipData
+} from "../../actions";
 
 import BetSlipHome from '../BetSlip/BetSlipHome';
 
 import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
+    const [pool_fh, setpool_fh] = useState();
 
-    console.log(props.bet_pool_fh_1)
+    const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
+    // var place_list_all=["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'];
+    var runner_list_all=[[1,2,3,4],[3,4],[1,2,3]];
+    const [addedBet, setaddedBet] = useState(false)
+    const [runnerSelection, setrunnerSelection] = useState([]);
+    const [runner_win_place, setrunner_win_place] = useState({})
+
+    // console.log(props.bet_pool_fh_1)
     props.fetchMeetingDetails();
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
@@ -126,70 +136,68 @@ const RaceDetails = (props,ownProps)=>{
          return (current.getHours()+":0"+current.getMinutes())
         }
         else return (current.getHours()+":"+current.getMinutes())
-    }
-
-
+    };
 
     const resultsTable=(props)=>{
         return(
             <table className="race-table-results pane">
-            <thead>
-                <tr>
-                    <th >
-                        Results
-                    </th>
-                    <th >
-                        Number
-                    </th>
-                    <th >
-                        Runner Details
-                    </th>
-                    <th>
-                        Tote
-                    </th>
-                </tr>
-            </thead>
-            <tbody className="">
-                {props.racingDetail.results.map(item=>{  
-                    return(
-                        <tr>
-                            <td className="result-position">
-                                {item.place}
-                            </td>
-                            <td className="result-number">
-                                {item.runnerNumber} 
-                            </td>
-                        <td className="runner-details">
-                            {item.runnerName}
-                            <dl className="runner-metadata-list">
-                                <dt>
-                                    D
-                                </dt>
-                                <dd className="full-name">
-                                    {item.riderDriverName+" "}
-                                </dd>
-                                <dt>
-                                    T
-                                </dt>
-                                <dd className="full-name">
-                                    {item.trainerName}
-                                </dd>
-                            </dl>
-                        </td>
-                        <td >
-                            <div>
-                                <div>
-                                    {item.toteWin}
-                                </div>
-                                <div >
-                                    {item.totePlace}
-                                </div>
-                            </div>
-                        </td>
+                <thead>
+                    <tr>
+                        <th >
+                            Results
+                        </th>
+                        <th >
+                            Number
+                        </th>
+                        <th >
+                            Runner Details
+                        </th>
+                        <th>
+                            Tote
+                        </th>
                     </tr>
-                )})}
-            </tbody>
-        </table>     
+                </thead>
+                <tbody className="">
+                    {props.racingDetail.results.map(item=>{  
+                        return(
+                            <tr>
+                                <td className="result-position">
+                                    {item.place}
+                                </td>
+                                <td className="result-number">
+                                    {item.runnerNumber} 
+                                </td>
+                            <td className="runner-details">
+                                {item.runnerName}
+                                <dl className="runner-metadata-list">
+                                    <dt>
+                                        D
+                                    </dt>
+                                    <dd className="full-name">
+                                        {item.riderDriverName+" "}
+                                    </dd>
+                                    <dt>
+                                        T
+                                    </dt>
+                                    <dd className="full-name">
+                                        {item.trainerName}
+                                    </dd>
+                                </dl>
+                            </td>
+                            <td >
+                                <div>
+                                    <div>
+                                        {item.toteWin}
+                                    </div>
+                                    <div >
+                                        {item.totePlace}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    )})}
+                </tbody>
+            </table>     
         )
     };
 
@@ -253,12 +261,6 @@ const RaceDetails = (props,ownProps)=>{
 
     const runnerInfoheader=(props)=>{
         return(
-            // <div className="pseudo-header">
-            // {/* <div className="labels-wrapper">
-            //     <span className="odds-label">
-            //         TOTE
-            //     </span>
-            // </div> */}
             <div className="runner-info-row">
                 <div className="number-cell">
                     No
@@ -315,9 +317,120 @@ const RaceDetails = (props,ownProps)=>{
                 }
 
             </div>
-        // </div>
         )
     };
+
+
+    // const handlePlaceUpdate=(pool_fh,runnerSelection,place_list_all,runner_list_all)=>{
+    //     if(pool_fh) {
+    //         console.log(runner_list_all,place_list_all)
+    //         // console.log(pool_fh,place_list_all)
+    //         if (place_list_all.includes(pool_fh)) {
+    //             var loc=place_list_all.indexOf(pool_fh)
+    //             // console.log(loc)
+    //             // console.log(runner_list_all[loc])
+    //             // console.log(runnerSelection)
+    //             if (loc>=0){
+    //                 // console.log(loc)
+    //                 if (runner_list_all[loc].includes(runnerSelection)) 
+    //                 {
+    //                     // console.log(loc)
+    //                     runner_list_all[loc]=
+    //                     runner_list_all[loc].filter(e1=> { 
+    //                             return e1 != runnerSelection
+    //                     })
+    //                 }
+    //                 else {
+    //                     runner_list_all[loc]=[...runner_list_all[loc],runnerSelection]
+    //                     // console.log(runner_list_all[loc])
+    //                 }
+    //             }
+    //         }
+    //         else {
+    //             setplace_list_all([...place_list_all,pool_fh]);
+                
+    //             runner_list_all=[...runner_list_all,[runnerSelection]]
+            
+    //                 // console.log(loc)
+    //                 // console.log(runner_list_all[loc])
+    //                 // console.log(runnerSelection)
+    //                 // if (loc>=0){
+    //                 //     // console.log(loc)
+    //                 //     if (runner_list_all[loc].length==0) {
+    //                 //         runner_list_all[loc]=[...runner_list_all[loc],runnerSelection]
+    //                 //         console.log(runner_list_all[loc])
+    //                 //     }
+    //                 //     else {
+    //                 //         if (runner_list_all[loc].includes(runnerSelection)) 
+    //                 //         {
+    //                 //             // console.log(loc)
+    //                 //             runner_list_all[loc]=
+    //                 //             runner_list_all[loc].filter(e1=> { 
+    //                 //                     return e1 != runnerSelection
+    //                 //             })
+    //                 //         }
+    //                 //         else {
+    //                 //             runner_list_all[loc]=[...runner_list_all[loc],runnerSelection]
+    //                 //             console.log(runner_list_all[loc])
+    //                 //         }
+    //                 //     }
+    
+    //                 // }
+    //             // }
+    //         }
+    //         if(runner_list_all[loc]==[]) {
+    //             runner_list_all[loc]=runnerSelection
+    //         }
+    //     };
+    // }
+
+    const handleClick=(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)=>{
+        // console.log(place_list_all)
+        // console.log(props)
+        if ((props.racingDetail.raceStatus=="Open")) {
+            setpool_fh(props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race"+props.racingDetail.raceNumber)
+            setrunnerSelection(runner_item.runnerNumber)
+            // {handlePlaceUpdate(pool_fh,runnerSelection,place_list_all,runner_list_all)}
+            if (runnerSelection.includes(runner_item.runnerNumber)) {
+                
+                setrunnerSelection
+                (
+                    runnerSelection.filter(e1=> { 
+                        return e1 != runner_item.runnerNumber 
+                    })
+                )
+            }
+            else {
+                setrunnerSelection([...runnerSelection,runner_item.runnerNumber])
+            }
+            place_list_all.indexOf(pool_fh)
+        }
+    };
+    // console.log(pool_fh,runnerSelection)
+ 
+    // console.log(place_list_all,runner_list_all)
+    // console.log(runner_list_all,place_list_all)
+
+        // console.log(pool_fh)
+
+    // console.log(pool_fh)
+    // props.addBetSlipData()
+
+    useEffect(() => {
+        setrunner_win_place
+        ([{"name":pool_fh,"runners":runnerSelection}]);
+        setaddedBet(true)
+        // props.addBetSlipData(runner_win_place)
+    }, [pool_fh,runnerSelection])
+    // console.log(props.betSlipInd)
+    // useEffect(() => {
+    //     if(props.betSlipInd){
+    //         setrunner_win_place(runner_win_place.push(props.betSlipInd))
+
+    //     }
+    // }, [props.betSlipInd])
+
+    // console.log(runner_win_place)
 
     const runnerInfoBody=(props)=>{
         return(
@@ -341,7 +454,6 @@ const RaceDetails = (props,ownProps)=>{
                                 </dt>
                                 <dd className="full-name">
                                     {runner_item.riderDriverName}
-
                                 </dd>
                                 <dt>
                                     T
@@ -352,22 +464,26 @@ const RaceDetails = (props,ownProps)=>{
                             </div>
                         </div>
                     </div>
-
-                    <div className="price-cell-body-first">
-                        <div >
-                            <div className="first-price">
-                                ${runner_item.returnWin}
+                    <div className="price-cell-body"
+                        onClick={()=>{
+                            handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)
+                        }}
+                        >
+                        <div className="price-cell-body-first">
+                            <div >
+                                <div className="first-price">
+                                    ${runner_item.returnWin}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="price-cell-body">
-                        <div>
+                        <div className="price-cell-body">
                             <div>
-                                ${runner_item.returnPlace}
+                                <div>
+                                    ${runner_item.returnPlace}
+                                </div>
                             </div>
                         </div>
                     </div>
-
                     {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
                         <div className="price-cell-body">
                             <div>
@@ -496,7 +612,11 @@ const RaceDetails = (props,ownProps)=>{
         )
     };
 
-
+    const handleactionBetPlace=()=>{
+        if (addedBet) {
+            {props.addBetSlipData(runner_win_place)}
+        }
+    }
     const raceName=(props)=>{
         const raceSlots=(props)=>{
             return(                        
@@ -506,19 +626,23 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="meeting-info-race-selector">     
                             {items_list?items_list.map(item=>{
                                 return(
-                                    <div onClick={()=>{setplace_slot(item.raceNumber)
-                                    setplace(item.Location)}}>
+                                    <div onClick={()=>{
+                                        
+                                        {handleactionBetPlace()}
+                                        {setaddedBet(false)}
+                                        setplace_slot(item.raceNumber)
+                                        setplace(item.Location)
+                                        }}>
                                         <a className=
                                         {item.raceStatus=="Paying"?
                                         "meeting-info-race  meeting-info-race-closed":
                                         "meeting-info-race  meeting-info-race-open"}>
-                                                R{item.raceNumber}  
-                                                <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
-                                                    {item.raceStatus=="Paying"?item.results:item.raceStartTime} 
-                                                </span>
+                                            R{item.raceNumber}  
+                                            <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
+                                                {item.raceStatus=="Paying"?item.results:item.raceStartTime} 
+                                            </span>
                                         </a>
                                     </div>
-    
                             )}):""}
                         </div>
                     </div>
@@ -677,16 +801,19 @@ const mapStateToProps=(state,ownProps)=> {
         slot:ownProps.slot,
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
+        betSlipInd:state.betSlipInd,
         place:ownProps.place,
         type:ownProps.type,
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
-        bet_pool_fh_2:ownProps.bet_pool_fh_2
+        bet_pool_fh_2:ownProps.bet_pool_fh_2,
+        
     }
 }
 export default connect(mapStateToProps, 
     { 
         fetchRaceDetails,
-        fetchMeetingDetails
+        fetchMeetingDetails,
+        addBetSlipData
         })
     (RaceDetails);
 

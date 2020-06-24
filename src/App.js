@@ -35,7 +35,7 @@ function App() {
               <Route path="/Today/R" exact component={TodayR}/> 
               <Route path="/Today/G" exact component={TodayG}/> 
               <Route path="/Today/H" exact component={TodayH}/> 
-              <Route path="/RaceDetail" exact component={RaceDetailsPage}/>
+              {/* <Route path="/RaceDetail" exact component={RaceDetailsPageWin}/> */}
               <Route path="/RaceDetail/Win" exact component={RaceDetailsPageWin}/>
               <Route path="/RaceDetail/Quinella" exact component={RaceDetailsPageWinQuinella}/>
               <Route path="/RaceDetail/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>

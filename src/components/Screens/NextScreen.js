@@ -14,7 +14,6 @@ import RespHeader from '../Nav/RespHeader';
 import "../Next/NextRace.css"
 const NextScreen=(props) =>{
     props.fetchNextRace();
-    console.log(props.next)
     const [firstTime, setfirstTime] = useState();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component

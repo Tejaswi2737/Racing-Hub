@@ -145,7 +145,7 @@ const NextRace = (props)=>{
                                         &&item.raceNumber==props.firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
-                                        pathname:"/RaceDetail", 
+                                        pathname:"/RaceDetail/Win", 
                                         slot:item.raceNumber, 
                                         place: item.meetingName,
                                         bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
@@ -166,7 +166,7 @@ const NextRace = (props)=>{
                                         &&item.raceNumber==firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
-                                        pathname:"/RaceDetail", 
+                                        pathname:"/RaceDetail/Win", 
                                         slot:item.raceNumber, 
                                         place: item.meetingName,
                                         bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+

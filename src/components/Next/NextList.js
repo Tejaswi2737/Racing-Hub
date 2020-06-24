@@ -86,7 +86,7 @@ const NextList = (props)=>{
                      <div className="next-to-go-bar-race">
                         <Link className="next-to-go-bar-race-link" 
                         to={{
-                            pathname:"/RaceDetail", 
+                            pathname:"/RaceDetail/Win", 
                             slot:item.raceNumber, 
                             place: item.meetingName,
                             bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+

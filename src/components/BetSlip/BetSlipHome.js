@@ -10,16 +10,24 @@ import 'simplebar/dist/simplebar.min.css';
 
 import { fetchMeetingDetails,
     fetchRaceDetails,
-    fetchWinPlaceBet} from "../../actions";
+    fetchWinPlaceBet,
+addBetSlipData} from "../../actions";
 import { toInteger } from 'lodash';
 
 
 
 const BetSlipHome=(props) =>{
     props.fetchWinPlaceBet();
+    useEffect(() => {
+        props.addBetSlipData()
+    }, [props.next])
+    
+    console.log(props)
+    // console.log(props)
+    // props.addBetSlipData("")
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
-    const [BetSlipPendingJson, setBetSlipPendingJson] = useState({});
+    const [BetSlipPendingJson, setBetSlipPendingJson] = useState([]);
     const [BetSlipSingle, setBetSlipSingle] = useState();
     const [fetched, setfetched] = useState(false);
     const [fetchedSingle, setfetchedSingle] = useState(false);
@@ -41,32 +49,61 @@ const BetSlipHome=(props) =>{
                 setBetSlipDoneJson([BetSlipSingleSubmitted])
                 if (BetSlipPendingJson.length==1){
                     setstartSlip(false)
-                    BetSlipPendingJson({})
+                    setBetSlipPendingJson({})
                 }
-                else (setBetSlipPendingJson(BetSlipPendingJson.filter(e1=> { return e1 != item })))
+                else 
+                (setBetSlipPendingJson(
+                    BetSlipPendingJson.filter(e1=> { return e1 != item })))
             }
         }    
         setbetDone(false)
     };    
+    var foo = [];
+    // console.log(BetSlipPendingJson)
+    var data=[]
     useEffect(() => {
-        setfetched(true)
-    }, [props])
+        setBetSlipSingle(props.winPlace)
 
-    useEffect(() => {
-        if (fetched) {
-            setBetSlipSingle(props.winPlace)
-            setfetchedSingle(true)
+        for (var i = 1; i <= 10; i++) {
+            foo.push(props.winPlace);
+            BetSlipPendingJson.push(props.winPlace)
+            if (i==10) {
+                setstartSlip(true)
+            }
         }
-    }, [fetched])
+        var i=0;
+        
+    }, [props.winPlace])
+    // useEffect(() => {
+    //     setfetched(true)
+    // }, [props])
+
+    // useEffect(() => {
+    //     if (fetched) {
+    //         setBetSlipSingle(props.winPlace)
+    //         setfetchedSingle(true)
+    //     }
+    // }, [fetched])
     
 
-    useEffect(() => {
-        if (fetchedSingle){
-            setBetSlipPendingJson(BetSlipSingle)
-            setstartSlip(true) 
-        }
-    }, [fetchedSingle]);
+    // useEffect(() => {
+    //     if (fetchedSingle){
+    //         setBetSlipPendingJson(BetSlipSingle)
+    //         setstartSlip(true) 
+    //     }
+    // }, [fetchedSingle]);
+    // var BetSlipData=BetSlipPendingJson;
+    // console.log(BetSlipData);
+    // if (BetSlipData  && BetSlipPendingJson.length==1){
+    //     if (BetSlipData.length<=3){
+    //         BetSlipData=[...BetSlipData,BetSlipSingle]
+    //         setBetSlipPendingJson(BetSlipData)
+    //     }
+    //  }
+    // // useEffect(() => {
 
+    // // }, [BetSlipPendingJson]);
+    // console.log(BetSlipPendingJson)
 
 
     useEffect(() => {
@@ -75,6 +112,7 @@ const BetSlipHome=(props) =>{
     }, [showCurrency]);
 
     const deleteSingleBet=(item)=>{
+        console.log(item)
         if (BetSlipPendingJson.length==1){
             setstartSlip(false)
         }
@@ -357,10 +395,12 @@ const BetSlipHome=(props) =>{
 const mapStateToProps=(state)=> {
     return{ 
         winPlace:state.winPlaceBet,
+        betSlipInd:state.betSlipInd
     }
 }
 export default connect(mapStateToProps, 
     { 
-        fetchWinPlaceBet
+        fetchWinPlaceBet,
+        addBetSlipData
     })
     (BetSlipHome);

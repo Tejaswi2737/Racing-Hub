@@ -140,7 +140,7 @@ const NextList = (props)=>{
             (props.next.map(item => {
                  return(
                      <div className="next-to-go-bar-race">
-                        <Link className="next-to-go-bar-race-link" to={{pathname:"/RaceDetail", slot:item.raceNumber, place: item.meetingName}}>
+                        <Link className="next-to-go-bar-race-link" to={{pathname:"/RaceDetail/Win", slot:item.raceNumber, place: item.meetingName}}>
                             <div className="next-to-go-bar-race-info">
                                 <span className="next-to-go-bar-race-name">
                                     {item.meetingName} ({item.location}) - R{item.raceNumber}

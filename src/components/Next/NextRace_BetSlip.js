@@ -110,7 +110,7 @@ const NextRace = (props)=>{
         return (        
            (state.map(item => {
                 return( 
-                    <Link to="/RaceDetail" className="navigation-entry next-to-go-race next-to-jump">
+                    <Link to="/RaceDetail/Win" className="navigation-entry next-to-go-race next-to-jump">
                         <div>
                             <p className="next-to-go-meeting-info next-to-go-code"> 
                                 R{item.raceNumber}

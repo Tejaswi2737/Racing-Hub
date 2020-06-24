@@ -5,30 +5,8 @@ const Context= React.createContext(
     });
 
 export class BetSlipStore extends React.Component {
-    state={betSlipFormatWin:
-        {
-          "bet_fh": "tk_integ_",
-          "bet_pool_fh": "",
-          "stake_cents": 0,
-          "combinations":[
-          {
-          "place":1,
-          "runners":[]
-          }
-          ]
-        },
-        betSlipFormatPlace:
-        {
-          "bet_fh": "tk_integ_",
-          "bet_pool_fh": "",
-          "stake_cents": 0,
-          "combinations":[
-          {
-          "place":2,
-          "runners":[]
-          }
-          ]
-        }
+    state={
+        betSlipFormatWin:[]
     };
     onBetSlipChange=(betSlipFormat)=>{
         this.setState({betSlipFormat})

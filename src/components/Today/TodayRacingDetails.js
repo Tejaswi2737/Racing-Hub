@@ -114,10 +114,9 @@ const TodayRacingDetails=(props)=> {
                     return(
                         <div className="table-item-row">
                             {slots[block].map(items=>{
-                                console.log(Date.now()-new Date(items.Time))
                                 return( 
                                     <Link to={{
-                                        pathname:"/RaceDetail", 
+                                        pathname:"/RaceDetail/Win", 
                                         slot:items.raceNumber, 
                                         place: items.meetingName,
                                         bet_pool_fh_1:items.Time.slice(0,6)+'_'+

@@ -64,7 +64,7 @@ const NextListHome = (props)=>{
                                 {details.map(item => {
                                     return(
                                         <Link to={{
-                                            pathname:"/RaceDetail", 
+                                            pathname:"/RaceDetail/Win", 
                                             slot:item.raceNumber, 
                                             place: item.meetingName,
                                             bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+

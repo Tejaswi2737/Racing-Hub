@@ -134,6 +134,17 @@ export const fetchWinPlaceBet =  () => {
 };
 
 
+
+export const addBetSlipData =  (betSlipind) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'ADD_BET_SLIP_DATA',
+      payload: betSlipind
+    });
+  }
+};
+
+
 // export const fetchTodayGrey =  () => {
 //   return function (dispatch) {
 //     dispatch({
