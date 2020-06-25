@@ -437,7 +437,7 @@ table {
     width: auto;
     width: 7.2vw !important;
     text-align: left;
-    padding: 10px;
+    /* padding: 10px; */
     line-height: 40px;
     height: 70px !important;
 }

@@ -22,7 +22,10 @@ const BetSlipHome=(props) =>{
 
     // console.log(props)
     // props.addBetSlipData("")
-    const [betAllData, setbetAllData] = useState()
+    const [betAllData, setbetAllData] = useState();
+    const [deletedBets, setdeletedBets] = useState([]);
+    const [deleteOn, setdeleteOn] = useState(false)
+    const [RemainingBets, setRemainingBets] = useState()
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
     const [BetSlipPendingJson, setBetSlipPendingJson] = useState([]);
@@ -41,7 +44,7 @@ const BetSlipHome=(props) =>{
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
 
-
+    
     useEffect(() => {
         props.addBetSlipData()
         setbetAllData()
@@ -49,28 +52,38 @@ const BetSlipHome=(props) =>{
             setbetAllData(props.betSlipInd)
         }
     }, [props.next]);
-    // console.log(props.betSlipInd)
-
-    // console.log(props.betSlipInd);
 
     useEffect(() => {
-        if (props.betSlipInd){
-            // console.log(props.betSlipInd)
+        if (RemainingBets){
             props.allBetSlipData(props.betSlipInd)
         }
     }, [props.betSlipInd]);
-    // console.log(props)
-    // console.log(props.allBetSlipData)
-    useEffect(() => {
-        
+    useEffect(() => { 
         if(props.allBetSlip) {
+            console.log("hi")
             setbetAllData(props.allBetSlip)
-            setstartSlip(true)
         }
     }, [props.allBetSlip])
-    console.log(betAllData)
-    // console.log(betAllData)
 
+    useEffect(() => {
+        if(betAllData) {
+            if(deleteOn){
+                console.log('one')
+                setRemainingBets(betAllData.filter( ( el ) => !deletedBets.includes( el ) ))
+                setstartSlip(true)
+                setdeleteOn(true)
+            } 
+            else {
+                console.log('two')
+                if(deletedBets) {
+                    setRemainingBets(betAllData.filter( ( el ) => !deletedBets.includes( el ) ))
+                    setstartSlip(true)
+                }
+                else {
+                    setRemainingBets(betAllData)}
+            }
+        }
+    }, [betAllData])
 
     const doneBet=(item)=>{
         if (betDone){
@@ -83,7 +96,6 @@ const BetSlipHome=(props) =>{
                 else 
                 (setBetSlipPendingJson(
                     BetSlipPendingJson.filter(e1=> { return e1 != item })))
-                
             }
         }    
         setbetDone(false)
@@ -95,23 +107,38 @@ const BetSlipHome=(props) =>{
     }, [showCurrency]);
 
     const deleteSingleBet=(item)=>{
-        console.log(item)
-        // console.log(item)
-        // console.log(props.betSlipInd)
         if (betAllData.length==1){
             setstartSlip(false)
         }
         var obje=betAllData.filter(e1=> { return e1 != item })
-        setbetAllData(obje)
         props.allBetSlipData(obje)
-        
+        setdeletedBets(oldArray => [...oldArray, item]);
     };
-    // console.log(props.betSlipInd)
+
+    const handleDeleteAll=()=>{
+        props.allBetSlipData([])
+        if (betAllData.length==1){
+            setstartSlip(false)
+        }
+        setshowCurrency(false);
+        RemainingBets.map(items=>{
+            setdeletedBets(oldArray => [...oldArray, items]);
+        })
+    };
+    console.log(deletedBets)
+
+
+
+    useEffect(() => {
+        if(deletedBets &&betAllData) {
+            setRemainingBets(betAllData.filter( ( el ) => !deletedBets.includes( el ) ))
+            setdeleteOn(true)
+        }
+    }, [deletedBets])
 
     const betSlipHeader=()=>{
         return(
             <SimpleBar style={{ maxHeight: '100vh' }}>
-
             <header className="side-panel-title-bar">
                 <toggle-button className="betslip-toggle">
                     <div className="toggle-button-grouped">
@@ -210,9 +237,7 @@ const BetSlipHome=(props) =>{
     const betSlipBetDetail =(WinMoney)=>{
         return(
             <>
-            {(startSlip)?betAllData.map(item=>{
-                console.log(item)
-                // console.log(item)
+            {(startSlip)?RemainingBets.map(item=>{
                 return(
                     item?item.name?
                         <div className="card">
@@ -232,12 +257,6 @@ const BetSlipHome=(props) =>{
                                             <ul className="bet-card-race-information">
                                                 <li>
                                                     {item.name} 
-                                                    {/* <span className="">
-                                                        {' '+ '(NSW)'}
-                                                    </span>
-                                                    <span>
-                                                        {' '+'RACE 3'}
-                                                    </span> */}
                                                 </li>
                                             </ul>
                                             <ul className="bet-card-selections">
@@ -246,9 +265,10 @@ const BetSlipHome=(props) =>{
                                                         Selections
                                                     </p>
                                                     <span className="bet-card-selection">
-                                                        {item.runners.map(no=>{
+                                                        {item.runners}
+                                                        {/* {item.runners.map(no=>{
                                                             return(no+",")
-                                                        })}
+                                                        })} */}
                                                     </span>
                                                 </li>
                                             </ul>
@@ -348,10 +368,9 @@ const BetSlipHome=(props) =>{
                     </ul>
                     <menu  className="bet-summary-menu">
                         <button  onClick={()=>{
-                            setstartSlip(false)
-                            setshowCurrency(false)
-                            props.allBetSlipData([])
-                            setBetSlipDoneJson({})}}
+                                handleDeleteAll()
+                        }
+                        }
                         className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
                             Delete All
                         </button>
@@ -387,7 +406,6 @@ const BetSlipHome=(props) =>{
         </div>
     );
 }
-// export default BetSlipHome;
 
 const mapStateToProps=(state)=> {
     return{ 

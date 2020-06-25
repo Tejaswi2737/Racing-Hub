@@ -322,116 +322,23 @@ const RaceDetails = (props,ownProps)=>{
     };
 
 
-    // const handlePlaceUpdate=(pool_fh,runnerSelection,place_list_all,runner_list_all)=>{
-    //     if(pool_fh) {
-    //         console.log(runner_list_all,place_list_all)
-    //         // console.log(pool_fh,place_list_all)
-    //         if (place_list_all.includes(pool_fh)) {
-    //             var loc=place_list_all.indexOf(pool_fh)
-    //             // console.log(loc)
-    //             // console.log(runner_list_all[loc])
-    //             // console.log(runnerSelection)
-    //             if (loc>=0){
-    //                 // console.log(loc)
-    //                 if (runner_list_all[loc].includes(runnerSelection)) 
-    //                 {
-    //                     // console.log(loc)
-    //                     runner_list_all[loc]=
-    //                     runner_list_all[loc].filter(e1=> { 
-    //                             return e1 != runnerSelection
-    //                     })
-    //                 }
-    //                 else {
-    //                     runner_list_all[loc]=[...runner_list_all[loc],runnerSelection]
-    //                     // console.log(runner_list_all[loc])
-    //                 }
-    //             }
-    //         }
-    //         else {
-    //             setplace_list_all([...place_list_all,pool_fh]);
-                
-    //             runner_list_all=[...runner_list_all,[runnerSelection]]
-            
-    //                 // console.log(loc)
-    //                 // console.log(runner_list_all[loc])
-    //                 // console.log(runnerSelection)
-    //                 // if (loc>=0){
-    //                 //     // console.log(loc)
-    //                 //     if (runner_list_all[loc].length==0) {
-    //                 //         runner_list_all[loc]=[...runner_list_all[loc],runnerSelection]
-    //                 //         console.log(runner_list_all[loc])
-    //                 //     }
-    //                 //     else {
-    //                 //         if (runner_list_all[loc].includes(runnerSelection)) 
-    //                 //         {
-    //                 //             // console.log(loc)
-    //                 //             runner_list_all[loc]=
-    //                 //             runner_list_all[loc].filter(e1=> { 
-    //                 //                     return e1 != runnerSelection
-    //                 //             })
-    //                 //         }
-    //                 //         else {
-    //                 //             runner_list_all[loc]=[...runner_list_all[loc],runnerSelection]
-    //                 //             console.log(runner_list_all[loc])
-    //                 //         }
-    //                 //     }
-    
-    //                 // }
-    //             // }
-    //         }
-    //         if(runner_list_all[loc]==[]) {
-    //             runner_list_all[loc]=runnerSelection
-    //         }
-    //     };
-    // }
-
     const handleClick=(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)=>{
-        // console.log(place_list_all)
-        // console.log(props)
         if ((props.racingDetail.raceStatus=="Open")) {
             setpool_fh(props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race"+props.racingDetail.raceNumber)
             setrunnerSelection(runner_item.runnerNumber)
-            // {handlePlaceUpdate(pool_fh,runnerSelection,place_list_all,runner_list_all)}
-            if (runnerSelection.includes(runner_item.runnerNumber)) {
-                
-                setrunnerSelection
-                (
-                    runnerSelection.filter(e1=> { 
-                        return e1 != runner_item.runnerNumber 
-                    })
-                )
-            }
-            else {
-                setrunnerSelection([...runnerSelection,runner_item.runnerNumber])
-            }
-            place_list_all.indexOf(pool_fh)
         }
     };
-    // console.log(pool_fh,runnerSelection)
- 
-    // console.log(place_list_all,runner_list_all)
-    // console.log(runner_list_all,place_list_all)
-
-        // console.log(pool_fh)
-
-    // console.log(pool_fh)
-    // props.addBetSlipData()
 
     useEffect(() => {
         setrunner_win_place
         ({"name":pool_fh || "","runners":runnerSelection});
         setaddedBet(true)
-        // props.addBetSlipData(runner_win_place)
     }, [pool_fh,runnerSelection])
-    // console.log(props.betSlipInd)
-    // useEffect(() => {
-    //     if(props.betSlipInd){
-    //         setrunner_win_place(runner_win_place.push(props.betSlipInd))
-
-    //     }
-    // }, [props.betSlipInd])
-
-    // console.log(runner_win_place)
+    useEffect(() => {
+        if (addedBet && (runner_win_place.name.length>0)) {
+            {props.addBetSlipData(runner_win_place)}
+        }
+    }, [runner_win_place])
 
     const runnerInfoBody=(props)=>{
         return(
@@ -614,9 +521,7 @@ const RaceDetails = (props,ownProps)=>{
     };
     
     const handleactionBetPlace=()=>{
-        if (addedBet && (runner_win_place.name.length>0)) {
-            {props.addBetSlipData(runner_win_place)}
-        }
+
     }
     useEffect(() => {
         if(props.betSlipInd) {
