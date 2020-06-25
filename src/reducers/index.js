@@ -7,7 +7,8 @@ import racingDetail from './racingDetail';
 import meetingDetails from './meetingDetails';
 
 import winPlaceBetreducer from "./winPlaceBetreducer";
-import betSlipInd from "./betSlipInd";
+import betSlipIndreducer from "./betSlipInd";
+import allBetSlipDatareducer from "./allBetSlipData";
 
 export default combineReducers({
     next: nextReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     racingDetail: racingDetail,
     meetingDetails: meetingDetails,
     winPlaceBet: winPlaceBetreducer,
-    betSlipInd: betSlipInd
+    betSlipInd: betSlipIndreducer,
+    allBetSlip: allBetSlipDatareducer
 });

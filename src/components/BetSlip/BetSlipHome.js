@@ -8,23 +8,21 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 
-import { fetchMeetingDetails,
-    fetchRaceDetails,
-    fetchWinPlaceBet,
-addBetSlipData} from "../../actions";
+import { 
+    addBetSlipData,
+    allBetSlipData
+} from "../../actions";
 import { toInteger } from 'lodash';
 
 
 
 const BetSlipHome=(props) =>{
-    props.fetchWinPlaceBet();
-    useEffect(() => {
-        props.addBetSlipData()
-    }, [props.next])
-    
-    console.log(props)
+
+    // console.log(props.betSlipInd)
+
     // console.log(props)
     // props.addBetSlipData("")
+    const [betAllData, setbetAllData] = useState()
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
     const [BetSlipPendingJson, setBetSlipPendingJson] = useState([]);
@@ -43,6 +41,37 @@ const BetSlipHome=(props) =>{
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
 
+
+    useEffect(() => {
+        props.addBetSlipData()
+        setbetAllData()
+        if (props.betSlipInd){
+            setbetAllData(props.betSlipInd)
+        }
+    }, [props.next]);
+    // console.log(props.betSlipInd)
+
+    // console.log(props.betSlipInd);
+
+    useEffect(() => {
+        if (props.betSlipInd){
+            // console.log(props.betSlipInd)
+            props.allBetSlipData(props.betSlipInd)
+        }
+    }, [props.betSlipInd]);
+    // console.log(props)
+    // console.log(props.allBetSlipData)
+    useEffect(() => {
+        
+        if(props.allBetSlip) {
+            setbetAllData(props.allBetSlip)
+            setstartSlip(true)
+        }
+    }, [props.allBetSlip])
+    console.log(betAllData)
+    // console.log(betAllData)
+
+
     const doneBet=(item)=>{
         if (betDone){
             if (WinMoney>0.5||PlaceMoney>0.5) {
@@ -54,57 +83,11 @@ const BetSlipHome=(props) =>{
                 else 
                 (setBetSlipPendingJson(
                     BetSlipPendingJson.filter(e1=> { return e1 != item })))
+                
             }
         }    
         setbetDone(false)
     };    
-    var foo = [];
-    // console.log(BetSlipPendingJson)
-    var data=[]
-    useEffect(() => {
-        setBetSlipSingle(props.winPlace)
-
-        for (var i = 1; i <= 10; i++) {
-            foo.push(props.winPlace);
-            BetSlipPendingJson.push(props.winPlace)
-            if (i==10) {
-                setstartSlip(true)
-            }
-        }
-        var i=0;
-        
-    }, [props.winPlace])
-    // useEffect(() => {
-    //     setfetched(true)
-    // }, [props])
-
-    // useEffect(() => {
-    //     if (fetched) {
-    //         setBetSlipSingle(props.winPlace)
-    //         setfetchedSingle(true)
-    //     }
-    // }, [fetched])
-    
-
-    // useEffect(() => {
-    //     if (fetchedSingle){
-    //         setBetSlipPendingJson(BetSlipSingle)
-    //         setstartSlip(true) 
-    //     }
-    // }, [fetchedSingle]);
-    // var BetSlipData=BetSlipPendingJson;
-    // console.log(BetSlipData);
-    // if (BetSlipData  && BetSlipPendingJson.length==1){
-    //     if (BetSlipData.length<=3){
-    //         BetSlipData=[...BetSlipData,BetSlipSingle]
-    //         setBetSlipPendingJson(BetSlipData)
-    //     }
-    //  }
-    // // useEffect(() => {
-
-    // // }, [BetSlipPendingJson]);
-    // console.log(BetSlipPendingJson)
-
 
     useEffect(() => {
         setWinMoney(0)
@@ -113,11 +96,17 @@ const BetSlipHome=(props) =>{
 
     const deleteSingleBet=(item)=>{
         console.log(item)
-        if (BetSlipPendingJson.length==1){
+        // console.log(item)
+        // console.log(props.betSlipInd)
+        if (betAllData.length==1){
             setstartSlip(false)
         }
-        setBetSlipPendingJson(BetSlipPendingJson.filter(e1=> { return e1 != item }))
+        var obje=betAllData.filter(e1=> { return e1 != item })
+        setbetAllData(obje)
+        props.allBetSlipData(obje)
+        
     };
+    // console.log(props.betSlipInd)
 
     const betSlipHeader=()=>{
         return(
@@ -221,62 +210,69 @@ const BetSlipHome=(props) =>{
     const betSlipBetDetail =(WinMoney)=>{
         return(
             <>
-            {(startSlip)?BetSlipPendingJson.map(item=>{
+            {(startSlip)?betAllData.map(item=>{
+                console.log(item)
+                // console.log(item)
                 return(
-                    <div className="card">
-                    <div className="">
-                        <parimutuel className="">
-                            <section className="bet-card">
-                                <header className="bet-card-header">
-                                    <h1 className="bet-card-title">
-                                        Win/Place
-                                    </h1>
-                                    <span className="bet-card-type tote">
-                                        TOTE
-                                    </span>
-                                </header>
-                                <div className="bet-card-body">
-                                    <div className="bet-additional-info">
-                                        <ul className="bet-card-race-information">
-                                            <li>
-                                                MENANGLE 
-                                                <span className="">
-                                                    {' '+ '(NSW)'}
-                                                </span>
-                                                <span>
-                                                    {' '+'RACE 3'}
-                                                </span>
-                                            </li>
-                                        </ul>
-                                        <ul className="bet-card-selections">
-                                            <li>
-                                                <p className="bet-card-label">
-                                                    Selections
-                                                </p>
-                                                <span className="bet-card-selection">
-                                                    1
-                                                </span>
-                                            </li>
-                                        </ul>
+                    item?item.name?
+                        <div className="card">
+                        <div className="">
+                            <parimutuel className="">
+                                <section className="bet-card">
+                                    <header className="bet-card-header">
+                                        <h1 className="bet-card-title">
+                                            Win/Place
+                                        </h1>
+                                        <span className="bet-card-type tote">
+                                            TOTE
+                                        </span>
+                                    </header>
+                                    <div className="bet-card-body">
+                                        <div className="bet-additional-info">
+                                            <ul className="bet-card-race-information">
+                                                <li>
+                                                    {item.name} 
+                                                    {/* <span className="">
+                                                        {' '+ '(NSW)'}
+                                                    </span>
+                                                    <span>
+                                                        {' '+'RACE 3'}
+                                                    </span> */}
+                                                </li>
+                                            </ul>
+                                            <ul className="bet-card-selections">
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selections
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.runners.map(no=>{
+                                                            return(no+",")
+                                                        })}
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {betSlipPlaceInput(props,WinMoney)}
                                     </div>
-                                    {betSlipPlaceInput(props,WinMoney)}
-                                </div>
-                                <footer className="bet-card-footer">
-                                    <div className="bet-card-footer-actions">
-                                        <button className="bet-card-remove">
-                                            <i onClick={()=>{deleteSingleBet(item)
-                                                        setdeleted(true)
-                                                        setshowCurrency(false)}}
-                                            className="icon-remove" style={{height:'5rem'}}>
-                                                <RiDeleteBin6Line/>
-                                            </i>
-                                        </button>
-                                    </div>
-                                </footer>
-                            </section>
-                        </parimutuel>
+                                    <footer className="bet-card-footer">
+                                        <div className="bet-card-footer-actions">
+                                            <button className="bet-card-remove">
+                                                <i onClick={()=>{deleteSingleBet(item)
+                                                            setdeleted(true)
+                                                            setshowCurrency(false)}}
+                                                className="icon-remove" style={{height:'5rem'}}>
+                                                    <RiDeleteBin6Line/>
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </footer>
+                                </section>
+                            </parimutuel>
+                        </div>
                     </div>
-                </div>
+                    :"":""
+
                 )
             })
         :""}
@@ -354,6 +350,7 @@ const BetSlipHome=(props) =>{
                         <button  onClick={()=>{
                             setstartSlip(false)
                             setshowCurrency(false)
+                            props.allBetSlipData([])
                             setBetSlipDoneJson({})}}
                         className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
                             Delete All
@@ -394,13 +391,13 @@ const BetSlipHome=(props) =>{
 
 const mapStateToProps=(state)=> {
     return{ 
-        winPlace:state.winPlaceBet,
-        betSlipInd:state.betSlipInd
+        betSlipInd:state.betSlipInd,
+        allBetSlip:state.allBetSlip,
     }
 }
 export default connect(mapStateToProps, 
     { 
-        fetchWinPlaceBet,
-        addBetSlipData
+        addBetSlipData,
+        allBetSlipData
     })
     (BetSlipHome);

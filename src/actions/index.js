@@ -144,7 +144,31 @@ export const addBetSlipData =  (betSlipind) => {
   }
 };
 
+export const allBetSlipData =  (dataAll) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'ALL_BET_SLIP_DATA',
+      payload: dataAll
+    });
+  }
+};
 
+// export const deleteBetSlipData =  (betSlipind) => {
+//   return function (dispatch) {
+//     dispatch({
+//       type: 'DELETE_BET_SLIP_DATA',
+//       payload: betSlipind
+//     });
+//   }
+// };
+// export const deleteAllBetSlipData =  (betSlipind) => {
+//   return function (dispatch) {
+//     dispatch({
+//       type: 'DELETE_ALL_BET_SLIP_DATA',
+//       payload: betSlipind
+//     });
+//   }
+// };
 // export const fetchTodayGrey =  () => {
 //   return function (dispatch) {
 //     dispatch({

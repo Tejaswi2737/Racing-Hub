@@ -9,7 +9,8 @@ import _ from 'lodash';
 import { fetchMeetingDetails,
     fetchRaceDetails,
     fetchWinPlaceBet,
-    addBetSlipData
+    addBetSlipData,
+    allBetSlipData
 } from "../../actions";
 
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -418,7 +419,7 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         setrunner_win_place
-        ([{"name":pool_fh,"runners":runnerSelection}]);
+        ({"name":pool_fh || "","runners":runnerSelection});
         setaddedBet(true)
         // props.addBetSlipData(runner_win_place)
     }, [pool_fh,runnerSelection])
@@ -611,12 +612,19 @@ const RaceDetails = (props,ownProps)=>{
             </div>
         )
     };
-
+    
     const handleactionBetPlace=()=>{
-        if (addedBet) {
+        if (addedBet && (runner_win_place.name.length>0)) {
             {props.addBetSlipData(runner_win_place)}
         }
     }
+    useEffect(() => {
+        if(props.betSlipInd) {
+            console.log(props.betSlipInd)
+            props.allBetSlipData(props.betSlipInd)
+        }
+    }, [props.betSlipInd])
+    // console.log(props.allBetSlip)
     const raceName=(props)=>{
         const raceSlots=(props)=>{
             return(                        
@@ -802,6 +810,7 @@ const mapStateToProps=(state,ownProps)=> {
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
+        allBetSlip:state.allBetSlip,
         place:ownProps.place,
         type:ownProps.type,
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
@@ -813,7 +822,8 @@ export default connect(mapStateToProps,
     { 
         fetchRaceDetails,
         fetchMeetingDetails,
-        addBetSlipData
+        addBetSlipData,
+        allBetSlipData
         })
     (RaceDetails);
 
