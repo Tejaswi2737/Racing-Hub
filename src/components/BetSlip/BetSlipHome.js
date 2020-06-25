@@ -17,11 +17,6 @@ import { toInteger } from 'lodash';
 
 
 const BetSlipHome=(props) =>{
-
-    // console.log(props.betSlipInd)
-
-    // console.log(props)
-    // props.addBetSlipData("")
     const [betAllData, setbetAllData] = useState();
     const [deletedBets, setdeletedBets] = useState([]);
     const [deleteOn, setdeleteOn] = useState(false)
@@ -45,45 +40,19 @@ const BetSlipHome=(props) =>{
     const [typeBet, settypeBet] = useState('');
 
     
-    useEffect(() => {
-        props.addBetSlipData()
-        setbetAllData()
-        if (props.betSlipInd){
-            setbetAllData(props.betSlipInd)
-        }
-    }, [props.next]);
 
+    
     useEffect(() => {
         if (RemainingBets){
-            props.allBetSlipData(props.betSlipInd)
+            setRemainingBets(oldArray => [...oldArray, props.allBetSlip]);
+            setstartSlip(true)
+        } else {
+            setRemainingBets(props.allBetSlip);
+            setstartSlip(true)
         }
-    }, [props.betSlipInd]);
-    useEffect(() => { 
-        if(props.allBetSlip) {
-            console.log("hi")
-            setbetAllData(props.allBetSlip)
-        }
-    }, [props.allBetSlip])
+    }, [props.allBetSlip]);
+    // console.log(props.allBetSlip)
 
-    useEffect(() => {
-        if(betAllData) {
-            if(deleteOn){
-                console.log('one')
-                setRemainingBets(betAllData.filter( ( el ) => !deletedBets.includes( el ) ))
-                setstartSlip(true)
-                setdeleteOn(true)
-            } 
-            else {
-                console.log('two')
-                if(deletedBets) {
-                    setRemainingBets(betAllData.filter( ( el ) => !deletedBets.includes( el ) ))
-                    setstartSlip(true)
-                }
-                else {
-                    setRemainingBets(betAllData)}
-            }
-        }
-    }, [betAllData])
 
     const doneBet=(item)=>{
         if (betDone){
@@ -107,34 +76,26 @@ const BetSlipHome=(props) =>{
     }, [showCurrency]);
 
     const deleteSingleBet=(item)=>{
-        if (betAllData.length==1){
+        console.log(item)
+        if (RemainingBets.length==1){
             setstartSlip(false)
+            setRemainingBets()
+            
         }
-        var obje=betAllData.filter(e1=> { return e1 != item })
-        props.allBetSlipData(obje)
-        setdeletedBets(oldArray => [...oldArray, item]);
+        var obje=RemainingBets.filter(e1=> { return e1 != item })
+        setRemainingBets(obje)
     };
 
     const handleDeleteAll=()=>{
-        props.allBetSlipData([])
-        if (betAllData.length==1){
+        if (RemainingBets.length==1){
             setstartSlip(false)
+            setRemainingBets()
+            
         }
         setshowCurrency(false);
-        RemainingBets.map(items=>{
-            setdeletedBets(oldArray => [...oldArray, items]);
-        })
+        setRemainingBets([])
     };
-    console.log(deletedBets)
 
-
-
-    useEffect(() => {
-        if(deletedBets &&betAllData) {
-            setRemainingBets(betAllData.filter( ( el ) => !deletedBets.includes( el ) ))
-            setdeleteOn(true)
-        }
-    }, [deletedBets])
 
     const betSlipHeader=()=>{
         return(
@@ -237,7 +198,7 @@ const BetSlipHome=(props) =>{
     const betSlipBetDetail =(WinMoney)=>{
         return(
             <>
-            {(startSlip)?RemainingBets.map(item=>{
+            {RemainingBets?(startSlip)?RemainingBets.map(item=>{
                 return(
                     item?item.name?
                         <div className="card">
@@ -295,7 +256,7 @@ const BetSlipHome=(props) =>{
 
                 )
             })
-        :""}
+        :"":""}
         </>
         )
     }

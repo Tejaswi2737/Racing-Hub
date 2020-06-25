@@ -322,27 +322,26 @@ const RaceDetails = (props,ownProps)=>{
     };
 
 
-    const handleClick=(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)=>{
+    const handleClick=(props,runner_item)=>{
         if ((props.racingDetail.raceStatus=="Open")) {
-            setpool_fh(props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race"+props.racingDetail.raceNumber)
-            setrunnerSelection(runner_item.runnerNumber)
+
+            setrunner_win_place({"name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
+            ,"runners":runner_item.runnerNumber});
         }
     };
 
     useEffect(() => {
-        setrunner_win_place
-        ({"name":pool_fh || "","runners":runnerSelection});
-        setaddedBet(true)
-    }, [pool_fh,runnerSelection])
-    useEffect(() => {
-        if (addedBet && (runner_win_place.name.length>0)) {
+        if ((runner_win_place)) {
             {props.addBetSlipData(runner_win_place)}
+            {props.allBetSlipData(runner_win_place)}
+            console.log(runner_win_place)
         }
     }, [runner_win_place])
 
     const runnerInfoBody=(props)=>{
         return(
             <div className="pseudo-body">
+            
             {props.racingDetail.runners?props.racingDetail.runners.map(runner_item=>{
                 return(
                     <div className="row-runner">
@@ -523,12 +522,12 @@ const RaceDetails = (props,ownProps)=>{
     const handleactionBetPlace=()=>{
 
     }
-    useEffect(() => {
-        if(props.betSlipInd) {
-            console.log(props.betSlipInd)
-            props.allBetSlipData(props.betSlipInd)
-        }
-    }, [props.betSlipInd])
+    // useEffect(() => {
+    //     if(props.betSlipInd) {
+    //         // console.log(props.betSlipInd)
+    //         props.allBetSlipData(props.betSlipInd)
+    //     }
+    // }, [props.betSlipInd])
     // console.log(props.allBetSlip)
     const raceName=(props)=>{
         const raceSlots=(props)=>{
