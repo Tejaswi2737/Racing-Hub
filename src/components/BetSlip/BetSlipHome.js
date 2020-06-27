@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { connect } from 'react-redux';
 
-
+import _ from "lodash"
 import "./BetSlip.css"
 import { RiDeleteBin6Line } from "react-icons/ri";
 import SimpleBar from 'simplebar-react';
@@ -17,10 +17,14 @@ import { toInteger } from 'lodash';
 
 
 const BetSlipHome=(props) =>{
+    const [poolFinalList, setpoolFinalList] = useState([]);
+    const [poolStatus, setpoolStatus] = useState()
     const [betAllData, setbetAllData] = useState();
     const [deletedBets, setdeletedBets] = useState([]);
     const [deleteOn, setdeleteOn] = useState(false)
-    const [RemainingBets, setRemainingBets] = useState()
+    const [RemainingBets, setRemainingBets] = useState();
+    const [distinctPoolfh, setdistinctPoolfh] = useState();
+    const [runnerList, setrunnerList] = useState();
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
     const [BetSlipPendingJson, setBetSlipPendingJson] = useState([]);
@@ -38,21 +42,89 @@ const BetSlipHome=(props) =>{
     const [ManualPlace, setManualPlace] = useState(0);
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
-
     
-
-    
+    // useEffect(() => {
+    //     if (RemainingBets){
+    //         setRemainingBets(oldArray => [...oldArray, props.allBetSlip]);
+    //         setstartSlip(true)
+    //     } else {
+    //         setRemainingBets(props.allBetSlip);
+    //         setstartSlip(true)
+    //     }
+    // }, [props.allBetSlip]);
     useEffect(() => {
-        if (RemainingBets){
-            setRemainingBets(oldArray => [...oldArray, props.allBetSlip]);
-            setstartSlip(true)
-        } else {
-            setRemainingBets(props.allBetSlip);
-            setstartSlip(true)
-        }
-    }, [props.allBetSlip]);
-    // console.log(props.allBetSlip)
+        const users=props.betSlipInd;
+    
+        let grouped = _.reduce(users, (result, user) => {
+            if(user){
+                    (result[user.name] || (result[user.name] = [])).push(user);  
+                    return result;
+            }    
+        }, {});
+        var poolList=[]
+        if(grouped) {
+            if(Object.keys(grouped)){
+                
+                Object.keys(grouped).map(poolname=>{
+                    // setpoolStatus(false)
+                    if(poolname!="undefined") {
+                        let groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        let groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+    
+                        var itemList=[]
+                          for (var i=1;i<=Object.keys(groupedRunnersNo).length;i=i+1){
+                              if(Object.values(groupedRunnersNo)[i-1]%2!=0) {
+                                // console.log(Object.keys(groupedRunnersNo)[i-1])
+                                itemList.push(Object.keys(groupedRunnersNo)[i-1])
+                              }
+                          }
+                          if (itemList.length){
+                            var itemPool={"name":poolname,"runners":itemList}
+    
+                          }
+                          if(poolFinalList){
+                                poolList.push(itemPool)
+                          } else {
+                              poolList=itemPool
+                          }
+                    }     
+                })
+                console.log(poolList)
+                setRemainingBets(poolList)
+                setstartSlip(true)
+            }
+        };
+    }, [props.betSlipInd])
 
+    
+    // useEffect(() => {
+    //     setstartSlip(true);
+    //     // setbetAllData(poolList)
+    //     console.log(poolList)
+    // }, [poolList])
+    // useEffect(() => {
+    //     console.log(poolList)
+    //     setbetAllData(poolList)
+    // }, [startSlip])
+    
 
     const doneBet=(item)=>{
         if (betDone){
@@ -77,10 +149,10 @@ const BetSlipHome=(props) =>{
 
     const deleteSingleBet=(item)=>{
         console.log(item)
+        // console.log(poolList)
         if (RemainingBets.length==1){
             setstartSlip(false)
-            setRemainingBets()
-            
+            setRemainingBets([])
         }
         var obje=RemainingBets.filter(e1=> { return e1 != item })
         setRemainingBets(obje)
@@ -93,7 +165,7 @@ const BetSlipHome=(props) =>{
             
         }
         setshowCurrency(false);
-        setRemainingBets([])
+        setRemainingBets()
     };
 
 
@@ -226,10 +298,9 @@ const BetSlipHome=(props) =>{
                                                         Selections
                                                     </p>
                                                     <span className="bet-card-selection">
-                                                        {item.runners}
-                                                        {/* {item.runners.map(no=>{
-                                                            return(no+",")
-                                                        })} */}
+                                                        {item.runners.map(no=>{
+                                                            return(no+" ,")
+                                                        })}
                                                     </span>
                                                 </li>
                                             </ul>
@@ -260,6 +331,7 @@ const BetSlipHome=(props) =>{
         </>
         )
     }
+    // console.log(RemainingBets)
     const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
         const currency=[
             {"amount":"50","denom":"c"},

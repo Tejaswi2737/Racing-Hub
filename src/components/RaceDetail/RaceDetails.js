@@ -334,9 +334,10 @@ const RaceDetails = (props,ownProps)=>{
         if ((runner_win_place)) {
             {props.addBetSlipData(runner_win_place)}
             {props.allBetSlipData(runner_win_place)}
-            console.log(runner_win_place)
+            // console.log(runner_win_place)
         }
     }, [runner_win_place])
+    // console.log(props.betSlipInd)
 
     const runnerInfoBody=(props)=>{
         return(
