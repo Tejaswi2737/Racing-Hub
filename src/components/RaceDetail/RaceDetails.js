@@ -19,7 +19,7 @@ import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
     const [pool_fh, setpool_fh] = useState();
-    const [countNo, setcountNo] = useState(1)
+    const [count, setcount] = useState(1)
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
     // var place_list_all=["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'];
     var runner_list_all=[[1,2,3,4],[3,4],[1,2,3]];
@@ -324,11 +324,13 @@ const RaceDetails = (props,ownProps)=>{
 
     const handleClick=(props,runner_item)=>{
         if ((props.racingDetail.raceStatus=="Open")) {
-            
-            setrunner_win_place({"bet_fh":"tk_integ"+countNo,
+
+            setrunner_win_place({
+                "pool_fh":"tk_integ"+count,
                 "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
-            ,"runners":runner_item.runnerNumber});
-            setcountNo(countNo+1)
+            ,"runners":runner_item.runnerNumber
+        });
+        setcount(count+1)
         }
     };
 
