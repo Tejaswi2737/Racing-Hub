@@ -72,15 +72,57 @@ const BetSlipHome=(props) =>{
         function comparer(otherArray){
             return function(current){
               return otherArray.filter(function(other){
-                return other.name == current.name && other.runners == current.runners 
+                if  (
+                    other.name == current.name && other.runners == current.runners && other.bet_fh==current.bet_fh)  {
+                        // console.log(users,other,current)
+                        return other
+                        
+                    }
               }).length == 0;
             }
           }
+          console.log(users)
           var users = users.filter(comparer(deletedBets));
 
-        
+        //   function removeElement(array, elem) {
+        //     var index = array.indexOf(elem);
+        //     console.log(index)
+        //     if (index > -1) {
+        //         console.log(elem)
+        //         array.splice(index, 1);
+        //     }
+        // };
+        // removeElement(users,deletedBets[0]);
+        // for (var i=0;i<deletedBets.length;i=i+1) {
+        //     for (var j=0;j=users.length;j=j+1) {
+        //         if(users[j] && RemainingBets[i]) {
+        //             if(users.name &&RemainingBets.name) {
+        //                 if(users[j].name==deletedBets[i].name && users[j].runners==deletedBets[i].runners) {
+        //                     users.splice(i, 1);
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // var arr = [
+        //     { id: 1, name: "don" },
+        //     { id: 2, name: "don" },
+        //     { id: 3, name: "james" },
+        //     { id: 4, name: "james" }
+        //   ];
+        //   // loop and remove the first match from the above array
+        //   for (var i = 0; i < arr.length; i++) {
+        //       if (arr[i].name == "james"){
+        //            arr.splice(i, 1);
+        //            break;
+        //         }
+        //     } 
+          // write into the browser console
+        //   console.log(arr);
+
         // var myArray = users.filter( ( el ) => !deletedBets.includes( el ) );
-        console.log(users)
+        // console.log(users)
         // console.log(myArray)
         // if(users){
         //     users=(users.filter( ( el ) => !deletedBets.includes( el ) ));
@@ -94,16 +136,22 @@ const BetSlipHome=(props) =>{
             }    
         }, {});
         var poolList=[]
+        console.log(grouped)
         if(grouped) {
             if(Object.keys(grouped)){
-                
+                console.log(Object.keys(grouped))
                 Object.keys(grouped).map(poolname=>{
+                    console.log(poolname)
                     // setpoolStatus(false)
                     if(poolname!="undefined") {
                         let groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            console.log(user)
                             if(user){
+                                
                                     (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                    console.log(result)
                                     return (Object.values(result).reduce(
+                                        
                                         function(accumulator, currentValue) {
                                           return accumulator.concat(currentValue)
                                         },
