@@ -9,6 +9,9 @@ import meetingDetails from './meetingDetails';
 import winPlaceBetreducer from "./winPlaceBetreducer";
 import betSlipIndreducer from "./betSlipInd";
 import allBetSlipDatareducer from "./allBetSlipData";
+import deleteBetSlipReducer from  "./deleteBetSlip";
+import countBetSlipReducer from  "./countBetSlipData"
+
 
 export default combineReducers({
     next: nextReducer,
@@ -18,5 +21,7 @@ export default combineReducers({
     meetingDetails: meetingDetails,
     winPlaceBet: winPlaceBetreducer,
     betSlipInd: betSlipIndreducer,
-    allBetSlip: allBetSlipDatareducer
+    allBetSlip: allBetSlipDatareducer,
+    deleteBetSlip:deleteBetSlipReducer,
+    countBetSlip:countBetSlipReducer
 });

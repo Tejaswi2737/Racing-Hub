@@ -169,6 +169,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* bet form */
 
+
+.runner-seperator:last-child {
+    color: white;
+}
+
 .bet-card-form {
     font-size: 12px;
 }

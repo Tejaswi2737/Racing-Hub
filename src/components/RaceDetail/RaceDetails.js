@@ -10,7 +10,8 @@ import { fetchMeetingDetails,
     fetchRaceDetails,
     fetchWinPlaceBet,
     addBetSlipData,
-    allBetSlipData
+    allBetSlipData,
+    countBetSlipData
 } from "../../actions";
 
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -19,7 +20,7 @@ import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
     const [pool_fh, setpool_fh] = useState();
-    const [count, setcount] = useState(1)
+    const [count, setcount] = useState()
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
     // var place_list_all=["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'];
     var runner_list_all=[[1,2,3,4],[3,4],[1,2,3]];
@@ -320,19 +321,55 @@ const RaceDetails = (props,ownProps)=>{
             </div>
         )
     };
-
-
+    // console.log(props.countBetSlip)
+    // if(props.countBetSlip) {
+    //     console.log("one")
+    //     props.countBetSlipData(0)
+    // } else {
+    //     console.log("two")
+    //     // props.countBetSlipData(0)
+    // }
     const handleClick=(props,runner_item)=>{
         if ((props.racingDetail.raceStatus=="Open")) {
 
-            setrunner_win_place({
-                "pool_fh":"tk_integ"+count,
-                "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
-            ,"runners":runner_item.runnerNumber
-        });
-        setcount(count+1)
+            if(props.countBetSlip && props.countBetSlip.length==0) {
+                // console.log(props.countBetSlip);
+                props.countBetSlipData(1);
+                setcount((props.countBetSlip));
+                setrunner_win_place({
+                    "pool_fh":"tk_integ"+props.countBetSlip,
+                    "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
+                    ,"runners":runner_item.runnerNumber
+                });
+            } else {
+                console.log("two");
+                console.log(props.countBetSlip)
+                props.countBetSlipData(parseInt(props.countBetSlip)+1);
+                setcount((props.countBetSlip));
+                setrunner_win_place({
+                    "pool_fh":"tk_integ"+props.countBetSlip,
+                    "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
+                    ,"runners":runner_item.runnerNumber
+                });
+            }
+            
+            // console.log(props.countBetSlip)
+            // if(props.countBetSlip) {
+            //     console.log(props.countBetSlip)
+            //     setcount(props.countBetSlip+1);
+            // } else  {
+            //     console.log(props.countBetSlip)
+            //     setcount(1)
+            // }
+            
         }
     };
+    // console.log(count)
+
+    useEffect(() => {
+        // console.log(count)
+    }, [count]);
+    // console.log(props.countBetSlip)
 
     useEffect(() => {
         if ((runner_win_place)) {
@@ -719,6 +756,7 @@ const mapStateToProps=(state,ownProps)=> {
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
+        countBetSlip:state.countBetSlip,
         allBetSlip:state.allBetSlip,
         place:ownProps.place,
         type:ownProps.type,
@@ -732,7 +770,8 @@ export default connect(mapStateToProps,
         fetchRaceDetails,
         fetchMeetingDetails,
         addBetSlipData,
-        allBetSlipData
+        allBetSlipData,
+        countBetSlipData
         })
     (RaceDetails);
 

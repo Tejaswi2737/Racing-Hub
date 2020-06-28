@@ -144,6 +144,25 @@ export const addBetSlipData =  (betSlipind) => {
   }
 };
 
+export const deleteBetSlipData =  (betSlipDelete) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_BET_SLIP_DATA',
+      payload: betSlipDelete
+    });
+  }
+};
+
+export const countBetSlipData =  (count) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'COUNT_BET_SLIP_DATA',
+      payload: count
+    });
+  }
+};
+
+
 export const allBetSlipData =  (dataAll) => {
   return function (dispatch) {
     dispatch({
