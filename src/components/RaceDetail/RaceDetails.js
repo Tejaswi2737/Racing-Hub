@@ -11,7 +11,8 @@ import { fetchMeetingDetails,
     fetchWinPlaceBet,
     addBetSlipData,
     allBetSlipData,
-    countBetSlipData
+    countBetSlipData,
+    betSlipScreen
 } from "../../actions";
 
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -30,6 +31,7 @@ const RaceDetails = (props,ownProps)=>{
 
     // console.log(props.bet_pool_fh_1)
     props.fetchMeetingDetails();
+    props.betSlipScreen(true)
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
     } else {
@@ -337,19 +339,19 @@ const RaceDetails = (props,ownProps)=>{
                 props.countBetSlipData(1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
-                    "pool_fh":"tk_integ"+props.countBetSlip,
+                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
-                    ,"runners":runner_item.runnerNumber
+                    ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             } else {
-                console.log("two");
-                console.log(props.countBetSlip)
+                // console.log("two");
+                // console.log(props.countBetSlip)
                 props.countBetSlipData(parseInt(props.countBetSlip)+1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
-                    "pool_fh":"tk_integ"+props.countBetSlip,
+                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
-                    ,"runners":runner_item.runnerNumber
+                    ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             }
             
@@ -757,6 +759,7 @@ const mapStateToProps=(state,ownProps)=> {
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
         countBetSlip:state.countBetSlip,
+        screenStatus:state.screenStatus,
         allBetSlip:state.allBetSlip,
         place:ownProps.place,
         type:ownProps.type,
@@ -771,7 +774,8 @@ export default connect(mapStateToProps,
         fetchMeetingDetails,
         addBetSlipData,
         allBetSlipData,
-        countBetSlipData
+        countBetSlipData,
+        betSlipScreen
         })
     (RaceDetails);
 

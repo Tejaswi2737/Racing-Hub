@@ -5,7 +5,7 @@ import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
-import { fetchNextRace } from "../../actions";
+import { fetchNextRace,allBetSlipData,betSlipScreen } from "../../actions";
 
 
 import Header from '../Nav/Header'
@@ -16,6 +16,8 @@ import RespHeader from '../Nav/RespHeader';
 
 const TodayH=(props)=> {
     props.fetchNextRace();
+    props.betSlipScreen(false);
+ 
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
@@ -66,7 +68,15 @@ const TodayH=(props)=> {
     )
 }
 const mapStateToProps=(state)=> {
-    return{ next:state.next}
+    return{ 
+      next:state.next,
+      allBetSlip:state.allBetSlip,
+      screenStatus:state.screenStatus,
+    }
 }
-export default connect(mapStateToProps, { fetchNextRace } )(TodayH);
+export default connect(mapStateToProps, { 
+  fetchNextRace,
+  allBetSlipData,
+  betSlipScreen
+ } )(TodayH);
 // export default TodayG;

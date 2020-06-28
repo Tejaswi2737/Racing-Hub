@@ -9,7 +9,11 @@ import meetingDetails from './meetingDetails';
 import winPlaceBetreducer from "./winPlaceBetreducer";
 import betSlipIndreducer from "./betSlipInd";
 import allBetSlipDatareducer from "./allBetSlipData";
+import screenStatusReducers from "./screenStatusReducers";
+
 import deleteBetSlipReducer from  "./deleteBetSlip";
+import remainingBetSlipReducer from  "./remainingBetSlipData";
+
 import countBetSlipReducer from  "./countBetSlipData"
 
 
@@ -23,5 +27,7 @@ export default combineReducers({
     betSlipInd: betSlipIndreducer,
     allBetSlip: allBetSlipDatareducer,
     deleteBetSlip:deleteBetSlipReducer,
+    screenStatus:screenStatusReducers,
+    remainingBetSlip:remainingBetSlipReducer,
     countBetSlip:countBetSlipReducer
 });

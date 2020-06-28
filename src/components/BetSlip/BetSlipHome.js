@@ -11,7 +11,9 @@ import 'simplebar/dist/simplebar.min.css';
 import { 
     addBetSlipData,
     allBetSlipData,
-    deleteBetSlipData
+    deleteBetSlipData,
+    remainingBetSlipData,
+    betSlipScreen
 } from "../../actions";
 import { toInteger } from 'lodash';
 
@@ -24,6 +26,8 @@ const BetSlipHome=(props) =>{
     const [deletedBets, setdeletedBets] = useState([]);
     const [deleteOn, setdeleteOn] = useState(false)
     const [RemainingBets, setRemainingBets] = useState();
+    const [finalReminingBets, setfinalReminingBets] = useState([])
+
     const [distinctPoolfh, setdistinctPoolfh] = useState();
     const [runnerList, setrunnerList] = useState();
     const [showCurrency, setshowCurrency] = useState(false)
@@ -44,55 +48,22 @@ const BetSlipHome=(props) =>{
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
 
-    // props.addBetSlipData();
-    console.log(props.betSlipInd)
     useEffect(() => {
-        var users=props.betSlipInd
-        // if(props.betSlipInd) {
-        //     if(props.betSlipInd.length>1) {
-        //         for (var i=props.betSlipInd.length-1;i>=0;i=i-1) {
-        //             if(props.betSlipInd[i].length) {
-        //                 // console.log(props.deleteBetSlip[i])
-        //                 var users=props.betSlipInd[i]
-        //                 // var dele=props.deleteBetSlip[i];
-        //             }
-        //         }
-        //     }
-        // }
-
+        console.log(props.screenStatus)
+        console.log(props.allBetSlip);
+        console.log(props.remainingBetSlip)
+        var users=props.allBetSlip;
+        var rem=props.remainingBetSlip   
+        if(props.screenStatus) {
+            users = [users, ...rem];
+        } else {users=[...rem]}
         
-        var dele=[]
-        if(props.deleteBetSlip.length>1) {
-            for (var i=props.deleteBetSlip.length-1;i>=0;i=i-1) {
-                if(props.deleteBetSlip[i].length) {
-                    // console.log(props.deleteBetSlip[i])
-                    var dele=props.deleteBetSlip[i];
-                    setdeletedBets(props.deleteBetSlip[i])
-                    function comparer(otherArray){
-                        return function(current){
-                          return otherArray.filter(function(other){
-                            return other.name == current.name && other.runners == current.runners  && other.pool_fh == current.pool_fh
-                          }).length == 0;
-                        }
-                      }
-                      console.log(dele)
-                    //   console.log(deletedBets)
-                    //   console.log(props.betSlipInd)
-                    //   console.log(users)
-                    var users = users.filter(comparer(dele));
-                    break;
-                }
-            }
+        console.log(users);
+        var dele=[];
+        if(props.remainingBetSlip) {
+            users=Object.values(users)
+        }
 
-        };
-        // console.log(dele)
-        console.log(users)
-
-
-        // console.log(props.deleteBetSlip)
-        // console.log(deletedBets)
-        // console.log(users)
-        
         let grouped = _.reduce(users, (result, user) => {
             if(user){
                     (result[user.name] || (result[user.name] = [])).push(user);  
@@ -107,7 +78,7 @@ const BetSlipHome=(props) =>{
                         let groupedRunners = _.reduce(grouped[poolname], (result, user) => {
                             if(user){
                                     (result[user.name] || (result[user.name] = [])).push(user.runners);  
-                                    (result[user.name] || (result[user.name] = [])).push(user.pool_fh);  
+                                    
                                     return (Object.values(result).reduce(
                                         function(accumulator, currentValue) {
                                           return accumulator.concat(currentValue)
@@ -126,37 +97,30 @@ const BetSlipHome=(props) =>{
                             return(allNames)
                           }, {})
                         var itemList=[];
-                        var poolfhList=[]
-                        // console.log(Object.keys(groupedRunnersNo))
-                          for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
-                              if(Object.values(groupedRunnersNo)[i]%2!=0) {
-                                  if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
-                                    var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])})); 
-                                    poolfhList.push(users[pos].pool_fh);
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));                                
                                     itemList.push(users[pos].runners)
-                                  } 
-                                }
-                              }
-                          if (itemList.length){
-                            var itemPool={"pool_fh":poolfhList,"name":poolname,"runners":itemList}
-                          }
-                          console.log(itemPool)
-                          if(poolFinalList){
-                                poolList.push(itemPool)
-                          } else {
-                              poolList=itemPool
-                          }
+                                } 
+                            }
+                            }
+                        if (itemList.length){
+                            var itemPool={"name":poolname,"runners":itemList, "win": null ,"place": null}
+                        }
+                        if(poolFinalList){
+                            poolList.push(itemPool)
+                        } else {
+                            poolList=itemPool
+                        }
                     }     
                 })
                 setRemainingBets(poolList)
                 setstartSlip(true)
             }
         };
-    }, [props.betSlipInd])
-
-    
-
-
+    }, [props.allBetSlip]);
+    console.log(RemainingBets)
     const doneBet=(item)=>{
         if (betDone){
             if (WinMoney>0.5||PlaceMoney>0.5) {
@@ -187,35 +151,12 @@ const BetSlipHome=(props) =>{
         setRemainingBets(obje)
         if(item.runners.length>1) {
             item.runners.map(runnnerInd=>{
-                if(Array.isArray(item.pool_fh[item.runners.indexOf(runnnerInd)])) {
-                    setdeletedBets(oldArray => [...oldArray, {
-                        "pool_fh":item.pool_fh[item.runners.indexOf(runnnerInd)][0],
-                        "name":item.name,
-                        "runners":parseInt(runnnerInd)[0]}]);
-                }
-
-                else {
-                    if(Array.isArray(item.pool_fh[item.runners.indexOf(runnnerInd)])) {
-                        setdeletedBets(oldArray => [...oldArray, {
-                            "pool_fh":item.pool_fh[item.runners.indexOf(runnnerInd)][0],
-                            "name":item.name,
-                            "runners":parseInt(runnnerInd)[0]
-                        }]);
-                    }
-
-                    else setdeletedBets(oldArray => [...oldArray, {"pool_fh":item.pool_fh[item.runners.indexOf(runnnerInd)],"name":item.name,"runners":parseInt(runnnerInd)}]);
-                }
+                setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(runnnerInd),"win": null ,"place": null}]); 
             })
         } else {
-            console.log(item.pool_fh[0])
-            if(Array.isArray(item.pool_fh[0])) {
-                setdeletedBets(oldArray => [...oldArray, {"pool_fh":item.pool_fh[0][0],"name":item.name,"runners":parseInt(item.runners)[0]}]);
-            }
-            else setdeletedBets(oldArray => [...oldArray, {"pool_fh":item.pool_fh[0],"name":item.name,"runners":parseInt(item.runners)}]);
+            setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(item.runners),"win": null ,"place": null}]);
         }
-        
     };
-    console.log(deletedBets)
 
     const handleDeleteAll=()=>{
         if (RemainingBets.length==1){
@@ -223,27 +164,46 @@ const BetSlipHome=(props) =>{
             setRemainingBets()
         }
         RemainingBets.map(items=>{
-            // console.log(RemainingBets)
             if(items) {
                 if(items.runners.length>1) {
                     items.runners.map(runnnerInd=>{
-                        setdeletedBets(oldArray => [...oldArray, {"pool_fh":items.pool_fh[items.runners.indexOf(runnnerInd)],"name":items.name,"runners":runnnerInd}]);
+                        setdeletedBets(oldArray => [...oldArray, {"name":items.name,"runners":runnnerInd,"win": null ,"place": null}]);
                     })
                 } else setdeletedBets(oldArray => [...oldArray, items]);   
             }
-    
          })
         setRemainingBets([])
         setshowCurrency(false);
-        // setRemainingBets()
     };
 
     useEffect(() => {
+        if (RemainingBets) {
+            setfinalReminingBets([])
+            RemainingBets.map(items=>{
+                if(items) {
+                    if(items.runners.length>1) {
+                        items.runners.map(runnnerInd=>{
+                            console.log(items)
+                            setfinalReminingBets(oldArray => [...oldArray, {"name":items.name,"runners":runnnerInd,"win": null ,"place": null}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        console.log(items)
+                        setfinalReminingBets(oldArray => [...oldArray,{"name":items.name,"runners":items.runners[0],"win": null ,"place": null}])
+                    }
+                }
+            })
+        }
+
+    }, [RemainingBets]);
+    useEffect(() => {
+        props.remainingBetSlipData(finalReminingBets)
+    }, [finalReminingBets])
+    useEffect(() => {
         props.deleteBetSlipData(deletedBets)
     }, [deletedBets]);
-    console.log(RemainingBets)
     
-    // console.log(deletedBets)
     const betSlipHeader=()=>{
         return(
             <SimpleBar style={{ maxHeight: '100vh' }}>
@@ -380,7 +340,7 @@ const BetSlipHome=(props) =>{
                                                                     {no}
                                                                 </span>
                                                                 <span className="runner-seperator">
-                                                                    {" ,"}
+                                                                    {" , "}
                                                                 </span>
                                                                 </>
                                                             )
@@ -524,16 +484,21 @@ const BetSlipHome=(props) =>{
 }
 
 const mapStateToProps=(state)=> {
+    // console.log(state)
     return{ 
         betSlipInd:state.betSlipInd,
         allBetSlip:state.allBetSlip,
-        deleteBetSlip:state.deleteBetSlip
+        deleteBetSlip:state.deleteBetSlip,
+        remainingBetSlip:state.remainingBetSlip,
+        screenStatus:state.screenStatus,
     }
 }
 export default connect(mapStateToProps, 
     { 
         addBetSlipData,
         allBetSlipData,
-        deleteBetSlipData
+        deleteBetSlipData,
+        remainingBetSlipData,
+        betSlipScreen
     })
     (BetSlipHome);

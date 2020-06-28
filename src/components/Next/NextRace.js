@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import MediaQuery from 'react-responsive'
 
 
+import { allBetSlipData } from "../../actions";
 
 // import BetSlipStore from "../../context/BetSlipContext";
 
@@ -204,5 +205,6 @@ const NextRace = (props)=>{
         </div>
         );
 }; 
+
 
 export default NextRace

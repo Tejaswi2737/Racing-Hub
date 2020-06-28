@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-import { fetchNextRace } from "../../actions";
+import { fetchNextRace,allBetSlipData,betSlipScreen } from "../../actions";
 
 
 import Header from '../Nav/Header'
@@ -14,6 +14,10 @@ import RespHeader from '../Nav/RespHeader';
 
 const TodayG=(props)=> {
     props.fetchNextRace();
+    props.betSlipScreen(false)
+    // useEffect(() => {
+    //   props.allBetSlipData([])
+    // }, [props.next])
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
@@ -54,7 +58,6 @@ const TodayG=(props)=> {
           </MediaQuery>
           <MediaQuery query='(max-width: 800px)'>
           <SimpleBar style={{ maxHeight: '100vh' }}>
-
               <Header/>
               <NextList next={props.next}/>
               <TodayDetails detail='todayRacingGrey'/>
@@ -64,7 +67,15 @@ const TodayG=(props)=> {
     );
 }
 const mapStateToProps=(state)=> {
-    return{ next:state.next}
+    return{
+      next:state.next,
+      allBetSlip:state.allBetSlip,
+      screenStatus:state.screenStatus,
+    }
 }
-export default connect(mapStateToProps, { fetchNextRace } )(TodayG);
+export default connect(mapStateToProps, { 
+  fetchNextRace,
+  allBetSlipData,
+  betSlipScreen
+ } )(TodayG);
 // export default TodayG;

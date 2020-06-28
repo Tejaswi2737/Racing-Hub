@@ -4,7 +4,7 @@ import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
-import { fetchNextRace } from "../../actions";
+import { fetchNextRace,allBetSlipData,betSlipScreen } from "../../actions";
 
 import Header from '../Nav/Header';
 import NextRace from '../Next/NextRace';
@@ -14,6 +14,7 @@ import RespHeader from '../Nav/RespHeader';
 import "../Next/NextRace.css"
 const NextScreen=(props) =>{
     props.fetchNextRace();
+    props.betSlipScreen(false)
     const [firstTime, setfirstTime] = useState();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
@@ -73,6 +74,13 @@ const NextScreen=(props) =>{
     )
 }
 const mapStateToProps=(state)=> {
-    return{ next:state.next}
+    return{ 
+        next:state.next,
+        screenStatus:state.screenStatus,
+
+    }
 }
-export default connect(mapStateToProps, { fetchNextRace } )(NextScreen);
+export default connect(mapStateToProps, { 
+    fetchNextRace,
+    betSlipScreen
+ } )(NextScreen);

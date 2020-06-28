@@ -144,11 +144,29 @@ export const addBetSlipData =  (betSlipind) => {
   }
 };
 
+export const remainingBetSlipData =  (remaining) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'REMAINING_BET_SLIP_DATA',
+      payload: remaining
+    });
+  }
+};
+
 export const deleteBetSlipData =  (betSlipDelete) => {
   return function (dispatch) {
     dispatch({
       type: 'DELETE_BET_SLIP_DATA',
       payload: betSlipDelete
+    });
+  }
+};
+
+export const betSlipScreen =  (screen) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'BET_SLIP_SCREEN',
+      payload: screen
     });
   }
 };
