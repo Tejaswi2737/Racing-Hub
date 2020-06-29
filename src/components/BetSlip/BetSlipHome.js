@@ -58,7 +58,7 @@ const BetSlipHome=(props) =>{
             users = [users, ...rem];
         } else {users=[...rem]}
         
-        // console.log(users);
+        console.log(users);
         var dele=[];
         if(props.remainingBetSlip) {
             users=Object.values(users)
@@ -99,14 +99,18 @@ const BetSlipHome=(props) =>{
                         var itemList=[];
                         var winList=null;
                         var placeList=null;
+                        console.log(groupedRunnersNo)
+                        console.log(groupedRunners)
+                        console.log(grouped)
                         for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
                             if(Object.values(groupedRunnersNo)[i]%2!=0) {
                                 if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
                                     var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
                                     // console.log(users[pos])                          
                                     itemList.push(users[pos].runners)
-                                    winList=users[pos].win
-                                    placeList=users[pos].place
+                                    console.log(grouped[poolname][grouped[poolname].length-1].win)
+                                    winList=grouped[poolname][grouped[poolname].length-1].win
+                                    placeList=users[users.length-1].place
                                 } 
                             }
                             }
@@ -125,7 +129,7 @@ const BetSlipHome=(props) =>{
             }
         };
     }, [props.allBetSlip]);
-    // console.log(RemainingBets)
+    console.log(RemainingBets)
     const doneBet=(item)=>{
         if (betDone){
             if (WinMoney>0.5||PlaceMoney>0.5) {
@@ -202,6 +206,7 @@ const BetSlipHome=(props) =>{
         }
 
     }, [RemainingBets]);
+    console.log(finalReminingBets)
     useEffect(() => {
         props.remainingBetSlipData(finalReminingBets)
     }, [finalReminingBets])
@@ -235,16 +240,18 @@ const BetSlipHome=(props) =>{
         // const manualChangeWinAmount=(e)=>{
         //     item.win(e.target.value)
         // }
+        // console.log(item.name);
+        var pos=(_.findIndex(RemainingBets, item));
         const updateFieldChanged = (index,item) => e => {
             var pos=(_.findIndex(RemainingBets, item))
-            console.log(pos)
-            console.log('index: ' + index);
-            console.log('property name: '+ e.target.value);
+            // console.log(item,pos)
+            // console.log('index: ' + index);
+            // console.log('property name: '+ e.target.value);
             let newArr = [...RemainingBets]; // copying the old datas array
             newArr[pos][index] = e.target.value; // replace e.target.value with whatever you want to change it to
             setRemainingBets(newArr); // ??
         }
-        console.log(RemainingBets)
+        console.log(RemainingBets[pos]['win'])
         return(
             <>
                         <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
@@ -266,7 +273,7 @@ const BetSlipHome=(props) =>{
                                                         setshowCurrency(true)
                                                         settypeBet('Win')
                                                     }} 
-                                                    value={item.win}
+                                                    value={RemainingBets[pos]['win']}
                                                     onChange={updateFieldChanged('win',item)} 
                                                         className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                                     </input>
@@ -323,6 +330,7 @@ const BetSlipHome=(props) =>{
         return(
             <>
             {RemainingBets?(startSlip)?RemainingBets.map(item=>{
+                console.log(item)
                 return(
                     item?item.name?
                         <div className="card">
