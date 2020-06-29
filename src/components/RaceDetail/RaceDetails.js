@@ -31,7 +31,7 @@ const RaceDetails = (props,ownProps)=>{
 
     // console.log(props.bet_pool_fh_1)
     props.fetchMeetingDetails();
-    props.betSlipScreen(true)
+    
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
     } else {
@@ -354,6 +354,7 @@ const RaceDetails = (props,ownProps)=>{
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             }
+            props.betSlipScreen(true)
             
             // console.log(props.countBetSlip)
             // if(props.countBetSlip) {
