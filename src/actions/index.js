@@ -179,7 +179,14 @@ export const countBetSlipData =  (count) => {
     });
   }
 };
-
+export const postWinPlaceBets =  (betData) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'POST_WIN_PLACE',
+      payload: betData
+    });
+  }
+};
 
 export const allBetSlipData =  (dataAll) => {
   return function (dispatch) {

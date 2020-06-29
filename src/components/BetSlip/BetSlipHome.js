@@ -13,14 +13,17 @@ import {
     allBetSlipData,
     deleteBetSlipData,
     remainingBetSlipData,
-    betSlipScreen
+    betSlipScreen,
+    postWinPlaceBets
 } from "../../actions";
 import { toInteger } from 'lodash';
 
 
 
 const BetSlipHome=(props) =>{
+    console.log(props.postWinPlace)
     const [poolFinalList, setpoolFinalList] = useState([]);
+    const [totalAmount, settotalAmount] = useState(0)
     const [poolStatus, setpoolStatus] = useState()
     const [betAllData, setbetAllData] = useState();
     const [deletedBets, setdeletedBets] = useState([]);
@@ -53,6 +56,7 @@ const BetSlipHome=(props) =>{
         console.log(props.allBetSlip);
         console.log(props.remainingBetSlip)
         var users=props.allBetSlip;
+        
         var rem=props.remainingBetSlip   
         if(props.screenStatus) {
             users = [users, ...rem];
@@ -110,7 +114,7 @@ const BetSlipHome=(props) =>{
                                     itemList.push(users[pos].runners)
                                     console.log(grouped[poolname][grouped[poolname].length-1].win)
                                     winList=grouped[poolname][grouped[poolname].length-1].win
-                                    placeList=users[users.length-1].place
+                                    placeList=grouped[poolname][grouped[poolname].length-1].place
                                 } 
                             }
                             }
@@ -232,6 +236,28 @@ const BetSlipHome=(props) =>{
             </SimpleBar>
         )
     };
+    // useEffect(() => {
+    //     settotalAmount(0)
+
+    // }, [props.betSlipInd])
+    // useEffect(() => {
+    //     if(RemainingBets) {
+    //         if(startSlip) {
+    //             var tot=0
+    //             console.log(_.sumBy(RemainingBets, 'win'));
+    //             RemainingBets.map(item=>{
+    //                 tot=totalAmount
+    //                 if(item.runners) {
+    //                 var posi=(_.findIndex(RemainingBets, item))
+    //                 console.log(posi)
+    //                 console.log(item.runners.length*(RemainingBets[posi]['win']+RemainingBets[posi]['place']))
+    //                 settotalAmount(tot+item.runners.length*(RemainingBets[posi]['win']+RemainingBets[posi]['place']))
+
+    //             }
+    //             })
+    //         }
+    //     }
+    // }, [RemainingBets])
 
     const betSlipPlaceInput=(item)=>{
         // const manualChangePlaceAmount=(e)=>{
@@ -240,18 +266,22 @@ const BetSlipHome=(props) =>{
         // const manualChangeWinAmount=(e)=>{
         //     item.win(e.target.value)
         // }
-        // console.log(item.name);
+        console.log(item);
         var pos=(_.findIndex(RemainingBets, item));
-        const updateFieldChanged = (index,item) => e => {
+        const updateFieldChanged = (e,index,item) => {
+            console.log("entered")
             var pos=(_.findIndex(RemainingBets, item))
-            // console.log(item,pos)
+            console.log(e,index,item)
             // console.log('index: ' + index);
             // console.log('property name: '+ e.target.value);
             let newArr = [...RemainingBets]; // copying the old datas array
-            newArr[pos][index] = e.target.value; // replace e.target.value with whatever you want to change it to
+            newArr[pos][index] = parseInt(e.target.value); // replace e.target.value with whatever you want to change it to
+            newArr[pos][index]=newArr[pos][index]
             setRemainingBets(newArr); // ??
         }
+        // settotalAmount(totalAmount+item.runners.length*(RemainingBets[pos]['win']+RemainingBets[pos]['place']))
         console.log(RemainingBets[pos]['win'])
+        var valueNo=RemainingBets[pos]['win']
         return(
             <>
                         <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
@@ -268,13 +298,13 @@ const BetSlipHome=(props) =>{
                                                         $
                                                     </span>
                                                     <input 
-                                                    type={Number}
-                                                    onClick={()=>{
-                                                        setshowCurrency(true)
-                                                        settypeBet('Win')
-                                                    }} 
-                                                    value={RemainingBets[pos]['win']}
-                                                    onChange={updateFieldChanged('win',item)} 
+                                                        type="number"
+                                                        onClick={()=>{
+                                                            settypeBet('Win')
+                                                        }} 
+                                                        required
+                                                        value={RemainingBets[pos]['win']}
+                                                        onChange={(e)=>updateFieldChanged(e,'win',item)} 
                                                         className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                                     </input>
                                                 </span>
@@ -294,14 +324,13 @@ const BetSlipHome=(props) =>{
                                                         $
                                                     </span>
                                                     <input 
-                                                    type={Number}
-                                                    onClick={()=>{
-                                                        setshowCurrency(true)
-                                                        settypeBet('Place')
-                                                    }}
-                                                    onChange={updateFieldChanged('place',item)} 
-                                                    value={item.place}
-                                                    className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                                        type="number"
+                                                        onClick={()=>{
+                                                            settypeBet('Place')
+                                                        }}
+                                                        onChange={(e)=>updateFieldChanged(e,'place',item)} 
+                                                        value={RemainingBets[pos]['place']}
+                                                        className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                                     </input>
                                                 </span>
                                             </stake-input>
@@ -315,7 +344,10 @@ const BetSlipHome=(props) =>{
                                                 Bet Cost
                                             </label>
                                             <span className="bet-info-value">
-                                                $1
+                                                ${(isNaN(RemainingBets[pos]['win'])&&isNaN(RemainingBets[pos]['place']))?0:
+                                                isNaN(RemainingBets[pos]['win'])?item.runners.length*(RemainingBets[pos]['place']):
+                                                isNaN(RemainingBets[pos]['place'])?item.runners.length*(RemainingBets[pos]['win']):
+                                                item.runners.length*(RemainingBets[pos]['win']+RemainingBets[pos]['place'])}
                                             </span>
                                         </bet-cost>
                                     </div>
@@ -330,7 +362,7 @@ const BetSlipHome=(props) =>{
         return(
             <>
             {RemainingBets?(startSlip)?RemainingBets.map(item=>{
-                console.log(item)
+                console.log(item);
                 return(
                     item?item.name?
                         <div className="card">
@@ -463,7 +495,7 @@ const BetSlipHome=(props) =>{
                                 Total cost
                             </h1>
                             <p  className="bet-builder-footer-key-info bet-builder-total-bets-cost">
-                            $36.50
+                            ${_.sumBy(finalReminingBets, 'win')+_.sumBy(finalReminingBets, 'place')}
                             </p>
                         </li>
                     </ul>
@@ -475,14 +507,14 @@ const BetSlipHome=(props) =>{
                         className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
                             Delete All
                         </button>
-                        <button  className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
+                        <button  onClick={()=>{props.postWinPlaceBets(finalReminingBets)}}
+                        className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
                             Bet Now
                         </button>
                     </menu>
                 </footer>
-
             </div>
-            )
+        )
     };
     return (
         <div className="side-panel toggleable">
@@ -502,20 +534,20 @@ const BetSlipHome=(props) =>{
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
 }
 
 const mapStateToProps=(state)=> {
-    // console.log(state)
+    console.log(state.postWinPlace)
     return{ 
         betSlipInd:state.betSlipInd,
         allBetSlip:state.allBetSlip,
         deleteBetSlip:state.deleteBetSlip,
         remainingBetSlip:state.remainingBetSlip,
         screenStatus:state.screenStatus,
+        postWinPlace:state.postWinPlace
     }
 }
 export default connect(mapStateToProps, 
@@ -524,6 +556,7 @@ export default connect(mapStateToProps,
         allBetSlipData,
         deleteBetSlipData,
         remainingBetSlipData,
-        betSlipScreen
+        betSlipScreen,
+        postWinPlaceBets
     })
     (BetSlipHome);

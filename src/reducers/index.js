@@ -10,6 +10,7 @@ import winPlaceBetreducer from "./winPlaceBetreducer";
 import betSlipIndreducer from "./betSlipInd";
 import allBetSlipDatareducer from "./allBetSlipData";
 import screenStatusReducers from "./screenStatusReducers";
+import postWinPlaceReducer from "./postWinPlace";
 
 import deleteBetSlipReducer from  "./deleteBetSlip";
 import remainingBetSlipReducer from  "./remainingBetSlipData";
@@ -29,5 +30,6 @@ export default combineReducers({
     deleteBetSlip:deleteBetSlipReducer,
     screenStatus:screenStatusReducers,
     remainingBetSlip:remainingBetSlipReducer,
-    countBetSlip:countBetSlipReducer
+    countBetSlip:countBetSlipReducer,
+    postWinPlace:postWinPlaceReducer
 });
