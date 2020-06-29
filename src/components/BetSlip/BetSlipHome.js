@@ -22,6 +22,8 @@ import { toInteger } from 'lodash';
 
 const BetSlipHome=(props) =>{
     const [poolFinalList, setpoolFinalList] = useState([]);
+    // const [moneyValue, setmmoneyValue] = useState(null);
+
     const [totalAmount, settotalAmount] = useState(0)
     const [poolStatus, setpoolStatus] = useState()
     const [betAllData, setbetAllData] = useState();
@@ -44,8 +46,8 @@ const BetSlipHome=(props) =>{
     const [BetSlipSingleSubmitted, setBetSlipSubmitted] = useState();
     const [betDone, setbetDone] = useState(false);
 
-    const [WinMoney, setWinMoney] = useState(0);
-    const [PlaceMoney, setPlaceMoney] = useState(0);
+    const [WinMoney, setWinMoney] = useState(null);
+    const [PlaceMoney, setPlaceMoney] = useState(null);
     const [ManualPlace, setManualPlace] = useState(0);
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
@@ -126,26 +128,12 @@ const BetSlipHome=(props) =>{
             }
         };
     }, [props.allBetSlip]);
-    const doneBet=(item)=>{
-        if (betDone){
-            if (WinMoney>0.5||PlaceMoney>0.5) {
-                setBetSlipDoneJson([BetSlipSingleSubmitted])
-                if (BetSlipPendingJson.length==1){
-                    setstartSlip(false)
-                    setBetSlipPendingJson({})
-                }
-                else 
-                (setBetSlipPendingJson(
-                    BetSlipPendingJson.filter(e1=> { return e1 != item })))
-            }
-        }    
-        setbetDone(false)
-    };    
 
-    useEffect(() => {
-        setWinMoney(0)
-        setPlaceMoney(0)
-    }, [showCurrency]);
+
+    // useEffect(() => {
+    //     setWinMoney(0)
+    //     setPlaceMoney(0)
+    // }, [showCurrency]);
     
     const deleteSingleBet=(item)=>{
         if (RemainingBets.length==1){
@@ -228,89 +216,98 @@ const BetSlipHome=(props) =>{
 
 
     const betSlipPlaceInput=(item)=>{
+        
+        var winni=null;
+        var placci=null;
+        console.log(winni)
         var pos=(_.findIndex(RemainingBets, item));
         const updateFieldChanged = (e,index,item) => {
+            e.preventDefault();
             var pos=(_.findIndex(RemainingBets, item))
             let newArr = [...RemainingBets]; // copying the old datas array
             newArr[pos][index] = parseInt(e.target.value); // replace e.target.value with whatever you want to change it to
             newArr[pos][index]=newArr[pos][index]
             setRemainingBets(newArr); // ??
         }
+        console.log(item)
         var valueNo=RemainingBets[pos]['win']
+        console.log(RemainingBets[pos]['win']==null)
         return(
             <>
-                        <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
-                            <ul className="">
-                                <li className="">
-                                    <div className="bet-card-info">
-                                        <label className="bet-info-value">
-                                            Win
-                                        </label>
-                                        <div className="bet-card-input">
-                                            <stake-input className="">
-                                                <span className="stake-input">
-                                                    <span className="currency">
-                                                        $
-                                                    </span>
-                                                    <input 
-                                                        type="number"
-                                                        onClick={()=>{
-                                                            settypeBet('Win')
-                                                        }} 
-                                                        required
-                                                        value={RemainingBets[pos]['win']}
-                                                        min={0}
-                                                        onChange={(e)=>updateFieldChanged(e,'win',item)} 
-                                                        className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
-                                                    </input>
-                                                </span>
-                                            </stake-input>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="">
-                                    <div className="bet-card-info">
-                                        <label className="bet-info-value">
-                                            Place
-                                        </label>
-                                        <div className="bet-card-input">
-                                            <stake-input className="">
-                                                <span className="stake-input">
-                                                    <span className="currency">
-                                                        $
-                                                    </span>
-                                                    <input 
-                                                        type="number"
-                                                        onClick={()=>{
-                                                            settypeBet('Place')
-                                                        }}
-                                                        onChange={(e)=>updateFieldChanged(e,'place',item)} 
-                                                        value={RemainingBets[pos]['place']}
-                                                        min={0}
-                                                        className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
-                                                    </input>
-                                                </span>
-                                            </stake-input>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="">
-                                    <div className="bet-card-info">
-                                        <bet-cost className="">
-                                            <label className="bet-info-label">
-                                                Bet Cost
-                                            </label>
-                                            <span className="bet-info-value">
-                                                ${(isNaN(RemainingBets[pos]['win'])&&isNaN(RemainingBets[pos]['place']))?0:
-                                                isNaN(RemainingBets[pos]['win'])?item.runners.length*(RemainingBets[pos]['place']):
-                                                isNaN(RemainingBets[pos]['place'])?item.runners.length*(RemainingBets[pos]['win']):
-                                                item.runners.length*(RemainingBets[pos]['win']+RemainingBets[pos]['place'])}
+                <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
+                    <ul className="">
+                        <li className="">
+                            <div className="bet-card-info">
+                                <label className="bet-info-value">
+                                    Win
+                                </label>
+                                <div className="bet-card-input">
+                                    <stake-input className="">
+                                        <span className="stake-input">
+                                            <span className="currency">
+                                                $
                                             </span>
-                                        </bet-cost>
-                                    </div>
-                                </li>
-                            </ul>
-                        </form>
+                                            <input 
+                                                type="number"
+                                                onClick={()=>{
+                                                    settypeBet('Win')
+                                                }} 
+                                                placeholder={null}
+                                                name={RemainingBets[pos]['win']}
+                                                value={RemainingBets[pos]['win']==null?null:RemainingBets[pos]['win']}
+                                                min={0}
+                                                onChange={(e)=>updateFieldChanged(e,'win',item)} 
+                                                className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                            </input>
+                                        </span>
+                                    </stake-input>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="">
+                            <div className="bet-card-info">
+                                <label className="bet-info-value">
+                                    Place
+                                </label>
+                                <div className="bet-card-input">
+                                    <stake-input className="">
+                                        <span className="stake-input">
+                                            <span className="currency">
+                                                $
+                                            </span>
+                                            <input 
+                                                type="number"
+                                                onClick={()=>{
+                                                    settypeBet('Place')
+                                                }}
+                                                // name={RemainingBets[pos]['win']}
+                                                onChange={(e)=>updateFieldChanged(e,'place',item)} 
+                                                value={null}
+                                                min={0}
+                                                className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                            </input>
+                                        </span>
+                                    </stake-input>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="">
+                            <div className="bet-card-info">
+                                <bet-cost className="">
+                                    <label className="bet-info-label">
+                                        Bet Cost
+                                    </label>
+                                    <span className="bet-info-value">
+                                        ${(isNaN(RemainingBets[pos]['win'])&&isNaN(RemainingBets[pos]['place']))?0:
+                                        isNaN(RemainingBets[pos]['win'])?item.runners.length*(RemainingBets[pos]['place']):
+                                        isNaN(RemainingBets[pos]['place'])?item.runners.length*(RemainingBets[pos]['win']):
+                                        item.runners.length*(RemainingBets[pos]['win']+RemainingBets[pos]['place'])}
+                                    </span>
+                                </bet-cost>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
             </>
         )
     };
@@ -318,6 +315,9 @@ const BetSlipHome=(props) =>{
         return(
             <>
             {RemainingBets?(startSlip)?RemainingBets.map(item=>{
+
+                // setWinMoney(null);
+                // setPlaceMoney(null)
                 return(
                     item?item.name?
                         <div className="card">
@@ -408,29 +408,29 @@ const BetSlipHome=(props) =>{
         return(
             <div className="bet-builder-actions-wrapper">
                 <div className="bet-builder-keypad">
-                {showCurrency?
-                    <menu className="keypad-menu">
-                        {currency.map(coin=>{
-                        return(
-                        <button className="common-button"
-                            onClick={()=>
-                                {(coin.denom=='c')?setCentMoney(coin):setDollarMoney(coin)}}
-                            >
-                            {(coin.denom==="d")?'+'+'$'+coin.amount:'+'+coin.amount+'c'}
-                        </button>)})}
-                        <button onClick={()=>{
-                            setshowCurrency(false)
-                            setbetDone(true)
-                            }}
-                        className="common-button keypad-close-button large">
-                            Done/Close
-                        </button>
-                        <button onClick={()=>{typeBet=='Win'?setWinMoney(0):setPlaceMoney(0)}}
-                        className="common-button">
-                            Clear
-                        </button>
-                    </menu>
-                :""}
+                    {showCurrency?
+                        <menu className="keypad-menu">
+                            {currency.map(coin=>{
+                            return(
+                            <button className="common-button"
+                                onClick={()=>
+                                    {(coin.denom=='c')?setCentMoney(coin):setDollarMoney(coin)}}
+                                >
+                                {(coin.denom==="d")?'+'+'$'+coin.amount:'+'+coin.amount+'c'}
+                            </button>)})}
+                            <button onClick={()=>{
+                                setshowCurrency(false)
+                                setbetDone(true)
+                                }}
+                            className="common-button keypad-close-button large">
+                                Done/Close
+                            </button>
+                            <button onClick={()=>{typeBet=='Win'?setWinMoney(0):setPlaceMoney(0)}}
+                            className="common-button">
+                                Clear
+                            </button>
+                        </menu>
+                    :""}
                 </div>
                 <footer className="bet-builder-footer">
                     <ul className="summary-list">
@@ -455,7 +455,7 @@ const BetSlipHome=(props) =>{
                     </ul>
                     <menu  className="bet-summary-menu">
                         <button  onClick={()=>{
-                                handleDeleteAll()
+                            handleDeleteAll()
                         }
                         }
                         className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
