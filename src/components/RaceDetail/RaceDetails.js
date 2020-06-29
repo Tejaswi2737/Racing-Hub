@@ -12,6 +12,7 @@ import { fetchMeetingDetails,
     addBetSlipData,
     allBetSlipData,
     countBetSlipData,
+    remainingBetSlipData,
     betSlipScreen
 } from "../../actions";
 
@@ -29,8 +30,8 @@ const RaceDetails = (props,ownProps)=>{
     const [runnerSelection, setrunnerSelection] = useState([]);
     const [runner_win_place, setrunner_win_place] = useState({})
 
-    // console.log(props.bet_pool_fh_1)
     props.fetchMeetingDetails();
+    
     
     if (parseInt(props.slot)){
         var initialValue=parseInt(props.slot)
@@ -58,7 +59,10 @@ const RaceDetails = (props,ownProps)=>{
     }): items_list=[]};
 
   
-
+    // console.log(props.remainingBetSlip)
+    useEffect(() => {
+        props.remainingBetSlipData(props.remainingBetSlip)
+    }, [props.meetingDetails])
 
 
 
@@ -323,14 +327,7 @@ const RaceDetails = (props,ownProps)=>{
             </div>
         )
     };
-    // console.log(props.countBetSlip)
-    // if(props.countBetSlip) {
-    //     console.log("one")
-    //     props.countBetSlipData(0)
-    // } else {
-    //     console.log("two")
-    //     // props.countBetSlipData(0)
-    // }
+
     const handleClick=(props,runner_item)=>{
         if ((props.racingDetail.raceStatus=="Open")) {
 
@@ -354,7 +351,7 @@ const RaceDetails = (props,ownProps)=>{
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             }
-            props.betSlipScreen(true)
+            
             
             // console.log(props.countBetSlip)
             // if(props.countBetSlip) {
@@ -367,26 +364,20 @@ const RaceDetails = (props,ownProps)=>{
             
         }
     };
-    // console.log(count)
 
-    useEffect(() => {
-        // console.log(count)
-    }, [count]);
-    // console.log(props.countBetSlip)
+
 
     useEffect(() => {
         if ((runner_win_place)) {
             {props.addBetSlipData(runner_win_place)}
             {props.allBetSlipData(runner_win_place)}
-            // console.log(runner_win_place)
+            props.betSlipScreen(true)
         }
     }, [runner_win_place])
-    // console.log(props.betSlipInd)
 
     const runnerInfoBody=(props)=>{
         return(
             <div className="pseudo-body">
-            
             {props.racingDetail.runners?props.racingDetail.runners.map(runner_item=>{
                 return(
                     <div className="row-runner">
@@ -563,17 +554,7 @@ const RaceDetails = (props,ownProps)=>{
             </div>
         )
     };
-    
-    const handleactionBetPlace=()=>{
 
-    }
-    // useEffect(() => {
-    //     if(props.betSlipInd) {
-    //         // console.log(props.betSlipInd)
-    //         props.allBetSlipData(props.betSlipInd)
-    //     }
-    // }, [props.betSlipInd])
-    // console.log(props.allBetSlip)
     const raceName=(props)=>{
         const raceSlots=(props)=>{
             return(                        
@@ -584,8 +565,6 @@ const RaceDetails = (props,ownProps)=>{
                             {items_list?items_list.map(item=>{
                                 return(
                                     <div onClick={()=>{
-                                        
-                                        {handleactionBetPlace()}
                                         {setaddedBet(false)}
                                         setplace_slot(item.raceNumber)
                                         setplace(item.Location)
@@ -761,6 +740,7 @@ const mapStateToProps=(state,ownProps)=> {
         betSlipInd:state.betSlipInd,
         countBetSlip:state.countBetSlip,
         screenStatus:state.screenStatus,
+        remainingBetSlip:state.remainingBetSlip,
         allBetSlip:state.allBetSlip,
         place:ownProps.place,
         type:ownProps.type,
@@ -776,7 +756,8 @@ export default connect(mapStateToProps,
         addBetSlipData,
         allBetSlipData,
         countBetSlipData,
-        betSlipScreen
+        betSlipScreen,
+        remainingBetSlipData,
         })
     (RaceDetails);
 

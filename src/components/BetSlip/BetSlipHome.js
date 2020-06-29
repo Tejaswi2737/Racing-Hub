@@ -21,7 +21,6 @@ import { toInteger } from 'lodash';
 
 
 const BetSlipHome=(props) =>{
-    console.log(props.postWinPlace)
     const [poolFinalList, setpoolFinalList] = useState([]);
     const [totalAmount, settotalAmount] = useState(0)
     const [poolStatus, setpoolStatus] = useState()
@@ -52,7 +51,6 @@ const BetSlipHome=(props) =>{
     const [typeBet, settypeBet] = useState('');
 
     useEffect(() => {
-        // console.log(props.screenStatus)
         console.log(props.allBetSlip);
         console.log(props.remainingBetSlip)
         var users=props.allBetSlip;
@@ -103,16 +101,11 @@ const BetSlipHome=(props) =>{
                         var itemList=[];
                         var winList=null;
                         var placeList=null;
-                        console.log(groupedRunnersNo)
-                        console.log(groupedRunners)
-                        console.log(grouped)
                         for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
                             if(Object.values(groupedRunnersNo)[i]%2!=0) {
                                 if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
                                     var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                    // console.log(users[pos])                          
                                     itemList.push(users[pos].runners)
-                                    console.log(grouped[poolname][grouped[poolname].length-1].win)
                                     winList=grouped[poolname][grouped[poolname].length-1].win
                                     placeList=grouped[poolname][grouped[poolname].length-1].place
                                 } 
@@ -133,7 +126,6 @@ const BetSlipHome=(props) =>{
             }
         };
     }, [props.allBetSlip]);
-    console.log(RemainingBets)
     const doneBet=(item)=>{
         if (betDone){
             if (WinMoney>0.5||PlaceMoney>0.5) {
@@ -196,13 +188,11 @@ const BetSlipHome=(props) =>{
                 if(items) {
                     if(items.runners.length>1) {
                         items.runners.map(runnnerInd=>{
-                            // console.log(items)
                             setfinalReminingBets(oldArray => [...oldArray, {"name":items.name,"runners":runnnerInd,"win": items.win ,"place": items.place}]);
                         })
                     } 
                     else 
                     {   
-                        // console.log(items)
                         setfinalReminingBets(oldArray => [...oldArray,{"name":items.name,"runners":items.runners[0],"win": items.win ,"place": items.place}])
                     }
                 }
@@ -210,7 +200,6 @@ const BetSlipHome=(props) =>{
         }
 
     }, [RemainingBets]);
-    console.log(finalReminingBets)
     useEffect(() => {
         props.remainingBetSlipData(finalReminingBets)
     }, [finalReminingBets])
@@ -236,51 +225,17 @@ const BetSlipHome=(props) =>{
             </SimpleBar>
         )
     };
-    // useEffect(() => {
-    //     settotalAmount(0)
 
-    // }, [props.betSlipInd])
-    // useEffect(() => {
-    //     if(RemainingBets) {
-    //         if(startSlip) {
-    //             var tot=0
-    //             console.log(_.sumBy(RemainingBets, 'win'));
-    //             RemainingBets.map(item=>{
-    //                 tot=totalAmount
-    //                 if(item.runners) {
-    //                 var posi=(_.findIndex(RemainingBets, item))
-    //                 console.log(posi)
-    //                 console.log(item.runners.length*(RemainingBets[posi]['win']+RemainingBets[posi]['place']))
-    //                 settotalAmount(tot+item.runners.length*(RemainingBets[posi]['win']+RemainingBets[posi]['place']))
-
-    //             }
-    //             })
-    //         }
-    //     }
-    // }, [RemainingBets])
 
     const betSlipPlaceInput=(item)=>{
-        // const manualChangePlaceAmount=(e)=>{
-        //     item.place(e.target.value)
-        // }
-        // const manualChangeWinAmount=(e)=>{
-        //     item.win(e.target.value)
-        // }
-        console.log(item);
         var pos=(_.findIndex(RemainingBets, item));
         const updateFieldChanged = (e,index,item) => {
-            console.log("entered")
             var pos=(_.findIndex(RemainingBets, item))
-            console.log(e,index,item)
-            // console.log('index: ' + index);
-            // console.log('property name: '+ e.target.value);
             let newArr = [...RemainingBets]; // copying the old datas array
             newArr[pos][index] = parseInt(e.target.value); // replace e.target.value with whatever you want to change it to
             newArr[pos][index]=newArr[pos][index]
             setRemainingBets(newArr); // ??
         }
-        // settotalAmount(totalAmount+item.runners.length*(RemainingBets[pos]['win']+RemainingBets[pos]['place']))
-        console.log(RemainingBets[pos]['win'])
         var valueNo=RemainingBets[pos]['win']
         return(
             <>
@@ -304,6 +259,7 @@ const BetSlipHome=(props) =>{
                                                         }} 
                                                         required
                                                         value={RemainingBets[pos]['win']}
+                                                        min={0}
                                                         onChange={(e)=>updateFieldChanged(e,'win',item)} 
                                                         className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                                     </input>
@@ -330,6 +286,7 @@ const BetSlipHome=(props) =>{
                                                         }}
                                                         onChange={(e)=>updateFieldChanged(e,'place',item)} 
                                                         value={RemainingBets[pos]['place']}
+                                                        min={0}
                                                         className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                                     </input>
                                                 </span>
@@ -357,12 +314,10 @@ const BetSlipHome=(props) =>{
             </>
         )
     };
-    // console.log(RemainingBets)
     const betSlipBetDetail =(WinMoney)=>{
         return(
             <>
             {RemainingBets?(startSlip)?RemainingBets.map(item=>{
-                console.log(item);
                 return(
                     item?item.name?
                         <div className="card">
@@ -431,7 +386,6 @@ const BetSlipHome=(props) =>{
         </>
         )
     }
-    // console.log(RemainingBets)
     const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
         const currency=[
             {"amount":"50","denom":"c"},
@@ -540,7 +494,6 @@ const BetSlipHome=(props) =>{
 }
 
 const mapStateToProps=(state)=> {
-    console.log(state.postWinPlace)
     return{ 
         betSlipInd:state.betSlipInd,
         allBetSlip:state.allBetSlip,
