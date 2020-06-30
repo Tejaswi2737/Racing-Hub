@@ -47,7 +47,7 @@ const TodayH=(props)=> {
                     <div className="left-column">
                         <ui-view>
                             <nav className="menuItems">
-                              <TodayDetails detail='todayRacingHarness'/>
+                              <TodayDetails detail='H'/>
                             </nav>
                         </ui-view>
                     </div>
@@ -61,7 +61,7 @@ const TodayH=(props)=> {
 
               <Header/>
               <NextList next={props.next}/>
-              <TodayDetails detail='todayRacingHarness'/>
+              <TodayDetails detail='H'/>
               </SimpleBar>
           </MediaQuery>
       </> 

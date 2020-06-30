@@ -6,7 +6,7 @@ const TodayG=()=> {
     return (
         <div>
             <Header/>
-            <TodayDetails detail='todayRacingGrey'/>
+            <TodayDetails detail='G'/>
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import nextData from "../data/nextToGo.json";
 import nextDataHome from "../data/nexttogoHome.json";
+import meetingDetailsAll from "../data/meetingDetailsAll.json";
 
 import todayRacing from "../data/todayRacing.json";
 import todayRacingGrey from "../data/todayRacingGrey.json";
@@ -24,26 +25,11 @@ import meetingDetails from "../data/meetingDetails.json";
 import winPlaceBet from "../data/win_place_bet.json";
 
 
-export const fetchTodayRacing =  (props) => {
-  var data={};
-  switch(props) {
-    case 'todayRacingHarness':
-      data=todayRacingHarness;
-      break;
-    case 'todayRacingGrey':
-      data=todayRacingGrey;
-      break;
-    case 'todayRacing':
-      data=todayRacing
-      break;
-    default:
-      data= null;
-      break;
-  };
+export const fetchTodayRacing =  () => {
   return function (dispatch) {
     dispatch({
       type: 'FETCH_TODAY_RACING',
-      payload: data
+      payload: meetingDetailsAll
     });
   }
 };

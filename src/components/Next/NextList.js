@@ -96,7 +96,7 @@ const NextList = (props)=>{
                         }}>
                             <div className="next-to-go-bar-race-info">
                                 <span className="next-to-go-bar-race-name">
-                                    {item.meetingName} ({item.location}) - R{item.raceNumber}
+                                    {item.meeting.meetingName} ({item.meeting.location}) - R{item.raceNumber}
                                 </span>
                             </div>
                             <time className=

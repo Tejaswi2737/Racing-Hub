@@ -7,39 +7,6 @@ import BetSlipStore from "../../context/BetSlipContext";
 
 const TodayRacingDetails=(props)=> {
 
-    // var contextType=BetSlipStore;
-    // const betSlipTemplateWin=contextType._currentValue.betSlipFormatWin;
-    // const betSlipTemplatePlace=contextType._currentValue.betSlipFormatPlace;
-    // const betSlipPlace={
-    //     "bet_fh": "tk_integ_",
-    //     "bet_pool_fh": "",
-    //     "stake_cents": 0,
-    //     "combinations":[
-    //     {
-    //     "place":1,
-    //     "runners":[]
-    //     }
-    //     ]
-    //   };
-    // const betSlipWin={
-    //     "bet_fh": "tk_integ_",
-    //     "bet_pool_fh": "",
-    //     "stake_cents": 0,
-    //     "combinations":[
-    //     {
-    //     "place":1,
-    //     "runners":[]
-    //     }
-    //     ]
-    //   };
-    var counts = {};
-    var places=[]
-    var slots=[];
-    for (var c = 0; c < props.todayRacing.length; c++) {
-        counts[props.todayRacing[c].Location] = 1 + (counts[props.todayRacing[c].Location] || 0);
-    }
-    var block=0
-    var num=0;
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
@@ -98,48 +65,36 @@ const TodayRacingDetails=(props)=> {
     }
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
-                num=num+1;
-                var show=false;
-                if (num===1) {
-                    places=[]
-                    block=block+1;
-                }
-                if (0<num<=parseInt(Object.values(counts)[block-1])) {
-                    places.push(item);
-                }
-                if (num===parseInt(Object.values(counts)[block-1])) {
-                    slots[block]=places;
-                    num=0;
-                    show=true;
                     return(
                         <div className="table-item-row">
-                            {slots[block].map(items=>{
+                            {item.races.map(items=>{
                                 return( 
                                     <Link to={{
                                         pathname:"/RaceDetail/Win", 
                                         slot:items.raceNumber, 
-                                        place: items.meetingName,
-                                        bet_pool_fh_1:items.Time.slice(0,6)+'_'+
-                                        "racing_"+items.raceType+'_'+items.meetingName+'_'+items.location+'_'+items.raceNumber+'_'+'w',
-                                        bet_pool_fh_2:items.Time.slice(0,6)+'_'+
-                                        "racing_"+items.raceType+'_'+items.meetingName+'_'+items.location+'_'+items.raceNumber+'_'+'p'
+                                        place: item.meetingName,
                                 }} 
                                     className='table-rem-row'>
                                         <div className='table-rem-row'
-                                            id={items.Location}>
+                                            id={item.Location}>
                                             <div 
-                                            className={(items.Status!='Open')?'table-item':
-                                            (-(Date.now()-new Date(items.Time))<60000
+                                            className={(items.raceStatus!='Normal')?'table-item':
+                                            (-(Date.now()-new Date(items.raceStartTime))<60000
                                             &&
-                                            -(Date.now()-new Date(items.Time))>-60000)?
+                                            -(Date.now()-new Date(items.raceStartTime))>-60000)?
                                                 "table-item-open-color":
                                             'table-item-open'}>
-                                                <p className="table-item-slot">R{items.Race_Slot}</p>
+                                                <p className="table-item-slot">R{items.raceNumber}</p>
                                                 <p className="table-item-time">
-                                                    {startTime(items.Time)}   
+                                                    {startTime(items.raceStartTime)}   
                                                 </p>
                                                 <p className="table-item-results">
-                                                    {items.Status=="Open"?duration(items.Time):items.Result}
+                                                    {Array.isArray(items.results) ?items.results.length>0?items.results.map(result=>{
+                                                        return(
+                                                            <>{result+" "}
+                                                            </>
+                                                        )
+                                                    }):duration(items.raceStartTime):duration(items.raceStartTime)}
                                                 </p>
                                             </div>
                                         </div>  
@@ -148,16 +103,16 @@ const TodayRacingDetails=(props)=> {
                             })}
                         </div>
                     )
-                }          
+                // }          
     }})))};
     const renderTodayRacingDetail=(()=>{
         return (   
             <div class="table">
                 <div className="places-list">
-                    {Object.keys(counts).map(item=>{
+                    {props.todayRacing.map(item=>{
                         return(
                             <div className="places-list-item">
-                                <p>{item}</p>
+                                <p>{item.meetingName}</p>
                             </div>
                         )
                     })}

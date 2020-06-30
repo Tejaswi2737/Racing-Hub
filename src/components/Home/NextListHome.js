@@ -20,7 +20,7 @@ const NextListHome = (props)=>{
     const fetchResources=(next)=>{
         {next.map(item =>{
             console.log(item)
-            switch(item.raceType) {
+            switch(item.meeting.raceType) {
                 case 'R' :
                     setnextRace(oldArray => [...oldArray, item]);
                     break
@@ -73,13 +73,13 @@ const NextListHome = (props)=>{
                                             "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
                                         }} className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
-                                            <p>{item.meetingName} ({item.location})</p>
+                                            <p>{item.meeting.meetingName} ({item.meeting.location})</p>
                                             {/* <div className="race-details-container">
                                                 <span className="race-detail">
                                                     {item.raceDistance}m
                                                 </span>
                                                 <span className="race-detail">
-                                                    {item.trackCondition} 
+                                                    {item.meeting.trackCondition} 
                                                 </span>                            
                                             </div> */}
                                         </Link> 

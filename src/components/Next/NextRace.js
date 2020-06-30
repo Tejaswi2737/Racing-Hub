@@ -65,7 +65,7 @@ const NextRace = (props)=>{
 
     const fetchResources=()=>{
         {props.next.map(item =>{
-            switch(item.raceType) {
+            switch(item.meeting.raceType) {
                 case 'R' :
                     setnextRace(oldArray => [...oldArray, item]);
                     break
@@ -156,7 +156,7 @@ const NextRace = (props)=>{
                                     }}>                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    
-                                    <p>{item.meetingName} ({item.meetingCode})</p>
+                                    <p>{item.meeting.meetingName} ({item.meeting.location})</p>
                                 </Link> 
                             </Grid>
                         </MediaQuery>  
@@ -177,7 +177,7 @@ const NextRace = (props)=>{
                                     }}>                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    
-                                    <p>{item.meetingName} ({item.meetingCode})</p>
+                                    <p>{item.meeting.meetingName} ({item.meeting.location})</p>
                                 </Link> 
                             </Grid>
                         </MediaQuery>  

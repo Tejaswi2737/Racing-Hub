@@ -7,7 +7,25 @@ import "./TodayDetails.css"
 import TodayRacingDetails from  "./TodayRacingDetails";
 
 const TodayDetails = (props,ownProps)=>{
+    // console.log(props)
+    const [todayData, settodayData] = useState([])
+    useEffect(() => {
+        console.log(props)
+        if(props.todayRacing) {
+            var newArray=props.todayRacing.filter(function (el) {
+                return el.raceType ==props.detail
+              });
+            console.log(newArray)
+            settodayData(newArray)
+        }
+
+        
+    }, [props])
     props.fetchNextRace();
+    useEffect(() => {
+        console.log(todayData)
+    }, [todayData])
+    
     const [fetchToday,setfetchToday]=useState(props.detail)
     const fetchTodayRaceInfo=(fetchToday)=> {
         props.fetchTodayRacing(fetchToday);
@@ -45,11 +63,6 @@ const TodayDetails = (props,ownProps)=>{
         <div>
             <div className="today-details">
                 <div className="date-button">
-                    {/* <div className="date-category">
-                        <div className="date-bar">
-                            Today
-                        </div>
-                    </div> */}
                     <div className="category-bar">
                         <div className="button-bar">
                             <Link to="/Today/R" className="category-button">
@@ -65,7 +78,7 @@ const TodayDetails = (props,ownProps)=>{
                     </div>
                 </div>
                 <div>
-                    {racingInfo(props.todayRacing)}
+                    {racingInfo(todayData)}
                 </div>
             </div>
         </div>

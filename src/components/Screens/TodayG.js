@@ -47,7 +47,7 @@ const TodayG=(props)=> {
                     <div className="left-column">
                         <ui-view>
                             <nav className="menuItems">
-                              <TodayDetails detail='todayRacingGrey'/>
+                              <TodayDetails detail='G'/>
                             </nav>
                         </ui-view>
                     </div>
@@ -60,7 +60,7 @@ const TodayG=(props)=> {
           <SimpleBar style={{ maxHeight: '100vh' }}>
               <Header/>
               <NextList next={props.next}/>
-              <TodayDetails detail='todayRacingGrey'/>
+              <TodayDetails detail='G'/>
               </SimpleBar>
           </MediaQuery>
         </>
