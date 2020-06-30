@@ -53,8 +53,7 @@ const BetSlipHome=(props) =>{
     const [typeBet, settypeBet] = useState('');
 
     useEffect(() => {
-        console.log(props.allBetSlip);
-        console.log(props.remainingBetSlip)
+
         var users=props.allBetSlip;
         
         var rem=props.remainingBetSlip   
@@ -62,7 +61,6 @@ const BetSlipHome=(props) =>{
             users = [users, ...rem];
         } else {users=[...rem]}
         
-        console.log(users);
         var dele=[];
         if(props.remainingBetSlip) {
             users=Object.values(users)
@@ -130,10 +128,7 @@ const BetSlipHome=(props) =>{
     }, [props.allBetSlip]);
 
 
-    // useEffect(() => {
-    //     setWinMoney(0)
-    //     setPlaceMoney(0)
-    // }, [showCurrency]);
+
     
     const deleteSingleBet=(item)=>{
         if (RemainingBets.length==1){
@@ -216,22 +211,15 @@ const BetSlipHome=(props) =>{
 
 
     const betSlipPlaceInput=(item)=>{
-        
-        var winni=null;
-        var placci=null;
-        console.log(winni)
         var pos=(_.findIndex(RemainingBets, item));
-        const updateFieldChanged = (e,index,item) => {
+        const updateFieldChanged = (e,item) => {
             e.preventDefault();
             var pos=(_.findIndex(RemainingBets, item))
             let newArr = [...RemainingBets]; // copying the old datas array
-            newArr[pos][index] = parseInt(e.target.value); // replace e.target.value with whatever you want to change it to
-            newArr[pos][index]=newArr[pos][index]
+            newArr[pos][e.target.name] = parseInt(e.target.value); // replace e.target.value with whatever you want to change it to
+            newArr[pos][e.target.name]=newArr[pos][e.target.name]
             setRemainingBets(newArr); // ??
         }
-        console.log(item)
-        var valueNo=RemainingBets[pos]['win']
-        console.log(RemainingBets[pos]['win']==null)
         return(
             <>
                 <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
@@ -252,11 +240,12 @@ const BetSlipHome=(props) =>{
                                                 onClick={()=>{
                                                     settypeBet('Win')
                                                 }} 
+                                                key={RemainingBets[pos]['name']+'win'}
+                                                name='win'
                                                 placeholder={null}
-                                                name={RemainingBets[pos]['win']}
-                                                value={RemainingBets[pos]['win']==null?null:RemainingBets[pos]['win']}
+                                                value={RemainingBets[pos]['win']}
                                                 min={0}
-                                                onChange={(e)=>updateFieldChanged(e,'win',item)} 
+                                                onChange={(e)=>updateFieldChanged(e,item)} 
                                                 className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                             </input>
                                         </span>
@@ -280,9 +269,11 @@ const BetSlipHome=(props) =>{
                                                 onClick={()=>{
                                                     settypeBet('Place')
                                                 }}
-                                                // name={RemainingBets[pos]['win']}
-                                                onChange={(e)=>updateFieldChanged(e,'place',item)} 
-                                                value={null}
+                                                name='place'
+                                                placeholder={null}
+                                                key={RemainingBets[pos]['name']+'place'}
+                                                onChange={(e)=>updateFieldChanged(e,item)} 
+                                                value={RemainingBets[pos]['place']}
                                                 min={0}
                                                 className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
                                             </input>
@@ -315,9 +306,6 @@ const BetSlipHome=(props) =>{
         return(
             <>
             {RemainingBets?(startSlip)?RemainingBets.map(item=>{
-
-                // setWinMoney(null);
-                // setPlaceMoney(null)
                 return(
                     item?item.name?
                         <div className="card">
@@ -387,27 +375,27 @@ const BetSlipHome=(props) =>{
         )
     }
     const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
-        const currency=[
-            {"amount":"50","denom":"c"},
-            {"amount":1,"denom":"d"},
-            {"amount":5,"denom":"d"},
-            {"amount":10,"denom":"d"},
-            {"amount":20,"denom":"d"},
-            {"amount":50,"denom":"d"},
-            {"amount":100,"denom":"d"},
-            {"amount":500,"denom":"d"},
-        ]
-        const setCentMoney=(coin) =>{
-            if (typeBet=='Win') setWinMoney(WinMoney+coin.amount/100);
-            if (typeBet=='Place')  setPlaceMoney(PlaceMoney+coin.amount/100)
-        }
-        const setDollarMoney=(coin) =>{
-            if (typeBet=='Win') setWinMoney(WinMoney+coin.amount);
-            if (typeBet=='Place') setPlaceMoney(PlaceMoney+coin.amount)
-        }
+        // const currency=[
+        //     {"amount":"50","denom":"c"},
+        //     {"amount":1,"denom":"d"},
+        //     {"amount":5,"denom":"d"},
+        //     {"amount":10,"denom":"d"},
+        //     {"amount":20,"denom":"d"},
+        //     {"amount":50,"denom":"d"},
+        //     {"amount":100,"denom":"d"},
+        //     {"amount":500,"denom":"d"},
+        // ]
+        // const setCentMoney=(coin) =>{
+        //     if (typeBet=='Win') setWinMoney(WinMoney+coin.amount/100);
+        //     if (typeBet=='Place')  setPlaceMoney(PlaceMoney+coin.amount/100)
+        // }
+        // const setDollarMoney=(coin) =>{
+        //     if (typeBet=='Win') setWinMoney(WinMoney+coin.amount);
+        //     if (typeBet=='Place') setPlaceMoney(PlaceMoney+coin.amount)
+        // }
         return(
             <div className="bet-builder-actions-wrapper">
-                <div className="bet-builder-keypad">
+                {/* <div className="bet-builder-keypad">
                     {showCurrency?
                         <menu className="keypad-menu">
                             {currency.map(coin=>{
@@ -431,7 +419,7 @@ const BetSlipHome=(props) =>{
                             </button>
                         </menu>
                     :""}
-                </div>
+                </div> */}
                 <footer className="bet-builder-footer">
                     <ul className="summary-list">
                         <li className="">

@@ -177,7 +177,7 @@ export const countBetSlipData =  (count) => {
       type: 'COUNT_BET_SLIP_DATA',
       payload: count
     });
-  }
+  } 
 };
 export const postWinPlaceBets =  (betData) => {
   return function (dispatch) {
