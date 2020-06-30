@@ -30,7 +30,8 @@ const BetSlipHome=(props) =>{
     const [deletedBets, setdeletedBets] = useState([]);
     const [deleteOn, setdeleteOn] = useState(false)
     const [RemainingBets, setRemainingBets] = useState();
-    const [finalReminingBets, setfinalReminingBets] = useState([])
+    const [finalRemainingBets, setfinalRemainingBets] = useState([]);
+    const [placeWinPlaceBetList, setplaceWinPlaceBetList] = useState([])
 
     const [distinctPoolfh, setdistinctPoolfh] = useState();
     const [runnerList, setrunnerList] = useState();
@@ -51,9 +52,11 @@ const BetSlipHome=(props) =>{
     const [ManualPlace, setManualPlace] = useState(0);
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
-
+    console.log(props.postWinPlace)
     useEffect(() => {
 
+        props.postWinPlaceBets([])
+        
         var users=props.allBetSlip;
         
         var rem=props.remainingBetSlip   
@@ -155,7 +158,9 @@ const BetSlipHome=(props) =>{
             if(items) {
                 if(items.runners.length>1) {
                     items.runners.map(runnnerInd=>{
-                        setdeletedBets(oldArray => [...oldArray, {"name":items.name,"runners":runnnerInd,"win": items.win ,"place": items.place}]);
+                        setdeletedBets(oldArray => [...oldArray, 
+                            {"name":items.name,"runners":runnnerInd,
+                            "win": items.win ,"place": items.place}]);
                     })
                 } else setdeletedBets(oldArray => [...oldArray, items]);   
             }
@@ -166,17 +171,21 @@ const BetSlipHome=(props) =>{
 
     useEffect(() => {
         if (RemainingBets) {
-            setfinalReminingBets([])
+            setfinalRemainingBets([])
             RemainingBets.map(items=>{
                 if(items) {
                     if(items.runners.length>1) {
                         items.runners.map(runnnerInd=>{
-                            setfinalReminingBets(oldArray => [...oldArray, {"name":items.name,"runners":runnnerInd,"win": items.win ,"place": items.place}]);
+                            setfinalRemainingBets(oldArray => [...oldArray, 
+                                {"name":items.name,"runners":runnnerInd,
+                                "win": items.win ,"place": items.place}]);
                         })
                     } 
                     else 
                     {   
-                        setfinalReminingBets(oldArray => [...oldArray,{"name":items.name,"runners":items.runners[0],"win": items.win ,"place": items.place}])
+                        setfinalRemainingBets(oldArray => [...oldArray,
+                            {"name":items.name,"runners":items.runners[0],
+                            "win": items.win ,"place": items.place}])
                     }
                 }
             })
@@ -184,8 +193,49 @@ const BetSlipHome=(props) =>{
 
     }, [RemainingBets]);
     useEffect(() => {
-        props.remainingBetSlipData(finalReminingBets)
-    }, [finalReminingBets])
+        if (finalRemainingBets) {
+            setplaceWinPlaceBetList([])
+            finalRemainingBets.map(items=>{
+                if(items) {
+                    if( items.win>0)  {
+                        setplaceWinPlaceBetList(oldArray => [...oldArray,
+                            {
+                                "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
+                                "bet_pool_fh": items.name+'w',
+                                "stake_cents": items.win,
+                                "combinations":[
+                                {
+                                "place":1,
+                                "runners":[items.runners]
+                                }
+                                ]
+                            }                          
+                        ])
+                        
+                    }
+                    if( items.place>0)  {
+                        setplaceWinPlaceBetList(oldArray => [...oldArray,
+                            {
+                                "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
+                                "bet_pool_fh": items.name+"p",
+                                "stake_cents": items.place,
+                                "combinations":[
+                                {
+                                "place":2,
+                                "runners":[items.runners]
+                                }
+                                ]
+                            }                           
+                        ])
+                    }
+
+                }
+            })
+        }
+    }, [finalRemainingBets]);
+    useEffect(() => {
+        props.remainingBetSlipData(finalRemainingBets)
+    }, [finalRemainingBets]);
     useEffect(() => {
         props.deleteBetSlipData(deletedBets)
     }, [deletedBets]);
@@ -215,10 +265,10 @@ const BetSlipHome=(props) =>{
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
             var pos=(_.findIndex(RemainingBets, item))
-            let newArr = [...RemainingBets]; // copying the old datas array
-            newArr[pos][e.target.name] = parseInt(e.target.value); // replace e.target.value with whatever you want to change it to
+            let newArr = [...RemainingBets]; 
+            newArr[pos][e.target.name] = parseInt(e.target.value); 
             newArr[pos][e.target.name]=newArr[pos][e.target.name]
-            setRemainingBets(newArr); // ??
+            setRemainingBets(newArr); 
         }
         return(
             <>
@@ -375,51 +425,8 @@ const BetSlipHome=(props) =>{
         )
     }
     const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
-        // const currency=[
-        //     {"amount":"50","denom":"c"},
-        //     {"amount":1,"denom":"d"},
-        //     {"amount":5,"denom":"d"},
-        //     {"amount":10,"denom":"d"},
-        //     {"amount":20,"denom":"d"},
-        //     {"amount":50,"denom":"d"},
-        //     {"amount":100,"denom":"d"},
-        //     {"amount":500,"denom":"d"},
-        // ]
-        // const setCentMoney=(coin) =>{
-        //     if (typeBet=='Win') setWinMoney(WinMoney+coin.amount/100);
-        //     if (typeBet=='Place')  setPlaceMoney(PlaceMoney+coin.amount/100)
-        // }
-        // const setDollarMoney=(coin) =>{
-        //     if (typeBet=='Win') setWinMoney(WinMoney+coin.amount);
-        //     if (typeBet=='Place') setPlaceMoney(PlaceMoney+coin.amount)
-        // }
         return(
             <div className="bet-builder-actions-wrapper">
-                {/* <div className="bet-builder-keypad">
-                    {showCurrency?
-                        <menu className="keypad-menu">
-                            {currency.map(coin=>{
-                            return(
-                            <button className="common-button"
-                                onClick={()=>
-                                    {(coin.denom=='c')?setCentMoney(coin):setDollarMoney(coin)}}
-                                >
-                                {(coin.denom==="d")?'+'+'$'+coin.amount:'+'+coin.amount+'c'}
-                            </button>)})}
-                            <button onClick={()=>{
-                                setshowCurrency(false)
-                                setbetDone(true)
-                                }}
-                            className="common-button keypad-close-button large">
-                                Done/Close
-                            </button>
-                            <button onClick={()=>{typeBet=='Win'?setWinMoney(0):setPlaceMoney(0)}}
-                            className="common-button">
-                                Clear
-                            </button>
-                        </menu>
-                    :""}
-                </div> */}
                 <footer className="bet-builder-footer">
                     <ul className="summary-list">
                         <li className="">
@@ -437,7 +444,7 @@ const BetSlipHome=(props) =>{
                                 Total cost
                             </h1>
                             <p  className="bet-builder-footer-key-info bet-builder-total-bets-cost">
-                            ${_.sumBy(finalReminingBets, 'win')+_.sumBy(finalReminingBets, 'place')}
+                            ${_.sumBy(finalRemainingBets, 'win')+_.sumBy(finalRemainingBets, 'place')}
                             </p>
                         </li>
                     </ul>
@@ -449,7 +456,13 @@ const BetSlipHome=(props) =>{
                         className="bet-builder-button common-button change-bet-button builder-bet-clear-all">
                             Delete All
                         </button>
-                        <button  onClick={()=>{props.postWinPlaceBets(finalReminingBets)}}
+                        <button  onClick={()=>{
+                            props.postWinPlaceBets(placeWinPlaceBetList)
+                            // if(props.postWinPlace.length>0) {
+                            //     setRemainingBets([])
+                            // }
+                            
+                        }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
                             Bet Now
                         </button>
