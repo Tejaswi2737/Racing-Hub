@@ -13,6 +13,7 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import RespHeader from '../Nav/RespHeader';
 import "../Next/NextRace.css"
 const NextScreen=(props) =>{
+    // console.log(props)
     props.fetchNextRace();
     props.betSlipScreen(false)
     const [firstTime, setfirstTime] = useState();
@@ -43,7 +44,6 @@ const NextScreen=(props) =>{
             <>
                 <MediaQuery query='(min-width: 800px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
-
                     <ui-view>
                         <RespHeader/>
                         <NextList next={props.next}/>
@@ -62,7 +62,6 @@ const NextScreen=(props) =>{
                 </MediaQuery>
                 <MediaQuery query='(max-width: 800px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
-
                     <Header/>
                     <main className="page-items">
                         <NextList next={props.next}/>
@@ -77,7 +76,6 @@ const mapStateToProps=(state)=> {
     return{ 
         next:state.next,
         screenStatus:state.screenStatus,
-
     }
 }
 export default connect(mapStateToProps, { 

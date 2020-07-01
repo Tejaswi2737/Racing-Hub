@@ -40,12 +40,20 @@ const RaceDetailsPageWin=(props,ownProps)=> {
               <MediaQuery query='(min-width: 980px)'>
                   <RespHeader/>
                   <NextList next={props.next}/>
-                  <RaceDetails slot={props.location.slot} place={props.location.place} type="Win"/>
+                  <RaceDetails slot={props.location.slot} 
+                              place={props.location.place}
+                              code={props.location.code}
+                              raceType={props.location.raceType} 
+                              type="Win"/>
                   </MediaQuery>
               <MediaQuery query='(max-width: 980px)'>
                   <Header/>
                   <NextList next={props.next}/>
-                  <RaceDetails slot={props.location.slot} place={props.location.place} type="Win"/>
+                  <RaceDetails slot={props.location.slot} 
+                              place={props.location.place}
+                              code={props.location.code}
+                              raceType={props.location.raceType} 
+                              type="Win"/>
               </MediaQuery>   
             </SimpleBar>
         </div>
@@ -53,9 +61,8 @@ const RaceDetailsPageWin=(props,ownProps)=> {
 };
 
 const mapStateToProps=(state,ownProps)=> {
-    return{ next:state.next,
-      slot:ownProps.slot,
-      place:ownProps.place
+    return{ 
+      next:state.next,
     }
 }
 export default connect(mapStateToProps, { fetchNextRace } )(RaceDetailsPageWin);

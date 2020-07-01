@@ -68,11 +68,14 @@ const TodayRacingDetails=(props)=> {
                     return(
                         <div className="table-item-row">
                             {item.races.map(items=>{
+                                console.log(items,item)
                                 return( 
                                     <Link to={{
                                         pathname:"/RaceDetail/Win", 
                                         slot:items.raceNumber, 
                                         place: item.meetingName,
+                                        code:item.venueMnemonic,
+                                        raceType:item.raceType   
                                 }} 
                                     className='table-rem-row'>
                                         <div className='table-rem-row'

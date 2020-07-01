@@ -13,7 +13,13 @@ import { fetchMeetingDetails,
     allBetSlipData,
     countBetSlipData,
     remainingBetSlipData,
-    betSlipScreen
+    betSlipScreen,
+
+
+
+
+
+    fetchTodayRacing
 } from "../../actions";
 
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -21,6 +27,40 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
+    const [todayData, settodayData] = useState([]);
+    const [raceData, setraceData] = useState([]);
+    useEffect(() => {
+        props.fetchTodayRacing()
+        // console.log(props)
+        if(props.todayRacing) {
+            var newArray=props.todayRacing.filter(function (el) {
+                return (
+                    el.meetingName ==props.place &&
+                    el.raceType==props.raceType &&
+                     el.venueMnemonic== props.code 
+                )
+
+              });
+            // console.log(newArray)
+            settodayData(newArray)
+        }
+    }, [props]);
+    useEffect(() => {
+        if(todayData) {
+            if(todayData[0]) {
+                // console.log()
+                var dataass=todayData[0].races
+                var newArray=dataass.filter(function (el) {
+                    return (
+                        el.raceNumber ==props.slot 
+                    )
+    
+                  });
+                // console.log(newArray)
+                setraceData(newArray)            
+            }
+        }
+    }, [todayData])
     const [pool_fh, setpool_fh] = useState();
     const [count, setcount] = useState()
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
@@ -329,25 +369,27 @@ const RaceDetails = (props,ownProps)=>{
     };
 
     const handleClick=(props,runner_item)=>{
-        if ((props.racingDetail.raceStatus=="Open")) {
+        console.log(raceData,todayData)
+        if ((raceData[0].raceStatus=="Normal")) {
 
             if(props.countBetSlip && props.countBetSlip.length==0) {
-                // console.log(props.countBetSlip);
+
+                console.log(props.countBetSlip);
                 props.countBetSlipData(1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
                     // "pool_fh":"tk_integ"+props.countBetSlip,
-                    "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             } else {
-                // console.log("two");
+                console.log("two");
                 // console.log(props.countBetSlip)
                 props.countBetSlipData(parseInt(props.countBetSlip)+1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
                     // "pool_fh":"tk_integ"+props.countBetSlip,
-                    "name":props.racingDetail.meeting.meetingName+" "+"("+props.racingDetail.meeting.location+")"+" Race "+props.racingDetail.raceNumber || ""
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             }
@@ -562,24 +604,26 @@ const RaceDetails = (props,ownProps)=>{
                 <div className="meeting-info">
                     <div className="meeting-info-race-selector-wrapper">
                         <div className="meeting-info-race-selector">     
-                            {items_list?items_list.map(item=>{
+                            {todayData?todayData[0]?todayData[0].races.map(item=>{
                                 return(
-                                    <div onClick={()=>{
-                                        {setaddedBet(false)}
-                                        setplace_slot(item.raceNumber)
-                                        setplace(item.Location)
-                                        }}>
-                                        <a className=
-                                        {item.raceStatus=="Paying"?
+                                    <Link to={{
+                                        pathname:"/RaceDetail/Win", 
+                                        slot:item.raceNumber, 
+                                        place: props.place,
+                                        code:props.code,
+                                        raceType:props.raceType
+                                       
+                                    }}
+                                        className={item.raceStatus=="Paying"?
                                         "meeting-info-race  meeting-info-race-closed":
                                         "meeting-info-race  meeting-info-race-open"}>
                                             R{item.raceNumber}  
                                             <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
-                                                {item.raceStatus=="Paying"?item.results:item.raceStartTime} 
+                                                {item.raceStatus=="Paying"?item.results:startTime(item.raceStartTime)} 
                                             </span>
-                                        </a>
-                                    </div>
-                            )}):""}
+                                        {/* </a> */}
+                                    </Link>
+                            )}):"":""}
                         </div>
                     </div>
                     {/* <div className="meeting-info-meeting-conditions">
@@ -604,25 +648,34 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="race-header-info">
                             <div className="race-heading">
                                 <div className="race-number">
-                                    R{props.racingDetail.raceNumber}
+                                    R{raceData?raceData[0]?
+                                    raceData[0].raceNumber:"":""}
                                 </div>
                                 <div className="race-header-race-time-not-open">
-                                    {startTime(props.racingDetail.raceStartTime)}
+                                    {startTime(raceData?raceData[0]?
+                                    raceData[0].raceStartTime:"":"")}
                                 </div>
                             </div>
                             <div className="race-info-wrapper">
                                 <div className="race-name">
-                                    {props.racingDetail.raceName}
-
+                                    {raceData?raceData[0]?
+                                    raceData[0].raceName:"":""}
                                 </div>
                                 <ul className="race-metadata-list">
                                 <li className="status-text">
-                                    {props.racingDetail.raceStatus=="Paying"?
-                                    props.racingDetail.raceStatus:
-                                    duration(props.racingDetail.raceStartTime)}
+                                {raceData?raceData[0]?
+                                    raceData[0].raceStatus=="Normal"?
+                                    duration(raceData[0].raceStartTime):raceData[0].raceStatus:"":""}
+                                    {/* {raceData?raceData[0]?
+                                    raceData[0].race?
+                                    (raceData[0].raceStatus=="Normal"?
+                                    startTime(raceData[0].raceStartTime):
+                                    raceData[0].raceStatus):"":"":""} */}
                                 </li>
-                                    <li>{props.racingDetail.raceDistance}m</li>
-                                    <li>{props.racingDetail.prizeMoney}</li>
+                                    <li>{raceData?raceData[0]?
+                                    raceData[0].raceDistance:"":""}m</li>
+                                    <li>{todayData?todayData[0]?
+                                    todayData[0].prizeMoney:"":""}</li>
                                 </ul>
                             </div>
                         </div>
@@ -709,14 +762,14 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                         <div className="page-section pane">  
                             <div className="race-results-wrapper">
-                                
                                 <section className={props.racingDetail.raceStatus=="Open"?
                                 "runners-section":"results-section"}>
-                                    {props.racingDetail.raceStatus=="Open"?placeBets():""}
-                                    <div className="page-section-break">
-                                    </div>
-                                    {props.racingDetail.raceStatus=="Paying"?resultsTable(props):""}
-                                    {props.racingDetail.raceStatus=="Paying"?exoticTable(props):""}
+                                    {/* {props.racingDetail.raceStatus=="Open"?placeBets():""} */}
+                                    {/* <div className="page-section-break"> */}
+                                    {/* </div> */}
+                                    {raceData?raceData[0]?raceData[0].raceStatus!="Normal"?resultsTable(props):"":"":""}
+                                    {raceData?raceData[0]?raceData[0].raceStatus!="Normal"?exoticTable(props):"":"":""}
+                                    {/* {raceData.raceStatus!="Normal"?exoticTable(props):""} */}
                                     {runnerInfo(props)}
                                 </section>
                             </div>
@@ -733,8 +786,21 @@ const RaceDetails = (props,ownProps)=>{
 };
 
 const mapStateToProps=(state,ownProps)=> {
+    // console.log(ownProps)
     return{ 
+        todayRacing:state.todayRacing,
         slot:ownProps.slot,
+        code:ownProps.code,
+        raceType:ownProps.raceType,
+        place:ownProps.place,
+        type:ownProps.type,
+
+
+
+
+
+
+
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
@@ -742,8 +808,7 @@ const mapStateToProps=(state,ownProps)=> {
         screenStatus:state.screenStatus,
         remainingBetSlip:state.remainingBetSlip,
         allBetSlip:state.allBetSlip,
-        place:ownProps.place,
-        type:ownProps.type,
+
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
         
@@ -758,6 +823,9 @@ export default connect(mapStateToProps,
         countBetSlipData,
         betSlipScreen,
         remainingBetSlipData,
+
+
+        fetchTodayRacing
         })
     (RaceDetails);
 

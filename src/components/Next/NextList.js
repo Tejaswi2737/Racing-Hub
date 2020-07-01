@@ -14,6 +14,7 @@ import "./NextRace.css";
 import BetSlipStore from "../../context/BetSlipContext";
 
 const NextList = (props)=>{
+  // console.log(props.next)
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
@@ -82,17 +83,21 @@ const NextList = (props)=>{
     const renderToday=(()=>{
         return (        
             (props.next.map(item => {
+                                //  console.log(item)
+                                //    console.log(item.raceNumber)
+                                //    console.log(item.meeting.meetingName)
+                                //    console.log(item.meeting.venueMnemonic)
+                                //    console.log(item.meeting.raceType)
+
                  return(
                      <div className="next-to-go-bar-race">
                         <Link className="next-to-go-bar-race-link" 
                         to={{
                             pathname:"/RaceDetail/Win", 
                             slot:item.raceNumber, 
-                            place: item.meetingName,
-                            bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
-                            "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w',
-                            bet_pool_fh_2:item.raceStartTime.slice(0,6)+'_'+
-                            "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+                            place: item.meeting.meetingName,
+                            code:item.meeting.venueMnemonic,
+                            raceType:item.meeting.raceType                            
                         }}>
                             <div className="next-to-go-bar-race-info">
                                 <span className="next-to-go-bar-race-name">
@@ -175,7 +180,7 @@ const NextList = (props)=>{
                         scrollButtons="auto"
                         aria-label="scrollable auto tabs example"
                         >
-                            {renderToday(props)}
+                            {props.next?renderToday(props):""}
                         </Tabs>
                     </AppBar>
                 </div>

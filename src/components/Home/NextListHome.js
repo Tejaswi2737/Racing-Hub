@@ -8,7 +8,7 @@ import HomeImage from "../../images/Home.gif"
 const NextListHome = (props)=>{
 
     props.fetchNextRace();
-    console.log(props.next)
+    // console.log(props.next)
 
 
     const [nextRace,setnextRace]=useState([]);
@@ -19,7 +19,7 @@ const NextListHome = (props)=>{
 
     const fetchResources=(next)=>{
         {next.map(item =>{
-            console.log(item)
+            // console.log(item)
             switch(item.meeting.raceType) {
                 case 'R' :
                     setnextRace(oldArray => [...oldArray, item]);
@@ -49,7 +49,7 @@ const NextListHome = (props)=>{
     }
 
     const renderTodayHome=((details,type)=>{
-        console.log(details)
+        
         return (        
             <section className="horizontal-pane">
             <section className="next-to-go-races-section pane page-section">
@@ -61,16 +61,21 @@ const NextListHome = (props)=>{
                         <li>
                             <a>
                                 <div>
-                                {details.map(item => {
-                                    return(
+                                {details?details.length>0?details.map(item => {
+                                //    console.log(details)
+                                //    console.log(item.raceNumber)
+                                //    console.log(item.meeting.meetingName)
+                                //    console.log(item.meeting.venueMnemonic)
+                                //    console.log(item.meeting.raceType)
+                                
+                                   return(
                                         <Link to={{
                                             pathname:"/RaceDetail/Win", 
                                             slot:item.raceNumber, 
-                                            place: item.meetingName,
-                                            bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
-                                            "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w',
-                                            bet_pool_fh_2:item.raceStartTime.slice(0,6)+'_'+
-                                            "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+                                            place: item.meeting.meetingName,
+                                            code:item.meeting.venueMnemonic,
+                                            raceType:item.meeting.raceType
+                                           
                                         }} className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
                                             <p>{item.meeting.meetingName} ({item.meeting.location})</p>
@@ -83,7 +88,7 @@ const NextListHome = (props)=>{
                                                 </span>                            
                                             </div> */}
                                         </Link> 
-                                )})}
+                                )}):"":""}
                                 </div>
                             </a>
                         </li>

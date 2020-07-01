@@ -148,11 +148,10 @@ const NextRace = (props)=>{
                                     to={{
                                         pathname:"/RaceDetail/Win", 
                                         slot:item.raceNumber, 
-                                        place: item.meetingName,
-                                        bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
-                                        "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w',
-                                        bet_pool_fh_2:item.raceStartTime.slice(0,6)+'_'+
-                                        "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+                                        place: item.meeting.meetingName,
+                                        code:item.meeting.venueMnemonic,
+                                        raceType:item.meeting.raceType   
+                                        
                                     }}>                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    
@@ -169,11 +168,9 @@ const NextRace = (props)=>{
                                     to={{
                                         pathname:"/RaceDetail/Win", 
                                         slot:item.raceNumber, 
-                                        place: item.meetingName,
-                                        bet_pool_fh_1:item.raceStartTime.slice(0,6)+'_'+
-                                        "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'w',
-                                        bet_pool_fh_2:item.raceStartTime.slice(0,6)+'_'+
-                                        "racing_"+item.raceType+'_'+item.meetingName+'_'+item.location+'_'+item.raceNumber+'_'+'p'
+                                        place: item.meeting.meetingName,
+                                        code:item.meeting.venueMnemonic,
+                                        raceType:item.meeting.raceType   
                                     }}>                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    

@@ -16,7 +16,7 @@ import "./RaceDetails.css";
 import RespHeader from '../Nav/RespHeader';
 
 const RaceDetailsPage=(props)=> {
-
+    
     props.fetchNextRace();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
