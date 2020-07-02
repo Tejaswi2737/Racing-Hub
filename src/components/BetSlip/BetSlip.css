@@ -41,14 +41,15 @@
 .toggle-button:not([disabled]).selected {
     background: #88cdd3;
     border: 0;
-    color: white;
+    color: black;
     text-decoration: none;
     outline: 0;
-    font-size: 20px;
+    font-size: 14px;
+    height: 30px;
 }
 .toggle-button-grouped button:first-of-type {
-    border-bottom-left-radius: .3em;
-    border-top-left-radius: .3em;
+    /* border-bottom-left-radius: .3em;
+    border-top-left-radius: .3em; */
 }
 .toggle-button-grouped button {
     /* border-radius: 0;

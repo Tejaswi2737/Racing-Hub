@@ -82,7 +82,7 @@ const TodayRacingDetails=(props)=> {
                     return(
                         <div className="table-item-row">
                             {item.races.map(items=>{
-                                console.log(items,item)
+                                // console.log(items,item)
                                 return( 
                                     <Link to={{
                                         pathname:`/${date}/${item.meetingName}/${item.venueMnemonic}/${item.raceType}/${items.raceNumber}/Win`,
@@ -130,6 +130,7 @@ const TodayRacingDetails=(props)=> {
                         return(
                             <div className="places-list-item">
                                 <p>{item.meetingName}</p>
+                                <p>({item.location})</p>
                             </div>
                         )
                     })}

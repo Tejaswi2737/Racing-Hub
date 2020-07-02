@@ -1,13 +1,14 @@
 import React,{ useState,useEffect,useRef } from 'react';
+import { connect } from 'react-redux';
+
 import { makeStyles } from '@material-ui/core/styles';
 import { Link} from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import MediaQuery from 'react-responsive'
 
 
-import { allBetSlipData } from "../../actions";
+import { allBetSlipData,fetchPathParams } from "../../actions";
 
-// import BetSlipStore from "../../context/BetSlipContext";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +54,7 @@ const NextRace = (props)=>{
     const [fetched, setfetched] = useState(false)
     useEffect(() => {
         if (props.next.length>0){
+            console.log(props.next)
             {props.next[0].raceStartTime?setfirstTime(props.next[0].raceStartTime):setfirstTime()}
             {props.next[0].raceNumber?setfirstNumber(props.next[0].raceNumber):setfirstNumber()}
             setfetched(true)
@@ -153,12 +155,10 @@ const NextRace = (props)=>{
                 return(
                     <>
                         <MediaQuery query='(min-width: 800px)'>
-                            <Grid item xs ={4} className="next-section">
-                                
-                                
+                            <Grid item xs ={4} className="next-section">  
                                 <Link className={classes.paper}  className={
-                                    (item.raceStartTime==props.firstTime
-                                        &&item.raceNumber==props.firstNumber)?
+                                    (item.raceStartTime==firstTime
+                                        &&item.raceNumber==firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
                                         pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`,
@@ -166,8 +166,16 @@ const NextRace = (props)=>{
                                         place: item.meeting.meetingName,
                                         code:item.meeting.venueMnemonic,
                                         raceType:item.meeting.raceType   
-                                        
-                                    }}>                        
+                                    }}
+                                    onClick={()=>{props.fetchPathParams(
+                                        {
+                                            slot:item.raceNumber, 
+                                            place: item.meeting.meetingName,
+                                            code:item.meeting.venueMnemonic,
+                                            raceType:item.meeting.raceType    
+                                        }
+                                    )}}
+                                    >                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    
                                     <p>{item.meeting.meetingName} ({item.meeting.location})</p>
@@ -218,5 +226,13 @@ const NextRace = (props)=>{
         );
 }; 
 
-
-export default NextRace
+const mapStateToProps=(state)=> {
+    return{ 
+        pathParam:state.pathParams
+    }
+}
+export default connect(mapStateToProps, 
+    { 
+        fetchPathParams
+    })
+    (NextRace);

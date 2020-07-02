@@ -1,6 +1,7 @@
 import React,{ useState,useEffect,useRef } from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
+import {IoIosArrowForward} from "react-icons/io"
 import { fetchNextRace } from "../../actions";
 import "./NextListHome.css";
 import HomeImage from "../../images/Home.gif"
@@ -90,8 +91,6 @@ const NextListHome = (props)=>{
                                             code:item.meeting.venueMnemonic,
                                             raceType:item.meeting.raceType,
                                             pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`
-
-                                           
                                         }} className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
                                             <p>{item.meeting.meetingName} ({item.meeting.location})</p>
@@ -100,8 +99,9 @@ const NextListHome = (props)=>{
                                                     {item.raceDistance}m
                                                 </span>
                                                 <span className="race-detail">
-                                                    {item.meeting.trackCondition} 
-                                                </span>                            
+                                                    {" "+item.meeting.trackCondition } <IoIosArrowForward size={10}/> 
+                                                </span>    
+                                                         <IoIosArrowForward size={10}/>              
                                             </div> */}
                                         </Link> 
                                 )}):"":""}

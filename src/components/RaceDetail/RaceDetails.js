@@ -14,7 +14,8 @@ import { fetchMeetingDetails,
     countBetSlipData,
     remainingBetSlipData,
     betSlipScreen,
-    fetchTodayRacing
+    fetchTodayRacing,
+    fetchPathParams
 } from "../../actions";
 
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -41,7 +42,6 @@ const RaceDetails = (props,ownProps)=>{
     const date=formatDate(Date.now())
     useEffect(() => {
         props.fetchTodayRacing()
-        console.log(props)
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
                 return (
@@ -109,7 +109,7 @@ const RaceDetails = (props,ownProps)=>{
     }): items_list=[]};
 
   
-    // console.log(props.remainingBetSlip)
+    console.log(props.remainingBetSlip)
     useEffect(() => {
         props.remainingBetSlipData(props.remainingBetSlip)
     }, [props.meetingDetails])
@@ -199,7 +199,7 @@ const RaceDetails = (props,ownProps)=>{
     const resultsTable=(props)=>{
         return(
             
-            <table className="race-table-results pane">
+            <table className="race-table-results">
                 {props.racingDetail.results.length>0?
                 <thead>
                     <tr>
@@ -263,7 +263,7 @@ const RaceDetails = (props,ownProps)=>{
 
     const exoticTable=(props)=>{
         return(
-            <table className="race-table pane">
+            <table className="race-table">
                 {props.racingDetail.exoticResults.length>0?
             <thead >
                 <tr>
@@ -382,21 +382,15 @@ const RaceDetails = (props,ownProps)=>{
     };
 
     const handleClick=(props,runner_item)=>{
-        console.log(raceData,todayData)
         if ((raceData[0].raceStatus=="Normal")) {
-
             if(props.countBetSlip && props.countBetSlip.length==0) {
-
-                console.log(props.countBetSlip);
                 props.countBetSlipData(1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
-                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             } else {
-                console.log("two");
                 // console.log(props.countBetSlip)
                 props.countBetSlipData(parseInt(props.countBetSlip)+1);
                 setcount((props.countBetSlip));
@@ -465,21 +459,37 @@ const RaceDetails = (props,ownProps)=>{
                     <div className="price-cell-body"
                         onClick={()=>{
                             handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)
-                        }}
+                        }} 
+                        style={{
+                            backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
+                            props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                            && e.runners === runner_item.runnerNumber
+                            ).length > 0
+                            ?
+                            "#d3ecef":"white":"white"}}
                         >
-                        <div className="price-cell-body-first">
-                            <div >
-                                <div className="first-price">
-                                    ${runner_item.returnWin}
-                                </div>
-                            </div>
+                        <div className="price-cell-body-child"
+                        style={{
+                            backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
+                            props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                            && e.runners === runner_item.runnerNumber
+                            ).length > 0
+                            ?
+                            "#d3ecef":"white":"white"}}
+                        >
+                                    ${runner_item.returnWin}    
                         </div>
-                        <div className="price-cell-body">
-                            <div>
-                                <div>
+                        <div className="price-cell-body-child"
+                        style={{
+                            backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
+                            props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                            && e.runners === runner_item.runnerNumber
+                            ).length > 0
+                            ?
+                            "#d3ecef":"white":"white"}}                        >
+                       
                                     ${runner_item.returnPlace}
-                                </div>
-                            </div>
+                          
                         </div>
                     </div>
                     {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
@@ -655,7 +665,7 @@ const RaceDetails = (props,ownProps)=>{
         };
     
         return(
-            <div className="pane">
+            <div className="">
                 <div className="race-header-container">
                     <header className="race-header">
                         <div className="race-header-info">

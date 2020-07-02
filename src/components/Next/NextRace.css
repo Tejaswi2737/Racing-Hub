@@ -13,7 +13,7 @@
     display: flex;
     flex-grow: 1;
     justify-content: space-between;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 .next-to-go-bar-race {
     height: 100%;
@@ -43,9 +43,8 @@
 
 .next-to-go-bar-race-link:hover {
     opacity: 1;
-    background-color: #c0e4e8 !important;
+    background-color: transparent;
     color: black;
-
 } 
 
 .next-to-go-bar-race-info {
@@ -123,15 +122,16 @@ a {
 
 .next-item {
     border: 4px solid rgb(51, 51, 51,0.1);
-    border-radius: 30px;
-    padding:0 20px;
+    border-radius: 10px;
+    padding:0 10px;
     margin:0px 40px;
-    font-weight: 600;
+    font-weight: 1000;
     font-family: 'Open Sans';
     line-height: 30px;
     text-overflow: clip;
     white-space:nowrap;
     min-width: 18vw;
+    font-size: 12px;
 }
 @media (max-width:600px) {
     .next-item{
@@ -140,18 +140,24 @@ a {
 }
 }
 .next-item-first {
-    border: 4px solid rgb(48, 80, 51,0.1);
-    border-radius: 30px;
-    padding:0 20px;
+    border: 4px solid rgb(51, 51, 51,0.1);
+    border-radius: 10px;
+    padding:0 10px;
     margin:0px 40px;
-    font-weight: 600;
+    font-weight: 1000;
     font-family: 'Open Sans';
     line-height: 30px;
     text-overflow: clip;
     white-space:nowrap;
     background-color: #f25824;
     color: white;
-    min-width: 20vw;
+    min-width: 18vw;
+    font-size: 12px;
+}
+.next-item-first:hover{
+    opacity: 1;
+    background-color: transparent;
+    color: black;
 }
 @media (max-width:600px) {
     .next-item-first{
@@ -172,9 +178,9 @@ a {
 }
 
 .next-item:hover, .next-item time:hover {
-    /* border: 1px solid black; */
-    background-color: #c0e4e8;
+    background-color: transparent;
     opacity: 1;
+    color: black;
 }
 .next-item:hover {
     border: 1px solid black;

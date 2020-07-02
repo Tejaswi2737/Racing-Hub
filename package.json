@@ -1,7 +1,6 @@
 {
   "homepage": "https://Tejaswi2737.github.io/Racing-Hub/",
-  "name": "Racing-Hub",
-  
+  "name": "racing-hub",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

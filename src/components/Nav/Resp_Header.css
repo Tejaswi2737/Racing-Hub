@@ -5,6 +5,10 @@ header {
 	padding: 30px 30px;
 	position: relative;
 }
+.main-header{
+	display: inline-block;
+	width: 100%;
+}
 header > Link,
 header > Link:hover,
 header > Link:focus {
@@ -16,8 +20,13 @@ header > Link:focus {
 #vollie-logo,
 #vollie-tagline,
 #header-menu {
-	display: inline-block;
-    vertical-align: middle;
+	/* display: inline-block; */
+	padding-top: 5px;
+	float: right
+}
+#site-heading {
+	/* display: inline-block; */
+	float: left
 }
 @media (min-width:980px) {
 	#vollie-tagline {
@@ -51,10 +60,7 @@ header > Link:focus {
 #header-menu ul {
 	list-style: none;
 }
-#header-menu, .top-menu {
-	margin-top: 0;
-    margin-bottom: 0;
-}
+
 @media(min-width:980px) {
 	.top-menu {
 		padding-left: 25vw;
@@ -126,16 +132,18 @@ header > Link:focus {
 		display: block;
 	}
 	#site-heading {
-		display: block;
-		display: flex;
+		/* display: block;
+		display: flex; */
 		align-items: center;
 		justify-content: space-between;
+		float: left;
 	}
 	#header-menu {
-		display: inline-flex;
+		/* display: inline-flex; */
 		padding-top: 15px;
 		border-top: 1px solid #88cdd3;
-    	margin-top: 15px;
+		margin-top: 15px;
+		float: right;
 	}
 	.yump-magic-hover {
 		display: inline-block;

@@ -20,7 +20,7 @@ const RespHeader=() =>{
 
     const date=formatDate(Date.now())
     return (
-        <header className="flex flex-vertical-center flex-space-between">
+        <header className="main-header">
             <div id="site-heading">
                 <Link to="/" className="title-main">
                     <div id="vollie-tagline">

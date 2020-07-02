@@ -23,7 +23,7 @@
     font-weight: 800;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 25vw;
     text-align: center;
     font-size: 1.3rem;
@@ -37,11 +37,11 @@
     font-size: 1.1rem;
     padding-left: 10px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* border-top-right-radius: 80px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 80px; */
-    border-radius: 20px;
+    border-radius: 10px;
     border-style: solid;
     border-spacing: 1px;
     text-transform: capitalize;
@@ -54,11 +54,11 @@
         margin-left:3vw
     }
 }
-.category-button:hover {
+/* .category-button:hover {
     background-color: #c0e4e8;
     color: black;
     opacity: 0.7;
-}
+} */
 .button-bar {
     background-color: transparent;
     line-height: 50px;
@@ -79,22 +79,27 @@
 }
 .places-list-item {
     box-sizing: border-box !important;
-    color: inherit !important;
-    height: 75px !important;
+    color: black !important;
+    height: 70px !important;
     width: 100px !important;
     position: relative !important;
-    padding: 10px 8px !important;
-    border: 1px solid black;
-    border-top-left-radius: 40px;
+    border: 0.5px solid black;
+    /* border-top-left-radius: 10px; */
     background-color: transparent;
+    font-weight: 800;
+    
 }
 .places-list-item p {
-    padding-left: 5px;
+    padding-left: 0px;
     display: block !important;
-    font-size: 0.8rem !important;
+    font-size: 0.6rem !important;
     font-weight: 600 !important;
-    margin-top: 20px;
+    margin-top: 15px;
     overflow: hidden;
+    padding-left: 5px;
+    text-overflow: clip;
+    
+    text-align: center;
 }
 
 .today-list { 
@@ -111,7 +116,6 @@
     width: 70px !important;
     text-align: left !important;
     border-top-right-radius: 30px;
-
 }
 
 
@@ -119,10 +123,10 @@
     min-width: 70px !important;
     max-width: 70px !important;
     color: rgb(115, 115, 115) !important;
-    height: 75px !important;
+    height: 70px !important;
     padding: 0px 5px !important;
-    background: #c0e4e8;
-    border: 4px solid rgb(51, 51, 51,0.1);
+    background: transparent;
+    border: 1px solid rgb(51, 51, 51,0.1);
     border-top-right-radius: 30px;
     margin: 0px;
 }
@@ -135,20 +139,20 @@
     background-color: #f25824 !important;
     color: white!important;
 }
-.table-item:hover,.table-item-open-color:hover {
-    background: #c0e4e8 !important;
-    color: white;
-    border: 1px solid black;
-    opacity: 1;  
-}
-.table-item:hover{
+.table-item:hover,.table-item-open-color:hover, .table-item-open:hover {
     background: white !important;
     color: black;
     border: 1px solid black;
     opacity: 1;  
 }
+.table-item:hover, .table-item-open-color:hover{
+    background: white !important;
+    color: black !important;
+    border: 1px solid black;
+    opacity: 1;  
+}
 
-.table-item p , .table-item-open p{
+.table-item p , .table-item-open p, .table-item-open-color p{
     font-size: 0.7rem !important;
     font-weight: 800 !important;
     line-height: 20px !important;
