@@ -425,7 +425,7 @@ table {
 
 /* Info table Body */
 
-.name-cell-body, .number-cell-body , .price-cell-body,.price-cell-body-first {
+.name-cell-body, .number-cell-body , .price-cell-body-selected,.price-cell-body,.price-cell-body-first {
     display: inline-flex;
     flex-direction: row;
     font-weight: 1000;
@@ -439,7 +439,7 @@ table {
     text-align: left;
     /* padding: 10px; */
     line-height: 40px;
-    height: 70px !important;
+    /* height: 70px !important; */
 }
 
 .name-cell-body,.price-cell-body,.number-cell-body,.price-cell-body-first {
@@ -447,6 +447,15 @@ table {
     min-width: 15vw;
     /* border-top-left-radius: 30px;
     border-top-right-radius: 30px; */
+}
+/* .price-cell-body {
+    background-color: teal;
+} */
+.number-cell-body{
+    padding-left: 50px;
+}
+.selected{
+    background-color: green;
 }
 
 .number-cell-body {

@@ -29,6 +29,7 @@ import "./RaceDetails.css";
 const RaceDetails = (props,ownProps)=>{
     const [todayData, settodayData] = useState([]);
     const [raceData, setraceData] = useState([]);
+    const [selectedState, setselectedState] = useState([])
         function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -54,7 +55,6 @@ const RaceDetails = (props,ownProps)=>{
                     el.raceType==props.raceType &&
                      el.venueMnemonic== props.code 
                 )
-
               });
             // console.log(newArray)
             settodayData(newArray)
@@ -72,10 +72,17 @@ const RaceDetails = (props,ownProps)=>{
     
                   });
                 // console.log(newArray)
-                setraceData(newArray)            
+                setraceData(newArray) 
+                // setselectedState(Array.from(Array[newArray.length],
+                //     (x,index)=>false))           
             }
         }
-    }, [todayData])
+    }, [todayData]);
+    useEffect(() => {
+        if(props.racingDetail.runners) {
+            setselectedState(new Array(props.racingDetail.runners.length).fill("white"))
+        }
+    }, [props.racingDetail])
     const [pool_fh, setpool_fh] = useState();
     const [count, setcount] = useState()
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
@@ -389,24 +396,25 @@ const RaceDetails = (props,ownProps)=>{
     const handleClick=(props,runner_item)=>{
         console.log(raceData,todayData)
         if ((raceData[0].raceStatus=="Normal")) {
-
+            let newArray=[...selectedState];
+            if(newArray[runner_item.runnerNumber-1]=="white") {
+                newArray[runner_item.runnerNumber-1]="red"
+            } else {
+                newArray[runner_item.runnerNumber-1]="white"
+            }
+                
+            setselectedState(newArray)
             if(props.countBetSlip && props.countBetSlip.length==0) {
-
-                console.log(props.countBetSlip);
                 props.countBetSlipData(1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
-                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             } else {
-                console.log("two");
-                // console.log(props.countBetSlip)
                 props.countBetSlipData(parseInt(props.countBetSlip)+1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
-                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
@@ -425,7 +433,9 @@ const RaceDetails = (props,ownProps)=>{
         }
     };
 
-
+    useEffect(() => {
+        console.log(selectedState[0])
+    }, [selectedState])
 
     useEffect(() => {
         if ((runner_win_place)) {
@@ -467,19 +477,22 @@ const RaceDetails = (props,ownProps)=>{
                             </div>
                         </div>
                     </div>
-                    <div className="price-cell-body"
+                    <div  className="price-cell-body"
                         onClick={()=>{
                             handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)
                         }}
+                        style={{backgroundColor:selectedState[runner_item.runnerNumber-1]}}
                         >
-                        <div className="price-cell-body-first">
-                            <div >
+                        <div  className="price-cell-body-first"
+                        style={{backgroundColor:selectedState[runner_item.runnerNumber-1]}}>
+                            <div>
                                 <div className="first-price">
                                     ${runner_item.returnWin}
                                 </div>
                             </div>
                         </div>
-                        <div className="price-cell-body">
+                        <div className="price-cell-body"
+                        style={{backgroundColor:selectedState[runner_item.runnerNumber-1]}}>
                             <div>
                                 <div>
                                     ${runner_item.returnPlace}
