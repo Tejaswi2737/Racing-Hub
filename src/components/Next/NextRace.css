@@ -39,7 +39,8 @@
         min-width: 85vw;
         min-height: 50px;
     }
-})
+}
+
 .next-to-go-bar-race-link:hover {
     opacity: 1;
     background-color: #c0e4e8 !important;
