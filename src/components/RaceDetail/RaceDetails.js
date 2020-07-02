@@ -711,7 +711,7 @@ const RaceDetails = (props,ownProps)=>{
 
     const poolTot=(props)=>{
         return(
-            <div className="page-section pane">
+            <div className="page-section">
             <div className="info-table">
                 <div className="tabbed-sections">
                     <nav className="tabs-nav">
@@ -776,14 +776,14 @@ const RaceDetails = (props,ownProps)=>{
         )
     };
     return (
-        <main className="page-content">
+        <main className="page-content detail-page">
             <div className="left-column">
                 <ui-view>
                     <div className="all-tables">
                         {raceName(props)}
-                        <div className="page-section pane">
+                        <div className="page-section">
                         </div>
-                        <div className="page-section pane">  
+                        <div className="page-section">  
                             <div className="race-results-wrapper">
                                 <section className={props.racingDetail.raceStatus=="Open"?
                                 "runners-section":"results-section"}>

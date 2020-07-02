@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+.detail-page {
+    margin: 0px;
+    background-color: rgb(51, 51, 51,0.1);
+}
 
 .left-column {
     float: left;
@@ -243,7 +247,7 @@
     margin-bottom: 30px;
 }
 .race-table-results {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 
@@ -409,28 +413,29 @@ table {
 .name-cell,.price-cell,.number-cell {
     background-color: #88cdd3;
     border: 1px solid rgb(51, 51, 51,0.1);
-    min-width: 7vw;
+    min-width: 8vw;
     color: black;
     text-align: center;
-    /* border-top-left-radius: 30px;
-    border-top-right-radius: 30px; */
 }
 .number-cell {
     min-width: 10vw;
+    padding-left: 15px;
 }
 .price-cell {
     padding-left: 2px;
+    min-width: 8vw;
+    padding-left: 15px;
 }
 .name-cell{
     min-width: 45vw;
 }
 @media (max-width:500px) {
     .number-cell {
-        max-width: 15vw;
+        max-width: 16vw;
         padding-left: 5px;
     }
     .price-cell {
-        min-width: 12vw;
+        min-width: 15vw;
         max-width: 15vw;
         padding-left: 5px;
     }
@@ -454,15 +459,18 @@ table {
     color:black;
     font-size: 0.9rem;
     left: auto;
-    width: auto;
-    width: 7.2vw !important;
+    width: 8vw !important;
     text-align: center;
     line-height: 40px;
+    background-color: white;
     /* height: 70px !important; */
 }
 
 .name-cell-body,.price-cell-body-child,.number-cell-body,.price-cell-body-first {
-    min-width:7vw;
+    min-width:8vw;
+}
+.price-cell-body-child{
+    min-width: 8vw;
 }
 
 .number-cell-body {
@@ -483,12 +491,13 @@ table {
 }
 @media (max-width:500px) {
     .number-cell-body {
-        max-width: 15vw;
+        max-width: 16vw;
         padding-left: 5px;
     }
-    .price-cell-body,.price-cell-body-child {
-        max-width: 15vw;
-        padding-left: 0px;
+    .price-cell-body-child {
+        max-width: 16vw;
+        padding-left: px;
+        margin-left: 15px;
     }
     .name-cell-body{
         min-width: 50vw;
@@ -504,8 +513,9 @@ table {
 .pseudo-body{
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-width: auto;
     text-overflow: clip;
+    background-color: white;
+
 }
 
 .runner-metadata-list {
