@@ -1,0 +1,1154 @@
+[
+    {
+      "raceStartTime": "2020-07-02T06:04:00.000Z",
+      "raceNumber": 5,
+      "raceName": "TAB C,G&E BM58 HANDICAP",
+      "matchName": "TAB C,G&E BM58 HANDICAP",
+      "raceDistance": 1100,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "B",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "WARWICK",
+        "location": "QLD",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "True Entire Course.",
+        "venueMnemonic": "WCK",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/WCK/races/5?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/WCK/races/5/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/WCK/races/5/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:07:00.000Z",
+      "raceNumber": 5,
+      "raceName": "BYERS ELECTRICAL 2-3 WINS",
+      "matchName": "BYERS ELECTRICAL 2-3 WINS",
+      "raceDistance": 450,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "P",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "SHEPPARTON",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "SHE",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/5?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/5/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/5/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:10:00.000Z",
+      "raceNumber": 7,
+      "raceName": "NEATLINE HOMES PACE MS",
+      "matchName": "NEATLINE HOMES PACE MS",
+      "raceDistance": 2190,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "P",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "SHEPPARTON",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "SHE",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/SHE/races/7?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/SHE/races/7/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/SHE/races/7/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:11:00.000Z",
+      "raceNumber": 12,
+      "raceName": "GREYHOUND ADOPTION PROGRAM",
+      "matchName": "GREYHOUND ADOPTION PROGRAM",
+      "raceDistance": 400,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "E",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "WARRAGUL",
+        "location": "VIC",
+        "weatherCondition": "OCAST",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "WRG",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/WRG/races/12?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/WRG/races/12/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/WRG/races/12/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:14:00.000Z",
+      "raceNumber": 8,
+      "raceName": "SUCK IT UP LTD STAKES",
+      "matchName": "SUCK IT UP LTD STAKES",
+      "raceDistance": 520,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "F",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "ADDINGTON",
+        "location": "NZL",
+        "weatherCondition": "OCAST",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "ADD",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/8?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/8/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/8/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:15:00.000Z",
+      "raceNumber": 6,
+      "raceName": "MURWILLUMBAH GOLF CLUB MAIDEN PLATE",
+      "matchName": "MURWILLUMBAH GOLF CLUB MAIDEN PLATE",
+      "raceDistance": 1550,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "MURWILLUMBAH",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "SOFT6",
+        "railPosition": "True",
+        "venueMnemonic": "MWH",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/MWH/races/6?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/MWH/races/6/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/MWH/races/6/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:19:00.000Z",
+      "raceNumber": 2,
+      "raceName": "LADBROKES MAIDEN",
+      "matchName": "LADBROKES MAIDEN",
+      "raceDistance": 400,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "MAITLAND",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "MTL",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/2?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/2/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/2/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:22:00.000Z",
+      "raceNumber": 4,
+      "raceName": "TABTOUCH RACE REPLAYS MAIDEN",
+      "matchName": "TABTOUCH RACE REPLAYS MAIDEN",
+      "raceDistance": 1300,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "W",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "NORTHAM",
+        "location": "WA",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "6 metres 1600m - 400m, Cutaway in straight.",
+        "venueMnemonic": "NTM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/4?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/4/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/4/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:25:00.000Z",
+      "raceNumber": 7,
+      "raceName": "WOOLLAMS CONSTRUCTIONS PACE MS",
+      "matchName": "WOOLLAMS CONSTRUCTIONS PACE MS",
+      "raceDistance": 1780,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "B",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "REDCLIFFE",
+        "location": "QLD",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "RED",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/7?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/7/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/7/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:28:00.000Z",
+      "raceNumber": 6,
+      "raceName": "RAW ABILITY AT STUD",
+      "matchName": "RAW ABILITY AT STUD",
+      "raceDistance": 450,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "P",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "SHEPPARTON",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "SHE",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/6?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/6/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/6/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:30:00.000Z",
+      "raceNumber": 8,
+      "raceName": "HAPPY RETIREMENT PAT HYLAND BM64",
+      "matchName": "HAPPY RETIREMENT PAT HYLAND BM64",
+      "raceDistance": 2025,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "M",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "CRANBOURNE",
+        "location": "VIC",
+        "weatherCondition": "OCAST",
+        "trackCondition": "SOFT6",
+        "railPosition": "True Entire Circuit",
+        "venueMnemonic": "CRB",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/CRB/races/8?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/CRB/races/8/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/CRB/races/8/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:34:00.000Z",
+      "raceNumber": 9,
+      "raceName": "CHRISTCHURCH CASINO STAKES",
+      "matchName": "CHRISTCHURCH CASINO STAKES",
+      "raceDistance": 520,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "F",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "ADDINGTON",
+        "location": "NZL",
+        "weatherCondition": "OCAST",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "ADD",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/9?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/9/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/9/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:35:00.000Z",
+      "raceNumber": 7,
+      "raceName": "PINK FINSS CHARITY BM64 HANDICAP",
+      "matchName": "PINK FINSS CHARITY BM64 HANDICAP",
+      "raceDistance": 1000,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "S",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "HAWKESBURY",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "SOFT6",
+        "railPosition": "TRUE",
+        "venueMnemonic": "HAW",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/HAW/races/7?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/HAW/races/7/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/HAW/races/7/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:39:00.000Z",
+      "raceNumber": 3,
+      "raceName": "HUSQVARNA MAIDEN",
+      "matchName": "HUSQVARNA MAIDEN",
+      "raceDistance": 450,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "MAITLAND",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "MTL",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/3?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/3/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/3/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:40:00.000Z",
+      "raceNumber": 6,
+      "raceName": "STOCKMANS SUPPLIES PACE MS",
+      "matchName": "STOCKMANS SUPPLIES PACE MS",
+      "raceDistance": 1609,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "TAMWORTH",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "FAST",
+        "railPosition": null,
+        "venueMnemonic": "TAM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/6?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/6/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/6/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:42:00.000Z",
+      "raceNumber": 6,
+      "raceName": "FRASERS LIVESTOCK TRANSPORT CLASS 1",
+      "matchName": "FRASERS LIVESTOCK TRANSPORT CLASS 1",
+      "raceDistance": 1500,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "B",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "WARWICK",
+        "location": "QLD",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "True Entire Course.",
+        "venueMnemonic": "WCK",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/WCK/races/6?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/WCK/races/6/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/WCK/races/6/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:46:00.000Z",
+      "raceNumber": 7,
+      "raceName": "SHEPPARTON WORKWEAR & SAFETY",
+      "matchName": "SHEPPARTON WORKWEAR & SAFETY",
+      "raceDistance": 450,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "P",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "SHEPPARTON",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "SHE",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/7?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/7/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/SHE/races/7/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:49:00.000Z",
+      "raceNumber": 8,
+      "raceName": "TAB LONG MAY WE PLAY PACE MS",
+      "matchName": "TAB LONG MAY WE PLAY PACE MS",
+      "raceDistance": 2190,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "P",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "SHEPPARTON",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "SHE",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/SHE/races/8?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/SHE/races/8/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/SHE/races/8/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:51:00.000Z",
+      "raceNumber": 10,
+      "raceName": "A2C ASPHALT 2 CONCRETE DASH",
+      "matchName": "A2C ASPHALT 2 CONCRETE DASH",
+      "raceDistance": 295,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "F",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "ADDINGTON",
+        "location": "NZL",
+        "weatherCondition": "OCAST",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "ADD",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/10?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/10/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/10/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:54:00.000Z",
+      "raceNumber": 4,
+      "raceName": "WWW.ZIPPINGGARTH.COM.AU",
+      "matchName": "WWW.ZIPPINGGARTH.COM.AU",
+      "raceDistance": 450,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "MAITLAND",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "MTL",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/4?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/4/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/MTL/races/4/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T06:57:00.000Z",
+      "raceNumber": 5,
+      "raceName": "TABTOUCH MAIDEN",
+      "matchName": "TABTOUCH MAIDEN",
+      "raceDistance": 1600,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "W",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "NORTHAM",
+        "location": "WA",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "6 metres 1600m - 400m, Cutaway in straight.",
+        "venueMnemonic": "NTM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/5?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/5/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/5/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:01:00.000Z",
+      "raceNumber": 1,
+      "raceName": "EVERY RACE LIVE ON THE WATCHDOG APP",
+      "matchName": "EVERY RACE LIVE ON THE WATCHDOG APP",
+      "raceDistance": 390,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "L",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "WARRNAMBOOL",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "WBO",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/WBO/races/1?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/WBO/races/1/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/WBO/races/1/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:04:00.000Z",
+      "raceNumber": 8,
+      "raceName": "GARRARDS HERE ON TRACK PACE MS",
+      "matchName": "GARRARDS HERE ON TRACK PACE MS",
+      "raceDistance": 2040,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "B",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "REDCLIFFE",
+        "location": "QLD",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "RED",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/8?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/8/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/8/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:08:00.000Z",
+      "raceNumber": 11,
+      "raceName": "KAISA EARTHWORKS DASH",
+      "matchName": "KAISA EARTHWORKS DASH",
+      "raceDistance": 295,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "F",
+          "scheduledType": "G"
+        },
+        "raceType": "G",
+        "meetingName": "ADDINGTON",
+        "location": "NZL",
+        "weatherCondition": "OCAST",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "ADD",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/11?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/11/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/G/ADD/races/11/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:16:00.000Z",
+      "raceNumber": 7,
+      "raceName": "WESTS DIGGERS TAMWORTH PACE MS",
+      "matchName": "WESTS DIGGERS TAMWORTH PACE MS",
+      "raceDistance": 2360,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "TAMWORTH",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "FAST",
+        "railPosition": null,
+        "venueMnemonic": "TAM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/7?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/7/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/7/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:32:00.000Z",
+      "raceNumber": 6,
+      "raceName": "TABTOUCH BETTER YOUR BET HANDICAP",
+      "matchName": "TABTOUCH BETTER YOUR BET HANDICAP",
+      "raceDistance": 2200,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "W",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "NORTHAM",
+        "location": "WA",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "6 metres 1600m - 400m, Cutaway in straight.",
+        "venueMnemonic": "NTM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/6?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/6/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/6/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:39:00.000Z",
+      "raceNumber": 9,
+      "raceName": "TAB PACE MS",
+      "matchName": "TAB PACE MS",
+      "raceDistance": 1780,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "B",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "REDCLIFFE",
+        "location": "QLD",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "RED",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/9?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/9/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/RED/races/9/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:50:00.000Z",
+      "raceNumber": 8,
+      "raceName": "SKY RACING ACTIVE PACE MS",
+      "matchName": "SKY RACING ACTIVE PACE MS",
+      "raceDistance": 2360,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "C",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "TAMWORTH",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "FAST",
+        "railPosition": null,
+        "venueMnemonic": "TAM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/8?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/8/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/TAM/races/8/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T07:58:00.000Z",
+      "raceNumber": 1,
+      "raceName": "BERALDO COFFEE PACE MS",
+      "matchName": "BERALDO COFFEE PACE MS",
+      "raceDistance": 1690,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "M",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "KILMORE",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "KIL",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/KIL/races/1?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/KIL/races/1/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/KIL/races/1/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T08:10:00.000Z",
+      "raceNumber": 7,
+      "raceName": "TABTOUCH SUPPORTING THE INDUSTRY",
+      "matchName": "TABTOUCH SUPPORTING THE INDUSTRY",
+      "raceDistance": 1100,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "W",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "NORTHAM",
+        "location": "WA",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "6 metres 1600m - 400m, Cutaway in straight.",
+        "venueMnemonic": "NTM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/7?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/7/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/7/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T08:20:00.000Z",
+      "raceNumber": 1,
+      "raceName": "PACEWAY MEMBERSHIP $11 FOR TWO YEARS MS",
+      "matchName": "PACEWAY MEMBERSHIP $11 FOR TWO YEARS MS",
+      "raceDistance": 2125,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "S",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "PENRITH",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "FAST",
+        "railPosition": null,
+        "venueMnemonic": "PEN",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/PEN/races/1?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/PEN/races/1/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/PEN/races/1/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T08:30:00.000Z",
+      "raceNumber": 2,
+      "raceName": "MOMENTUM GAMING 3YO MAIDEN PACE MS",
+      "matchName": "MOMENTUM GAMING 3YO MAIDEN PACE MS",
+      "raceDistance": 2180,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "M",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "KILMORE",
+        "location": "VIC",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD",
+        "railPosition": null,
+        "venueMnemonic": "KIL",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/KIL/races/2?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/KIL/races/2/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/KIL/races/2/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T08:45:00.000Z",
+      "raceNumber": 8,
+      "raceName": "TABTOUCH GIDDY UP PREMIUM FORM HANDICAP",
+      "matchName": "TABTOUCH GIDDY UP PREMIUM FORM HANDICAP",
+      "raceDistance": 1400,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "W",
+          "scheduledType": "R"
+        },
+        "raceType": "R",
+        "meetingName": "NORTHAM",
+        "location": "WA",
+        "weatherCondition": "FINE",
+        "trackCondition": "GOOD4",
+        "railPosition": "6 metres 1600m - 400m, Cutaway in straight.",
+        "venueMnemonic": "NTM",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/8?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/8/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/NTM/races/8/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T08:49:00.000Z",
+      "raceNumber": 2,
+      "raceName": "TAB LONG MAY WE PLAY PACE MS",
+      "matchName": "TAB LONG MAY WE PLAY PACE MS",
+      "raceDistance": 1720,
+      "broadcastChannel": "Sky Racing 1",
+      "broadcastChannels": [
+        "Sky Racing 1"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "S",
+          "scheduledType": "H"
+        },
+        "raceType": "H",
+        "meetingName": "PENRITH",
+        "location": "NSW",
+        "weatherCondition": "FINE",
+        "trackCondition": "FAST",
+        "railPosition": null,
+        "venueMnemonic": "PEN",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/PEN/races/2?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/PEN/races/2/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/H/PEN/races/2/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T10:05:00.000Z",
+      "raceNumber": 1,
+      "raceName": "PRIX DE CLICHY",
+      "matchName": "PRIX DE CLICHY",
+      "raceDistance": 1000,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "T",
+          "scheduledType": "H"
+        },
+        "raceType": "R",
+        "meetingName": "LONGCHAMP",
+        "location": "FRA",
+        "weatherCondition": null,
+        "trackCondition": null,
+        "railPosition": "True",
+        "venueMnemonic": "LGP",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/LGP/races/1?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/LGP/races/1/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/LGP/races/1/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    },
+    {
+      "raceStartTime": "2020-07-02T10:35:00.000Z",
+      "raceNumber": 2,
+      "raceName": "PRIX DU BOIS",
+      "matchName": "PRIX DU BOIS",
+      "raceDistance": 1000,
+      "broadcastChannel": "Sky Racing 2",
+      "broadcastChannels": [
+        "Sky Racing 2"
+      ],
+      "meeting": {
+        "sellCode": {
+          "meetingCode": "T",
+          "scheduledType": "H"
+        },
+        "raceType": "R",
+        "meetingName": "LONGCHAMP",
+        "location": "FRA",
+        "weatherCondition": null,
+        "trackCondition": null,
+        "railPosition": "True",
+        "venueMnemonic": "LGP",
+        "meetingDate": "2020-07-02"
+      },
+      "_links": {
+        "self": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/LGP/races/2?jurisdiction=NSW",
+        "form": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/LGP/races/2/form?jurisdiction=NSW",
+        "bigBets": "https://api.beta.tab.com.au/v1/tab-info-service/racing/dates/2020-07-02/meetings/R/LGP/races/2/big-bets?jurisdiction=NSW"
+      },
+      "isPromotionAvailable": false,
+      "isPromotionAvailableInVenueMode": false
+    }
+  ]
