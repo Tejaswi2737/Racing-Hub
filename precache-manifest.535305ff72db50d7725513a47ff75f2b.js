@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e4d0805a53e798f049a9ee1f9e7561c1",
+    "revision": "61004c9700c85d2d10e12d9e76d0f00b",
     "url": "/Racing-Hub/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Racing-Hub/static/css/2.51270f71.chunk.css"
   },
   {
-    "revision": "3606f1f84b7b8cdb8677",
-    "url": "/Racing-Hub/static/css/main.65701f99.chunk.css"
+    "revision": "56b80c91047a556fcd5f",
+    "url": "/Racing-Hub/static/css/main.17239da0.chunk.css"
   },
   {
     "revision": "6c1bff96dbf94b23ad79",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Racing-Hub/static/js/2.7a13fa33.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3606f1f84b7b8cdb8677",
+    "revision": "56b80c91047a556fcd5f",
     "url": "/Racing-Hub/static/js/main.83c3ad4f.chunk.js"
   },
   {
