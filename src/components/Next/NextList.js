@@ -15,6 +15,21 @@ import BetSlipStore from "../../context/BetSlipContext";
 
 const NextList = (props)=>{
   // console.log(props.next)
+      function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
@@ -93,7 +108,7 @@ const NextList = (props)=>{
                      <div className="next-to-go-bar-race">
                         <Link className="next-to-go-bar-race-link" 
                         to={{
-                            pathname:"/RaceDetail/Win", 
+                            pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`,
                             slot:item.raceNumber, 
                             place: item.meeting.meetingName,
                             code:item.meeting.venueMnemonic,

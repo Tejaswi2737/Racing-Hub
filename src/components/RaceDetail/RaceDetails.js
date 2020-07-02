@@ -29,6 +29,21 @@ import "./RaceDetails.css";
 const RaceDetails = (props,ownProps)=>{
     const [todayData, settodayData] = useState([]);
     const [raceData, setraceData] = useState([]);
+        function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     useEffect(() => {
         props.fetchTodayRacing()
         // console.log(props)
@@ -188,7 +203,9 @@ const RaceDetails = (props,ownProps)=>{
 
     const resultsTable=(props)=>{
         return(
+            
             <table className="race-table-results pane">
+                {props.racingDetail.results.length>0?
                 <thead>
                     <tr>
                         <th >
@@ -204,7 +221,7 @@ const RaceDetails = (props,ownProps)=>{
                             Tote
                         </th>
                     </tr>
-                </thead>
+                </thead>:""}
                 <tbody className="">
                     {props.racingDetail.results.map(item=>{  
                         return(
@@ -252,6 +269,7 @@ const RaceDetails = (props,ownProps)=>{
     const exoticTable=(props)=>{
         return(
             <table className="race-table pane">
+                {props.racingDetail.exoticResults.length>0?
             <thead >
                 <tr>
                     <th>
@@ -264,7 +282,7 @@ const RaceDetails = (props,ownProps)=>{
                         Dividend
                     </th>
                 </tr>
-            </thead>
+            </thead>:""}
             <tbody>
                 {props.racingDetail.exoticResults.map(exotic_item=>
                     {
@@ -607,7 +625,7 @@ const RaceDetails = (props,ownProps)=>{
                             {todayData?todayData[0]?todayData[0].races.map(item=>{
                                 return(
                                     <Link to={{
-                                        pathname:"/RaceDetail/Win", 
+                                        pathname:`/${date}/${props.place}/${props.code}/${props.raceType}/${item.raceNumber}/Win`,
                                         slot:item.raceNumber, 
                                         place: props.place,
                                         code:props.code,
@@ -767,8 +785,8 @@ const RaceDetails = (props,ownProps)=>{
                                     {/* {props.racingDetail.raceStatus=="Open"?placeBets():""} */}
                                     {/* <div className="page-section-break"> */}
                                     {/* </div> */}
-                                    {raceData?raceData[0]?raceData[0].raceStatus!="Normal"?resultsTable(props):"":"":""}
-                                    {raceData?raceData[0]?raceData[0].raceStatus!="Normal"?exoticTable(props):"":"":""}
+                                    {raceData?raceData[0]?raceData[0].raceStatus=="Paying"?resultsTable(props):"":"":""}
+                                    {raceData?raceData[0]?raceData[0].raceStatus=="Paying"?exoticTable(props):"":"":""}
                                     {/* {raceData.raceStatus!="Normal"?exoticTable(props):""} */}
                                     {runnerInfo(props)}
                                 </section>

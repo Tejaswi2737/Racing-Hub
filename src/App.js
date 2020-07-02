@@ -32,11 +32,11 @@ function App() {
           <Switch>
               <Route path="/" exact component={Home}/>
               <Route path="/next-to-go" exact component={NextScreen}/>
-              <Route path="/Today/R" exact component={TodayR}/> 
-              <Route path="/Today/G" exact component={TodayG}/> 
-              <Route path="/Today/H" exact component={TodayH}/> 
+              <Route path="/:date/R" exact component={TodayR}/> 
+              <Route path="/:date/G" exact component={TodayG}/> 
+              <Route path="/:date/H" exact component={TodayH}/> 
               {/* <Route path="/RaceDetail" exact component={RaceDetailsPageWin}/> */}
-              <Route path="/RaceDetail/Win" exact component={RaceDetailsPageWin}/>
+              <Route path="/:date/:place/:code/:type/:slot/Win" exact component={RaceDetailsPageWin}/>
               <Route path="/RaceDetail/Quinella" exact component={RaceDetailsPageWinQuinella}/>
               <Route path="/RaceDetail/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>
               <Route path="/RaceDetail/First4" exact component={RaceDetailsPageWinFirst4}/>

@@ -6,6 +6,21 @@ import "./NextListHome.css";
 import HomeImage from "../../images/Home.gif"
 
 const NextListHome = (props)=>{
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
 
     props.fetchNextRace();
     // console.log(props.next)
@@ -70,11 +85,12 @@ const NextListHome = (props)=>{
                                 
                                    return(
                                         <Link to={{
-                                            pathname:"/RaceDetail/Win", 
                                             slot:item.raceNumber, 
                                             place: item.meeting.meetingName,
                                             code:item.meeting.venueMnemonic,
-                                            raceType:item.meeting.raceType
+                                            raceType:item.meeting.raceType,
+                                            pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`
+
                                            
                                         }} className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>

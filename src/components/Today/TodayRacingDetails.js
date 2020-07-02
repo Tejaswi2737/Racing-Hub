@@ -6,7 +6,21 @@ import { Link} from "react-router-dom";
 import BetSlipStore from "../../context/BetSlipContext";
 
 const TodayRacingDetails=(props)=> {
+        function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
 
+    const date=formatDate(Date.now())
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))
         var delta=Math.abs(left/1000)
@@ -71,7 +85,7 @@ const TodayRacingDetails=(props)=> {
                                 console.log(items,item)
                                 return( 
                                     <Link to={{
-                                        pathname:"/RaceDetail/Win", 
+                                        pathname:`/${date}/${item.meetingName}/${item.venueMnemonic}/${item.raceType}/${items.raceNumber}/Win`,
                                         slot:items.raceNumber, 
                                         place: item.meetingName,
                                         code:item.venueMnemonic,

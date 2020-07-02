@@ -25,6 +25,21 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 const NextRace = (props)=>{
+        function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     const classes = useStyles();
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
@@ -146,7 +161,7 @@ const NextRace = (props)=>{
                                         &&item.raceNumber==props.firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
-                                        pathname:"/RaceDetail/Win", 
+                                        pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`,
                                         slot:item.raceNumber, 
                                         place: item.meeting.meetingName,
                                         code:item.meeting.venueMnemonic,
@@ -166,7 +181,7 @@ const NextRace = (props)=>{
                                         &&item.raceNumber==firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
-                                        pathname:"/RaceDetail/Win", 
+                                        pathname:`/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`,
                                         slot:item.raceNumber, 
                                         place: item.meeting.meetingName,
                                         code:item.meeting.venueMnemonic,

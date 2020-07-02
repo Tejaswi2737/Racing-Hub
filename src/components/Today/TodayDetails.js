@@ -8,6 +8,21 @@ import TodayRacingDetails from  "./TodayRacingDetails";
 
 const TodayDetails = (props,ownProps)=>{
     // console.log(props)
+        function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     const [todayData, settodayData] = useState([])
     useEffect(() => {
         console.log(props)
@@ -65,13 +80,13 @@ const TodayDetails = (props,ownProps)=>{
                 <div className="date-button">
                     <div className="category-bar">
                         <div className="button-bar">
-                            <Link to="/Today/R" className="category-button">
+                            <Link to={`/${date}/R`} className="category-button">
                                 Racing
                             </Link>
-                            <Link to="/Today/G" className="category-button">
+                            <Link to={`/${date}/G`} className="category-button">
                                 GreyHound
                             </Link>
-                            <Link to="/Today/H" className="category-button">
+                            <Link to={`/${date}/H`} className="category-button">
                                 Harness
                             </Link>
                         </div>

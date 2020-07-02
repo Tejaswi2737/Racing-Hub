@@ -4,6 +4,21 @@ import { Link} from "react-router-dom";
 
 
 const RespHeader=() =>{
+        function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     return (
         <header className="flex flex-vertical-center flex-space-between">
             <div id="site-heading">
@@ -25,17 +40,17 @@ const RespHeader=() =>{
                         </Link>
                     </li>
                     <li className="yump-magic-hover">
-                        <Link to="/Today/R" className="menu-item-link">
+                        <Link to={`/${date}/R`} className="menu-item-link">
                             Racing
                         </Link>
                     </li>
                     <li className="yump-magic-hover">
-                        <Link to="/Today/G" className="menu-item-link">
+                        <Link to={`/${date}/G`} className="menu-item-link">
                         GreyHound
                         </Link>
                     </li>
                     <li className="yump-magic-hover">
-                        <Link to="/Today/H" className="menu-item-link">
+                        <Link to={`/${date}/H`} className="menu-item-link">
                         Harness
                         </Link>
                     </li>
