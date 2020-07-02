@@ -14,11 +14,6 @@ import { fetchMeetingDetails,
     countBetSlipData,
     remainingBetSlipData,
     betSlipScreen,
-
-
-
-
-
     fetchTodayRacing
 } from "../../actions";
 
@@ -29,23 +24,24 @@ import "./RaceDetails.css";
 const RaceDetails = (props,ownProps)=>{
     const [todayData, settodayData] = useState([]);
     const [raceData, setraceData] = useState([]);
-    const [selectedState, setselectedState] = useState([]);
-    const [runnerRaceDetail, setrunnerRaceDetail] = useState([]);
         function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
+    
         if (month.length < 2) 
             month = '0' + month;
         if (day.length < 2) 
             day = '0' + day;
+    
         return [year, month, day].join('-');
     }
 
     const date=formatDate(Date.now())
     useEffect(() => {
         props.fetchTodayRacing()
+        console.log(props)
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
                 return (
@@ -53,47 +49,28 @@ const RaceDetails = (props,ownProps)=>{
                     el.raceType==props.raceType &&
                      el.venueMnemonic== props.code 
                 )
+
               });
+            // console.log(newArray)
             settodayData(newArray)
         }
     }, [props]);
-
-
     useEffect(() => {
-        if(props.racingDetail) {
-            console.log(props.racingDetail)
-            var newArray=props.racingDetail.filter(function (el) {
-                return (
-                    el.raceNumber == props.slot 
-                )
-                });
-            setrunnerRaceDetail(newArray[0])        
-        }    
-    }, [props.racingDetail]);
-    useEffect(() => {
-        console.log(runnerRaceDetail)
-    }, [runnerRaceDetail])
-    
-    useEffect(() => {
-        console.log(todayData)
         if(todayData) {
             if(todayData[0]) {
+                // console.log()
                 var dataass=todayData[0].races
                 var newArray=dataass.filter(function (el) {
                     return (
                         el.raceNumber ==props.slot 
                     )
+    
                   });
-                  console.log(newArray)
-                setraceData(newArray)        
+                // console.log(newArray)
+                setraceData(newArray)            
             }
         }
-    }, [todayData]);
-    useEffect(() => {
-        if(runnerRaceDetail.runners) {
-            setselectedState(new Array(runnerRaceDetail.runners.length).fill("white"))
-        }
-    }, [runnerRaceDetail])
+    }, [todayData])
     const [pool_fh, setpool_fh] = useState();
     const [count, setcount] = useState()
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
@@ -223,7 +200,7 @@ const RaceDetails = (props,ownProps)=>{
         return(
             
             <table className="race-table-results pane">
-                {runnerRaceDetail.results.length>0?
+                {props.racingDetail.results.length>0?
                 <thead>
                     <tr>
                         <th >
@@ -241,7 +218,7 @@ const RaceDetails = (props,ownProps)=>{
                     </tr>
                 </thead>:""}
                 <tbody className="">
-                    {runnerRaceDetail.results.map(item=>{  
+                    {props.racingDetail.results.map(item=>{  
                         return(
                             <tr>
                                 <td className="result-position">
@@ -287,7 +264,7 @@ const RaceDetails = (props,ownProps)=>{
     const exoticTable=(props)=>{
         return(
             <table className="race-table pane">
-                {runnerRaceDetail.exoticResults.length>0?
+                {props.racingDetail.exoticResults.length>0?
             <thead >
                 <tr>
                     <th>
@@ -302,7 +279,7 @@ const RaceDetails = (props,ownProps)=>{
                 </tr>
             </thead>:""}
             <tbody>
-                {runnerRaceDetail.exoticResults.map(exotic_item=>
+                {props.racingDetail.exoticResults.map(exotic_item=>
                     {
                         return(
                             <tr >
@@ -359,7 +336,7 @@ const RaceDetails = (props,ownProps)=>{
                 <div className="price-cell">
                     Place
                 </div>
-                {(runnerRaceDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
+                {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
                         <div className="price-cell">
                             1st Box
                         </div>
@@ -405,35 +382,45 @@ const RaceDetails = (props,ownProps)=>{
     };
 
     const handleClick=(props,runner_item)=>{
+        console.log(raceData,todayData)
         if ((raceData[0].raceStatus=="Normal")) {
-            let newArray=[...selectedState];
-            if(newArray[runner_item.runnerNumber-1]=="white") {
-                newArray[runner_item.runnerNumber-1]="red"
-            } else {
-                newArray[runner_item.runnerNumber-1]="white"
-            }                
-            setselectedState(newArray)
+
             if(props.countBetSlip && props.countBetSlip.length==0) {
+
+                console.log(props.countBetSlip);
                 props.countBetSlipData(1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
+                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             } else {
+                console.log("two");
+                // console.log(props.countBetSlip)
                 props.countBetSlipData(parseInt(props.countBetSlip)+1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
+                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             }
+            
+            
+            // console.log(props.countBetSlip)
+            // if(props.countBetSlip) {
+            //     console.log(props.countBetSlip)
+            //     setcount(props.countBetSlip+1);
+            // } else  {
+            //     console.log(props.countBetSlip)
+            //     setcount(1)
+            // }
+            
         }
     };
 
-    // useEffect(() => {
-    //     console.log(selectedState[0])
-    // }, [selectedState])
+
 
     useEffect(() => {
         if ((runner_win_place)) {
@@ -446,7 +433,7 @@ const RaceDetails = (props,ownProps)=>{
     const runnerInfoBody=(props)=>{
         return(
             <div className="pseudo-body">
-            {runnerRaceDetail.runners?runnerRaceDetail.runners.map(runner_item=>{
+            {props.racingDetail.runners?props.racingDetail.runners.map(runner_item=>{
                 return(
                     <div className="row-runner">
                     <div className="number-cell-body">
@@ -475,22 +462,19 @@ const RaceDetails = (props,ownProps)=>{
                             </div>
                         </div>
                     </div>
-                    <div  className="price-cell-body"
+                    <div className="price-cell-body"
                         onClick={()=>{
                             handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)
                         }}
-                        style={{backgroundColor:selectedState[runner_item.runnerNumber-1]}}
                         >
-                        <div  className="price-cell-body-first"
-                        style={{backgroundColor:selectedState[runner_item.runnerNumber-1]}}>
-                            <div>
+                        <div className="price-cell-body-first">
+                            <div >
                                 <div className="first-price">
                                     ${runner_item.returnWin}
                                 </div>
                             </div>
                         </div>
-                        <div className="price-cell-body"
-                        style={{backgroundColor:selectedState[runner_item.runnerNumber-1]}}>
+                        <div className="price-cell-body">
                             <div>
                                 <div>
                                     ${runner_item.returnPlace}
@@ -498,7 +482,7 @@ const RaceDetails = (props,ownProps)=>{
                             </div>
                         </div>
                     </div>
-                    {(runnerRaceDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
+                    {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
                         <div className="price-cell-body">
                             <div>
                                 <div>
@@ -655,6 +639,16 @@ const RaceDetails = (props,ownProps)=>{
                             )}):"":""}
                         </div>
                     </div>
+                    {/* <div className="meeting-info-meeting-conditions">
+                        <div className="meeting-info-track-condition">
+                            {props.racingDetail.trackCondition}   
+                        </div>
+                        <div className="meeting-info-weather-condition">
+                            <div className="meeting-info-weather-condition-description">
+                                {props.racingDetail.weatherCondition}
+                            </div>
+                        </div>
+                    </div> */}
                 </div>
             </div>
             )
@@ -718,7 +712,7 @@ const RaceDetails = (props,ownProps)=>{
                     <section className="tabs-section active">
                         <section className="section">
                             <ul className="pools-list">
-                                {runnerRaceDetail.poolTotals?runnerRaceDetail.poolTotals.map(total_item=>{
+                                {props.racingDetail.poolTotals?props.racingDetail.poolTotals.map(total_item=>{
                                     return(
                                         <li>
                                         <span>
@@ -781,10 +775,14 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                         <div className="page-section pane">  
                             <div className="race-results-wrapper">
-                                <section className={runnerRaceDetail.raceStatus=="Normal"?
+                                <section className={props.racingDetail.raceStatus=="Open"?
                                 "runners-section":"results-section"}>
+                                    {/* {props.racingDetail.raceStatus=="Open"?placeBets():""} */}
+                                    {/* <div className="page-section-break"> */}
+                                    {/* </div> */}
                                     {raceData?raceData[0]?raceData[0].raceStatus=="Paying"?resultsTable(props):"":"":""}
                                     {raceData?raceData[0]?raceData[0].raceStatus=="Paying"?exoticTable(props):"":"":""}
+                                    {/* {raceData.raceStatus!="Normal"?exoticTable(props):""} */}
                                     {runnerInfo(props)}
                                 </section>
                             </div>
@@ -801,6 +799,7 @@ const RaceDetails = (props,ownProps)=>{
 };
 
 const mapStateToProps=(state,ownProps)=> {
+    // console.log(ownProps)
     return{ 
         todayRacing:state.todayRacing,
         slot:ownProps.slot,

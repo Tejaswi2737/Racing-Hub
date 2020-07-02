@@ -5,6 +5,9 @@ import nextReducerHome from './nextReducerHome';
 import todayRacing from './todayRacing';
 import racingDetail from './racingDetail';
 import meetingDetails from './meetingDetails';
+import pathParams from './pathParamReducer';
+
+
 
 import winPlaceBetreducer from "./winPlaceBetreducer";
 import betSlipIndreducer from "./betSlipInd";
@@ -24,6 +27,7 @@ export default combineReducers({
     todayRacing: todayRacing,
     racingDetail: racingDetail,
     meetingDetails: meetingDetails,
+    pathParams:pathParams,
     winPlaceBet: winPlaceBetreducer,
     betSlipInd: betSlipIndreducer,
     allBetSlip: allBetSlipDatareducer,

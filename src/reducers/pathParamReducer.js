@@ -1,6 +1,6 @@
 export default (state=[], action)=> {
     switch (action.type) {
-        case 'FETCH_RACE_DETAIL':
+        case 'FETCH_PATH_PARAMS':
             return action.payload
         default:
             return state;

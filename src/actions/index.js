@@ -2,13 +2,9 @@ import nextData from "../data/nextToGo.json";
 import nextDataHome from "../data/nexttogoHome.json";
 import meetingDetailsAll from "../data/meetingDetailsAll.json";
 
-
-
-import runnerData from "../data/runnerData.json";
-
-import todayRacing from "../data/todayRacing.json";
-import todayRacingGrey from "../data/todayRacingGrey.json";
-import todayRacingHarness from "../data/todayRacingHarness.json";
+// import todayRacing from "../data/todayRacing.json";
+// import todayRacingGrey from "../data/todayRacingGrey.json";
+// import todayRacingHarness from "../data/todayRacingHarness.json";
 
 
 import raceDetailsResults1 from "../data/raceDetailsResults1.json";
@@ -62,15 +58,65 @@ export const fetchMeetingDetails =  () => {
     });
   }
 };
-export const fetchRaceDetails =  () => {
+export const fetchRaceDetails =  (props) => {
+  var data={}
+  switch(props) {
+    case 1:
+      data=raceDetailsResults1;
+      break;
+    case 2:
+      data=raceDetailsResults2;
+      break;
+    case 3:
+      data=raceDetailsResults3;
+      break;
+    case 4:
+      data=raceDetailsResults4;
+      break;
+    case 5:
+      data=raceDetailsResults5;
+      break;
+    case 6:
+      data=raceDetailsResults6;
+      break;   
+    case 7:
+      data=raceDetailsResults7;
+      break;
+    case 8:
+        data=raceDetailsResults8;
+        break;
+    case 9:
+        data=raceDetailsResults9;
+        break;
+    case 10:
+        data=raceDetailsResults10;
+        break;
+    case 11:
+        data=raceDetailsResults11;
+        break;
+    case 12:
+        data=raceDetailsResults12;
+        break;            
+    default:
+      data= null;
+      break;
+  };
   return function (dispatch) {
     dispatch({
       type: 'FETCH_RACE_DETAIL',
-      payload: runnerData
+      payload: data
     })
   }
 };
 
+export const fetchPathParams =  (pathParam) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'FETCH_PATH_PARAMS',
+      payload: pathParam
+    });
+  }
+};
 
 export const fetchWinPlaceBet =  () => {
   return function (dispatch) {
