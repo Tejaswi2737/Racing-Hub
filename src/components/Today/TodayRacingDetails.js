@@ -1,7 +1,9 @@
 import React,{useState} from 'react';
+import { connect } from 'react-redux';
+
 import "./TodayDetails.css";
 import { Link} from "react-router-dom";
-
+import { fetchPathParams} from "../../actions";
 
 import BetSlipStore from "../../context/BetSlipContext";
 
@@ -91,6 +93,14 @@ const TodayRacingDetails=(props)=> {
                                         code:item.venueMnemonic,
                                         raceType:item.raceType   
                                 }} 
+                                onClick={()=>{props.fetchPathParams(
+                                    {
+                                        slot:items.raceNumber, 
+                                        place: item.meetingName,
+                                        code:item.venueMnemonic,
+                                        raceType:item.raceType   
+                                    }
+                                )}}
                                     className='table-rem-row'>
                                         <div className='table-rem-row'
                                             id={item.Location}>
@@ -147,4 +157,10 @@ const TodayRacingDetails=(props)=> {
         </div>
     )
 };
-export default TodayRacingDetails;
+const mapStateToProps=(state)=> {
+    return{ 
+        pathParam:state.pathParams
+    }
+}
+export default connect(mapStateToProps, { fetchPathParams } )(TodayRacingDetails);
+

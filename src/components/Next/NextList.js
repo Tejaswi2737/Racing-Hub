@@ -1,5 +1,6 @@
 import React,{ useState,useEffect,useRef } from 'react';
 import { Link} from "react-router-dom";
+import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +10,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import { fetchPathParams} from "../../actions";
 import "./NextRace.css";
 
 import BetSlipStore from "../../context/BetSlipContext";
@@ -113,7 +115,16 @@ const NextList = (props)=>{
                             place: item.meeting.meetingName,
                             code:item.meeting.venueMnemonic,
                             raceType:item.meeting.raceType                            
-                        }}>
+                        }}
+                        onClick={()=>{props.fetchPathParams(
+                            {
+                                slot:item.raceNumber, 
+                                place: item.meeting.meetingName,
+                                code:item.meeting.venueMnemonic,
+                                raceType:item.meeting.raceType   
+                            }
+                        )}}
+                        >
                             <div className="next-to-go-bar-race-info">
                                 <span className="next-to-go-bar-race-name">
                                     {item.meeting.meetingName} ({item.meeting.location}) - R{item.raceNumber}
@@ -170,6 +181,11 @@ const NextList = (props)=>{
         
         );
 }; 
-export default NextList
+const mapStateToProps=(state)=> {
+    return{ 
+        pathParam:state.pathParams
+    }
+}
+export default connect(mapStateToProps, { fetchPathParams } )(NextList);
 
 

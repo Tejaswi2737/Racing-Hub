@@ -52,13 +52,14 @@ const BetSlipHome=(props) =>{
     const [ManualPlace, setManualPlace] = useState(0);
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
-    console.log(props.postWinPlace)
-    useEffect(() => {
+    const [localRemaining, setlocalRemaining] = useState([])
 
+
+    useEffect(() => {
+        console.log(localRemaining)
         props.postWinPlaceBets([])
-        
+        props.remainingBetSlipData(localRemaining)
         var users=props.allBetSlip;
-        
         var rem=props.remainingBetSlip   
         if(props.screenStatus) {
             users = [users, ...rem];
@@ -128,7 +129,7 @@ const BetSlipHome=(props) =>{
                 setstartSlip(true)
             }
         };
-    }, [props.allBetSlip]);
+    }, [props.allBetSlip,localRemaining]);
 
 
 

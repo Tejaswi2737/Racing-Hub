@@ -194,7 +194,16 @@ const NextRace = (props)=>{
                                         place: item.meeting.meetingName,
                                         code:item.meeting.venueMnemonic,
                                         raceType:item.meeting.raceType   
-                                    }}>                        
+                                    }}
+                                    onClick={()=>{props.fetchPathParams(
+                                        {
+                                            slot:item.raceNumber, 
+                                            place: item.meeting.meetingName,
+                                            code:item.meeting.venueMnemonic,
+                                            raceType:item.meeting.raceType    
+                                        }
+                                    )}}
+                                    >                        
                                     <p>R{item.raceNumber}</p>
                                     <time>{duration(item.raceStartTime)}</time>    
                                     <p>{item.meeting.meetingName} ({item.meeting.location})</p>

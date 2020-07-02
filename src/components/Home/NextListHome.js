@@ -2,7 +2,8 @@ import React,{ useState,useEffect,useRef } from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import {IoIosArrowForward} from "react-icons/io"
-import { fetchNextRace } from "../../actions";
+import { fetchNextRace,
+            fetchPathParams} from "../../actions";
 import "./NextListHome.css";
 import HomeImage from "../../images/Home.gif"
 
@@ -91,7 +92,16 @@ const NextListHome = (props)=>{
                                             code:item.meeting.venueMnemonic,
                                             raceType:item.meeting.raceType,
                                             pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`
-                                        }} className="next-item-list-home">                        
+                                        }} 
+                                        onClick={()=>{props.fetchPathParams(
+                                            {
+                                                slot:item.raceNumber, 
+                                                place: item.meeting.meetingName,
+                                                code:item.meeting.venueMnemonic,
+                                                raceType:item.meeting.raceType,
+                                            }
+                                        )}}
+                                        className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
                                             <p>{item.meeting.meetingName} ({item.meeting.location})</p>
                                             {/* <div className="race-details-container">
@@ -148,9 +158,12 @@ const NextListHome = (props)=>{
 }; 
 
 const mapStateToProps=(state)=> {
-    return{ next:state.next}
+    return{ 
+        next:state.next,
+        pathParam:state.pathParams
+    }
 }
-export default connect(mapStateToProps, { fetchNextRace } )(NextListHome);
+export default connect(mapStateToProps, { fetchNextRace,fetchPathParams } )(NextListHome);
 
 
                     /* <nav-bar menu-items="menuItems">

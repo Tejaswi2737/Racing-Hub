@@ -23,54 +23,9 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
+
     const [todayData, settodayData] = useState([]);
     const [raceData, setraceData] = useState([]);
-        function formatDate(date) {
-        var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-    
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-    
-        return [year, month, day].join('-');
-    }
-
-    const date=formatDate(Date.now())
-    useEffect(() => {
-        props.fetchTodayRacing()
-        if(props.todayRacing) {
-            var newArray=props.todayRacing.filter(function (el) {
-                return (
-                    el.meetingName ==props.place &&
-                    el.raceType==props.raceType &&
-                     el.venueMnemonic== props.code 
-                )
-
-              });
-            // console.log(newArray)
-            settodayData(newArray)
-        }
-    }, [props]);
-    useEffect(() => {
-        if(todayData) {
-            if(todayData[0]) {
-                // console.log()
-                var dataass=todayData[0].races
-                var newArray=dataass.filter(function (el) {
-                    return (
-                        el.raceNumber ==props.slot 
-                    )
-    
-                  });
-                // console.log(newArray)
-                setraceData(newArray)            
-            }
-        }
-    }, [todayData])
     const [pool_fh, setpool_fh] = useState();
     const [count, setcount] = useState()
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
@@ -78,18 +33,19 @@ const RaceDetails = (props,ownProps)=>{
     var runner_list_all=[[1,2,3,4],[3,4],[1,2,3]];
     const [addedBet, setaddedBet] = useState(false)
     const [runnerSelection, setrunnerSelection] = useState([]);
-    const [runner_win_place, setrunner_win_place] = useState({})
+    const [runner_win_place, setrunner_win_place] = useState({});
+    const [pathValues, setpathValues] = useState([])
 
     props.fetchMeetingDetails();
     
     
-    if (parseInt(props.slot)){
-        var initialValue=parseInt(props.slot)
+    if (parseInt(pathValues.slot)){
+        var initialValue=parseInt(pathValues.slot)
     } else {
         initialValue=1
     }
-    if ((props.place)){
-        var initialValuePlace=(props.place)
+    if ((pathValues.place)){
+        var initialValuePlace=(pathValues.place)
     } else {
         initialValuePlace=""
     }
@@ -109,10 +65,70 @@ const RaceDetails = (props,ownProps)=>{
     }): items_list=[]};
 
   
-    console.log(props.remainingBetSlip)
     useEffect(() => {
         props.remainingBetSlipData(props.remainingBetSlip)
     }, [props.meetingDetails])
+
+    useEffect(() => {
+        const data =localStorage.getItem('pathParams')
+        if (data) {
+            setpathValues(JSON.parse(data))
+            console.log(data)
+        }
+    }, [])
+
+    useEffect(() => {
+        if(props.pathParams.code) {
+            setpathValues(props.pathParams)
+            localStorage.setItem('pathParams',JSON.stringify(props.pathParams))
+        }
+    }, [props.pathParams]);
+        function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+    // console.log(pathValues)
+    const date=formatDate(Date.now())
+    useEffect(() => {
+        props.fetchTodayRacing()
+        if(props.todayRacing) {
+            var newArray=props.todayRacing.filter(function (el) {
+                return (
+                    el.meetingName ==pathValues.place &&
+                    el.raceType==pathValues.raceType &&
+                     el.venueMnemonic== pathValues.code 
+                )
+
+              });
+            // console.log(newArray)
+            settodayData(newArray)
+        }
+    }, [props]);
+    useEffect(() => {
+        if(todayData) {
+            if(todayData[0]) {
+                // console.log()
+                var dataass=todayData[0].races
+                var newArray=dataass.filter(function (el) {
+                    return (
+                        el.raceNumber ==pathValues.slot 
+                    )
+    
+                  });
+                // console.log(newArray)
+                setraceData(newArray)            
+            }
+        }
+    }, [todayData])
 
 
 
@@ -630,13 +646,21 @@ const RaceDetails = (props,ownProps)=>{
                             {todayData?todayData[0]?todayData[0].races.map(item=>{
                                 return(
                                     <Link to={{
-                                        pathname:`/${date}/${props.place}/${props.code}/${props.raceType}/${item.raceNumber}/Win`,
+                                        pathname:`/${date}/${pathValues.place}/${pathValues.code}/${pathValues.raceType}/${item.raceNumber}/Win`,
                                         slot:item.raceNumber, 
-                                        place: props.place,
-                                        code:props.code,
-                                        raceType:props.raceType
+                                        place: pathValues.place,
+                                        code:pathValues.code,
+                                        raceType:pathValues.raceType
                                        
                                     }}
+                                    onClick={()=>{props.fetchPathParams(
+                                        {
+                                            slot:item.raceNumber, 
+                                            place: pathValues.place,
+                                            code:pathValues.code,
+                                            raceType:pathValues.raceType
+                                        }
+                                    )}}
                                         className={item.raceStatus=="Paying"?
                                         "meeting-info-race  meeting-info-race-closed":
                                         "meeting-info-race  meeting-info-race-open"}>
@@ -834,7 +858,7 @@ const mapStateToProps=(state,ownProps)=> {
 
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
-        
+        pathParams:state.pathParams
     }
 }
 export default connect(mapStateToProps, 
@@ -847,7 +871,7 @@ export default connect(mapStateToProps,
         betSlipScreen,
         remainingBetSlipData,
 
-
+        fetchPathParams,
         fetchTodayRacing
         })
     (RaceDetails);
