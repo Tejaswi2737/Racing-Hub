@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ad9acc82728edb80b026fc7231bad5d7",
+    "revision": "c8445ed97c83ab9a3fe896b0dc6b08ad",
     "url": "/Racing-Hub/index.html"
   },
   {
