@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{ useState,useEffect,useRef } from 'react';
 import { connect } from 'react-redux';
 
 import "./TodayDetails.css";
@@ -10,20 +10,34 @@ import BetSlipStore from "../../context/BetSlipContext";
 const TodayRacingDetails=(props)=> {
     const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
 
-        function formatDate(date) {
+    function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-    
         if (month.length < 2) 
             month = '0' + month;
         if (day.length < 2) 
             day = '0' + day;
-    
         return [year, month, day].join('-');
     }
-
+    const [showLoading, setShowLoading] = useState(false)
+    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+    useEffect(
+       () => {
+         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
+         return () => {
+           clearInterval(timerToClearSomewhere.current)
+         }
+       },
+       [showLoading]
+     )
+     setTimeout(()=>{
+        setShowLoading(false)
+        return () => {
+            clearInterval(timerToClearSomewhere.current)
+          }
+     },1000)
     const date=formatDate(Date.now())
     const duration=(raceStartTime)=>{ 
         var left=(Date.now()-new Date(raceStartTime))-diffTime

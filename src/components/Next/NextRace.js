@@ -54,7 +54,6 @@ const NextRace = (props)=>{
     const [fetched, setfetched] = useState(false)
     useEffect(() => {
         if (props.next.length>0){
-            console.log(props.next)
             {props.next[0].raceStartTime?setfirstTime(props.next[0].raceStartTime):setfirstTime()}
             {props.next[0].raceNumber?setfirstNumber(props.next[0].raceNumber):setfirstNumber()}
             setfetched(true)
