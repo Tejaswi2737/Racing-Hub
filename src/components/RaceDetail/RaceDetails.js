@@ -70,7 +70,8 @@ const RaceDetails = (props,ownProps)=>{
     }, [props.meetingDetails])
 
     useEffect(() => {
-        const data =localStorage.getItem('pathParams')
+        console.log(window.localStorage.getItem('pathParams'))
+        const data =window.localStorage.getItem('pathParams')
         if (data) {
             setpathValues(JSON.parse(data))
             console.log(data)
@@ -135,7 +136,9 @@ const RaceDetails = (props,ownProps)=>{
 
 
 
-    const [showLoading, setShowLoading] = useState(false)
+    const [showLoading, setShowLoading] = useState(false);
+    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
+
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
        () => {
@@ -155,7 +158,7 @@ const RaceDetails = (props,ownProps)=>{
 
 
      const duration=(raceStartTime)=>{ 
-        var left=(Date.now()-new Date(raceStartTime))
+        var left=(Date.now()-new Date(raceStartTime))-diffTime
         var delta=Math.abs(left/1000)
         var days = Math.floor(delta / 86400);
         delta -= days * 86400;
@@ -205,11 +208,21 @@ const RaceDetails = (props,ownProps)=>{
     };
 
     const startTime=(st)=>{
-        var current=new Date(st)
-        if (current.getMinutes()<9) {
-         return (current.getHours()+":0"+current.getMinutes())
+        var current=new Date(st);
+        var left=(Date.now()-new Date(st))-diffTime
+        left=Date.now()-left+10*60*60*1000
+        var delta=Math.abs(left/1000)
+        var days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+        var hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+        var minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+        var seconds = Math.floor(delta % 60);
+        if (minutes<9) {
+         return (hours+":0"+minutes)
         }
-        else return (current.getHours()+":"+current.getMinutes())
+        else return (hours+":"+minutes)
     };
 
     const resultsTable=(props)=>{

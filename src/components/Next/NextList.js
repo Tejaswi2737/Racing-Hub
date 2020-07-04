@@ -31,7 +31,8 @@ const NextList = (props)=>{
         return [year, month, day].join('-');
     }
 
-    const date=formatDate(Date.now())
+    const date=formatDate(Date.now());
+    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
@@ -54,8 +55,8 @@ const NextList = (props)=>{
 
 
     const duration=(raceStartTime)=>{
-        var left=(Date.now()-new Date(raceStartTime))
-        var delta=Math.abs(left/1000)
+        var left=(Date.now()-new Date(raceStartTime))-diffTime
+        var delta=Math.abs((left)/1000)
         var days = Math.floor(delta / 86400);
         delta -= days * 86400;
         var hours = Math.floor(delta / 3600) % 24;

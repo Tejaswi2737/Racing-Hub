@@ -61,7 +61,9 @@ const NextRace = (props)=>{
         }
     }, [props.next]);
 
-    const [showLoading, setShowLoading] = useState(false)
+    const [showLoading, setShowLoading] = useState(false);
+    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
+
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
        () => {
@@ -100,7 +102,7 @@ const NextRace = (props)=>{
     },[props.next]);
 
     const duration=(raceStartTime)=>{ 
-        var left=(Date.now()-new Date(raceStartTime))
+        var left=(Date.now()-new Date(raceStartTime))-diffTime
         var delta=Math.abs(left/1000)
         var days = Math.floor(delta / 86400);
         delta -= days * 86400;

@@ -56,7 +56,6 @@ const BetSlipHome=(props) =>{
 
 
     useEffect(() => {
-        console.log(localRemaining)
         props.postWinPlaceBets([])
         props.remainingBetSlipData(localRemaining)
         var users=props.allBetSlip;

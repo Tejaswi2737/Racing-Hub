@@ -11,7 +11,6 @@ const TodayRacingDetails=(props)=> {
     var block=0
     var num=0;
     const nextPage=(place_name,slots_list)=>{
-        console.log(place_name)
         return(
             <div>
                 <Race_Detail place={place_name} slots={slots_list}/>

@@ -8,6 +8,8 @@ import { fetchPathParams} from "../../actions";
 import BetSlipStore from "../../context/BetSlipContext";
 
 const TodayRacingDetails=(props)=> {
+    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
+
         function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -24,7 +26,7 @@ const TodayRacingDetails=(props)=> {
 
     const date=formatDate(Date.now())
     const duration=(raceStartTime)=>{ 
-        var left=(Date.now()-new Date(raceStartTime))
+        var left=(Date.now()-new Date(raceStartTime))-diffTime
         var delta=Math.abs(left/1000)
         var days = Math.floor(delta / 86400);
         delta -= days * 86400;
@@ -73,11 +75,21 @@ const TodayRacingDetails=(props)=> {
         } 
     };
     const startTime=(st)=>{
-        var current=new Date(st)
-        if (current.getMinutes()<9) {
-         return (current.getHours()+":0"+current.getMinutes())
+        var current=new Date(st);
+        var left=(Date.now()-new Date(st))-diffTime
+        left=Date.now()-left+10*60*60*1000
+        var delta=Math.abs(left/1000)
+        var days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+        var hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+        var minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+        var seconds = Math.floor(delta % 60);
+        if (minutes<9) {
+         return (hours+":0"+minutes)
         }
-        else return (current.getHours()+":"+current.getMinutes())
+        else return (hours+":"+minutes)
     }
     const racingSlots=()=>{ return (
             (props.todayRacing.map(item => {{ 
@@ -106,9 +118,9 @@ const TodayRacingDetails=(props)=> {
                                             id={item.Location}>
                                             <div 
                                             className={(items.raceStatus!='Normal')?'table-item':
-                                            (-(Date.now()-new Date(items.raceStartTime))<60000
+                                            (-(Date.now()-new Date(items.raceStartTime)-diffTime)<60000
                                             &&
-                                            -(Date.now()-new Date(items.raceStartTime))>-60000)?
+                                            -(Date.now()-new Date(items.raceStartTime)-diffTime)>-60000)?
                                                 "table-item-open-color":
                                             'table-item-open'}>
                                                 <p className="table-item-slot">R{items.raceNumber}</p>

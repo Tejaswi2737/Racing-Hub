@@ -11,7 +11,6 @@ import Countdown from 'react-countdown';
 import "./NextRace.css";
 
 const NextList = (props)=>{
-    console.log("called")
     // props.fetchNextRace();
 
     const duration=(raceStartTime)=>{
