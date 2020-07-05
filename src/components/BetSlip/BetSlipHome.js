@@ -53,11 +53,25 @@ const BetSlipHome=(props) =>{
     const [ManualWin, setManualWin] = useState(0);
     const [typeBet, settypeBet] = useState('');
     const [localRemaining, setlocalRemaining] = useState([])
+    useEffect(() => {
+        const data =window.localStorage.getItem('betSlip')
+        if (data) {
+            console.log(data)
+            setlocalRemaining(JSON.parse(data))
+            props.remainingBetSlipData(data)
+        }
+    }, [])
+    console.log(localRemaining)
 
+    useEffect(() => {
+        if(finalRemainingBets) {
+            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
+        }
+    }, [finalRemainingBets]);
 
     useEffect(() => {
         props.postWinPlaceBets([])
-        props.remainingBetSlipData(localRemaining)
+        // props.remainingBetSlipData(localRemaining)
         var users=props.allBetSlip;
         var rem=props.remainingBetSlip   
         if(props.screenStatus) {
@@ -69,7 +83,7 @@ const BetSlipHome=(props) =>{
             users=Object.values(users)
         }
 
-        let grouped = _.reduce(users, (result, user) => {
+        var grouped = _.reduce(users, (result, user) => {
             if(user){
                     (result[user.name] || (result[user.name] = [])).push(user);  
                     return result;
@@ -80,7 +94,7 @@ const BetSlipHome=(props) =>{
             if(Object.keys(grouped)){
                 Object.keys(grouped).map(poolname=>{
                     if(poolname!="undefined") {
-                        let groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
                             if(user){
                                     (result[user.name] || (result[user.name] = [])).push(user.runners);  
                                     
@@ -92,7 +106,7 @@ const BetSlipHome=(props) =>{
                                       ));        
                             }    
                         }, {});
-                        let groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
                             if (name in allNames) {
                               allNames[name]++
                             }
@@ -265,7 +279,7 @@ const BetSlipHome=(props) =>{
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
             var pos=(_.findIndex(RemainingBets, item))
-            let newArr = [...RemainingBets]; 
+            var newArr = [...RemainingBets]; 
             newArr[pos][e.target.name] = parseInt(e.target.value); 
             newArr[pos][e.target.name]=newArr[pos][e.target.name]
             setRemainingBets(newArr); 

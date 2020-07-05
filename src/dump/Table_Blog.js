@@ -30,7 +30,7 @@ class Table_Blog extends React.Component {
         })
     };
     renderTableHeader() {
-        let header = Object.keys(this.state.students[0])
+        var header = Object.keys(this.state.students[0])
         return header.map((key, index) => {
            return <th key={index}>{key.toUpperCase()}</th>
         })
