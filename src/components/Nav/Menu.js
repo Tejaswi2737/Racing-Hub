@@ -21,17 +21,17 @@ const MenuView=()=> {
     const date=formatDate(Date.now())
     return (
       <Menu className="icon-hamburger-menu">
-        <Link exact to="/" >
+        <Link exact to="/" className="menu-item">
         Home</Link>
-        <Link exact to="/next-to-go" >
+        <Link exact to="/next-to-go" className="menu-item">
         Next To Go</Link>
-        <Link exact to={`/${date}/R`}
+        <Link exact to={`/${date}/R`} className="menu-item"
          >
         Racing</Link>
-        <Link exact to={`/${date}/G`}
+        <Link exact to={`/${date}/G`} className="menu-item"
          >
         GreyHound</Link>
-        <Link exact to={`/${date}/H`} 
+        <Link exact to={`/${date}/H`}  className="menu-item"
          >
         Harness</Link>
       </Menu>

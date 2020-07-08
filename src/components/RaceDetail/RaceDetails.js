@@ -70,7 +70,6 @@ const RaceDetails = (props,ownProps)=>{
     }, [props.meetingDetails])
 
     useEffect(() => {
-        console.log(window.localStorage.getItem('pathParams'))
         const data =window.localStorage.getItem('pathParams')
         if (data) {
             setpathValues(JSON.parse(data))

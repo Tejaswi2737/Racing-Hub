@@ -1,5 +1,6 @@
 import React from 'react';
 import MediaQuery from 'react-responsive';
+import { Link} from "react-router-dom";
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
@@ -10,31 +11,33 @@ import RespHeader from '../Nav//RespHeader';
 import NextListHome from '../Home/NextListHome';
 import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./Home.css";
+import mobileSlipButton from '../BetSlip/MobileLayout/mobileSlipButton';
 
 const Home=() =>{
     const scrollBarStyle = {
         width: '100vw',
         height: '100vh',
       };
+
     return (
         <>
-            
-                <MediaQuery query='(min-width: 980px)'>
+            <MediaQuery query='(min-width: 980px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
-
                 <RespHeader/>
                     <NextListHome/>
                 </SimpleBar>
-
-                </MediaQuery>
-                <MediaQuery query='(max-width: 980px)'>
+            </MediaQuery>
+            <MediaQuery query='(max-width: 980px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
-
                     <Header/>
                     <NextListHome/>
+                    <Link to="/2020/betSlip"
+                        id="mobile-betSlip-button">
+                        <span>B-S
+                            </span>
+                    </Link>
                 </SimpleBar>   
-                </MediaQuery>    
-            
+            </MediaQuery>    
         </>
     )
 }

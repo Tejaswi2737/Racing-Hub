@@ -1,4 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react';
+import { Link} from "react-router-dom";
+
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
@@ -62,6 +64,12 @@ const TodayH=(props)=> {
               <Header/>
               <NextList next={props.next}/>
               <TodayDetails detail='H'/>
+              <Link to="/2020/betSlip"
+              id="mobile-betSlip-button">
+                  <span>
+                      B-S
+                  </span>
+              </Link> 
               </SimpleBar>
           </MediaQuery>
       </> 

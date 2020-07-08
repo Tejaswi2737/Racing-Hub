@@ -24,8 +24,8 @@ const MenuView=()=> {
     event.preventDefault();
   }
     return (
-      <Menu className="icon-hamburger-menu">
-        <Link exact to="/" >
+      <Menu>
+        <Link exact to="/">
         Next To Go</Link>
         <Link exact to={`/${date}/R`}
          >

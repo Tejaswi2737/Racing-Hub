@@ -1,4 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react';
+import { Link} from "react-router-dom";
+
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
@@ -54,6 +56,12 @@ const RaceDetailsPageWin=(props,ownProps)=> {
                               code={props.location.code}
                               raceType={props.location.raceType} 
                               type="Win"/>
+                  <Link to="/2020/betSlip"
+                    id="mobile-betSlip-button">
+                    <span>
+                      B-S
+                    </span>
+                </Link>
               </MediaQuery>   
             </SimpleBar>
         </div>

@@ -23,6 +23,7 @@ import RaceDetailsPageWinTrifecta from './components/Screens/PlaceBetScreen/Race
 import RaceDetailsPageWinFirst4 from './components/Screens/PlaceBetScreen/RaceDetailsPageFirst4';
 import RaceDetailsPageWinExacta from './components/Screens/PlaceBetScreen/RaceDetailsPageExacta';
 import RaceDetailsPageWinDuet from './components/Screens/PlaceBetScreen/RaceDetailsPageDuet';
+import MobileBetSlipScreen from './components/Screens/MobileBetSlipScreen';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               <Route path="/:date/H" exact component={TodayH}/> 
               {/* <Route path="/RaceDetail" exact component={RaceDetailsPageWin}/> */}
               <Route path="/:date/:place/:code/:type/:slot/Win" exact component={RaceDetailsPageWin}/>
+              <Route path="/:date/betSlip" exact component={MobileBetSlipScreen}/>
               <Route path="/RaceDetail/Quinella" exact component={RaceDetailsPageWinQuinella}/>
               <Route path="/RaceDetail/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>
               <Route path="/RaceDetail/First4" exact component={RaceDetailsPageWinFirst4}/>

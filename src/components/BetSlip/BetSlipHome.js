@@ -22,7 +22,6 @@ import { toInteger } from 'lodash';
 
 const BetSlipHome=(props) =>{
     const [poolFinalList, setpoolFinalList] = useState([]);
-    // const [moneyValue, setmmoneyValue] = useState(null);
 
     const [totalAmount, settotalAmount] = useState(0)
     const [poolStatus, setpoolStatus] = useState()
@@ -56,24 +55,20 @@ const BetSlipHome=(props) =>{
     useEffect(() => {
         const data =window.localStorage.getItem('betSlip')
         if (data) {
-            console.log(data)
             setlocalRemaining(JSON.parse(data))
-            props.remainingBetSlipData(data)
         }
     }, [])
-    console.log(localRemaining)
 
     useEffect(() => {
         if(finalRemainingBets) {
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
         }
     }, [finalRemainingBets]);
-
+    
     useEffect(() => {
         props.postWinPlaceBets([])
-        // props.remainingBetSlipData(localRemaining)
         var users=props.allBetSlip;
-        var rem=props.remainingBetSlip   
+        var rem=props.remainingBetSlip.length<1?localRemaining:props.remainingBetSlip
         if(props.screenStatus) {
             users = [users, ...rem];
         } else {users=[...rem]}
@@ -472,10 +467,6 @@ const BetSlipHome=(props) =>{
                         </button>
                         <button  onClick={()=>{
                             props.postWinPlaceBets(placeWinPlaceBetList)
-                            // if(props.postWinPlace.length>0) {
-                            //     setRemainingBets([])
-                            // }
-                            
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
                             Bet Now

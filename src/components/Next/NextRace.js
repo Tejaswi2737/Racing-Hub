@@ -190,7 +190,7 @@ const NextRace = (props)=>{
                                         &&item.raceNumber==firstNumber)?
                             "next-item-first":"next-item"}
                                     to={{
-                                        pathname:`/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`,
+                                        pathname:`/${date}/${item.meeting.meetingName}/${item.meeting.venueMnemonic}/${item.meeting.raceType}/${item.raceNumber}/Win`,
                                         slot:item.raceNumber, 
                                         place: item.meeting.meetingName,
                                         code:item.meeting.venueMnemonic,

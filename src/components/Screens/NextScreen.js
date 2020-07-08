@@ -1,4 +1,6 @@
 import React,{useState,useEffect,useRef} from 'react';
+import { Link} from "react-router-dom";
+
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
@@ -13,7 +15,6 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import RespHeader from '../Nav/RespHeader';
 import "../Next/NextRace.css"
 const NextScreen=(props) =>{
-    // console.log(props)
     props.fetchNextRace();
     props.betSlipScreen(false)
     const [firstTime, setfirstTime] = useState();
@@ -66,6 +67,12 @@ const NextScreen=(props) =>{
                     <main className="page-items">
                         <NextList next={props.next}/>
                         <NextRace next={props.next}/>
+                        <Link to="/2020/betSlip"
+                        id="mobile-betSlip-button">
+                            <span>
+                                B-S
+                            </span>
+                        </Link> 
                     </main>
                     </SimpleBar>
                 </MediaQuery>

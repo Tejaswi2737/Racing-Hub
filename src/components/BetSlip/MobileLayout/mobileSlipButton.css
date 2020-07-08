@@ -1,0 +1,30 @@
+#mobile-betSlip-button {
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 50%;
+    background-color: teal;
+    left:80vw;
+    top:75vh;
+    position: fixed;
+    z-index: 2000;
+    color: white;
+}
+#mobile-betSlip-button span {
+    align-content: center;
+    text-align: center;
+    position: absolute;
+    padding-top: 17px;
+    padding-left: 10px;
+}
+#mobile-betSlip-button:active {
+    border: none;
+    border-radius: 50%;
+    background-color: teal;    
+    opacity: 100;
+}
+#mobile-betSlip-button:hover {
+    border: none;
+    border-radius: 50%;
+    background-color: teal;    
+    opacity: 100;
+}
