@@ -8,6 +8,7 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
 import { fetchNextRace,allBetSlipData,betSlipScreen } from "../../actions";
+import MenuView from "../Nav/Menu";
 
 import Header from '../Nav/Header'
 import TodayDetails from '../Today/TodayDetails'
@@ -61,6 +62,7 @@ const TodayR=(props)=> {
           </MediaQuery>
           <MediaQuery query='(max-width: 800px)'>
             <SimpleBar style={{ maxHeight: '100vh' }}>
+                  <MenuView/>
                   <Header/>
                   <NextList next={props.next}/>
                   <TodayDetails detail='R'/>

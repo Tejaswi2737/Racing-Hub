@@ -109,14 +109,12 @@ const RaceDetails = (props,ownProps)=>{
                 )
 
               });
-            // console.log(newArray)
             settodayData(newArray)
         }
     }, [props]);
     useEffect(() => {
         if(todayData) {
             if(todayData[0]) {
-                // console.log()
                 var dataass=todayData[0].races
                 var newArray=dataass.filter(function (el) {
                     return (
@@ -124,20 +122,14 @@ const RaceDetails = (props,ownProps)=>{
                     )
     
                   });
-                // console.log(newArray)
                 setraceData(newArray)            
             }
         }
     }, [todayData])
 
 
-
-
-
-
     const [showLoading, setShowLoading] = useState(false);
     const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
-
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
        () => {
@@ -419,30 +411,15 @@ const RaceDetails = (props,ownProps)=>{
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
             } else {
-                // console.log(props.countBetSlip)
                 props.countBetSlipData(parseInt(props.countBetSlip)+1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
-                    // "pool_fh":"tk_integ"+props.countBetSlip,
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
-            }
-            
-            
-            // console.log(props.countBetSlip)
-            // if(props.countBetSlip) {
-            //     console.log(props.countBetSlip)
-            //     setcount(props.countBetSlip+1);
-            // } else  {
-            //     console.log(props.countBetSlip)
-            //     setcount(1)
-            // }
-            
+            }   
         }
     };
-
-
 
     useEffect(() => {
         if ((runner_win_place)) {
@@ -508,16 +485,14 @@ const RaceDetails = (props,ownProps)=>{
                                     ${runner_item.returnWin}    
                         </div>
                         <div className="price-cell-body-child"
-                        style={{
-                            backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
-                            props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
-                            && e.runners === runner_item.runnerNumber
-                            ).length > 0
-                            ?
-                            "#d3ecef":"white":"white"}}                        >
-                       
-                                    ${runner_item.returnPlace}
-                          
+                            style={{
+                                backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
+                                props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                                && e.runners === runner_item.runnerNumber
+                                ).length > 0
+                                ?
+                                "#d3ecef":"white":"white"}} >                      
+                            ${runner_item.returnPlace}
                         </div>
                     </div>
                     {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
@@ -525,9 +500,9 @@ const RaceDetails = (props,ownProps)=>{
                             <div>
                                 <div>
                                 <input
-                                        name="1st"
-                                        type="checkbox"
-                                        />                                    
+                                    name="1st"
+                                    type="checkbox"
+                                />                                    
                                 </div>
                             </div>
                         </div>
@@ -537,9 +512,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="1st"
-                                            type="checkbox"
-                                            />                                    
+                                        name="1st"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -547,9 +522,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="2nd"
-                                            type="checkbox"
-                                            />                                    
+                                        name="2nd"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -557,9 +532,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="3rd"
-                                            type="checkbox"
-                                            />                                    
+                                        name="3rd"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -570,9 +545,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="1st"
-                                            type="checkbox"
-                                            />                                    
+                                        name="1st"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -580,9 +555,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="2nd"
-                                            type="checkbox"
-                                            />                                    
+                                        name="2nd"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -590,9 +565,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="3rd"
-                                            type="checkbox"
-                                            />                                    
+                                        name="3rd"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -600,9 +575,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="4th"
-                                            type="checkbox"
-                                            />                                    
+                                        name="4th"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -612,9 +587,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="1st"
-                                            type="checkbox"
-                                            />                                    
+                                        name="1st"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                             </div>
@@ -622,9 +597,9 @@ const RaceDetails = (props,ownProps)=>{
                                 <div>
                                     <div>
                                     <input
-                                            name="2nd"
-                                            type="checkbox"
-                                            />                                    
+                                        name="2nd"
+                                        type="checkbox"
+                                    />                                    
                                     </div>
                                 </div>
                         </div>      
@@ -845,7 +820,6 @@ const RaceDetails = (props,ownProps)=>{
 };
 
 const mapStateToProps=(state,ownProps)=> {
-    // console.log(ownProps)
     return{ 
         todayRacing:state.todayRacing,
         slot:ownProps.slot,

@@ -7,6 +7,7 @@ import 'simplebar/dist/simplebar.min.css';
 
 import Header from '../Nav/Header';
 import RespHeader from '../Nav//RespHeader';
+import MenuView from "../Nav/Menu";
 
 import NextListHome from '../Home/NextListHome';
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -29,6 +30,7 @@ const Home=() =>{
             </MediaQuery>
             <MediaQuery query='(max-width: 980px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
+                <MenuView/>
                     <Header/>
                     <NextListHome/>
                     <Link to="/2020/betSlip"

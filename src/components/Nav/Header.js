@@ -11,16 +11,13 @@ const Header=() =>{
                     <div className="positioned-left">
                         <div className="positioned-left">
                             <div className="toggle-menu-link">
-                                <i className="icon-hamburger-menu">
-                                    <MenuView/>
-                                </i>
+                                    
                                 <span className="hamburger-title">
                                     <Link to="/" className="title-main">
                                         <div id="vollie-tagline">
                                             Racing, Hub
                                         </div>
                                     </Link>
-
                                 </span>
                             </div>
                         </div>

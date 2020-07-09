@@ -9,6 +9,7 @@ import 'simplebar/dist/simplebar.min.css';
 
 import { fetchNextRace } from "../../actions";
 
+import MenuView from "../Nav/Menu";
 
 import Header from '../Nav/Header';
 import NextList from '../Next/NextList';
@@ -51,6 +52,7 @@ const RaceDetailsPage=(props)=> {
               </MediaQuery>
               <MediaQuery query='(max-width: 980px)'>
               <SimpleBar style={{ maxHeight: '100vh' }}>
+                  <MenuView/>
                   <Header/>
                   <NextList next={props.next}/>
                   <RaceDetails slot={props.location.slot} place={props.location.place}  type=""

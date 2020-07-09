@@ -3,29 +3,33 @@
 
 @media (min-width: 600px) {
   .bm-burger-button {
-    position: sticky;
+    position: relative;
+    overflow: hidden;
     width: 25px;
     height: 15px;
-    top:20px;
-    margin-left: -15px;
-  }
+    margin-left: 2vw;
+    top:4vh;
+    }
 }
 @media (max-width: 600px) {
   .bm-burger-button {
-    position: sticky;
+    position: relative;
+    overflow: hidden;
     width: 25px;
     height: 15px;
-    top:20px;
-    margin-left: -15px;
+    top:2vh;  
+    margin-left: 2vw;
+    
   }
 }
 @media(max-width: 200px) {
 .bm-burger-button {
-  position: sticky;
+  position: relative;
+  overflow: hidden;
   width: 7vw;
   height: 15px;
   top:20px;
-  margin-left: -15px;
+  margin-left: 2vw;
 }
 }
 
@@ -46,11 +50,11 @@
   .bm-menu {
     background:black;
     font-size: 1.15em;
-    overflow-y: scroll;
+    /* overflow-y: scroll !important; */
     z-index: 2;
-    position: relative;
-    -webkit-transform: translate3d(0,0,1px);
-    transform: translate3d(0,0,1px);
+    position: absolute !important;
+    /* -webkit-transform: translate3d(0,0,1px);
+    transform: translate3d(0,0,1px); */
   }
   
 

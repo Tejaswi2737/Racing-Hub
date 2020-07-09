@@ -58,7 +58,7 @@
     color: black;
     text-decoration: none;
     outline: 0;
-    font-size: 14px;
+    font-size: 1rem;
     height: 30px;
 }
 
@@ -83,6 +83,8 @@ button {
     outline: 0;
     font-size: 14px;
     height: 30px;
+    margin: 0px;
+    font-size: 1rem;;
 }
 
 
@@ -492,6 +494,8 @@ ol, ul {
     border: 1px solid black;
     flex-grow: 1;
     line-height: 40px;
+    margin-right:0px;
+    font-size: 1rem;;
 }
 .bet-builder, .bet-builder-footer .change-bet-button {
     background: 0;
@@ -513,7 +517,7 @@ ol, ul {
     position: fixed;
     bottom: 0px;
 }
-.bet-builder.bet-builder-has-bet .bet-builder-state .inner-bet-builder-state {
+.bet-builder .bet-builder-has-bet .bet-builder-state .inner-bet-builder-state {
     display: flex;
     flex-direction: column;
     height: 100%;

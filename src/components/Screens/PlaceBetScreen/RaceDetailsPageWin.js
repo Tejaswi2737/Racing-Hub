@@ -9,6 +9,7 @@ import 'simplebar/dist/simplebar.min.css';
 
 import { fetchNextRace } from "../../../actions";
 
+import MenuView from "../../Nav/Menu";
 
 import Header from '../../Nav/Header';
 import NextList from '../../Next/NextList';
@@ -49,6 +50,7 @@ const RaceDetailsPageWin=(props,ownProps)=> {
                               type="Win"/>
                   </MediaQuery>
               <MediaQuery query='(max-width: 980px)'>
+                  <MenuView/>
                   <Header/>
                   <NextList next={props.next}/>
                   <RaceDetails slot={props.location.slot} 

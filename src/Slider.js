@@ -31,7 +31,7 @@ export default class Slider extends React.Component {
     //whyDidYouUpdate(React)
     //}
     if (this.props.responsive) {
-      let breakpoints = this.props.responsive.map(
+      var breakpoints = this.props.responsive.map(
         breakpt => breakpt.breakpoint
       );
       // sort them in increasing order of their numerical value
@@ -39,7 +39,7 @@ export default class Slider extends React.Component {
 
       breakpoints.forEach((breakpoint, index) => {
         // media query for each breakpoint
-        let bQuery;
+        var bQuery;
         if (index === 0) {
           bQuery = json2mq({ minWidth: 0, maxWidth: breakpoint });
         } else {
@@ -57,7 +57,7 @@ export default class Slider extends React.Component {
 
       // Register media query for full screen. Need to support resize from small to large
       // convert javascript object to media query string
-      let query = json2mq({ minWidth: breakpoints.slice(-1)[0] });
+      var query = json2mq({ minWidth: breakpoints.slice(-1)[0] });
 
       canUseDOM() &&
         this.media(query, () => {
@@ -130,7 +130,7 @@ export default class Slider extends React.Component {
     }
 
     // makes sure that children is an array, even when there is only 1 child
-    let children = React.Children.toArray(this.props.children);
+    var children = React.Children.toArray(this.props.children);
 
     // Children may contain false or null, so we should filter them
     // children may also contain string filled with spaces (in certain cases where we use jsx strings)
@@ -151,21 +151,21 @@ export default class Slider extends React.Component {
       );
       settings.variableWidth = false;
     }
-    let newChildren = [];
-    let currentWidth = null;
+    var newChildren = [];
+    var currentWidth = null;
     for (
-      let i = 0;
+      var i = 0;
       i < children.length;
       i += settings.rows * settings.slidesPerRow
     ) {
-      let newSlide = [];
+      var newSlide = [];
       for (
-        let j = i;
+        var j = i;
         j < i + settings.rows * settings.slidesPerRow;
         j += settings.slidesPerRow
       ) {
-        let row = [];
-        for (let k = j; k < j + settings.slidesPerRow; k += 1) {
+        var row = [];
+        for (var k = j; k < j + settings.slidesPerRow; k += 1) {
           if (settings.variableWidth && children[k].props.style) {
             currentWidth = children[k].props.style.width;
           }
