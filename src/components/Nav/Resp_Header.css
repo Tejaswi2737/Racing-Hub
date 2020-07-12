@@ -20,12 +20,10 @@ header > Link:focus {
 #vollie-logo,
 #vollie-tagline,
 #header-menu {
-	/* display: inline-block; */
 	padding-top: 5px;
 	float: right
 }
 #site-heading {
-	/* display: inline-block; */
 	float: left
 }
 @media (min-width:980px) {
@@ -69,11 +67,7 @@ header > Link:focus {
 .vollie-tagline:hover {
 	background-color: black;
 }
-/* @media(min-width:1400px) {
-	.top-menu {
-		padding-left: 65vw;
-	}
-} */
+
 .yump-magic-hover {
 	display: inline-block;
 	font-family: 'Montserrat', sans-serif;
@@ -132,14 +126,11 @@ header > Link:focus {
 		display: block;
 	}
 	#site-heading {
-		/* display: block;
-		display: flex; */
 		align-items: center;
 		justify-content: space-between;
 		float: left;
 	}
 	#header-menu {
-		/* display: inline-flex; */
 		padding-top: 15px;
 		border-top: 1px solid #88cdd3;
 		margin-top: 15px;

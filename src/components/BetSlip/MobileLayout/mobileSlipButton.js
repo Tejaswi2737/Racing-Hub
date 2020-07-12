@@ -2,9 +2,9 @@ import React from 'react'
 import "./mobileSlipButton.css"
 const mobileSlipButton=()=> {
     return (
-        <button id="mobile-betSlip-button">
+        <div id="mobile-betSlip-button">
             B-S
-        </button>
+        </div>
     )
 }
 export default mobileSlipButton;

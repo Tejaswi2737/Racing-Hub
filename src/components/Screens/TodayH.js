@@ -40,7 +40,7 @@ const TodayH=(props)=> {
         })
     return (
       <>
-          <MediaQuery query='(min-width: 800px)'>
+          <MediaQuery query='(min-width: 980px)'>
           <SimpleBar style={{ maxHeight: '100vh' }}>
 
             <ui-view>
@@ -59,7 +59,7 @@ const TodayH=(props)=> {
             </ui-view>   
             </SimpleBar>      
           </MediaQuery>
-          <MediaQuery query='(max-width: 800px)'>
+          <MediaQuery query='(max-width: 980px)'>
           <SimpleBar style={{ maxHeight: '100vh' }}>
               <MenuView/>
               <Header/>

@@ -34,7 +34,7 @@
     /* margin-right: 30px; */
 }
 
-@media(max-width:500px) {
+@media(max-width:980px) {
     .next-to-go-bar-race-link{
         min-width: 85vw;
         min-height: 50px;

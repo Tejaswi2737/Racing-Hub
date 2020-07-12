@@ -44,7 +44,7 @@ const NextScreen=(props) =>{
       },firstTime);
     return (
             <>
-                <MediaQuery query='(min-width: 800px)'>
+                <MediaQuery query='(min-width: 980px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
                     <ui-view>
                         <RespHeader/>
@@ -62,7 +62,7 @@ const NextScreen=(props) =>{
                     </ui-view>  
                     </SimpleBar>        
                 </MediaQuery>
-                <MediaQuery query='(max-width: 800px)'>
+                <MediaQuery query='(max-width: 980px)'>
                 <SimpleBar style={{ maxHeight: '100vh' }}>
                 <MenuView/>
                     <Header/>

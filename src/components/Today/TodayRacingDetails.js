@@ -5,7 +5,6 @@ import "./TodayDetails.css";
 import { Link} from "react-router-dom";
 import { fetchPathParams} from "../../actions";
 
-import BetSlipStore from "../../context/BetSlipContext";
 
 const TodayRacingDetails=(props)=> {
     const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))

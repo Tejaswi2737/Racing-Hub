@@ -36,7 +36,7 @@ const Home=() =>{
                     <Link to="/2020/betSlip"
                         id="mobile-betSlip-button">
                         <span>B-S
-                            </span>
+                        </span>
                     </Link>
                 </SimpleBar>   
             </MediaQuery>    

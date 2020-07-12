@@ -13,7 +13,6 @@ import Box from '@material-ui/core/Box';
 import { fetchPathParams} from "../../actions";
 import "./NextRace.css";
 
-import BetSlipStore from "../../context/BetSlipContext";
 
 const NextList = (props)=>{
   // console.log(props.next)

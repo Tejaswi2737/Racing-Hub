@@ -8,7 +8,9 @@
     width: 25px;
     height: 15px;
     margin-left: 2vw;
-    top:4vh;
+    top: 4vw;  
+    margin-left: 2vw;
+    margin-right: 2vw;
     }
 }
 @media (max-width: 600px) {
@@ -17,7 +19,7 @@
     overflow: hidden;
     width: 25px;
     height: 15px;
-    top:2vh;  
+    top: 4vw;  
     margin-left: 2vw;
     
   }
@@ -29,7 +31,7 @@
   width: 7vw;
   height: 15px;
   top:20px;
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
 }
 }
 
@@ -81,13 +83,19 @@
     -webkit-transform: translate3d(0,0,1px);
     transform: translate3d(0,0,1px);
   }
-  .bm-item:hover {
+  .bm-item:hover, .menu-item:hover {
     background-color: transparent;
+    border: 1px solid transparent
   }
-  .bm-item:active {
+  .bm-item:active , .menu-item:active{
     background-color: transparent;
-    border: transparent;
+    border: 1px solid transparent;
   }
+  .menu-item:first-child {
+    background-color: transparent;
+    border: 1px solid transparent;
+  }
+
 .bm-menu-wrap, .icon-hamburger-menu {
   left:0px
 }

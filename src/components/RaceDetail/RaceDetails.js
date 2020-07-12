@@ -8,7 +8,6 @@ import _ from 'lodash';
 
 import { fetchMeetingDetails,
     fetchRaceDetails,
-    fetchWinPlaceBet,
     addBetSlipData,
     allBetSlipData,
     countBetSlipData,
@@ -423,11 +422,10 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if ((runner_win_place)) {
-            {props.addBetSlipData(runner_win_place)}
             {props.allBetSlipData(runner_win_place)}
-            props.betSlipScreen(true)
+            props.betSlipScreen(true);
         }
-    }, [runner_win_place])
+    }, [runner_win_place]);
 
     const runnerInfoBody=(props)=>{
         return(
@@ -812,7 +810,7 @@ const RaceDetails = (props,ownProps)=>{
                     </div>
                 </ui-view>
             </div>
-            <MediaQuery query='(min-width: 800px)'>
+            <MediaQuery query='(min-width: 980px)'>
                 <BetSlipHome/>
             </MediaQuery>
         </main>
