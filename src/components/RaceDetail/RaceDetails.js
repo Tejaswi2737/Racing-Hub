@@ -72,7 +72,7 @@ const RaceDetails = (props,ownProps)=>{
         const data =window.localStorage.getItem('pathParams')
         if (data) {
             setpathValues(JSON.parse(data))
-            console.log(data)
+            // console.log(data)
         }
     }, [])
 
