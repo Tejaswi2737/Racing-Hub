@@ -2,8 +2,7 @@ import React,{useEffect,useState,useRef} from 'react';
 import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import MediaQuery from 'react-responsive';
-import _ from 'lodash';
-// import { Table } from 'semantic-ui-react';
+import _, { isInteger, indexOf } from "lodash"
 
 
 import { fetchMeetingDetails,
@@ -66,13 +65,12 @@ const RaceDetails = (props,ownProps)=>{
   
     useEffect(() => {
         props.remainingBetSlipData(props.remainingBetSlip)
-    }, [props.meetingDetails])
+    }, [props.meetingDetails]);
 
     useEffect(() => {
         const data =window.localStorage.getItem('pathParams')
         if (data) {
             setpathValues(JSON.parse(data))
-            // console.log(data)
         }
     }, [])
 
@@ -95,7 +93,6 @@ const RaceDetails = (props,ownProps)=>{
     
         return [year, month, day].join('-');
     }
-    // console.log(pathValues)
     const date=formatDate(Date.now())
     useEffect(() => {
         props.fetchTodayRacing()
@@ -106,7 +103,6 @@ const RaceDetails = (props,ownProps)=>{
                     el.raceType==pathValues.raceType &&
                      el.venueMnemonic== pathValues.code 
                 )
-
               });
             settodayData(newArray)
         }
@@ -119,7 +115,6 @@ const RaceDetails = (props,ownProps)=>{
                     return (
                         el.raceNumber ==pathValues.slot 
                     )
-    
                   });
                 setraceData(newArray)            
             }
@@ -426,6 +421,115 @@ const RaceDetails = (props,ownProps)=>{
             props.betSlipScreen(true);
         }
     }, [runner_win_place]);
+
+    const [poolFinalList, setpoolFinalList] = useState([]);
+    const [RemainingBets, setRemainingBets] = useState();
+
+    const [finalRemainingBets, setfinalRemainingBets] = useState([]);
+    const [betsUpdated, setbetsUpdated] = useState([]);
+    const [checkUpdate, setcheckUpdate] = useState(false)
+
+    useEffect(() => {
+        var users=props.allBetSlip;
+        if(props.screenStatus) {
+            users = [users, ...props.remainingBetSlip];
+        } else {users=[...props.remainingBetSlip]}
+        if(props.remainingBetSlip) {
+            users=Object.values(users)
+        }
+
+        var grouped = _.reduce(users, (result, user) => {
+            if(user){
+                    (result[user.name] || (result[user.name] = [])).push(user);  
+                    return result;
+            }    
+        }, {});
+
+        var poolList=[]
+        if(grouped) {
+            if(Object.keys(grouped)){
+                Object.keys(grouped).map(poolname=>{
+                    if(poolname!="undefined") {
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList=[];
+                        var winList=null;
+                        var placeList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList.push(users[pos].runners)
+                                    winList=grouped[poolname][grouped[poolname].length-1].win
+                                    placeList=grouped[poolname][grouped[poolname].length-1].place
+                                } 
+                            }
+                            }
+                        if (itemList.length){
+                            var itemPool={"name":poolname,"runners":itemList, "win": winList ,"place": placeList}
+                        }
+                        if(poolFinalList){
+                            poolList.push(itemPool)
+                        } else {
+                            poolList=itemPool
+                        }
+                    }     
+                })
+                setRemainingBets(poolList)
+            }
+        };
+    }, [props.allBetSlip]);
+
+    useEffect(() => {
+        if (RemainingBets) {
+            setfinalRemainingBets([])
+            RemainingBets.map(items=>{
+                if(items) {
+                    if(items.runners.length>1) {
+                        items.runners.map(runnnerInd=>{
+                            setfinalRemainingBets(oldArray => [...oldArray, 
+                                {"name":items.name,"runners":runnnerInd,
+                                "win": items.win ,"place": items.place}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBets(oldArray => [...oldArray,
+                            {"name":items.name,"runners":items.runners[0],
+                            "win": items.win ,"place": items.place}])
+                    }
+                }
+            })
+        }
+
+    }, [RemainingBets]);
+    useEffect(() => {
+        if(RemainingBets) {
+            props.addBetSlipData(RemainingBets);
+            props.remainingBetSlipData(finalRemainingBets)
+        }
+    }, [finalRemainingBets]);
+
+
 
     const runnerInfoBody=(props)=>{
         return(

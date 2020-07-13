@@ -435,12 +435,12 @@ table {
         padding-left: 5px;
     }
     .price-cell {
-        min-width: 15vw;
-        max-width: 15vw;
+        min-width: 16vw;
+        max-width: 16vw;
         padding-left: 5px;
     }
     .name-cell{
-        min-width: 50vw;
+        min-width: 45vw;
     }
 }
 
@@ -459,9 +459,10 @@ table {
     color:black;
     font-size: 0.9rem;
     left: auto;
-    width: 8vw !important;
+    min-width: 12vw ;
     text-align: center;
-    line-height: 40px;
+    min-height: 40px;
+    /* line-height: 40px; */
     background-color: white;
     /* height: 70px !important; */
 }
@@ -469,8 +470,16 @@ table {
 .name-cell-body,.price-cell-body-child,.number-cell-body,.price-cell-body-first {
     min-width:8vw;
 }
-.price-cell-body-child{
-    min-width: 8vw;
+@media(min-width: 980px) {
+    .price-cell-body-child{
+        min-width: 8vw !important;
+    }  
+}
+@media(max-width: 980px) {
+    .price-cell-body-child{
+        min-width: 15vw ;
+        max-width: 16vw;
+    }  
 }
 
 .number-cell-body {
@@ -495,12 +504,12 @@ table {
         padding-left: 5px;
     }
     .price-cell-body-child {
-        max-width: 16vw;
+        width: 16vw;
         padding-left: px;
-        margin-left: 15px;
+        /* margin-left: 15px; */
     }
     .name-cell-body{
-        min-width: 50vw;
+        min-width: 45vw;
     }
 }
 
@@ -514,8 +523,7 @@ table {
     text-overflow: ellipsis;
     white-space: nowrap;
     text-overflow: clip;
-    background-color: white;
-
+    background-color: transparent;
 }
 
 .runner-metadata-list {

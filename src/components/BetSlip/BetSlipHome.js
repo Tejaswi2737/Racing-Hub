@@ -23,57 +23,31 @@ import { toInteger } from 'lodash';
 const BetSlipHome=(props) =>{
     const [poolFinalList, setpoolFinalList] = useState([]);
 
-    const [totalAmount, settotalAmount] = useState(0)
-    const [poolStatus, setpoolStatus] = useState()
-    const [betAllData, setbetAllData] = useState();
+    const [mobileRemaining, setmobileRemaining] = useState([]);
+    const [desktopRemin, setdesktopRemin] = useState([]);
     const [deletedBets, setdeletedBets] = useState([]);
-    const [deleteOn, setdeleteOn] = useState(false)
     const [RemainingBets, setRemainingBets] = useState();
     const [finalRemainingBets, setfinalRemainingBets] = useState([]);
     const [placeWinPlaceBetList, setplaceWinPlaceBetList] = useState([])
 
-    const [distinctPoolfh, setdistinctPoolfh] = useState();
-    const [runnerList, setrunnerList] = useState();
+
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
-    const [BetSlipPendingJson, setBetSlipPendingJson] = useState([]);
-    const [BetSlipSingle, setBetSlipSingle] = useState();
-    const [fetched, setfetched] = useState(false);
-    const [fetchedSingle, setfetchedSingle] = useState(false);
+
 
     const [deleted,setdeleted]=useState(false)
     const [startSlip, setstartSlip] = useState(false)
-    const [BetSlipSingleSubmitted, setBetSlipSubmitted] = useState();
-    const [betDone, setbetDone] = useState(false);
+
 
     const [WinMoney, setWinMoney] = useState(null);
     const [PlaceMoney, setPlaceMoney] = useState(null);
-    const [ManualPlace, setManualPlace] = useState(0);
-    const [ManualWin, setManualWin] = useState(0);
+ 
     const [typeBet, settypeBet] = useState('');
-    const [localRemaining, setlocalRemaining] = useState([])
-    useEffect(() => {
-        const data =window.localStorage.getItem('betSlip')
-        if (data!=window.localStorage.getItem('betSlip')) {
-            setlocalRemaining(JSON.parse(data))
-        }
-    }, [window.localStorage.getItem('betSlip')]);
 
-    useEffect(() => {
-        if(finalRemainingBets) {
-            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
-        }
-    }, [finalRemainingBets]);
     
     useEffect(() => {
-        props.postWinPlaceBets([])
-        var users=props.allBetSlip;
-        var rem=props.remainingBetSlip.length<1?localRemaining:props.remainingBetSlip
-        if(props.screenStatus) {
-            users = [users, ...rem];
-        } else {users=[...rem]}
-        
-        var dele=[];
+        var users=props.remainingBetSlip;
+
         if(props.remainingBetSlip) {
             users=Object.values(users)
         }
@@ -84,6 +58,7 @@ const BetSlipHome=(props) =>{
                     return result;
             }    
         }, {});
+
         var poolList=[]
         if(grouped) {
             if(Object.keys(grouped)){
@@ -133,13 +108,17 @@ const BetSlipHome=(props) =>{
                         }
                     }     
                 })
-                setRemainingBets(poolList)
+                setmobileRemaining(poolList)
                 setstartSlip(true)
             }
         };
-    }, [props.allBetSlip,localRemaining]);
+    }, [props.allBetSlip]);
 
-
+    useEffect(() => {
+        props.postWinPlaceBets([])
+        setdesktopRemin(props.betSlipInd);
+        setstartSlip(true)
+    }, [props.betSlipInd]);
 
     
     const deleteSingleBet=(item)=>{
@@ -243,8 +222,15 @@ const BetSlipHome=(props) =>{
         }
     }, [finalRemainingBets]);
     useEffect(() => {
-        props.remainingBetSlipData(finalRemainingBets)
+        props.remainingBetSlipData(finalRemainingBets);
     }, [finalRemainingBets]);
+    useEffect(() => {
+        if(window.innerWidth<980) {
+            setRemainingBets(mobileRemaining)
+        } else {
+            setRemainingBets(desktopRemin)
+        }
+    }, [mobileRemaining,desktopRemin]);
     useEffect(() => {
         props.deleteBetSlipData(deletedBets)
     }, [deletedBets]);
