@@ -54,10 +54,10 @@ const BetSlipHome=(props) =>{
     const [localRemaining, setlocalRemaining] = useState([])
     useEffect(() => {
         const data =window.localStorage.getItem('betSlip')
-        if (data) {
+        if (data!=window.localStorage.getItem('betSlip')) {
             setlocalRemaining(JSON.parse(data))
         }
-    }, [])
+    }, [window.localStorage.getItem('betSlip')]);
 
     useEffect(() => {
         if(finalRemainingBets) {
