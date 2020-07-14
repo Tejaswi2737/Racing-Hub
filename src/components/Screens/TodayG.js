@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-import { fetchNextRace,allBetSlipData,betSlipScreen } from "../../actions";
+import { fetchNextRace,allBetSlipData,betSlipScreen,remainingBetSlipData } from "../../actions";
 
 import MenuView from "../Nav/Menu";
 
@@ -21,6 +21,11 @@ const TodayG=(props)=> {
     // useEffect(() => {
     //   props.allBetSlipData([])
     // }, [props.next])
+    useEffect(() => {
+      if (performance.navigation.type == 1) {
+          props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
+      }
+  }, [performance.navigation.type]);
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
@@ -81,11 +86,13 @@ const mapStateToProps=(state)=> {
       next:state.next,
       allBetSlip:state.allBetSlip,
       screenStatus:state.screenStatus,
+      remainingBetSlip:state.remainingBetSlip,
     }
 }
 export default connect(mapStateToProps, { 
   fetchNextRace,
   allBetSlipData,
-  betSlipScreen
+  betSlipScreen,
+  remainingBetSlipData
  } )(TodayG);
 // export default TodayG;
