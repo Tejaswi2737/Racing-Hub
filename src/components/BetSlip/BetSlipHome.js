@@ -44,14 +44,19 @@ const BetSlipHome=(props) =>{
  
     const [typeBet, settypeBet] = useState('');
 
+
     
     useEffect(() => {
-        var users=props.remainingBetSlip;
-
+        var users
+        if (performance.navigation.type == 1 && window.innerWidth<980) {
+            console.log( "This page is reloaded" );
+            props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
+            users=JSON.parse(window.localStorage.getItem('betSlip'))
+        } else var users=props.remainingBetSlip;
+        
         if(props.remainingBetSlip) {
             users=Object.values(users)
-        }
-
+        };
         var grouped = _.reduce(users, (result, user) => {
             if(user){
                     (result[user.name] || (result[user.name] = [])).push(user);  
@@ -112,7 +117,7 @@ const BetSlipHome=(props) =>{
                 setstartSlip(true)
             }
         };
-    }, [props.allBetSlip]);
+    }, [props.allBetSlip,performance.navigation.type]);
 
     useEffect(() => {
         props.postWinPlaceBets([])
@@ -221,8 +226,10 @@ const BetSlipHome=(props) =>{
             })
         }
     }, [finalRemainingBets]);
+
     useEffect(() => {
         props.remainingBetSlipData(finalRemainingBets);
+        localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
     }, [finalRemainingBets]);
     useEffect(() => {
         if(window.innerWidth<980) {

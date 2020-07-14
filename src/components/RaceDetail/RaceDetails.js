@@ -27,8 +27,6 @@ const RaceDetails = (props,ownProps)=>{
     const [pool_fh, setpool_fh] = useState();
     const [count, setcount] = useState()
     const [place_list_all, setplace_list_all] = useState(["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'])
-    // var place_list_all=["NORTHFIELD PARK (USA) Race6",'ergevdfgdbb','rgergegegeetheeh'];
-    var runner_list_all=[[1,2,3,4],[3,4],[1,2,3]];
     const [addedBet, setaddedBet] = useState(false)
     const [runnerSelection, setrunnerSelection] = useState([]);
     const [runner_win_place, setrunner_win_place] = useState({});
@@ -394,6 +392,11 @@ const RaceDetails = (props,ownProps)=>{
             </div>
         )
     };
+    useEffect(() => {
+        if (performance.navigation.type == 1) {
+            props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
+        }
+    }, [performance.navigation.type]);
 
     const handleClick=(props,runner_item)=>{
         if ((raceData[0].raceStatus=="Normal")) {
@@ -525,10 +528,13 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if(RemainingBets) {
             props.addBetSlipData(RemainingBets);
-            props.remainingBetSlipData(finalRemainingBets)
+            props.remainingBetSlipData(finalRemainingBets);
+            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
         }
     }, [finalRemainingBets]);
-
+    // if (window.performance) {
+    //     console.info("window.performance works fine on this browser");
+    //   }
 
 
     const runnerInfoBody=(props)=>{
@@ -565,7 +571,7 @@ const RaceDetails = (props,ownProps)=>{
                     </div>
                     <div className="price-cell-body"
                         onClick={()=>{
-                            handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all,runner_list_all)
+                            handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all)
                         }} 
                         style={{
                             backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
