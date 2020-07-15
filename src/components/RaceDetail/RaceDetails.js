@@ -393,8 +393,13 @@ const RaceDetails = (props,ownProps)=>{
         )
     };
     useEffect(() => {
-        if (performance.navigation.type == 1) {
+        if (performance.navigation.type == 1 && window.innerWidth<980) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
+        }
+        if (performance.navigation.type == 1 && window.innerWidth>980) {
+            console.log("reloaded race details");
+            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
+            props.addBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
 
@@ -439,7 +444,8 @@ const RaceDetails = (props,ownProps)=>{
         } else {users=[...props.remainingBetSlip]}
         if(props.remainingBetSlip) {
             users=Object.values(users)
-        }
+        };
+
 
         var grouped = _.reduce(users, (result, user) => {
             if(user){

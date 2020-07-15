@@ -36,7 +36,22 @@ const RaceDetailsPageWin=(props,ownProps)=> {
         return () => {
             clearInterval(timerToClearSomewhere.current)
           }
-     },1000)
+     },1000);
+     function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+  
+      if (month.length < 2) 
+          month = '0' + month;
+      if (day.length < 2) 
+          day = '0' + day;
+  
+      return [year, month, day].join('-');
+  }
+
+  const date=formatDate(Date.now())
     return (
         <div>
           <SimpleBar style={{ maxHeight: '100vh' }}>
@@ -58,7 +73,7 @@ const RaceDetailsPageWin=(props,ownProps)=> {
                               code={props.location.code}
                               raceType={props.location.raceType} 
                               type="Win"/>
-                  <Link to="/2020/betSlip"
+                  <Link to={`/${date}/betSlip`}
                     id="mobile-betSlip-button">
                     <span>
                       B-S

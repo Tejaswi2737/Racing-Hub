@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import { connect } from 'react-redux';
 
-import _, { isInteger, indexOf } from "lodash"
+import _, { isInteger, indexOf, isObject, isArray } from "lodash"
 import "./BetSlip.css"
 import { RiDeleteBin6Line } from "react-icons/ri";
 import SimpleBar from 'simplebar-react';
@@ -16,44 +16,33 @@ import {
     betSlipScreen,
     postWinPlaceBets
 } from "../../actions";
-import { toInteger } from 'lodash';
 
 
 
 const BetSlipHome=(props) =>{
     const [poolFinalList, setpoolFinalList] = useState([]);
-
     const [mobileRemaining, setmobileRemaining] = useState([]);
     const [desktopRemin, setdesktopRemin] = useState([]);
     const [deletedBets, setdeletedBets] = useState([]);
     const [RemainingBets, setRemainingBets] = useState();
     const [finalRemainingBets, setfinalRemainingBets] = useState([]);
     const [placeWinPlaceBetList, setplaceWinPlaceBetList] = useState([])
-
-
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
-
-
     const [deleted,setdeleted]=useState(false)
     const [startSlip, setstartSlip] = useState(false)
-
-
     const [WinMoney, setWinMoney] = useState(null);
     const [PlaceMoney, setPlaceMoney] = useState(null);
- 
     const [typeBet, settypeBet] = useState('');
 
-
-    
     useEffect(() => {
-        var users
-        if (performance.navigation.type == 1 && window.innerWidth<980) {
-            console.log( "This page is reloaded" );
+        var users;
+        if (performance.navigation.type == 1 ) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
             users=JSON.parse(window.localStorage.getItem('betSlip'))
-        } else var users=props.remainingBetSlip;
-        
+        } else {
+            var users=props.remainingBetSlip;
+        }
         if(props.remainingBetSlip) {
             users=Object.values(users)
         };
@@ -63,7 +52,6 @@ const BetSlipHome=(props) =>{
                     return result;
             }    
         }, {});
-
         var poolList=[]
         if(grouped) {
             if(Object.keys(grouped)){
@@ -113,14 +101,15 @@ const BetSlipHome=(props) =>{
                         }
                     }     
                 })
-                setmobileRemaining(poolList)
+                setmobileRemaining(poolList);
                 setstartSlip(true)
             }
         };
-    }, [props.allBetSlip,performance.navigation.type]);
+    }, [props.allBetSlip]);
 
     useEffect(() => {
-        props.postWinPlaceBets([])
+        props.postWinPlaceBets([]);
+        console.log(props.betSlipInd);
         setdesktopRemin(props.betSlipInd);
         setstartSlip(true)
     }, [props.betSlipInd]);

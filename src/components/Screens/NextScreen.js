@@ -26,6 +26,21 @@ const NextScreen=(props) =>{
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     useEffect(() => {
         if (props.next.length>0){
             {props.next[0].raceStartTime?setfirstTime(Date.now()-new Date(props.next[0].raceStartTime)):setfirstTime()}
@@ -74,7 +89,7 @@ const NextScreen=(props) =>{
                     <main className="page-items">
                         <NextList next={props.next}/>
                         <NextRace next={props.next}/>
-                        <Link to="/2020/betSlip"
+                        <Link to={`/${date}/betSlip`}
                         id="mobile-betSlip-button">
                             <span>
                                 B-S

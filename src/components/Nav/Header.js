@@ -10,8 +10,7 @@ const Header=() =>{
                 <div className="content-wrapper">
                     <div className="positioned-left">
                         <div className="positioned-left">
-                            <div className="toggle-menu-link">
-                                    
+                            <div className="toggle-menu-link">        
                                 <span className="hamburger-title">
                                     <Link to="/" className="title-main">
                                         <div id="vollie-tagline">

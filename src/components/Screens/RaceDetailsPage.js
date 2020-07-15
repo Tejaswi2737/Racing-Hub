@@ -23,6 +23,21 @@ const RaceDetailsPage=(props)=> {
     props.fetchNextRace();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+    function formatDate(date) {
+      var d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+  
+      if (month.length < 2) 
+          month = '0' + month;
+      if (day.length < 2) 
+          day = '0' + day;
+  
+      return [year, month, day].join('-');
+  }
+
+  const date=formatDate(Date.now())
     useEffect(
        () => {
          timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
@@ -59,7 +74,7 @@ const RaceDetailsPage=(props)=> {
                   bet_pool_fh_1={props.location.bet_pool_fh_1}
                   bet_pool_fh_2={props.location.bet_pool_fh_2}
                   />
-                  <Link to="/2020/betSlip"
+                  <Link to={`/${date}/betSlip`}
                         id="mobile-betSlip-button">
                         <span>
                           B-S

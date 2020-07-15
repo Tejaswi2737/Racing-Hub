@@ -41,7 +41,22 @@ const TodayH=(props)=> {
         return () => {
             clearInterval(timerToClearSomewhere.current)
           }
-        })
+        });
+        function formatDate(date) {
+          var d = new Date(date),
+              month = '' + (d.getMonth() + 1),
+              day = '' + d.getDate(),
+              year = d.getFullYear();
+      
+          if (month.length < 2) 
+              month = '0' + month;
+          if (day.length < 2) 
+              day = '0' + day;
+      
+          return [year, month, day].join('-');
+      }
+  
+      const date=formatDate(Date.now())
     return (
       <>
           <MediaQuery query='(min-width: 980px)'>
@@ -69,7 +84,7 @@ const TodayH=(props)=> {
               <Header/>
               <NextList next={props.next}/>
               <TodayDetails detail='H'/>
-              <Link to="/2020/betSlip"
+              <Link to={`/${date}/betSlip`}
               id="mobile-betSlip-button">
                   <span>
                       B-S

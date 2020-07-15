@@ -18,10 +18,19 @@ import "./Home.css";
 import mobileSlipButton from '../BetSlip/MobileLayout/mobileSlipButton';
 
 const Home=(props) =>{
-    const scrollBarStyle = {
-        width: '100vw',
-        height: '100vh',
-      };
+      function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+        return [year, month, day].join('-');
+    };
+
+    const date=formatDate(Date.now())
     useEffect(() => {
         if (performance.navigation.type == 1) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
@@ -40,7 +49,7 @@ const Home=(props) =>{
                 <MenuView/>
                     <Header/>
                     <NextListHome/>
-                    <Link to="/2020/betSlip"
+                    <Link to={`/${date}/betSlip`}
                         id="mobile-betSlip-button">
                         <span>B-S
                         </span>
@@ -52,35 +61,12 @@ const Home=(props) =>{
 }
 const mapStateToProps=(state)=> {
     return{ 
-
         remainingBetSlip:state.remainingBetSlip,
-
     }
 }
 export default connect(mapStateToProps, { 
-
     remainingBetSlipData
  } )(Home);
-        {/* <MediaQuery query='(min-width: 800px)'>
-           <ui-view>
-                <Header/>
-                <main className="page-content">
-                    <div className="left-column">
-                        <ui-view>
-                            <nav className="menuItems">
-                                <NextListHome/>
-                            </nav>
-                        </ui-view>
-                    </div>
-                    <BetSlipHome/>
-                </main>
-            </ui-view>         
-        </MediaQuery>
-        <MediaQuery query='(max-width: 800px)'>
-            <Header/>
-            <NextListHome/>
-        </MediaQuery> */}
-
 
 
 
