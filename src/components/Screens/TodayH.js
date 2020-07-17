@@ -24,6 +24,7 @@ const TodayH=(props)=> {
       if (performance.navigation.type == 1) {
           props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
       }
+      props.allBetSlipData({})
   }, [performance.navigation.type]);
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component

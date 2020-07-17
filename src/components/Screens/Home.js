@@ -10,7 +10,7 @@ import 'simplebar/dist/simplebar.min.css';
 import Header from '../Nav/Header';
 import RespHeader from '../Nav//RespHeader';
 import MenuView from "../Nav/Menu";
-import { remainingBetSlipData } from "../../actions";
+import { remainingBetSlipData,allBetSlipData } from "../../actions";
 
 import NextListHome from '../Home/NextListHome';
 import BetSlipHome from '../BetSlip/BetSlipHome';
@@ -35,6 +35,7 @@ const Home=(props) =>{
         if (performance.navigation.type == 1) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
+        props.allBetSlipData({})
     }, [performance.navigation.type]);
     return (
         <>
@@ -62,10 +63,12 @@ const Home=(props) =>{
 const mapStateToProps=(state)=> {
     return{ 
         remainingBetSlip:state.remainingBetSlip,
+        allBetslip:state.allBetslip
     }
 }
 export default connect(mapStateToProps, { 
-    remainingBetSlipData
+    remainingBetSlipData,
+    allBetSlipData
  } )(Home);
 
 

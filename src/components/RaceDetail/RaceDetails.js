@@ -97,9 +97,9 @@ const RaceDetails = (props,ownProps)=>{
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
                 return (
-                    el.meetingName ==pathValues.place &&
-                    el.raceType==pathValues.raceType &&
-                     el.venueMnemonic== pathValues.code 
+                    el.meetingName ===pathValues.place &&
+                    el.raceType===pathValues.raceType &&
+                     el.venueMnemonic=== pathValues.code 
                 )
               });
             settodayData(newArray)
@@ -111,7 +111,7 @@ const RaceDetails = (props,ownProps)=>{
                 var dataass=todayData[0].races
                 var newArray=dataass.filter(function (el) {
                     return (
-                        el.raceNumber ==pathValues.slot 
+                        el.raceNumber ===pathValues.slot 
                     )
                   });
                 setraceData(newArray)            
@@ -152,37 +152,37 @@ const RaceDetails = (props,ownProps)=>{
         var seconds = Math.floor(delta % 60);
         if (hours>0 || hours<0) {
             if (left>0 ) {
-                if (minutes==0){
+                if (minutes===0){
                     return(-hours+'h')
                 }
                 else return(-hours+'h'+minutes+'m')
             }
             else {
-                if (minutes==0){
+                if (minutes===0){
                     return(hours+'h')
                 }
             } return (hours+'h'+minutes+'m')
         }
-        if (hours==0 && minutes>=5){
+        if (hours===0 && minutes>=5){
             if (left>0){
                 return (-minutes+'m')
             }
             else return(minutes+'m')
         } 
-        if (hours==0 && (minutes<=5||minutes>=-5) 
+        if (hours===0 && (minutes<=5||minutes>=-5) 
             && (minutes>0||minutes<0)) {
                 if (left>0) {
-                    if (seconds==0){
+                    if (seconds===0){
                         return(-minutes+'m')
                     } else return (-minutes+'m'+seconds+'s')
                 }
                else {
-                if (seconds==0){
+                if (seconds===0){
                     return(minutes+'m')
                 } else return (minutes+'m'+seconds+'s')
                 }
         }  
-        if (hours==0 && minutes==0) {
+        if (hours===0 && minutes===0) {
             if (left>0) {
                 return(-seconds+'s')
             }
@@ -348,11 +348,11 @@ const RaceDetails = (props,ownProps)=>{
                 <div className="price-cell">
                     Place
                 </div>
-                {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
+                {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella"||props.type==="Duet")?
                         <div className="price-cell">
                             1st Box
                         </div>
-                    :(props.type=="Trifecta")?
+                    :(props.type==="Trifecta")?
                     <>
                         <div className="price-cell">
                             1st Box
@@ -364,7 +364,7 @@ const RaceDetails = (props,ownProps)=>{
                             3rd
                         </div>
                     </>
-                    :(props.type=="First4")?
+                    :(props.type==="First4")?
                     <>
                         <div className="price-cell">
                             1st Box
@@ -378,7 +378,7 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="price-cell">
                             4th
                         </div>
-                    </>:(props.type=="Exacta")?
+                    </>:(props.type==="Exacta")?
                     <>
                         <div className="price-cell">
                             1st Box
@@ -393,19 +393,17 @@ const RaceDetails = (props,ownProps)=>{
         )
     };
     useEffect(() => {
-        if (performance.navigation.type == 1 && window.innerWidth<980) {
+        if (performance.navigation.type === 1 && window.innerWidth<980) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
-        if (performance.navigation.type == 1 && window.innerWidth>980) {
-            console.log("reloaded race details");
-            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
+        if (performance.navigation.type === 1 && window.innerWidth>980) {
             props.addBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
 
     const handleClick=(props,runner_item)=>{
-        if ((raceData[0].raceStatus=="Normal")) {
-            if(props.countBetSlip && props.countBetSlip.length==0) {
+        if ((raceData[0].raceStatus==="Normal")) {
+            if(props.countBetSlip && props.countBetSlip.length===0) {
                 props.countBetSlipData(1);
                 setcount((props.countBetSlip));
                 setrunner_win_place({
@@ -581,7 +579,7 @@ const RaceDetails = (props,ownProps)=>{
                         }} 
                         style={{
                             backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
-                            props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                            props.remainingBetSlip.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
                             && e.runners === runner_item.runnerNumber
                             ).length > 0
                             ?
@@ -590,7 +588,7 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="price-cell-body-child"
                         style={{
                             backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
-                            props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                            props.remainingBetSlip.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
                             && e.runners === runner_item.runnerNumber
                             ).length > 0
                             ?
@@ -601,7 +599,7 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="price-cell-body-child"
                             style={{
                                 backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] ?
-                                props.remainingBetSlip.filter(e => e.name == todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+                                props.remainingBetSlip.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
                                 && e.runners === runner_item.runnerNumber
                                 ).length > 0
                                 ?
@@ -609,7 +607,7 @@ const RaceDetails = (props,ownProps)=>{
                             ${runner_item.returnPlace}
                         </div>
                     </div>
-                    {(props.racingDetail.raceStatus=="Open")?(props.type=="Quinella"||props.type=="Duet")?
+                    {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella"||props.type==="Duet")?
                         <div className="price-cell-body">
                             <div>
                                 <div>
@@ -620,7 +618,7 @@ const RaceDetails = (props,ownProps)=>{
                                 </div>
                             </div>
                         </div>
-                        :(props.type=="Trifecta")?
+                        :(props.type==="Trifecta")?
                         <>
                             <div className="price-cell-body">
                                 <div>
@@ -653,7 +651,7 @@ const RaceDetails = (props,ownProps)=>{
                                 </div>
                             </div>
                         </>
-                        :(props.type=="First4")?
+                        :(props.type==="First4")?
                         <>
                             <div className="price-cell-body">
                                 <div>
@@ -695,7 +693,7 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                             </div>
-                        </>:(props.type=="Exacta")?
+                        </>:(props.type==="Exacta")?
                         <>
                             <div className="price-cell-body">
                                 <div>
@@ -762,12 +760,12 @@ const RaceDetails = (props,ownProps)=>{
                                             raceType:pathValues.raceType
                                         }
                                     )}}
-                                        className={item.raceStatus=="Paying"?
+                                        className={item.raceStatus==="Paying"?
                                         "meeting-info-race  meeting-info-race-closed":
                                         "meeting-info-race  meeting-info-race-open"}>
                                             R{item.raceNumber}  
-                                            <span className={item.raceStatus=="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
-                                                {item.raceStatus=="Paying"?item.results:startTime(item.raceStartTime)} 
+                                            <span className={item.raceStatus==="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
+                                                {item.raceStatus==="Paying"?item.results:startTime(item.raceStartTime)} 
                                             </span>
                                         {/* </a> */}
                                     </Link>
@@ -812,11 +810,11 @@ const RaceDetails = (props,ownProps)=>{
                                 <ul className="race-metadata-list">
                                 <li className="status-text">
                                 {raceData?raceData[0]?
-                                    raceData[0].raceStatus=="Normal"?
+                                    raceData[0].raceStatus==="Normal"?
                                     duration(raceData[0].raceStartTime):raceData[0].raceStatus:"":""}
                                     {/* {raceData?raceData[0]?
                                     raceData[0].race?
-                                    (raceData[0].raceStatus=="Normal"?
+                                    (raceData[0].raceStatus==="Normal"?
                                     startTime(raceData[0].raceStartTime):
                                     raceData[0].raceStatus):"":"":""} */}
                                 </li>
@@ -910,13 +908,13 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                         <div className="page-section">  
                             <div className="race-results-wrapper">
-                                <section className={props.racingDetail.raceStatus=="Open"?
+                                <section className={props.racingDetail.raceStatus==="Open"?
                                 "runners-section":"results-section"}>
-                                    {/* {props.racingDetail.raceStatus=="Open"?placeBets():""} */}
+                                    {/* {props.racingDetail.raceStatus==="Open"?placeBets():""} */}
                                     {/* <div className="page-section-break"> */}
                                     {/* </div> */}
-                                    {raceData?raceData[0]?raceData[0].raceStatus=="Paying"?resultsTable(props):"":"":""}
-                                    {raceData?raceData[0]?raceData[0].raceStatus=="Paying"?exoticTable(props):"":"":""}
+                                    {raceData?raceData[0]?raceData[0].raceStatus==="Paying"?resultsTable(props):"":"":""}
+                                    {raceData?raceData[0]?raceData[0].raceStatus==="Paying"?exoticTable(props):"":"":""}
                                     {/* {raceData.raceStatus!="Normal"?exoticTable(props):""} */}
                                     {runnerInfo(props)}
                                 </section>
@@ -941,13 +939,6 @@ const mapStateToProps=(state,ownProps)=> {
         raceType:ownProps.raceType,
         place:ownProps.place,
         type:ownProps.type,
-
-
-
-
-
-
-
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
@@ -955,7 +946,6 @@ const mapStateToProps=(state,ownProps)=> {
         screenStatus:state.screenStatus,
         remainingBetSlip:state.remainingBetSlip,
         allBetSlip:state.allBetSlip,
-
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
         pathParams:state.pathParams
@@ -970,7 +960,6 @@ export default connect(mapStateToProps,
         countBetSlipData,
         betSlipScreen,
         remainingBetSlipData,
-
         fetchPathParams,
         fetchTodayRacing
         })
