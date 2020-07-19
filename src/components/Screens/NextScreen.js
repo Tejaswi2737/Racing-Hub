@@ -25,7 +25,6 @@ const NextScreen=(props) =>{
         if (performance.navigation.type == 1) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
-        props.allBetSlipData({})
     }, [performance.navigation.type]);
     function formatDate(date) {
         var d = new Date(date),
@@ -107,12 +106,11 @@ const mapStateToProps=(state)=> {
         next:state.next,
         screenStatus:state.screenStatus,
         remainingBetSlip:state.remainingBetSlip,
-        allBetSLip:state.allBetSLip
+
     }
 }
 export default connect(mapStateToProps, { 
     fetchNextRace,
     betSlipScreen,
-    remainingBetSlipData,
-    allBetSlipData
+    remainingBetSlipData
  } )(NextScreen);

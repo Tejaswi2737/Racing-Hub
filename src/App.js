@@ -35,11 +35,11 @@ function App() {
               <Route path="/:date/H" exact component={TodayH}/> 
               <Route path="/:date/:place/:code/:type/:slot/Win" exact component={RaceDetailsPageWin}/>
               <Route path="/:date/betSlip" exact component={MobileBetSlipScreen}/>
-              <Route path="/RaceDetail/Quinella" exact component={RaceDetailsPageWinQuinella}/>
-              <Route path="/RaceDetail/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>
-              <Route path="/RaceDetail/First4" exact component={RaceDetailsPageWinFirst4}/>
-              <Route path="/RaceDetail/Exacta" exact component={RaceDetailsPageWinExacta}/>
-              <Route path="/RaceDetail/Duet" exact component={RaceDetailsPageWinDuet}/>  
+              <Route path="/:date/:place/:code/:type/:slot/Quinella" exact component={RaceDetailsPageWinQuinella}/>
+              <Route path="/:date/:place/:code/:type/:slot/Trifecta" exact component={RaceDetailsPageWinTrifecta}/>
+              <Route path="/:date/:place/:code/:type/:slot/First4" exact component={RaceDetailsPageWinFirst4}/>
+              <Route path="/:date/:place/:code/:type/:slot/Exacta" exact component={RaceDetailsPageWinExacta}/>
+              <Route path="/:date/:place/:code/:type/:slot/Duet" exact component={RaceDetailsPageWinDuet}/>  
           </Switch>
       </div>
     </Router>

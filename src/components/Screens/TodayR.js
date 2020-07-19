@@ -21,11 +21,9 @@ const TodayR=(props)=> {
     props.betSlipScreen(false)
 
     useEffect(() => {
-      // if (performance.navigation.type == 1) {
-      console.log(JSON.parse(window.localStorage.getItem('betSlip')))
-      props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
-      // } 
-      props.allBetSlipData({})
+      if (performance.navigation.type == 1) {
+          props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
+      }
   }, [performance.navigation.type]);
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component

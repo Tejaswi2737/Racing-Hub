@@ -37,27 +37,13 @@ const BetSlipHome=(props) =>{
 
     useEffect(() => {
         var users;
-        if (performance.navigation.type == 1 && window.innerWidth<980) {
+        if (performance.navigation.type == 1 ) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
-            users=JSON.parse(window.localStorage.getItem('betSlip'));
-        } 
-        if( performance.navigation.type === 1 && window.innerWidth>980) {
-            if(props.allBetSlip)  {
-                if(props.allBetSlip.name)
-                    {
-                    users=[props.allBetSlip,...props.remainingBetSlip]
-                }
-            }
-            else users=JSON.parse(window.localStorage.getItem('betSlip'))
-        }
-
-        if (performance.navigation.type !== 1 && window.innerWidth<980) {
+            users=JSON.parse(window.localStorage.getItem('betSlip'))
+        } else {
             var users=props.remainingBetSlip;
         }
-        if (performance.navigation.type !== 1 && window.innerWidth>980) {
-            var users=[props.allBetSlip,...JSON.parse(window.localStorage.getItem('betSlip'))]
-        }
-        if(users) {
+        if(props.remainingBetSlip) {
             users=Object.values(users)
         };
         var grouped = _.reduce(users, (result, user) => {
@@ -73,7 +59,8 @@ const BetSlipHome=(props) =>{
                     if(poolname!="undefined") {
                         var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
                             if(user){
-                                    (result[user.name] || (result[user.name] = [])).push(user.runners);                                     
+                                    (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                    
                                     return (Object.values(result).reduce(
                                         function(accumulator, currentValue) {
                                           return accumulator.concat(currentValue)
@@ -115,11 +102,17 @@ const BetSlipHome=(props) =>{
                     }     
                 })
                 setmobileRemaining(poolList);
-                setdesktopRemin(poolList)
                 setstartSlip(true)
             }
         };
     }, [props.allBetSlip]);
+
+    useEffect(() => {
+        props.postWinPlaceBets([]);
+        console.log(props.betSlipInd);
+        setdesktopRemin(props.betSlipInd);
+        setstartSlip(true)
+    }, [props.betSlipInd]);
 
     
     const deleteSingleBet=(item)=>{
