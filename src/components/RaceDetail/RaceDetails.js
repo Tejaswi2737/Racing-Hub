@@ -31,6 +31,7 @@ const RaceDetails = (props,ownProps)=>{
     const [addedBet, setaddedBet] = useState(false)
     const [runnerSelection, setrunnerSelection] = useState([]);
     const [runner_win_place, setrunner_win_place] = useState({});
+    const [runner_quinella, setrunner_quinella] = useState({});
     const [pathValues, setpathValues] = useState([])
 
     props.fetchMeetingDetails();
@@ -423,12 +424,40 @@ const RaceDetails = (props,ownProps)=>{
         }
     };
 
+    const handleClickQuinella=(props,runner_item)=>{
+        if ((raceData[0].raceStatus==="Normal")) {
+            if(props.countBetSlip && props.countBetSlip.length===0) {
+                props.countBetSlipData(1);
+                setcount((props.countBetSlip));
+                setrunner_quinella({
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                    ,"runners":runner_item.runnerNumber,"quinella": null 
+                });
+            } else {
+                props.countBetSlipData(parseInt(props.countBetSlip)+1);
+                setcount((props.countBetSlip));
+                setrunner_quinella({
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                    ,"runners":runner_item.runnerNumber,"quinella": null
+                });
+            }   
+        }
+    };
+
     useEffect(() => {
         if ((runner_win_place)) {
             {props.allBetSlipData(runner_win_place)}
             props.betSlipScreen(true);
         }
+
     }, [runner_win_place]);
+    useEffect(() => {
+        if(runner_quinella) {
+            {props.allBetSlipData(runner_quinella)}
+            props.betSlipScreen(true)
+        }
+    }, [runner_quinella])
+    
 
     const [poolFinalList, setpoolFinalList] = useState([]);
     const [RemainingBets, setRemainingBets] = useState();
@@ -614,7 +643,20 @@ const RaceDetails = (props,ownProps)=>{
                             ${runner_item.returnPlace}
                         </div>
                     </div>
-                    {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella"||props.type==="Duet")?
+                    {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella")?
+                        <div className="price-cell-body checkbox">
+                            <div>
+                                <div>
+                                <input
+                                    name="1st"
+                                    type="checkbox"
+                                    className="checkbox-input"
+                                    onClick={()=>handleClickQuinella(props,runner_item,pool_fh,runnerSelection,place_list_all)}
+                                />                                    
+                                </div>
+                            </div>
+                        </div>
+                        :(props.type==="Duet")?
                         <div className="price-cell-body checkbox">
                             <div>
                                 <div>
@@ -723,7 +765,7 @@ const RaceDetails = (props,ownProps)=>{
                                     </div>
                                 </div>
                         </div>      
-                        </> :"":""           
+                        </> :"":""        
                     }
                 </div>
                 )
