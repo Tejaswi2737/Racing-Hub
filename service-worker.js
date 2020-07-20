@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Racing-Hub/precache-manifest.be8e8f2364c517d43ca4355d9e1404d4.js"
+  "/Racing-Hub/precache-manifest.9d3956e0baf99d77277da93ab1a06f6e.js"
 );
 
 self.addEventListener('message', (event) => {
