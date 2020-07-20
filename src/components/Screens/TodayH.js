@@ -21,7 +21,7 @@ const TodayH=(props)=> {
     props.fetchNextRace();
     props.betSlipScreen(false);
     useEffect(() => {
-      if (performance.navigation.type == 1) {
+      if (performance.navigation.type === 1) {
           props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
       }
   }, [performance.navigation.type]);

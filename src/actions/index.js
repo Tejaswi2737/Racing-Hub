@@ -1,12 +1,6 @@
 import nextData from "../data/nextToGo.json";
 import nextDataHome from "../data/nexttogoHome.json";
 import meetingDetailsAll from "../data/meetingDetailsAll.json";
-
-// import todayRacing from "../data/todayRacing.json";
-// import todayRacingGrey from "../data/todayRacingGrey.json";
-// import todayRacingHarness from "../data/todayRacingHarness.json";
-
-
 import raceDetailsResults1 from "../data/raceDetailsResults1.json";
 import raceDetailsResults2 from "../data/raceDetailsResults2.json";
 import raceDetailsResults3 from "../data/raceDetailsResults3.json";
@@ -20,13 +14,12 @@ import raceDetailsResults10 from "../data/raceDetailsResults10.json";
 import raceDetailsResults11 from "../data/raceDetailsResults11.json";
 import raceDetailsResults12 from "../data/raceDetailsResults12.json";
 import meetingDetails from "../data/meetingDetails.json";
-
-
 import winPlaceBet from "../data/win_place_bet.json";
 
 
 export const fetchTodayRacing =  () => {
   return function (dispatch) {
+    
     dispatch({
       type: 'FETCH_TODAY_RACING',
       payload: meetingDetailsAll

@@ -22,7 +22,7 @@ const NextScreen=(props) =>{
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(() => {
-        if (performance.navigation.type == 1) {
+        if (performance.navigation.type === 1) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);

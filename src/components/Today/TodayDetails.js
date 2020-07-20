@@ -28,7 +28,7 @@ const TodayDetails = (props,ownProps)=>{
     useEffect(() => {
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
-                return el.raceType ==props.detail
+                return el.raceType ===props.detail
               });
             settodayData(newArray)
         }
@@ -78,13 +78,13 @@ const TodayDetails = (props,ownProps)=>{
                 <div className="date-button">
                     <div className="category-bar">
                         <div className="button-bar">
-                            <Link to={`/${date}/R`} className={props.detail=='R'?"category-button-active":"category-button"}>
+                            <Link to={`/${date}/R`} className={props.detail==='R'?"category-button-active":"category-button"}>
                                 Racing
                             </Link>
-                            <Link to={`/${date}/G`} className={props.detail=='G'?"category-button-active":"category-button"}>
+                            <Link to={`/${date}/G`} className={props.detail==='G'?"category-button-active":"category-button"}>
                                 GreyHound
                             </Link>
-                            <Link to={`/${date}/H`} className={props.detail=='H'?"category-button-active":"category-button"}>
+                            <Link to={`/${date}/H`} className={props.detail==='H'?"category-button-active":"category-button"}>
                                 Harness
                             </Link>
                         </div>
