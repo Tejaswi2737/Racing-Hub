@@ -403,7 +403,7 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [performance.navigation.type]);
 
-    const handleClick=(props,runner_item)=>{
+    const handleClickWin=(props,runner_item)=>{
         if ((raceData[0].raceStatus==="Normal")) {
             if(props.countBetSlip && props.countBetSlip.length===0) {
                 props.countBetSlipData(1);
@@ -579,16 +579,18 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                     </div>
                     <div className="price-cell-body"
-                        onClick={()=>{
-                            handleClick(props,runner_item,pool_fh,runnerSelection,place_list_all)
-                        }} 
+                        onClick={()=>
+                            props.type==="Win"?handleClickWin(props,runner_item,pool_fh,runnerSelection,place_list_all):""
+                        } 
                         style={{
                             backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] && props.type==="Win" ?
                             props.remainingBetSlip.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
                             && e.runners === runner_item.runnerNumber
                             ).length > 0
                             ?
-                            "#d3ecef":"white":"white"}}
+                            "#d3ecef":"white":"white",
+                            cursor:props.type==="Win"?"pointer": "inherit" 
+                        }}
                         >
                         <div className="price-cell-body-child"
                         style={{
@@ -613,12 +615,13 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                     </div>
                     {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella"||props.type==="Duet")?
-                        <div className="price-cell-body">
+                        <div className="price-cell-body checkbox">
                             <div>
                                 <div>
                                 <input
                                     name="1st"
                                     type="checkbox"
+                                    className="checkbox-input"
                                 />                                    
                                 </div>
                             </div>
@@ -917,7 +920,7 @@ const RaceDetails = (props,ownProps)=>{
                             <div className="race-results-wrapper">
                                 <section className={props.racingDetail.raceStatus==="Open"?
                                 "runners-section":"results-section"}>
-                                    {props.racingDetail.raceStatus==="Open"?placeBets():""}
+                                    {raceData?raceData[0]?raceData[0].raceStatus==="Normal"?placeBets():"":"":""}
                                     <div className="page-section-break">
                                     </div> 
                                     {raceData?raceData[0]?raceData[0].raceStatus==="Paying"?resultsTable(props):"":"":""}
