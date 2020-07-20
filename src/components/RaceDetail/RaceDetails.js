@@ -19,6 +19,7 @@ import { fetchMeetingDetails,
 import BetSlipHome from '../BetSlip/BetSlipHome';
 
 import "./RaceDetails.css";
+import { RiWindowLine } from 'react-icons/ri';
 
 const RaceDetails = (props,ownProps)=>{
 
@@ -437,78 +438,80 @@ const RaceDetails = (props,ownProps)=>{
     const [checkUpdate, setcheckUpdate] = useState(false)
 
     useEffect(() => {
-        var users=props.allBetSlip;
-        if(props.screenStatus) {
-            users = [users, ...props.remainingBetSlip];
-        } else {users=[...props.remainingBetSlip]}
-        if(props.remainingBetSlip) {
-            users=Object.values(users)
-        };
-
-
-        var grouped = _.reduce(users, (result, user) => {
-            if(user){
-                    (result[user.name] || (result[user.name] = [])).push(user);  
-                    return result;
-            }    
-        }, {});
-
-        var poolList=[]
-        if(grouped) {
-            if(Object.keys(grouped)){
-                Object.keys(grouped).map(poolname=>{
-                    if(poolname!="undefined") {
-                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
-                            if(user){
-                                    (result[user.name] || (result[user.name] = [])).push(user.runners);  
-                                    
-                                    return (Object.values(result).reduce(
-                                        function(accumulator, currentValue) {
-                                          return accumulator.concat(currentValue)
-                                        },
-                                        []
-                                      ));        
-                            }    
-                        }, {});
-                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
-                            if (name in allNames) {
-                              allNames[name]++
+        if(window.innerWidth<980) {
+            var users=props.allBetSlip;
+            if(props.screenStatus) {
+                users = [users, ...props.remainingBetSlip];
+            } else {users=[...props.remainingBetSlip]}
+            if(props.remainingBetSlip) {
+                users=Object.values(users)
+            };
+    
+    
+            var grouped = _.reduce(users, (result, user) => {
+                if(user){
+                        (result[user.name] || (result[user.name] = [])).push(user);  
+                        return result;
+                }    
+            }, {});
+    
+            var poolList=[]
+            if(grouped) {
+                if(Object.keys(grouped)){
+                    Object.keys(grouped).map(poolname=>{
+                        if(poolname!="undefined") {
+                            var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                                if(user){
+                                        (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                        
+                                        return (Object.values(result).reduce(
+                                            function(accumulator, currentValue) {
+                                              return accumulator.concat(currentValue)
+                                            },
+                                            []
+                                          ));        
+                                }    
+                            }, {});
+                            var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                                if (name in allNames) {
+                                  allNames[name]++
+                                }
+                                else {
+                                  allNames[name] = 1
+                                }
+                                return(allNames)
+                              }, {})
+                            var itemList=[];
+                            var winList=null;
+                            var placeList=null;
+                            for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                                if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                    if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                        var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                        itemList.push(users[pos].runners)
+                                        winList=grouped[poolname][grouped[poolname].length-1].win
+                                        placeList=grouped[poolname][grouped[poolname].length-1].place
+                                    } 
+                                }
+                                }
+                            if (itemList.length){
+                                var itemPool={"name":poolname,"runners":itemList, "win": winList ,"place": placeList}
                             }
-                            else {
-                              allNames[name] = 1
+                            if(poolFinalList){
+                                poolList.push(itemPool)
+                            } else {
+                                poolList=itemPool
                             }
-                            return(allNames)
-                          }, {})
-                        var itemList=[];
-                        var winList=null;
-                        var placeList=null;
-                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
-                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
-                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
-                                    var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                    itemList.push(users[pos].runners)
-                                    winList=grouped[poolname][grouped[poolname].length-1].win
-                                    placeList=grouped[poolname][grouped[poolname].length-1].place
-                                } 
-                            }
-                            }
-                        if (itemList.length){
-                            var itemPool={"name":poolname,"runners":itemList, "win": winList ,"place": placeList}
-                        }
-                        if(poolFinalList){
-                            poolList.push(itemPool)
-                        } else {
-                            poolList=itemPool
-                        }
-                    }     
-                })
-                setRemainingBets(poolList)
-            }
-        };
+                        }     
+                    })
+                    setRemainingBets(poolList)
+                }
+            };
+        }
     }, [props.allBetSlip]);
 
     useEffect(() => {
-        if (RemainingBets) {
+        if (RemainingBets && window.innerWidth<980) {
             setfinalRemainingBets([])
             RemainingBets.map(items=>{
                 if(items) {
@@ -531,9 +534,10 @@ const RaceDetails = (props,ownProps)=>{
 
     }, [RemainingBets]);
     useEffect(() => {
-        if(RemainingBets) {
+        if(RemainingBets && window.innerWidth<980) {
             props.addBetSlipData(RemainingBets);
             props.remainingBetSlipData(finalRemainingBets);
+
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
         }
     }, [finalRemainingBets]);

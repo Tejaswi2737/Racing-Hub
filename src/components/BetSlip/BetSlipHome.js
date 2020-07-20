@@ -34,13 +34,37 @@ const BetSlipHome=(props) =>{
     const [WinMoney, setWinMoney] = useState(null);
     const [PlaceMoney, setPlaceMoney] = useState(null);
     const [typeBet, settypeBet] = useState('');
+    const [localRemaining, setlocalRemaining] = useState([])
+    useEffect(() => {
+        const data =window.localStorage.getItem('betSlip')
+        if (data) {
+            setlocalRemaining(JSON.parse(data))
+        }
+    }, [])
+
+    useEffect(() => {
+        if(finalRemainingBets && window.innerWidth>980) {
+            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
+        }
+    }, [finalRemainingBets]);
+
+
 
     useEffect(() => {
         var users;
-        if (performance.navigation.type == 1 ) {
+        props.postWinPlaceBets([])
+        if(window.innerWidth>980) {
+            var users=props.allBetSlip;
+            var rem=props.remainingBetSlip.length<1?localRemaining:props.remainingBetSlip
+            if(props.screenStatus) {
+                users = [users, ...rem];
+            } else {users=[...rem]}
+        }
+
+        if (performance.navigation.type === 1 && window.innerWidth<980) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
             users=JSON.parse(window.localStorage.getItem('betSlip'))
-        } else {
+        } if(performance.navigation.type !== 1 && window.innerWidth<980) {
             var users=props.remainingBetSlip;
         }
         if(props.remainingBetSlip) {
@@ -101,18 +125,18 @@ const BetSlipHome=(props) =>{
                         }
                     }     
                 })
-                setmobileRemaining(poolList);
+                setRemainingBets(poolList);
                 setstartSlip(true)
             }
         };
     }, [props.allBetSlip]);
 
-    useEffect(() => {
-        props.postWinPlaceBets([]);
-        console.log(props.betSlipInd);
-        setdesktopRemin(props.betSlipInd);
-        setstartSlip(true)
-    }, [props.betSlipInd]);
+    // useEffect(() => {
+    //     props.postWinPlaceBets([]);
+    //     console.log(props.betSlipInd);
+    //     setdesktopRemin(props.betSlipInd);
+    //     setstartSlip(true)
+    // }, [props.betSlipInd]);
 
     
     const deleteSingleBet=(item)=>{
@@ -220,13 +244,13 @@ const BetSlipHome=(props) =>{
         props.remainingBetSlipData(finalRemainingBets);
         localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
     }, [finalRemainingBets]);
-    useEffect(() => {
-        if(window.innerWidth<980) {
-            setRemainingBets(mobileRemaining)
-        } else {
-            setRemainingBets(desktopRemin)
-        }
-    }, [mobileRemaining,desktopRemin]);
+    // useEffect(() => {
+    //     if(window.innerWidth<980) {
+    //         setRemainingBets(mobileRemaining)
+    //     } else {
+    //         setRemainingBets(desktopRemin)
+    //     }
+    // }, [mobileRemaining,desktopRemin]);
     useEffect(() => {
         props.deleteBetSlipData(deletedBets)
     }, [deletedBets]);
