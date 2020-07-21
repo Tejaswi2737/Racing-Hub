@@ -136,64 +136,64 @@ const BetSlipHome=(props) =>{
 
 
 
-        var grouped = _.reduce(users_quinella, (result, user) => {
-            if(user){
-                    (result[user.name] || (result[user.name] = [])).push(user);  
-                    return result;
-            }    
-        }, {});
-        var poolList=[];
-        if(grouped) {
-            if(Object.keys(grouped)){
-                Object.keys(grouped).map(poolname=>{
-                    if(poolname!="undefined") {
-                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
-                            if(user){
-                                    (result[user.name] || (result[user.name] = [])).push(user.runners);  
+        // var grouped = _.reduce(users_quinella, (result, user) => {
+        //     if(user){
+        //             (result[user.name] || (result[user.name] = [])).push(user);  
+        //             return result;
+        //     }    
+        // }, {});
+        // var poolList=[];
+        // if(grouped) {
+        //     if(Object.keys(grouped)){
+        //         Object.keys(grouped).map(poolname=>{
+        //             if(poolname!="undefined") {
+        //                 var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+        //                     if(user){
+        //                             (result[user.name] || (result[user.name] = [])).push(user.runners);  
                                     
-                                    return (Object.values(result).reduce(
-                                        function(accumulator, currentValue) {
-                                          return accumulator.concat(currentValue)
-                                        },
-                                        []
-                                      ));        
-                            }    
-                        }, {});
-                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
-                            if (name in allNames) {
-                              allNames[name]++
-                            }
-                            else {
-                              allNames[name] = 1
-                            }
-                            return(allNames)
-                          }, {})
-                        var itemList=[];
-                        var quinellaList=null;
-                        // var placeList=null;
-                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
-                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
-                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
-                                    var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                    itemList.push(users[pos].runners)
-                                    quinellaList=grouped[poolname][grouped[poolname].length-1].quinella
-                                } 
-                            }
-                            }
-                        if (itemList.length){
-                            var itemPool={"name":poolname,"runners":itemList, "boxed": quinellaList }
-                        }
-                        if(poolFinalList){
-                            poolList.push(itemPool)
-                        } else {
-                            poolList=itemPool
-                        }
-                    }     
-                })
-                setRemainingBets(oldArray => [...oldArray, ...poolList]); 
-                setstartSlip(true)
-            }
-        };
+        //                             return (Object.values(result).reduce(
+        //                                 function(accumulator, currentValue) {
+        //                                   return accumulator.concat(currentValue)
+        //                                 },
+        //                                 []
+        //                               ));        
+        //                     }    
+        //                 }, {});
+        //                 var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+        //                     if (name in allNames) {
+        //                       allNames[name]++
+        //                     }
+        //                     else {
+        //                       allNames[name] = 1
+        //                     }
+        //                     return(allNames)
+        //                   }, {})
+        //                 var itemList=[];
+        //                 var quinellaList=null;
+        //                 // var placeList=null;
+        //                 for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+        //                     if(Object.values(groupedRunnersNo)[i]%2!=0) {
+        //                         if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+        //                             var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+        //                             itemList.push(users[pos].runners)
+        //                             quinellaList=grouped[poolname][grouped[poolname].length-1].quinella
+        //                         } 
+        //                     }
+        //                     }
+        //                 if (itemList.length){
+        //                     var itemPool={"name":poolname,"runners":itemList, "boxed": quinellaList }
+        //                 }
+        //                 if(poolFinalList){
+        //                     poolList.push(itemPool)
+        //                 } else {
+        //                     poolList=itemPool
+        //                 }
+        //             }     
+        //         })
+        //         setRemainingBets(oldArray => [...oldArray, ...poolList]); 
+        //         setstartSlip(true)
+        //     }
+        // };
     }, [props.allBetSlip]);
 
     // useEffect(() => {

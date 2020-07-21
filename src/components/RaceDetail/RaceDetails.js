@@ -476,8 +476,8 @@ const RaceDetails = (props,ownProps)=>{
                 users=Object.values(users)
             };
     
-    
-            var grouped = _.reduce(users, (result, user) => {
+            var users_win=users.filter(e1=> { return e1.win===null });
+            var grouped = _.reduce(users_win, (result, user) => {
                 if(user){
                         (result[user.name] || (result[user.name] = [])).push(user);  
                         return result;
