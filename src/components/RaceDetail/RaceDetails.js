@@ -354,7 +354,7 @@ const RaceDetails = (props,ownProps)=>{
                 <div className="price-cell">
                     Place
                 </div>
-                {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella"||props.type==="Duet")?
+                {(props.type==="Quinella"||props.type==="Duet")?
                         <div className="price-cell">
                             1st Box
                         </div>
@@ -392,7 +392,7 @@ const RaceDetails = (props,ownProps)=>{
                         <div className="price-cell">
                             2nd
                         </div>         
-                    </> :"":""              
+                    </> :""             
                 }
 
             </div>
@@ -573,9 +573,7 @@ const RaceDetails = (props,ownProps)=>{
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
         }
     }, [finalRemainingBets]);
-    // if (window.performance) {
-    //     console.info("window.performance works fine on this browser");
-    //   }
+
 
 
     const runnerInfoBody=(props)=>{
@@ -646,7 +644,7 @@ const RaceDetails = (props,ownProps)=>{
                             ${runner_item.returnPlace}
                         </div>
                     </div>
-                    {(props.racingDetail.raceStatus==="Open")?(props.type==="Quinella")?
+                    {(props.type==="Quinella")?
                         <div className="price-cell-body checkbox">
                             <div>
                                 <div>
@@ -767,8 +765,8 @@ const RaceDetails = (props,ownProps)=>{
                                     />                                    
                                     </div>
                                 </div>
-                        </div>      
-                        </> :"":""        
+                        </div>     
+                        </> :""        
                     }
                 </div>
                 )
