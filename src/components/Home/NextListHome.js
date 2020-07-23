@@ -8,37 +8,33 @@ import "./NextListHome.css";
 import HomeImage from "../../images/Home.gif"
 
 const NextListHome = (props)=>{
-    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
+    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"));
 
     function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
             year = d.getFullYear();
-    
         if (month.length < 2) 
             month = '0' + month;
         if (day.length < 2) 
             day = '0' + day;
-    
         return [year, month, day].join('-');
     }
 
     const date=formatDate(Date.now())
-
-    props.fetchNextRace();
-    // console.log(props.next)
+    useEffect(() => {
+        props.fetchNextRace();
+      }, []);
 
 
     const [nextRace,setnextRace]=useState([]);
     const [nextRaceGrey,setnextRaceGrey]=useState([]);
     const [nextRaceHarness,setnextRaceHarness]=useState([]);
-    const [fetched, setfetched] = useState(false)
 
 
     const fetchResources=(next)=>{
         {next.map(item =>{
-            // console.log(item)
             switch(item.meeting.raceType) {
                 case 'R' :
                     setnextRace(oldArray => [...oldArray, item]);
@@ -54,7 +50,6 @@ const NextListHome = (props)=>{
     };
     useEffect(()=> {
         if (props.next.length>0) {
-            
             fetchResources(props.next);
         }
     },[props.next]);
@@ -90,13 +85,7 @@ const NextListHome = (props)=>{
                         <li>
                             <a>
                                 <div>
-                                {details?details.length>0?details.map(item => {
-                                //    console.log(details)
-                                //    console.log(item.raceNumber)
-                                //    console.log(item.meeting.meetingName)
-                                //    console.log(item.meeting.venueMnemonic)
-                                //    console.log(item.meeting.raceType)
-                                
+                                {details?details.length>0?details.map(item => {                             
                                    return(
                                         <Link to={{
                                             slot:item.raceNumber, 
@@ -116,15 +105,6 @@ const NextListHome = (props)=>{
                                         className="next-item-list-home">                        
                                             <time>{startTime(item.raceStartTime)}</time>
                                             <p>{item.meeting.meetingName} ({item.meeting.location})</p>
-                                            {/* <div className="race-details-container">
-                                                <span className="race-detail">
-                                                    {item.raceDistance}m
-                                                </span>
-                                                <span className="race-detail">
-                                                    {" "+item.meeting.trackCondition } <IoIosArrowForward size={10}/> 
-                                                </span>    
-                                                         <IoIosArrowForward size={10}/>              
-                                            </div> */}
                                         </Link> 
                                 )}):"":""}
                                 </div>
@@ -142,8 +122,6 @@ const NextListHome = (props)=>{
         <main className="page-content">
             <div className="left-column">
                 <ui-view>
-                    {/* <img src={HomeImage} className="main-image">
-                    </img> */}
                     <div>
                         <div className="page-heading">
                             Ready To Take Off
@@ -161,8 +139,6 @@ const NextListHome = (props)=>{
                             </div>
                         </div>
                     </div>
-
-
                 </ui-view>
             </div>
         </main>

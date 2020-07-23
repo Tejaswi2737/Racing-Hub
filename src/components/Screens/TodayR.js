@@ -17,7 +17,9 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import RespHeader from '../Nav/RespHeader';
 
 const TodayR=(props)=> {
+  useEffect(() => {
     props.fetchNextRace();
+  }, []);
     props.betSlipScreen(false)
 
     useEffect(() => {
@@ -27,21 +29,7 @@ const TodayR=(props)=> {
   }, [performance.navigation.type]);
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
-    useEffect(
-       () => {
-         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
-         return () => {
-           clearInterval(timerToClearSomewhere.current)
-         }
-       },
-       [showLoading]
-     )
-     setTimeout(()=>{
-        setShowLoading(false)
-        return () => {
-            clearInterval(timerToClearSomewhere.current)
-          }
-        });
+
         function formatDate(date) {
           var d = new Date(date),
               month = '' + (d.getMonth() + 1),

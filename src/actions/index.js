@@ -2,7 +2,6 @@ import axios from "axios"
 
 
 export const fetchTodayRacing =  () => {
-  console.log("reqmeetingdetailsAll")
   return function(dispatch) {
     return axios.get("o/meetingDetailsAll.json?alt=media&token=16ad09ff-6424-4166-8356-2c9a1d89b8ed")
     .then(({ data }) => {
@@ -15,7 +14,6 @@ export const fetchTodayRacing =  () => {
 };
 
 export const fetchNextRace =  () => {
-  console.log("reqnextRace")
 
   return function(dispatch) {
     return axios.get("/o/nextToGo.json?alt=media&token=6ab5cab9-98f7-40b6-b815-5d2d4e2e8962")
@@ -29,8 +27,6 @@ export const fetchNextRace =  () => {
 };
 
 export const fetchMeetingDetails =  () => {
-  console.log("reqmeetingdetails")
-
   return function(dispatch) {
     return axios.get("/o/meetingDetails.json?alt=media&token=338c0769-ca58-4d86-87ad-f32229f2df76")
     .then(({ data }) => {
@@ -43,10 +39,8 @@ export const fetchMeetingDetails =  () => {
 };
 
 export const fetchRaceDetails =  (props) => {
-  console.log("reqracedetails")
-
   return function(dispatch) {
-    return axios.get(`/o/raceDetailsResults${props}.json?alt=media&token=7adf690e-175e-4f80-9aad-f275454f1068`)
+    return axios.get(`/o/raceDetailsResults${props}.json?alt=media&token=4cc631e9-84fc-4419-9560-68787ade170c`)
     .then(({ data }) => {
       dispatch({
         type: 'FETCH_RACE_DETAIL',

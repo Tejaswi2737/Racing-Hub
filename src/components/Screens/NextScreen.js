@@ -16,7 +16,9 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import RespHeader from '../Nav/RespHeader';
 import "../Next/NextRace.css"
 const NextScreen=(props) =>{
-    props.fetchNextRace();
+    useEffect(() => {
+        props.fetchNextRace();
+      }, []);
     props.betSlipScreen(false)
     const [firstTime, setfirstTime] = useState();
     const [showLoading, setShowLoading] = useState(false)
@@ -106,7 +108,6 @@ const mapStateToProps=(state)=> {
         next:state.next,
         screenStatus:state.screenStatus,
         remainingBetSlip:state.remainingBetSlip,
-
     }
 }
 export default connect(mapStateToProps, { 

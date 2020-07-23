@@ -18,6 +18,7 @@ import "./Home.css";
 import mobileSlipButton from '../BetSlip/MobileLayout/mobileSlipButton';
 
 const Home=(props) =>{
+    
       function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),

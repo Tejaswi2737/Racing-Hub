@@ -8,7 +8,6 @@ import TodayRacingDetails from  "./TodayRacingDetails";
 
 const TodayDetails = (props,ownProps)=>{
     // console.log(props)
-    
         function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -32,10 +31,10 @@ const TodayDetails = (props,ownProps)=>{
               });
             settodayData(newArray)
         }
-
-        
     }, [props])
-    props.fetchNextRace();
+    useEffect(() => {
+        props.fetchNextRace();
+      }, []);
     useEffect(() => {
     }, [todayData])
     

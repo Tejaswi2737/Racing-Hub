@@ -16,48 +16,29 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import RespHeader from '../Nav/RespHeader';
 
 const TodayG=(props)=> {
-    props.fetchNextRace();
+    useEffect(() => {
+      props.fetchNextRace();
+    }, [])
+    
     props.betSlipScreen(false)
-    // useEffect(() => {
-    //   props.allBetSlipData([])
-    // }, [props.next])
     useEffect(() => {
       if (performance.navigation.type === 1) {
           props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
       }
   }, [performance.navigation.type]);
-    const [showLoading, setShowLoading] = useState(false)
-    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
-    useEffect(
-       () => {
-         timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
-         return () => {
-           clearInterval(timerToClearSomewhere.current)
-         }
-       },
-       [showLoading]
-     )
-     setTimeout(()=>{
-        setShowLoading(false)
-        return () => {
-            clearInterval(timerToClearSomewhere.current)
-          }
-        });
-        function formatDate(date) {
-          var d = new Date(date),
-              month = '' + (d.getMonth() + 1),
-              day = '' + d.getDate(),
-              year = d.getFullYear();
-      
-          if (month.length < 2) 
-              month = '0' + month;
-          if (day.length < 2) 
-              day = '0' + day;
-      
-          return [year, month, day].join('-');
-      }
-  
-      const date=formatDate(Date.now())
+  function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+        return [year, month, day].join('-');
+    }
+
+    const date=formatDate(Date.now())
     return (
         <>
           <MediaQuery query='(min-width: 980px)'>

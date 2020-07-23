@@ -33,7 +33,10 @@ const RaceDetails = (props,ownProps)=>{
     const [runner_quinella, setrunner_quinella] = useState({});
     const [pathValues, setpathValues] = useState([])
 
-    props.fetchMeetingDetails();
+    useEffect(() => {
+        props.fetchMeetingDetails();
+    }, [])
+    
     
     
     if (parseInt(pathValues.slot)){
@@ -92,9 +95,12 @@ const RaceDetails = (props,ownProps)=>{
     
         return [year, month, day].join('-');
     }
-    const date=formatDate(Date.now())
+    const date=formatDate(Date.now());
     useEffect(() => {
-        props.fetchTodayRacing()
+        props.fetchTodayRacing();
+    }, [])
+    useEffect(() => {
+        
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
                 return (
@@ -397,8 +403,6 @@ const RaceDetails = (props,ownProps)=>{
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
         if (performance.navigation.type === 1 && window.innerWidth>980) {
-            console.log("reloaded race details");
-            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
             props.addBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);

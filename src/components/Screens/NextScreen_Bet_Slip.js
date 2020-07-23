@@ -10,7 +10,9 @@ import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./NextScreen.css";
 
 const NextScreen=(props) =>{
+  useEffect(() => {
     props.fetchNextRace();
+  }, []);
 
     const [showLoading, setShowLoading] = useState(false)
 

@@ -19,7 +19,9 @@ import RespHeader from '../../Nav/RespHeader';
 import "./RaceDetails.css";
 
 const RaceDetailsPageDuet=(props,ownProps)=> {
+  useEffect(() => {
     props.fetchNextRace();
+  }, []);
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
     useEffect(
