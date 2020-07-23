@@ -1,4 +1,7 @@
 import {combineReducers} from 'redux';
+import {firebaseReducer} from "react-redux-firebase";
+import {firestoreReducer} from "redux-firestore";
+
 import nextReducer from './nextReducer';
 import nextReducerHome from './nextReducerHome';
 
@@ -20,7 +23,10 @@ import remainingBetSlipReducer from  "./remainingBetSlipData";
 
 import countBetSlipReducer from  "./countBetSlipData"
 
-
+export const rootReducer = combineReducers({
+    firebase: firebaseReducer,
+    firestore: firestoreReducer
+});
 export default combineReducers({
     next: nextReducer,
     nextHome:nextReducerHome,

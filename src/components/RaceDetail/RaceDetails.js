@@ -19,7 +19,6 @@ import { fetchMeetingDetails,
 import BetSlipHome from '../BetSlip/BetSlipHome';
 
 import "./RaceDetails.css";
-import { RiWindowLine } from 'react-icons/ri';
 
 const RaceDetails = (props,ownProps)=>{
 
