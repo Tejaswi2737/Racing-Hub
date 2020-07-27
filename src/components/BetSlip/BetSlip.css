@@ -38,6 +38,11 @@
     float: right;
     width:25%;
 }
+.bet-status{
+    margin-left: 30px;
+    color: red;
+    font-size: 1rem;
+}
 .side-panel, .inner-side-panel {
     float: right;
     width:25%;
@@ -310,6 +315,7 @@ label {
     color: black;
     display: inline-block;
     font-size: 0.7rem;
+    margin-top: 10px;
 }
 .keypad-menu {
     display: block;

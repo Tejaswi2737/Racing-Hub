@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { Link} from "react-router-dom";
 import MediaQuery from 'react-responsive';
 import _, { isInteger, indexOf } from "lodash"
-
-
 import { fetchMeetingDetails,
     fetchRaceDetails,
     addBetSlipData,
@@ -15,12 +13,12 @@ import { fetchMeetingDetails,
     fetchTodayRacing,
     fetchPathParams
 } from "../../actions";
-
 import BetSlipHome from '../BetSlip/BetSlipHome';
-
 import "./RaceDetails.css";
 
 const RaceDetails = (props,ownProps)=>{
+    const [place, setplace] = useState(initialValuePlace);
+    const [place_slot, setplace_slot] = useState(initialValue);
 
     const [todayData, settodayData] = useState([]);
     const [raceData, setraceData] = useState([]);
@@ -32,42 +30,52 @@ const RaceDetails = (props,ownProps)=>{
     const [runner_win_place, setrunner_win_place] = useState({});
     const [runner_quinella, setrunner_quinella] = useState({});
     const [pathValues, setpathValues] = useState([])
+    const [showLoading, setShowLoading] = useState(false);
+    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
+    const timerToClearSomewhere = useRef(false) 
 
+
+    const [poolFinalList, setpoolFinalList] = useState([]);
+    const [RemainingBets, setRemainingBets] = useState();
+
+    const [finalRemainingBets, setfinalRemainingBets] = useState([]);
+    const [betsUpdated, setbetsUpdated] = useState([]);
+    const [checkUpdate, setcheckUpdate] = useState(false)
+
+// fetching the meeting details and assigning them to races_list
+//fetchMeetingDetails--- meeting details
     useEffect(() => {
         props.fetchMeetingDetails();
     }, [])
-    
-    
-    
-    if (parseInt(pathValues.slot)){
-        var initialValue=parseInt(pathValues.slot)
-    } else {
-        initialValue=1
-    }
-    if ((pathValues.place)){
-        var initialValuePlace=(pathValues.place)
-    } else {
-        initialValuePlace=""
-    }
-    const [place, setplace] = useState(initialValuePlace);
-    const [place_slot, setplace_slot] = useState(initialValue);
     var races_list=[props.meetingDetails.races];
+    races_list=Object.values(races_list);
+    // var items_list={}
+    // {races_list?races_list.map(item=>{
+    //      items_list=item;
+    // }): items_list=[]};
+    
+
+// store the pathparam, i.e., the slot and place name of the request and fetch the requested race detail
+//place_slot --- has the slot
+// fetchRaceDetails -- action to fetch the race details player/ runner info
+    var initialValue=parseInt(pathValues.slot)?parseInt(pathValues.slot):1
+    var initialValuePlace=parseInt(pathValues.place)?parseInt(pathValues.place):""
     useEffect(() => {
         setplace_slot(initialValue)
     }, [initialValue,initialValuePlace])
     useEffect(() => {
         props.fetchRaceDetails(place_slot);
     }, [place_slot,place])
-    races_list=Object.values(races_list);
-    var items_list={}
-    {races_list?races_list.map(item=>{
-         items_list=item;
-    }): items_list=[]};
 
-  
+
+    // store the pathparams and fetch them when reloaded for first time to localstorage to allow reload
+
     useEffect(() => {
-        props.remainingBetSlipData(props.remainingBetSlip)
-    }, [props.meetingDetails]);
+        if(props.pathParams.code) {
+            setpathValues(props.pathParams)
+            localStorage.setItem('pathParams',JSON.stringify(props.pathParams))
+        }
+    }, [props.pathParams]);
 
     useEffect(() => {
         const data =window.localStorage.getItem('pathParams')
@@ -76,13 +84,16 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [])
 
+
+// see if required or not
     useEffect(() => {
-        if(props.pathParams.code) {
-            setpathValues(props.pathParams)
-            localStorage.setItem('pathParams',JSON.stringify(props.pathParams))
-        }
-    }, [props.pathParams]);
-        function formatDate(date) {
+        props.remainingBetSlipData(props.remainingBetSlip)
+    }, [props.meetingDetails]);
+
+
+
+// component to keep todays date irrespective of the actual data for mocking purpose intially
+    function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
             day = '' + d.getDate(),
@@ -92,26 +103,30 @@ const RaceDetails = (props,ownProps)=>{
             month = '0' + month;
         if (day.length < 2) 
             day = '0' + day;
-    
         return [year, month, day].join('-');
     }
     const date=formatDate(Date.now());
+
+
+
+// the details of the race, amount etc for the corresponding pathparams, ie., venue and slot
+// stored in todayData and raceData
     useEffect(() => {
         props.fetchTodayRacing();
     }, [])
     useEffect(() => {
-        
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
                 return (
                     el.meetingName ===pathValues.place &&
                     el.raceType===pathValues.raceType &&
-                     el.venueMnemonic=== pathValues.code 
+                    el.venueMnemonic=== pathValues.code 
                 )
               });
             settodayData(newArray)
         }
     }, [props]);
+
     useEffect(() => {
         if(todayData) {
             if(todayData[0]) {
@@ -127,9 +142,8 @@ const RaceDetails = (props,ownProps)=>{
     }, [todayData])
 
 
-    const [showLoading, setShowLoading] = useState(false);
-    const [diffTime, setdiffTime] = useState(Date.now()-new Date("2020-07-03T05:09:00.000Z"))
-    const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
+// Component for setting timeout for every second
+// duration for timeleft and start time for the australian standard time format for the required data 
     useEffect(
        () => {
          timerToClearSomewhere.current = setInterval(() => setShowLoading(true), 800)
@@ -215,9 +229,10 @@ const RaceDetails = (props,ownProps)=>{
         else return (hours+":"+minutes)
     };
 
+
+// Results table for the already completed and results declared races
     const resultsTable=(props)=>{
         return(
-            
             <table className="race-table-results">
                 {props.racingDetail.results.length>0?
                 <thead>
@@ -280,6 +295,8 @@ const RaceDetails = (props,ownProps)=>{
         )
     };
 
+
+// exotic results for the results declared races
     const exoticTable=(props)=>{
         return(
             <table className="race-table">
@@ -332,13 +349,7 @@ const RaceDetails = (props,ownProps)=>{
     };
 
 
-    const sortRunnerInforTable=(props)=> {
-
-    }
-
-
-
-
+// runner infor table , this is for all the races
     const runnerInfoheader=(props)=>{
         return(
             <div className="runner-info-row">
@@ -398,34 +409,46 @@ const RaceDetails = (props,ownProps)=>{
             </div>
         )
     };
+
+// fetching the info for non-desktop versions, from the local storage.,
+// the information of pending bets in the win place
     useEffect(() => {
         if (performance.navigation.type === 1 && window.innerWidth<980) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
-        if (performance.navigation.type === 1 && window.innerWidth>980) {
-            props.addBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
-        }
     }, [performance.navigation.type]);
 
+
+// handle click for the win/place bets, 
+// this will execute if the race is open for betting ie., normal now
+// an object is assigned to runner_win_place and in which the bet details are stored
     const handleClickWin=(props,runner_item)=>{
         if ((raceData[0].raceStatus==="Normal")) {
-            if(props.countBetSlip && props.countBetSlip.length===0) {
-                props.countBetSlipData(1);
-                setcount((props.countBetSlip));
+            // if(props.countBetSlip && props.countBetSlip.length===0) {
+            //     props.countBetSlipData(1);
+            //     setcount((props.countBetSlip));
+            //     setrunner_win_place({
+            //         "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+            //         ,"runners":runner_item.runnerNumber,"win": null ,"place": null
+            //     });
+            // } else {
+            //     props.countBetSlipData(parseInt(props.countBetSlip)+1);
+            //     setcount((props.countBetSlip));
                 setrunner_win_place({
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });
-            } else {
-                props.countBetSlipData(parseInt(props.countBetSlip)+1);
-                setcount((props.countBetSlip));
-                setrunner_win_place({
-                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
-                    ,"runners":runner_item.runnerNumber,"win": null ,"place": null
-                });
-            }   
+            // }   
         }
     };
+
+// send the runner_win_place info to an action creator, 
+    useEffect(() => {
+        if ((runner_win_place)) {
+            {props.allBetSlipData(runner_win_place)}
+            props.betSlipScreen(true);
+        }
+    }, [runner_win_place]);
 
     const handleClickQuinella=(props,runner_item)=>{
         if ((raceData[0].raceStatus==="Normal")) {
@@ -447,13 +470,9 @@ const RaceDetails = (props,ownProps)=>{
         }
     };
 
-    useEffect(() => {
-        if ((runner_win_place)) {
-            {props.allBetSlipData(runner_win_place)}
-            props.betSlipScreen(true);
-        }
 
-    }, [runner_win_place]);
+
+
     useEffect(() => {
         if(runner_quinella) {
             {props.allBetSlipData(runner_quinella)}
@@ -462,13 +481,8 @@ const RaceDetails = (props,ownProps)=>{
     }, [runner_quinella])
     
 
-    const [poolFinalList, setpoolFinalList] = useState([]);
-    const [RemainingBets, setRemainingBets] = useState();
 
-    const [finalRemainingBets, setfinalRemainingBets] = useState([]);
-    const [betsUpdated, setbetsUpdated] = useState([]);
-    const [checkUpdate, setcheckUpdate] = useState(false)
-
+// handling the remaining bets for the non-desktop version
     useEffect(() => {
         if(window.innerWidth<980) {
             var users=props.allBetSlip;
@@ -992,13 +1006,6 @@ const mapStateToProps=(state,ownProps)=> {
         raceType:ownProps.raceType,
         place:ownProps.place,
         type:ownProps.type,
-
-
-
-
-
-
-
         meetingDetails:state.meetingDetails,
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
@@ -1006,7 +1013,6 @@ const mapStateToProps=(state,ownProps)=> {
         screenStatus:state.screenStatus,
         remainingBetSlip:state.remainingBetSlip,
         allBetSlip:state.allBetSlip,
-
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
         pathParams:state.pathParams
@@ -1021,7 +1027,6 @@ export default connect(mapStateToProps,
         countBetSlipData,
         betSlipScreen,
         remainingBetSlipData,
-
         fetchPathParams,
         fetchTodayRacing
         })

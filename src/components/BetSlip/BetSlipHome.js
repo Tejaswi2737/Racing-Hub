@@ -6,8 +6,6 @@ import "./BetSlip.css"
 import { RiDeleteBin6Line } from "react-icons/ri";
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-
-
 import { 
     addBetSlipData,
     allBetSlipData,
@@ -16,8 +14,6 @@ import {
     betSlipScreen,
     postWinPlaceBets
 } from "../../actions";
-
-
 
 const BetSlipHome=(props) =>{
     const [poolFinalList, setpoolFinalList] = useState([]);
@@ -43,12 +39,10 @@ const BetSlipHome=(props) =>{
     }, [])
 
     useEffect(() => {
-        if(finalRemainingBets && window.innerWidth>980) {
+        if(finalRemainingBets  && window.innerWidth>980) {
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
         }
     }, [finalRemainingBets]);
-
-
 
     useEffect(() => {
         var users;
@@ -60,7 +54,6 @@ const BetSlipHome=(props) =>{
                 users = [users, ...rem];
             } else {users=[...rem]}
         }
-
         if (performance.navigation.type === 1 && window.innerWidth<980) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
             users=JSON.parse(window.localStorage.getItem('betSlip'))
@@ -341,6 +334,7 @@ const BetSlipHome=(props) =>{
 
 
     const betSlipPlaceInput=(item)=>{
+        
         var pos=(_.findIndex(RemainingBets, item));
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
@@ -483,6 +477,9 @@ const BetSlipHome=(props) =>{
                                     </div>
                                     <footer className="bet-card-footer">
                                         <div className="bet-card-footer-actions">
+                                            <p className="bet-status">
+                                                {item.win +item.place ==0?"Incomplete Bet":""}
+                                            </p>                                           
                                             <button className="bet-card-remove">
                                                 <i onClick={()=>{deleteSingleBet(item)
                                                             setdeleted(true)
@@ -538,6 +535,7 @@ const BetSlipHome=(props) =>{
                         </button>
                         <button  onClick={()=>{
                             props.postWinPlaceBets(placeWinPlaceBetList)
+                            setRemainingBets([])
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
                             Bet Now

@@ -14,7 +14,6 @@ export const fetchTodayRacing =  () => {
 };
 
 export const fetchNextRace =  () => {
-
   return function(dispatch) {
     return axios.get("/o/nextToGo.json?alt=media&token=6ab5cab9-98f7-40b6-b815-5d2d4e2e8962")
       .then(({ data }) => {
