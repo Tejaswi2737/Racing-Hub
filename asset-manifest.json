@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/Racing-Hub/static/css/main.0e490996.chunk.css",
-    "main.js": "/Racing-Hub/static/js/main.6ae39d5f.chunk.js",
-    "main.js.map": "/Racing-Hub/static/js/main.6ae39d5f.chunk.js.map",
+    "main.css": "/Racing-Hub/static/css/main.4b481dba.chunk.css",
+    "main.js": "/Racing-Hub/static/js/main.3e7fbb30.chunk.js",
+    "main.js.map": "/Racing-Hub/static/js/main.3e7fbb30.chunk.js.map",
     "runtime-main.js": "/Racing-Hub/static/js/runtime-main.a5b40a89.js",
     "runtime-main.js.map": "/Racing-Hub/static/js/runtime-main.a5b40a89.js.map",
     "static/css/2.51270f71.chunk.css": "/Racing-Hub/static/css/2.51270f71.chunk.css",
-    "static/js/2.96361e06.chunk.js": "/Racing-Hub/static/js/2.96361e06.chunk.js",
-    "static/js/2.96361e06.chunk.js.map": "/Racing-Hub/static/js/2.96361e06.chunk.js.map",
+    "static/js/2.d4ffd70d.chunk.js": "/Racing-Hub/static/js/2.d4ffd70d.chunk.js",
+    "static/js/2.d4ffd70d.chunk.js.map": "/Racing-Hub/static/js/2.d4ffd70d.chunk.js.map",
     "index.html": "/Racing-Hub/index.html",
-    "precache-manifest.ad3789ab176f06a10a6d2d9ef2b2ab08.js": "/Racing-Hub/precache-manifest.ad3789ab176f06a10a6d2d9ef2b2ab08.js",
+    "precache-manifest.70b033062c83b2f4431b4649b4695155.js": "/Racing-Hub/precache-manifest.70b033062c83b2f4431b4649b4695155.js",
     "service-worker.js": "/Racing-Hub/service-worker.js",
     "static/css/2.51270f71.chunk.css.map": "/Racing-Hub/static/css/2.51270f71.chunk.css.map",
-    "static/css/main.0e490996.chunk.css.map": "/Racing-Hub/static/css/main.0e490996.chunk.css.map",
-    "static/js/2.96361e06.chunk.js.LICENSE.txt": "/Racing-Hub/static/js/2.96361e06.chunk.js.LICENSE.txt",
+    "static/css/main.4b481dba.chunk.css.map": "/Racing-Hub/static/css/main.4b481dba.chunk.css.map",
+    "static/js/2.d4ffd70d.chunk.js.LICENSE.txt": "/Racing-Hub/static/js/2.d4ffd70d.chunk.js.LICENSE.txt",
     "static/media/Home.gif": "/Racing-Hub/static/media/Home.4a2d5568.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.a5b40a89.js",
     "static/css/2.51270f71.chunk.css",
-    "static/js/2.96361e06.chunk.js",
-    "static/css/main.0e490996.chunk.css",
-    "static/js/main.6ae39d5f.chunk.js"
+    "static/js/2.d4ffd70d.chunk.js",
+    "static/css/main.4b481dba.chunk.css",
+    "static/js/main.3e7fbb30.chunk.js"
   ]
 }
