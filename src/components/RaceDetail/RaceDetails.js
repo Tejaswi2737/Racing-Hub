@@ -66,6 +66,7 @@ const RaceDetails = (props,ownProps)=>{
         setplace_slot(initialValue)
     }, [initialValue,initialValuePlace])
     useEffect(() => {
+        console.log(pathValues.slot)
         props.fetchRaceDetails(place_slot);
     }, [place_slot,place])
 
@@ -83,6 +84,9 @@ const RaceDetails = (props,ownProps)=>{
         const data =window.localStorage.getItem('pathParams')
         if (data) {
             setpathValues(JSON.parse(data))
+            setplace_slot(JSON.parse(data).slot)
+            setplace(JSON.parse(data).place)
+            props.fetchRaceDetails(JSON.parse(data).slot);
         }
     }, [])
 
@@ -416,7 +420,6 @@ const RaceDetails = (props,ownProps)=>{
 // the information of pending bets in the win place
     useEffect(() => {
         if (performance.navigation.type === 1 && window.innerWidth<980) {
-            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
@@ -424,7 +427,6 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if(RemainingBets && window.innerWidth ) {
             props.addBetSlipData(RemainingBets);
-            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
             props.remainingBetSlipData(finalRemainingBets);
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
         }
@@ -460,7 +462,6 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if ((runner_win_place)) {
             if(runner_win_place.name) {
-                console.log('entered into runner')
                 {props.allBetSlipData(runner_win_place)}
                 props.betSlipScreen(true);
             }
@@ -540,7 +541,6 @@ const RaceDetails = (props,ownProps)=>{
                         return result;
                 }    
             }, {});
-            console.log(users)
             var poolList=[]
             if(grouped) {
                 if(Object.keys(grouped)){
@@ -1031,7 +1031,7 @@ const RaceDetails = (props,ownProps)=>{
                         </div>
                         <div className="page-section">  
                             <div className="race-results-wrapper">
-                                <section className={props.racingDetail.raceStatus==="Open"?
+                                <section className={props.racingDetail?props.racingDetail.raceStatus!=="Open":""?
                                 "runners-section":"results-section"}>
                                     {raceData?raceData[0]?raceData[0].raceStatus==="Normal"?placeBets():"":"":""}
                                     <div className="page-section-break">
