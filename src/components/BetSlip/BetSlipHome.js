@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,useRe} from 'react';
 import { connect } from 'react-redux';
 
 import _, { isInteger, indexOf, isObject, isArray } from "lodash"
@@ -12,7 +12,9 @@ import {
     deleteBetSlipData,
     remainingBetSlipData,
     betSlipScreen,
-    postWinPlaceBets
+    postWinPlaceBets,
+    deleteSingleBet,
+    deleteAllBets
 } from "../../actions";
 
 const BetSlipHome=(props) =>{
@@ -30,25 +32,24 @@ const BetSlipHome=(props) =>{
     const [WinMoney, setWinMoney] = useState(null);
     const [PlaceMoney, setPlaceMoney] = useState(null);
     const [typeBet, settypeBet] = useState('');
-    const [localRemaining, setlocalRemaining] = useState([])
-    useEffect(() => {
-        const data =window.localStorage.getItem('betSlip')
-        console.log(data)
-        if (data) {
-            setlocalRemaining(JSON.parse(data))
-            // props.remainingBetSlipData(JSON.parse(data))
-        }
-    }, [])
+    const [localRemaining, setlocalRemaining] = useState([]);
 
-    useEffect(() => {
-        if(finalRemainingBets[0] ) {
-            if(finalRemainingBets[0].name) {
-                console.log(finalRemainingBets)
-                localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
-            }
+    // useEffect(() => {
+    //     const data =window.localStorage.getItem('betSlip')
+    //     if (data) {
+    //         setlocalRemaining(JSON.parse(data))
+    //         // props.remainingBetSlipData(JSON.parse(data))
+    //     }
+    // }, [])
 
-        }
-    }, [finalRemainingBets]);
+    // useEffect(() => {
+    //     if(finalRemainingBets[0] ) {
+    //         if(finalRemainingBets[0].name) {
+    //             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
+    //         }
+
+    //     }
+    // }, [finalRemainingBets]);
 
     // useEffect(() => {
     //     if( window.innerWidth<980) {
@@ -60,30 +61,40 @@ const BetSlipHome=(props) =>{
     // }, [finalRemainingBets]);
 
     useEffect(() => {
+        console.log(props.allBetSlip)
         var users;
         props.postWinPlaceBets([]);
-        console.log(performance.navigation.type,window.localStorage.getItem('betSlip'),props.remainingBetSlip)
-        if(window.innerWidth>980) {
+        if(window.innerWidth>980 && performance.navigation.type >=1 ) {
             var users=props.allBetSlip;
             var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
             if(props.screenStatus) {
                 users = [users, ...rem];
             } else {users=[...rem]}
         }
-        if (performance.navigation.type === 1 && window.innerWidth<980) {
-            console.log('neteres',finalRemainingBets)
+        if(window.innerWidth>980 && performance.navigation.type == 0 ) {
+            var users=props.allBetSlip;
+            var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
+            if(props.screenStatus) {
+                users = [users, ...rem];
+            } else {users=[...rem]}
+        }
+        if (performance.navigation.type >= 1 && window.innerWidth<980) {
+            console.log(performance.navigation.type,'entered',props.remainingBetSlip,JSON.parse(window.localStorage.getItem('betSlip')))
+
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
             users=JSON.parse(window.localStorage.getItem('betSlip'))
         } 
-        if(performance.navigation.type !== 1 && window.innerWidth<980) {
+        if(performance.navigation.type == 0 && window.innerWidth<980) {
+            console.log(performance.navigation.type,'enteredsec',props.remainingBetSlip,JSON.parse(window.localStorage.getItem('betSlip')))
+
             var users=props.remainingBetSlip;
         }
         if(props.remainingBetSlip) {
-            console.log(users)
             users=Object.values(users)
         };
         // var users_quinella=users.filter(e1=> { return e1.quinella===null });
         // var users_win=users.filter(e1=> { return e1.win===null });
+        console.log(users)
         var grouped = _.reduce(users, (result, user) => {
             if(user){
                     (result[user.name] || (result[user.name] = [])).push(user);  
@@ -216,44 +227,51 @@ const BetSlipHome=(props) =>{
     // }, [props.betSlipInd]);
 
     
-    const deleteSingleBet=(item)=>{
-        if (RemainingBets.length==1){
-            setstartSlip(false)
-            setRemainingBets([])
-            localStorage.setItem('betSlip',JSON.stringify([]))
-        }
-        var obje=RemainingBets.filter(e1=> { return e1 != item })
-        setRemainingBets(obje)
-        localStorage.setItem('betSlip',JSON.stringify(obje))
-        if(item.runners.length>1) {
-            item.runners.map(runnnerInd=>{
-                setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(runnnerInd),"win": item.win ,"place": item.place}]); 
-            })
-        } else {
-            setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(item.runners),"win": item.win ,"place": item.place}]);
-        }
+    const deleteSingleBetfun=(item)=>{
+        // if(window.innerWidth<980) {
+            if (RemainingBets.length==1){
+                setstartSlip(false)
+                setRemainingBets([])
+                localStorage.setItem('betSlip',JSON.stringify([]));
+            }
+            var obje=RemainingBets.filter(e1=> { return e1 != item })
+            setRemainingBets(obje)
+            localStorage.setItem('betSlip',JSON.stringify(obje))
+            props.deleteSingleBet([])
+            if(item.runners.length>1) {
+                item.runners.map(runnnerInd=>{
+                    setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(runnnerInd),"win": item.win ,"place": item.place}]); 
+                })
+            } else {
+                setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(item.runners),"win": item.win ,"place": item.place}]);
+            }
+        // }
+
     };
 
     const handleDeleteAll=()=>{
-        if (RemainingBets.length==1){
-            setstartSlip(false)
-            setRemainingBets([])
-            localStorage.setItem('betSlip',JSON.stringify([]))
-        }
-        RemainingBets.map(items=>{
-            if(items) {
-                if(items.runners.length>1) {
-                    items.runners.map(runnnerInd=>{
-                        setdeletedBets(oldArray => [...oldArray, 
-                            {"name":items.name,"runners":runnnerInd,
-                            "win": items.win ,"place": items.place}]);
-                    })
-                } else setdeletedBets(oldArray => [...oldArray, items]);   
+        // if(window.innerWidth<980) {
+            if (RemainingBets.length==1){
+                setstartSlip(false)
+                setRemainingBets([])
+                localStorage.setItem('betSlip',JSON.stringify([]))
             }
-         })
-        setRemainingBets([]);
-        localStorage.setItem('betSlip',JSON.stringify([]))
-        setshowCurrency(false);
+            RemainingBets.map(items=>{
+                if(items) {
+                    if(items.runners.length>1) {
+                        items.runners.map(runnnerInd=>{
+                            setdeletedBets(oldArray => [...oldArray, 
+                                {"name":items.name,"runners":runnnerInd,
+                                "win": items.win ,"place": items.place}]);
+                        })
+                    } else setdeletedBets(oldArray => [...oldArray, items]);   
+                }
+             })
+            setRemainingBets([]);
+            localStorage.setItem('betSlip',JSON.stringify([]))
+            setshowCurrency(false);
+        // }
+
     };
 
     useEffect(() => {
@@ -279,9 +297,14 @@ const BetSlipHome=(props) =>{
         }
 
     }, [RemainingBets]);
+
     useEffect(() => {
         if (finalRemainingBets) {
-            setplaceWinPlaceBetList([])
+            setplaceWinPlaceBetList([]);
+            if(window.innerWidth) {
+                localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
+                props.remainingBetSlipData(finalRemainingBets)
+            }
             finalRemainingBets.map(items=>{
                 if(items) {
                     if( items.win>0)  {
@@ -329,16 +352,15 @@ const BetSlipHome=(props) =>{
     //         setRemainingBets(desktopRemin)
     //     }
     // }, [mobileRemaining,desktopRemin]);
+
+
     // useEffect(() => {
-        
-    //     props.deleteBetSlipData(deletedBets);
-    //     if(deletedBets[0]) {
-    //         if(deletedBets[0].name ){
-    //             console.log("neterd deleted ",finalRemainingBets)
+    //     if(props.deleteSingleBetData[0]) {
+    //             console.log(finalRemainingBets)
+    //             props.remainingBetSlipData(finalRemainingBets)
     //             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
-    //         }
     //      }
-    // }, [deletedBets,finalRemainingBets]);
+    // }, [props.deleteSingleBetData]);
     
     const betSlipHeader=()=>{
         return(
@@ -508,7 +530,8 @@ const BetSlipHome=(props) =>{
                                                 {item.win +item.place ==0?"Incomplete Bet":""}
                                             </p>                                           
                                             <button className="bet-card-remove">
-                                                <i onClick={()=>{deleteSingleBet(item)
+                                                <i onClick={()=>{props.deleteSingleBet(item)
+                                                            {deleteSingleBetfun(item)}
                                                             setdeleted(true)
                                                             setshowCurrency(false)}}
                                                 className="icon-remove" style={{height:'5rem'}}>
@@ -563,6 +586,7 @@ const BetSlipHome=(props) =>{
                         <button  onClick={()=>{
                             props.postWinPlaceBets(placeWinPlaceBetList)
                             setRemainingBets([])
+                            props.deleteAllBets(true)
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
                             Bet Now
@@ -596,13 +620,16 @@ const BetSlipHome=(props) =>{
 }
 
 const mapStateToProps=(state)=> {
+    
     return{ 
         betSlipInd:state.betSlipInd,
         allBetSlip:state.allBetSlip,
         deleteBetSlip:state.deleteBetSlip,
         remainingBetSlip:state.remainingBetSlip,
         screenStatus:state.screenStatus,
-        postWinPlace:state.postWinPlace
+        postWinPlace:state.postWinPlace,
+        deleteSingleBetData:state.deleteSingleBet,
+        deleteAllBetData:state.deleteAllBet
     }
 }
 export default connect(mapStateToProps, 
@@ -612,6 +639,8 @@ export default connect(mapStateToProps,
         deleteBetSlipData,
         remainingBetSlipData,
         betSlipScreen,
-        postWinPlaceBets
+        postWinPlaceBets,
+        deleteSingleBet,
+        deleteAllBets
     })
     (BetSlipHome);

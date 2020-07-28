@@ -22,6 +22,8 @@ import deleteBetSlipReducer from  "./deleteBetSlip";
 import remainingBetSlipReducer from  "./remainingBetSlipData";
 
 import countBetSlipReducer from  "./countBetSlipData"
+import deleteSingleBetReducer from "./deleteSingleBet";
+import deleteAllBetsReducer from "./deleteAllBets";
 
 export const rootReducer = combineReducers({
     firebase: firebaseReducer,
@@ -41,5 +43,7 @@ export default combineReducers({
     screenStatus:screenStatusReducers,
     remainingBetSlip:remainingBetSlipReducer,
     countBetSlip:countBetSlipReducer,
-    postWinPlace:postWinPlaceReducer
+    postWinPlace:postWinPlaceReducer,
+    deleteSingleBet:deleteSingleBetReducer,
+    deleteAllBet:deleteAllBetsReducer
 });

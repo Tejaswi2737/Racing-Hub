@@ -11,7 +11,9 @@ import { fetchMeetingDetails,
     remainingBetSlipData,
     betSlipScreen,
     fetchTodayRacing,
-    fetchPathParams
+    fetchPathParams,
+    deleteSingleBet,
+    deleteAllBets
 } from "../../actions";
 import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./RaceDetails.css";
@@ -419,6 +421,17 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [performance.navigation.type]);
 
+    useEffect(() => {
+        if(RemainingBets && window.innerWidth ) {
+            props.addBetSlipData(RemainingBets);
+            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
+            props.remainingBetSlipData(finalRemainingBets);
+            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
+        }
+    }, [finalRemainingBets]);
+
+
+
 
 // handle click for the win/place bets, 
 // this will execute if the race is open for betting ie., normal now
@@ -446,8 +459,12 @@ const RaceDetails = (props,ownProps)=>{
 // send the runner_win_place info to an action creator, 
     useEffect(() => {
         if ((runner_win_place)) {
-            {props.allBetSlipData(runner_win_place)}
-            props.betSlipScreen(true);
+            if(runner_win_place.name) {
+                console.log('entered into runner')
+                {props.allBetSlipData(runner_win_place)}
+                props.betSlipScreen(true);
+            }
+
         }
     }, [runner_win_place]);
 
@@ -474,27 +491,48 @@ const RaceDetails = (props,ownProps)=>{
 
 
 
-    useEffect(() => {
-        if(runner_quinella) {
-            {props.allBetSlipData(runner_quinella)}
-            props.betSlipScreen(true)
-        }
-    }, [runner_quinella])
+    // useEffect(() => {
+    //     if(runner_quinella) {
+    //         {props.allBetSlipData(runner_quinella)}
+    //         props.betSlipScreen(true)
+    //     }
+    // }, [runner_quinella])
     
 
 
 // handling the remaining bets for the non-desktop version
     useEffect(() => {
         if(window.innerWidth<980) {
-            
-            var users=props.allBetSlip;
-            if(props.screenStatus) {
-                users = [users, ...props.remainingBetSlip];
-            } else {users=[...props.remainingBetSlip]}
-            if(props.remainingBetSlip) {
-                users=Object.values(users)
-            };
+            // var users=props.allBetSlip;
+            // if(props.screenStatus) {
+            //     users = [users, ...props.remainingBetSlip];
+            // } else {users=[...props.remainingBetSlip]}
+            // if(props.remainingBetSlip) {
+            //     users=Object.values(users)
+            // };
     
+            // // var users_win=users.filter(e1=> { return e1.win===null });
+            // var grouped = _.reduce(users, (result, user) => {
+            //     if(user){
+            //             (result[user.name] || (result[user.name] = [])).push(user);  
+            //             return result;
+            //     }    
+            // }, {});
+            // console.log(users)
+            if( performance.navigation.type >=1 ) {
+                var users=props.allBetSlip;
+                var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
+                if(props.screenStatus) {
+                    users = [users, ...rem];
+                } else {users=[...rem]}
+            }
+            if(performance.navigation.type == 0 ) {
+                var users=props.allBetSlip;
+                var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
+                if(props.screenStatus) {
+                    users = [users, ...rem];
+                } else {users=[...rem]}
+            }
             // var users_win=users.filter(e1=> { return e1.win===null });
             var grouped = _.reduce(users, (result, user) => {
                 if(user){
@@ -502,7 +540,7 @@ const RaceDetails = (props,ownProps)=>{
                         return result;
                 }    
             }, {});
-    
+            console.log(users)
             var poolList=[]
             if(grouped) {
                 if(Object.keys(grouped)){
@@ -559,7 +597,7 @@ const RaceDetails = (props,ownProps)=>{
     }, [props.allBetSlip]);
 
     useEffect(() => {
-        if (RemainingBets && window.innerWidth<980) {
+        if (RemainingBets && window.innerWidth) {
             setfinalRemainingBets([])
             RemainingBets.map(items=>{
                 if(items) {
@@ -579,17 +617,33 @@ const RaceDetails = (props,ownProps)=>{
                 }
             })
         }
-
     }, [RemainingBets]);
-    useEffect(() => {
-        if(RemainingBets && window.innerWidth<980) {
-            props.addBetSlipData(RemainingBets);
-            props.remainingBetSlipData(finalRemainingBets);
 
-            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
-        }
-    }, [finalRemainingBets]);
 
+
+
+    // useEffect(() => {
+    //     if(window.innerWidth>980) {
+    //         if(props.deleteSingleBetData[0] && RemainingBets[0]) {
+    //             if (RemainingBets.length==1){
+    //                 // setstartSlip(false)
+    //                 setRemainingBets([])
+    //                 localStorage.setItem('betSlip',JSON.stringify([]))
+    //             }
+    //             var obje=RemainingBets.filter(e1=> { return e1 != props.deleteSingleBetData })
+    //             setRemainingBets(obje)
+    //             localStorage.setItem('betSlip',JSON.stringify(obje))
+    //         }
+    //     }
+
+
+    // }, [props.deleteSingleBetData])
+
+    // useEffect(() => {
+    //     setRemainingBets([]);
+    //     localStorage.setItem('betSlip',JSON.stringify([]))
+    //     setshowCurrency(false);
+    // }, [props.deletedAll]);
 
 
     const runnerInfoBody=(props)=>{
@@ -1017,7 +1071,9 @@ const mapStateToProps=(state,ownProps)=> {
         allBetSlip:state.allBetSlip,
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
-        pathParams:state.pathParams
+        pathParams:state.pathParams,
+        deleteSingleBetData:state.deleteSingleBet,
+        deleteAllBetData:state.deleteAllBet
     }
 }
 export default connect(mapStateToProps, 
@@ -1030,7 +1086,9 @@ export default connect(mapStateToProps,
         betSlipScreen,
         remainingBetSlipData,
         fetchPathParams,
-        fetchTodayRacing
+        fetchTodayRacing,
+        deleteSingleBet,
+        deleteAllBets
         })
     (RaceDetails);
 

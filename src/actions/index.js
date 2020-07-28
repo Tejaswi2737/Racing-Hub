@@ -124,3 +124,19 @@ export const allBetSlipData =  (dataAll) => {
     });
   }
 };
+export const deleteSingleBet =  (deleteSingle) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_SINGLE_BET',
+      payload: deleteSingle
+    });
+  }
+};
+export const deleteAllBets =  (deleteAll) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_All_BET',
+      payload: deleteAll
+    });
+  }
+};
