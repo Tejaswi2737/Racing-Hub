@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Racing-Hub/static/css/main.4b481dba.chunk.css",
-    "main.js": "/Racing-Hub/static/js/main.3e7fbb30.chunk.js",
-    "main.js.map": "/Racing-Hub/static/js/main.3e7fbb30.chunk.js.map",
+    "main.js": "/Racing-Hub/static/js/main.fd629492.chunk.js",
+    "main.js.map": "/Racing-Hub/static/js/main.fd629492.chunk.js.map",
     "runtime-main.js": "/Racing-Hub/static/js/runtime-main.a5b40a89.js",
     "runtime-main.js.map": "/Racing-Hub/static/js/runtime-main.a5b40a89.js.map",
     "static/css/2.51270f71.chunk.css": "/Racing-Hub/static/css/2.51270f71.chunk.css",
     "static/js/2.d4ffd70d.chunk.js": "/Racing-Hub/static/js/2.d4ffd70d.chunk.js",
     "static/js/2.d4ffd70d.chunk.js.map": "/Racing-Hub/static/js/2.d4ffd70d.chunk.js.map",
     "index.html": "/Racing-Hub/index.html",
-    "precache-manifest.70b033062c83b2f4431b4649b4695155.js": "/Racing-Hub/precache-manifest.70b033062c83b2f4431b4649b4695155.js",
+    "precache-manifest.3029821c1c4a952be55faaac474080d5.js": "/Racing-Hub/precache-manifest.3029821c1c4a952be55faaac474080d5.js",
     "service-worker.js": "/Racing-Hub/service-worker.js",
     "static/css/2.51270f71.chunk.css.map": "/Racing-Hub/static/css/2.51270f71.chunk.css.map",
     "static/css/main.4b481dba.chunk.css.map": "/Racing-Hub/static/css/main.4b481dba.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.51270f71.chunk.css",
     "static/js/2.d4ffd70d.chunk.js",
     "static/css/main.4b481dba.chunk.css",
-    "static/js/main.3e7fbb30.chunk.js"
+    "static/js/main.fd629492.chunk.js"
   ]
 }
