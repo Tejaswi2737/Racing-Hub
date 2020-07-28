@@ -414,6 +414,7 @@ const RaceDetails = (props,ownProps)=>{
 // the information of pending bets in the win place
     useEffect(() => {
         if (performance.navigation.type === 1 && window.innerWidth<980) {
+            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
@@ -422,7 +423,7 @@ const RaceDetails = (props,ownProps)=>{
 // handle click for the win/place bets, 
 // this will execute if the race is open for betting ie., normal now
 // an object is assigned to runner_win_place and in which the bet details are stored
-    const handleClickWin=(props,runner_item)=>{
+    const handleClickWin=(runner_item)=>{
         if ((raceData[0].raceStatus==="Normal")) {
             // if(props.countBetSlip && props.countBetSlip.length===0) {
             //     props.countBetSlipData(1);
@@ -485,6 +486,7 @@ const RaceDetails = (props,ownProps)=>{
 // handling the remaining bets for the non-desktop version
     useEffect(() => {
         if(window.innerWidth<980) {
+            
             var users=props.allBetSlip;
             if(props.screenStatus) {
                 users = [users, ...props.remainingBetSlip];
@@ -493,8 +495,8 @@ const RaceDetails = (props,ownProps)=>{
                 users=Object.values(users)
             };
     
-            var users_win=users.filter(e1=> { return e1.win===null });
-            var grouped = _.reduce(users_win, (result, user) => {
+            // var users_win=users.filter(e1=> { return e1.win===null });
+            var grouped = _.reduce(users, (result, user) => {
                 if(user){
                         (result[user.name] || (result[user.name] = [])).push(user);  
                         return result;
@@ -624,7 +626,7 @@ const RaceDetails = (props,ownProps)=>{
                     </div>
                     <div className="price-cell-body"
                         onClick={()=>
-                            props.type==="Win"?handleClickWin(props,runner_item,pool_fh,runnerSelection,place_list_all):""
+                            props.type==="Win"?handleClickWin(runner_item):""
                         } 
                         style={{
                             backgroundColor:props.remainingBetSlip[0] && todayData[0] &&raceData[0] && props.type==="Win" ?

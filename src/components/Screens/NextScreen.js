@@ -26,7 +26,6 @@ const NextScreen=(props) =>{
     useEffect(() => {
         
         if (performance.navigation.type === 1 && window.innerWidth<980) {
-            
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
         if (performance.navigation.type === 1 && window.innerWidth>980) {

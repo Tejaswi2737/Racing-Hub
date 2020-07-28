@@ -33,6 +33,7 @@ const BetSlipHome=(props) =>{
     const [localRemaining, setlocalRemaining] = useState([])
     useEffect(() => {
         const data =window.localStorage.getItem('betSlip')
+        console.log(data)
         if (data) {
             setlocalRemaining(JSON.parse(data))
         }
@@ -63,9 +64,9 @@ const BetSlipHome=(props) =>{
         if(props.remainingBetSlip) {
             users=Object.values(users)
         };
-        var users_quinella=users.filter(e1=> { return e1.quinella===null });
-        var users_win=users.filter(e1=> { return e1.win===null });
-        var grouped = _.reduce(users_win, (result, user) => {
+        // var users_quinella=users.filter(e1=> { return e1.quinella===null });
+        // var users_win=users.filter(e1=> { return e1.win===null });
+        var grouped = _.reduce(users, (result, user) => {
             if(user){
                     (result[user.name] || (result[user.name] = [])).push(user);  
                     return result;
@@ -299,6 +300,7 @@ const BetSlipHome=(props) =>{
     }, [finalRemainingBets]);
 
     useEffect(() => {
+        console.log(finalRemainingBets)
         props.remainingBetSlipData(finalRemainingBets);
         localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
     }, [finalRemainingBets]);
