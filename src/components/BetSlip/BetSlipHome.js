@@ -36,32 +36,49 @@ const BetSlipHome=(props) =>{
         console.log(data)
         if (data) {
             setlocalRemaining(JSON.parse(data))
+            // props.remainingBetSlipData(JSON.parse(data))
         }
     }, [])
 
     useEffect(() => {
-        if(finalRemainingBets  && window.innerWidth>980) {
+        if(finalRemainingBets.length>1 && performance.navigation.type !== 1 && window.innerWidth>980) {
+            console.log(finalRemainingBets)
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets))
         }
     }, [finalRemainingBets]);
 
     useEffect(() => {
+        if(performance.navigation.type !== 1) {
+            console.log(finalRemainingBets)
+            props.remainingBetSlipData(finalRemainingBets);
+            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
+        }
+
+    }, [finalRemainingBets]);
+
+    useEffect(() => {
         var users;
-        props.postWinPlaceBets([])
+        props.postWinPlaceBets([]);
+        console.log(performance.navigation.type,window.localStorage.getItem('betSlip'))
         if(window.innerWidth>980) {
             var users=props.allBetSlip;
-            var rem=props.remainingBetSlip.length<1?localRemaining:props.remainingBetSlip
+            var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
             if(props.screenStatus) {
                 users = [users, ...rem];
             } else {users=[...rem]}
         }
         if (performance.navigation.type === 1 && window.innerWidth<980) {
+            console.log('neteres',finalRemainingBets)
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
             users=JSON.parse(window.localStorage.getItem('betSlip'))
-        } if(performance.navigation.type !== 1 && window.innerWidth<980) {
+        } 
+
+        
+        if(performance.navigation.type !== 1 && window.innerWidth<980) {
             var users=props.remainingBetSlip;
         }
         if(props.remainingBetSlip) {
+            console.log(users)
             users=Object.values(users)
         };
         // var users_quinella=users.filter(e1=> { return e1.quinella===null });
@@ -299,11 +316,7 @@ const BetSlipHome=(props) =>{
         }
     }, [finalRemainingBets]);
 
-    useEffect(() => {
-        console.log(finalRemainingBets)
-        props.remainingBetSlipData(finalRemainingBets);
-        localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
-    }, [finalRemainingBets]);
+
     // useEffect(() => {
     //     if(window.innerWidth<980) {
     //         setRemainingBets(mobileRemaining)
