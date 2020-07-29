@@ -465,6 +465,7 @@ const RaceDetails = (props,ownProps)=>{
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
                 });  
+                setrunner_quinella({})
         }
     };
 
@@ -484,6 +485,8 @@ const RaceDetails = (props,ownProps)=>{
                 "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                 ,"runners":runner_item.runnerNumber,"quinella": null
             }); 
+            setrunner_win_place({})
+            
         }
     };
     useEffect(() => {

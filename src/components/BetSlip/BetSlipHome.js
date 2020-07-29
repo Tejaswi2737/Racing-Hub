@@ -741,7 +741,7 @@ const BetSlipHome=(props) =>{
                                     <footer className="bet-card-footer">
                                         <div className="bet-card-footer-actions">
                                             <p className="bet-status">
-                                                {item.quinella ==0?"Incomplete Bet":""}
+                                                {item.quinella==0 || item.runners.length<3?"Incomplete Bet":""}
                                             </p>                                           
                                             <button className="bet-card-remove">
                                                 <i onClick={()=>{props.deleteSingleBetQuinella(item)
@@ -800,6 +800,7 @@ const BetSlipHome=(props) =>{
                         <button  onClick={()=>{
                             props.postWinPlaceBets(placeWinPlaceBetList)
                             setRemainingBets([])
+                            setRemainingBetsQuienlla([])
                             props.deleteAllBets(true)
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
