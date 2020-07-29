@@ -32,6 +32,13 @@ import remainingBetSlipQuinellaReducer from  "./remainingBetSlipDataquinella";
 import deleteSingleBetQuinellaReducer from "./deleteSingleBetquinella";
 import deleteAllBetsQuinellaReducer from "./deleteAllBetsquinella";
 
+import allBetSlipDataDuetreducer from "./allBetSlipDataDuet";
+import screenStatusDuetReducers from "./screenStatusReducersDuet";
+import postWinPlaceDuetReducer from "./postWinPlaceDuet";
+import remainingBetSlipDuetReducer from  "./remainingBetSlipDataDuet";
+import deleteSingleBetDuetReducer from "./deleteSingleBetDuet";
+import deleteAllBetsDuetReducer from "./deleteAllBetsDuet";
+
 export const rootReducer = combineReducers({
     firebase: firebaseReducer,
     firestore: firestoreReducer
@@ -47,6 +54,7 @@ export default combineReducers({
     betSlipInd: betSlipIndreducer,
     countBetSlip:countBetSlipReducer,
     deleteBetSlip:deleteBetSlipReducer,
+    
 
     allBetSlip: allBetSlipDatareducer,
     screenStatus:screenStatusReducers,
@@ -55,10 +63,19 @@ export default combineReducers({
     deleteSingleBet:deleteSingleBetReducer,
     deleteAllBet:deleteAllBetsReducer,
 
+
     allBetSlipQuinella: allBetSlipDataQuinellareducer,
     screenStatusQuinella:screenStatusQuinellaReducers,
     remainingBetSlipQuinella:remainingBetSlipQuinellaReducer,
     postWinPlaceQuinella:postWinPlaceQuinellaReducer,
     deleteSingleBetQuinella:deleteSingleBetQuinellaReducer,
-    deleteAllBetQuinella:deleteAllBetsQuinellaReducer
+    deleteAllBetQuinella:deleteAllBetsQuinellaReducer,
+
+
+    allBetSlipDuet: allBetSlipDataDuetreducer,
+    screenStatusDuet:screenStatusDuetReducers,
+    remainingBetSlipDuet:postWinPlaceDuetReducer,
+    postWinPlaceDuet:remainingBetSlipDuetReducer,
+    deleteSingleBetDuet:deleteSingleBetDuetReducer,
+    deleteAllBetDuet:deleteAllBetsDuetReducer
 });

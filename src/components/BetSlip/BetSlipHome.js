@@ -15,12 +15,20 @@ import {
     postWinPlaceBets,
     deleteSingleBet,
     deleteAllBets,
+
     allBetSlipDataQuinella,
     remainingBetSlipDataQuinella,
     betSlipScreenQuinella,
     postWinPlaceBetsQuinella,
     deleteSingleBetQuinella,
-    deleteAllBetsQuinella
+    deleteAllBetsQuinella,
+
+    allBetSlipDataDuet,
+    remainingBetSlipDataDuet,
+    betSlipScreenDuet,
+    postWinPlaceBetsDuet,
+    deleteSingleBetDuet,
+    deleteAllBetsDuet
 } from "../../actions";
 
 const BetSlipHome=(props) =>{
@@ -853,7 +861,14 @@ const mapStateToProps=(state)=> {
         remainingBetSlipQuinella: state.remainingBetSlipQuinella,
         postWinPlaceQuinella: state.postWinPlaceQuinella,
         deleteSingleBetQuinella: state.deleteSingleBetQuinella,
-        deleteAllBetQuinella: state.deleteAllBetQuinella
+        deleteAllBetQuinella: state.deleteAllBetQuinella,
+
+        allBetSlipDuet: state.allBetSlipDuet,
+        screenStatusDuet: state.screenStatusDuet,
+        remainingBetSlipDuet: state.remainingBetSlipDuet,
+        postWinPlaceDuet: state.postWinPlaceDuet,
+        deleteSingleBetDuet: state.deleteSingleBetDuet,
+        deleteAllBetDuet: state.deleteAllBetDuet,
     }
 }
 export default connect(mapStateToProps, 
@@ -873,6 +888,13 @@ export default connect(mapStateToProps,
         betSlipScreenQuinella,
         postWinPlaceBetsQuinella,
         deleteSingleBetQuinella,
-        deleteAllBetsQuinella
+        deleteAllBetsQuinella,
+
+        allBetSlipDataDuet,
+        remainingBetSlipDataDuet,
+        betSlipScreenDuet,
+        postWinPlaceBetsDuet,
+        deleteSingleBetDuet,
+        deleteAllBetsDuet
     })
     (BetSlipHome);

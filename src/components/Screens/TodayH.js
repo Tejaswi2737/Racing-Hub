@@ -7,7 +7,14 @@ import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
-import { fetchNextRace,allBetSlipData,betSlipScreen,remainingBetSlipData,betSlipScreenQuinella } from "../../actions";
+import { 
+  fetchNextRace,
+  allBetSlipData,
+  betSlipScreen,
+  remainingBetSlipData,
+  betSlipScreenQuinella,
+  betSlipScreenDuet
+} from "../../actions";
 
 import MenuView from "../Nav/Menu";
 
@@ -22,7 +29,9 @@ const TodayH=(props)=> {
     props.fetchNextRace();
   }, []);
     props.betSlipScreen(false);
-    props.betSlipScreenQuinella(false)
+    props.betSlipScreenQuinella(false);
+    props.betSlipScreenDuet(false)
+
     useEffect(() => {
       if (performance.navigation.type === 1) {
           props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
@@ -89,7 +98,9 @@ const mapStateToProps=(state)=> {
       next:state.next,
       allBetSlip:state.allBetSlip,
       screenStatus:state.screenStatus,
-      remainingBetSlip:state.remainingBetSlip
+      remainingBetSlip:state.remainingBetSlip,
+      screenStatusDuet: state.screenStatusDuet,
+
     }
 }
 export default connect(mapStateToProps, { 
@@ -97,5 +108,6 @@ export default connect(mapStateToProps, {
   allBetSlipData,
   betSlipScreen,
   remainingBetSlipData,
-  betSlipScreenQuinella
+  betSlipScreenQuinella,
+  betSlipScreenDuet
  } )(TodayH);

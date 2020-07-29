@@ -196,7 +196,6 @@ export const countBetSlipData =  (count) => {
 
 //ACTIONS_PLACE_REPEATED_BLOCKS
 
-
 export const remainingBetSlipData =  (remaining) => {
   return function (dispatch) {
     dispatch({
@@ -250,7 +249,7 @@ export const deleteAllBets =  (deleteAll) => {
   }
 };
 
-
+//quinella
 
 export const remainingBetSlipDataQuinella =  (remaining) => {
   return function (dispatch) {
@@ -300,6 +299,62 @@ export const deleteAllBetsQuinella =  (deleteAll) => {
   return function (dispatch) {
     dispatch({
       type: 'DELETE_All_BET_QUINELLA',
+      payload: deleteAll
+    });
+  }
+};
+
+//duet
+
+
+export const remainingBetSlipDataDuet =  (remaining) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'REMAINING_BET_SLIP_DATA_DUET',
+      payload: remaining
+    });
+  }
+};
+
+export const betSlipScreenDuet =  (screen) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'BET_SLIP_SCREEN_DUET',
+      payload: screen
+    });
+  }
+};
+
+
+export const postWinPlaceBetsDuet =  (betData) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'POST_WIN_PLACE_DUET',
+      payload: betData
+    });
+  }
+};
+
+export const allBetSlipDataDuet =  (dataAll) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'ALL_BET_SLIP_DATA_DUET',
+      payload: dataAll
+    });
+  }
+};
+export const deleteSingleBetDuet =  (deleteSingle) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_SINGLE_BET_DUET',
+      payload: deleteSingle
+    });
+  }
+};
+export const deleteAllBetsDuet =  (deleteAll) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_All_BET_DUET',
       payload: deleteAll
     });
   }
