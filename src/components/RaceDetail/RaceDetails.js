@@ -503,14 +503,25 @@ const RaceDetails = (props,ownProps)=>{
                 var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
                 if(props.screenStatus) {
                     users = [users, ...rem];
-                } else {users=[...rem]}
+                } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
+                
             }
             if(performance.navigation.type == 0 ) {
                 var users=props.allBetSlip;
                 var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
                 if(props.screenStatus) {
-                    users = [users, ...rem];
-                } else {users=[...rem]}
+                    if(rem) {
+                        users = [users, ...rem];
+                    }
+                } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
             }
             // var users_win=users.filter(e1=> { return e1.win===null });
             var grouped = _.reduce(users, (result, user) => {

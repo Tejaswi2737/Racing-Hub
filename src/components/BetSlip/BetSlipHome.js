@@ -54,14 +54,26 @@ const BetSlipHome=(props) =>{
             var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
             if(props.screenStatus) {
                 users = [users, ...rem];
-            } else {users=[...rem]}
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }        
         }
         if(window.innerWidth>980 && performance.navigation.type == 0 ) {
             var users=props.allBetSlip;
             var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
+            console.log(rem)
             if(props.screenStatus) {
-                users = [users, ...rem];
-            } else {users=[...rem]}
+                if(rem) {
+                    users = [users, ...rem];
+                }
+                
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }
         }
         if (performance.navigation.type >= 1 && window.innerWidth<980) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
@@ -145,15 +157,25 @@ const BetSlipHome=(props) =>{
             JSON.parse(window.localStorage.getItem('betSlipQuinella')):props.remainingBetSlipQuinella
             if(props.screenStatus) {
                 users = [users, ...rem];
-            } else {users=[...rem]}
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }        
         }
         if(window.innerWidth>980 && performance.navigation.type == 0 ) {
             var users=props.allBetSlipQuinella;
             var rem=props.remainingBetSlipQuinella.length<1?
             JSON.parse(window.localStorage.getItem('betSlipQuinella')):props.remainingBetSlipQuinella
             if(props.screenStatusQuinella) {
-                users = [users, ...rem];
-            } else {users=[...rem]}
+                if(rem) {
+                    users = [users, ...rem];
+                }
+            } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
         }
         if (performance.navigation.type >= 1 && window.innerWidth<980) {
             props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')))
