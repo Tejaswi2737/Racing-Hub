@@ -175,20 +175,34 @@ export const addBetSlipData =  (betSlipind) => {
   }
 };
 
-export const remainingBetSlipData =  (remaining) => {
-  return function (dispatch) {
-    dispatch({
-      type: 'REMAINING_BET_SLIP_DATA',
-      payload: remaining
-    });
-  }
-};
-
 export const deleteBetSlipData =  (betSlipDelete) => {
   return function (dispatch) {
     dispatch({
       type: 'DELETE_BET_SLIP_DATA',
       payload: betSlipDelete
+    });
+  }
+};
+
+
+export const countBetSlipData =  (count) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'COUNT_BET_SLIP_DATA',
+      payload: count
+    });
+  } 
+};
+
+
+//ACTIONS_PLACE_REPEATED_BLOCKS
+
+
+export const remainingBetSlipData =  (remaining) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'REMAINING_BET_SLIP_DATA',
+      payload: remaining
     });
   }
 };
@@ -202,14 +216,7 @@ export const betSlipScreen =  (screen) => {
   }
 };
 
-export const countBetSlipData =  (count) => {
-  return function (dispatch) {
-    dispatch({
-      type: 'COUNT_BET_SLIP_DATA',
-      payload: count
-    });
-  } 
-};
+
 export const postWinPlaceBets =  (betData) => {
   return function (dispatch) {
     dispatch({
@@ -239,6 +246,61 @@ export const deleteAllBets =  (deleteAll) => {
   return function (dispatch) {
     dispatch({
       type: 'DELETE_All_BET',
+      payload: deleteAll
+    });
+  }
+};
+
+
+
+export const remainingBetSlipDataQuinella =  (remaining) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'REMAINING_BET_SLIP_DATA_QUINELLA',
+      payload: remaining
+    });
+  }
+};
+
+export const betSlipScreenQuinella =  (screen) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'BET_SLIP_SCREEN_QUINELLA',
+      payload: screen
+    });
+  }
+};
+
+
+export const postWinPlaceBetsQuinella =  (betData) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'POST_WIN_PLACE_QUINELLA',
+      payload: betData
+    });
+  }
+};
+
+export const allBetSlipDataQuinella =  (dataAll) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'ALL_BET_SLIP_DATA_QUINELLA',
+      payload: dataAll
+    });
+  }
+};
+export const deleteSingleBetQuinella =  (deleteSingle) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_SINGLE_BET_QUINELLA',
+      payload: deleteSingle
+    });
+  }
+};
+export const deleteAllBetsQuinella =  (deleteAll) => {
+  return function (dispatch) {
+    dispatch({
+      type: 'DELETE_All_BET_QUINELLA',
       payload: deleteAll
     });
   }

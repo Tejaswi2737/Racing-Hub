@@ -14,16 +14,23 @@ import pathParams from './pathParamReducer';
 
 import winPlaceBetreducer from "./winPlaceBetreducer";
 import betSlipIndreducer from "./betSlipInd";
+import countBetSlipReducer from  "./countBetSlipData"
+import deleteBetSlipReducer from  "./deleteBetSlip";
+
+
 import allBetSlipDatareducer from "./allBetSlipData";
 import screenStatusReducers from "./screenStatusReducers";
 import postWinPlaceReducer from "./postWinPlace";
-
-import deleteBetSlipReducer from  "./deleteBetSlip";
 import remainingBetSlipReducer from  "./remainingBetSlipData";
-
-import countBetSlipReducer from  "./countBetSlipData"
 import deleteSingleBetReducer from "./deleteSingleBet";
 import deleteAllBetsReducer from "./deleteAllBets";
+
+import allBetSlipDataQuinellareducer from "./allBetSlipDataQuinella";
+import screenStatusQuinellaReducers from "./screenStatusReducersquienlla";
+import postWinPlaceQuinellaReducer from "./postWinPlacequinella";
+import remainingBetSlipQuinellaReducer from  "./remainingBetSlipDataquinella";
+import deleteSingleBetQuinellaReducer from "./deleteSingleBetquinella";
+import deleteAllBetsQuinellaReducer from "./deleteAllBetsquinella";
 
 export const rootReducer = combineReducers({
     firebase: firebaseReducer,
@@ -38,12 +45,20 @@ export default combineReducers({
     pathParams:pathParams,
     winPlaceBet: winPlaceBetreducer,
     betSlipInd: betSlipIndreducer,
-    allBetSlip: allBetSlipDatareducer,
+    countBetSlip:countBetSlipReducer,
     deleteBetSlip:deleteBetSlipReducer,
+
+    allBetSlip: allBetSlipDatareducer,
     screenStatus:screenStatusReducers,
     remainingBetSlip:remainingBetSlipReducer,
-    countBetSlip:countBetSlipReducer,
     postWinPlace:postWinPlaceReducer,
     deleteSingleBet:deleteSingleBetReducer,
-    deleteAllBet:deleteAllBetsReducer
+    deleteAllBet:deleteAllBetsReducer,
+
+    allBetSlipQuinella: allBetSlipDataQuinellareducer,
+    screenStatusQuinella:screenStatusQuinellaReducers,
+    remainingBetSlipQuinella:remainingBetSlipQuinellaReducer,
+    postWinPlaceQuinella:postWinPlaceQuinellaReducer,
+    deleteSingleBetQuinella:deleteSingleBetQuinellaReducer,
+    deleteAllBetQuinella:deleteAllBetsQuinellaReducer
 });

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
-import { fetchNextRace,allBetSlipData,betSlipScreen,remainingBetSlipData } from "../../actions";
+import { fetchNextRace,allBetSlipData,betSlipScreen,remainingBetSlipData,betSlipScreenQuinella } from "../../actions";
 
 import MenuView from "../Nav/Menu";
 
@@ -20,7 +20,8 @@ const TodayG=(props)=> {
       props.fetchNextRace();
     }, [])
     
-    props.betSlipScreen(false)
+    props.betSlipScreen(false);
+    props.betSlipScreenQuinella(false)
     useEffect(() => {
       if (performance.navigation.type === 1) {
           props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
@@ -89,6 +90,7 @@ export default connect(mapStateToProps, {
   fetchNextRace,
   allBetSlipData,
   betSlipScreen,
+  betSlipScreenQuinella,
   remainingBetSlipData
  } )(TodayG);
 // export default TodayG;

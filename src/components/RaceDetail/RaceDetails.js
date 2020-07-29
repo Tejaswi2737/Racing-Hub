@@ -13,7 +13,14 @@ import { fetchMeetingDetails,
     fetchTodayRacing,
     fetchPathParams,
     deleteSingleBet,
-    deleteAllBets
+    deleteAllBets,
+    
+    allBetSlipDataQuinella,
+    remainingBetSlipDataQuinella,
+    betSlipScreenQuinella,
+    postWinPlaceBetsQuinella,
+    deleteSingleBetQuinella,
+    deleteAllBetsQuinella
 } from "../../actions";
 import BetSlipHome from '../BetSlip/BetSlipHome';
 import "./RaceDetails.css";
@@ -41,6 +48,11 @@ const RaceDetails = (props,ownProps)=>{
     const [RemainingBets, setRemainingBets] = useState();
 
     const [finalRemainingBets, setfinalRemainingBets] = useState([]);
+
+    const [poolFinalListQuienlla, setpoolFinalListQuienlla] = useState([]);
+    const [RemainingBetsQuienlla, setRemainingBetsQuienlla] = useState([]);
+
+    const [finalRemainingBetsQuienlla, setfinalRemainingBetsQuienlla] = useState([]);
     const [betsUpdated, setbetsUpdated] = useState([]);
     const [checkUpdate, setcheckUpdate] = useState(false)
 
@@ -426,35 +438,34 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBets && window.innerWidth ) {
-            props.addBetSlipData(RemainingBets);
             props.remainingBetSlipData(finalRemainingBets);
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
         }
     }, [finalRemainingBets]);
 
 
+    useEffect(() => {
+        if (performance.navigation.type === 1 && window.innerWidth<980) {
+            props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')))
+        }
+    }, [performance.navigation.type]);
 
+    useEffect(() => {
+        if(RemainingBetsQuienlla && window.innerWidth ) {
+            props.remainingBetSlipDataQuinella(finalRemainingBetsQuienlla);
+            localStorage.setItem('betSlipQuinella',JSON.stringify(finalRemainingBetsQuienlla));
+        }
+    }, [finalRemainingBetsQuienlla]);
 
 // handle click for the win/place bets, 
 // this will execute if the race is open for betting ie., normal now
 // an object is assigned to runner_win_place and in which the bet details are stored
     const handleClickWin=(runner_item)=>{
         if ((raceData[0].raceStatus==="Normal")) {
-            // if(props.countBetSlip && props.countBetSlip.length===0) {
-            //     props.countBetSlipData(1);
-            //     setcount((props.countBetSlip));
-            //     setrunner_win_place({
-            //         "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
-            //         ,"runners":runner_item.runnerNumber,"win": null ,"place": null
-            //     });
-            // } else {
-            //     props.countBetSlipData(parseInt(props.countBetSlip)+1);
-            //     setcount((props.countBetSlip));
                 setrunner_win_place({
                     "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
                     ,"runners":runner_item.runnerNumber,"win": null ,"place": null
-                });
-            // }   
+                });  
         }
     };
 
@@ -465,61 +476,29 @@ const RaceDetails = (props,ownProps)=>{
                 {props.allBetSlipData(runner_win_place)}
                 props.betSlipScreen(true);
             }
-
         }
     }, [runner_win_place]);
 
-    const handleClickQuinella=(props,runner_item)=>{
+    const handleClickQuinella=(runner_item)=>{
         if ((raceData[0].raceStatus==="Normal")) {
-            if(props.countBetSlip && props.countBetSlip.length===0) {
-                props.countBetSlipData(1);
-                setcount((props.countBetSlip));
-                setrunner_quinella({
-                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
-                    ,"runners":runner_item.runnerNumber,"quinella": null 
-                });
-            } else {
-                props.countBetSlipData(parseInt(props.countBetSlip)+1);
-                setcount((props.countBetSlip));
-                setrunner_quinella({
-                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
-                    ,"runners":runner_item.runnerNumber,"quinella": null
-                });
-            }   
+            setrunner_quinella({
+                "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                ,"runners":runner_item.runnerNumber,"quinella": null
+            }); 
         }
     };
-
-
-
-
-    // useEffect(() => {
-    //     if(runner_quinella) {
-    //         {props.allBetSlipData(runner_quinella)}
-    //         props.betSlipScreen(true)
-    //     }
-    // }, [runner_quinella])
-    
-
+    useEffect(() => {
+        if ((runner_quinella)) {
+            if(runner_quinella.name) {
+                {props.allBetSlipDataQuinella(runner_quinella)}
+                props.betSlipScreenQuinella(true);
+            }
+        }
+    }, [runner_quinella]);
 
 // handling the remaining bets for the non-desktop version
     useEffect(() => {
         if(window.innerWidth<980) {
-            // var users=props.allBetSlip;
-            // if(props.screenStatus) {
-            //     users = [users, ...props.remainingBetSlip];
-            // } else {users=[...props.remainingBetSlip]}
-            // if(props.remainingBetSlip) {
-            //     users=Object.values(users)
-            // };
-    
-            // // var users_win=users.filter(e1=> { return e1.win===null });
-            // var grouped = _.reduce(users, (result, user) => {
-            //     if(user){
-            //             (result[user.name] || (result[user.name] = [])).push(user);  
-            //             return result;
-            //     }    
-            // }, {});
-            // console.log(users)
             if( performance.navigation.type >=1 ) {
                 var users=props.allBetSlip;
                 var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
@@ -596,6 +575,88 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [props.allBetSlip]);
 
+
+
+    useEffect(() => {
+        if(window.innerWidth<980) {
+            if( performance.navigation.type >=1 ) {
+                var users=props.allBetSlipQuinella;
+                var rem=props.remainingBetSlipQuinella.length<1?
+                JSON.parse(window.localStorage.getItem('betSlipQuinella')):
+                props.remainingBetSlipQuinella
+                if(props.screenStatusQuinella) {
+                    users = [users, ...rem];
+                } else {users=[...rem]}
+            }
+            if(performance.navigation.type == 0 ) {
+                var users=props.allBetSlipQuinella;
+                var rem=props.remainingBetSlipQuinella.length<1?
+                JSON.parse(window.localStorage.getItem('betSlipQuinella')):
+                props.remainingBetSlipQuinella
+                if(props.screenStatusQuinella) {
+                    users = [users, ...rem];
+                } else {users=[...rem]}
+            }
+            // var users_win=users.filter(e1=> { return e1.win===null });
+            var grouped = _.reduce(users, (result, user) => {
+                if(user){
+                        (result[user.name] || (result[user.name] = [])).push(user);  
+                        return result;
+                }    
+            }, {});
+            var poolList=[]
+            if(grouped) {
+                if(Object.keys(grouped)){
+                    Object.keys(grouped).map(poolname=>{
+                        if(poolname!="undefined") {
+                            var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                                if(user){
+                                        (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                        
+                                        return (Object.values(result).reduce(
+                                            function(accumulator, currentValue) {
+                                              return accumulator.concat(currentValue)
+                                            },
+                                            []
+                                          ));        
+                                }    
+                            }, {});
+                            var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                                if (name in allNames) {
+                                  allNames[name]++
+                                }
+                                else {
+                                  allNames[name] = 1
+                                }
+                                return(allNames)
+                              }, {})
+                            var itemList=[];
+                            var quinellaList=null;
+                            for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                                if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                    if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                        var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                        itemList.push(users[pos].runners)
+                                        quinellaList=grouped[poolname][grouped[poolname].length-1].quienlla
+                                    } 
+                                }
+                                }
+                            if (itemList.length){
+                                var itemPool={"name":poolname,"runners":itemList,"quienlla": quinellaList}
+                            }
+                            if(poolFinalList){
+                                poolList.push(itemPool)
+                            } else {
+                                poolList=itemPool
+                            }
+                        }     
+                    })
+                    setRemainingBetsQuienlla(poolList)
+                }
+            };
+        }
+    }, [props.allBetSlipQuinella]);
+
     useEffect(() => {
         if (RemainingBets && window.innerWidth) {
             setfinalRemainingBets([])
@@ -620,31 +681,38 @@ const RaceDetails = (props,ownProps)=>{
     }, [RemainingBets]);
 
 
+    useEffect(() => {
+        if (RemainingBetsQuienlla && window.innerWidth) {
+            setfinalRemainingBetsQuienlla([])
+            RemainingBetsQuienlla.map(items=>{
+                if(items) {
+                    if(items.runners.length>1) {
+                        items.runners.map(runnnerInd=>{
+                            setfinalRemainingBetsQuienlla(oldArray => [...oldArray, 
+                                {"name":items.name,"runners":runnnerInd,
+                                "quinella": items.quinella}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsQuienlla(oldArray => [...oldArray,
+                            {"name":items.name,"runners":items.runners[0],
+                            "quinella": items.quinella}])
+                    }
+                }
+            })
+        }
+    }, [RemainingBetsQuienlla]);
 
-
-    // useEffect(() => {
-    //     if(window.innerWidth>980) {
-    //         if(props.deleteSingleBetData[0] && RemainingBets[0]) {
-    //             if (RemainingBets.length==1){
-    //                 // setstartSlip(false)
-    //                 setRemainingBets([])
-    //                 localStorage.setItem('betSlip',JSON.stringify([]))
-    //             }
-    //             var obje=RemainingBets.filter(e1=> { return e1 != props.deleteSingleBetData })
-    //             setRemainingBets(obje)
-    //             localStorage.setItem('betSlip',JSON.stringify(obje))
-    //         }
-    //     }
-
-
-    // }, [props.deleteSingleBetData])
-
-    // useEffect(() => {
-    //     setRemainingBets([]);
-    //     localStorage.setItem('betSlip',JSON.stringify([]))
-    //     setshowCurrency(false);
-    // }, [props.deletedAll]);
-
+    const checkStatus=(runner_item)=>{
+            var status=props.remainingBetSlipQuinella[0] && todayData[0] &&raceData[0] && props.type==="Quinella" ?
+            props.remainingBetSlipQuinella.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+            && e.runners === runner_item.runnerNumber
+            ).length > 0
+            ?
+            true: false:false
+            return status
+    }
 
     const runnerInfoBody=(props)=>{
         return(
@@ -716,13 +784,15 @@ const RaceDetails = (props,ownProps)=>{
                     </div>
                     {(props.type==="Quinella")?
                         <div className="price-cell-body checkbox">
+
                             <div>
                                 <div>
                                 <input
                                     name="1st"
                                     type="checkbox"
                                     className="checkbox-input"
-                                    onClick={()=>handleClickQuinella(props,runner_item,pool_fh,runnerSelection,place_list_all)}
+                                    onClick={()=>handleClickQuinella(runner_item)}
+                                    checked={checkStatus(runner_item)}
                                 />                                    
                                 </div>
                             </div>
@@ -888,21 +958,10 @@ const RaceDetails = (props,ownProps)=>{
                                             <span className={item.raceStatus==="Paying"?"meeting-info-race-results":"meeting-info-race-time"}>
                                                 {item.raceStatus==="Paying"?item.results:startTime(item.raceStartTime)} 
                                             </span>
-                                        {/* </a> */}
                                     </Link>
                             )}):"":""}
                         </div>
                     </div>
-                    {/* <div className="meeting-info-meeting-conditions">
-                        <div className="meeting-info-track-condition">
-                            {props.racingDetail.trackCondition}   
-                        </div>
-                        <div className="meeting-info-weather-condition">
-                            <div className="meeting-info-weather-condition-description">
-                                {props.racingDetail.weatherCondition}
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
             )
@@ -933,11 +992,6 @@ const RaceDetails = (props,ownProps)=>{
                                 {raceData?raceData[0]?
                                     raceData[0].raceStatus==="Normal"?
                                     duration(raceData[0].raceStartTime):raceData[0].raceStatus:"":""}
-                                    {/* {raceData?raceData[0]?
-                                    raceData[0].race?
-                                    (raceData[0].raceStatus==="Normal"?
-                                    startTime(raceData[0].raceStartTime):
-                                    raceData[0].raceStatus):"":"":""} */}
                                 </li>
                                     <li>{raceData?raceData[0]?
                                     raceData[0].raceDistance:"":""}m</li>
@@ -1038,7 +1092,6 @@ const RaceDetails = (props,ownProps)=>{
                                     </div> 
                                     {raceData?raceData[0]?raceData[0].raceStatus==="Paying"?resultsTable(props):"":"":""}
                                     {raceData?raceData[0]?raceData[0].raceStatus==="Paying"?exoticTable(props):"":"":""}
-                                    {/* {raceData.raceStatus!="Normal"?exoticTable(props):""} */}
                                     {runnerInfo(props)}
                                 </section>
                             </div>
@@ -1073,7 +1126,14 @@ const mapStateToProps=(state,ownProps)=> {
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
         pathParams:state.pathParams,
         deleteSingleBetData:state.deleteSingleBet,
-        deleteAllBetData:state.deleteAllBet
+        deleteAllBetData:state.deleteAllBet,
+
+        allBetSlipQuinella: state.allBetSlipQuinella,
+        screenStatusQuinella: state.screenStatusQuinella,
+        remainingBetSlipQuinella: state.remainingBetSlipQuinella,
+        postWinPlaceQuinella: state.postWinPlaceQuinella,
+        deleteSingleBetQuinella: state.deleteSingleBetQuinella,
+        deleteAllBetQuinella: state.deleteAllBetQuinella
     }
 }
 export default connect(mapStateToProps, 
@@ -1088,7 +1148,14 @@ export default connect(mapStateToProps,
         fetchPathParams,
         fetchTodayRacing,
         deleteSingleBet,
-        deleteAllBets
+        deleteAllBets,
+
+        allBetSlipDataQuinella,
+        remainingBetSlipDataQuinella,
+        betSlipScreenQuinella,
+        postWinPlaceBetsQuinella,
+        deleteSingleBetQuinella,
+        deleteAllBetsQuinella
         })
     (RaceDetails);
 
