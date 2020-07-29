@@ -28,7 +28,7 @@ const BetSlipHome=(props) =>{
     const [mobileRemaining, setmobileRemaining] = useState([]);
     const [desktopRemin, setdesktopRemin] = useState([]);
     const [deletedBets, setdeletedBets] = useState([]);
-    const [RemainingBets, setRemainingBets] = useState();
+    const [RemainingBets, setRemainingBets] = useState([]);
     const [finalRemainingBets, setfinalRemainingBets] = useState([]);
     const [placeWinPlaceBetList, setplaceWinPlaceBetList] = useState([]);
     const [placeWinPlaceBetListQuinella, setplaceWinPlaceBetListQuinella] = useState([])

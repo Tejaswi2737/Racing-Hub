@@ -45,7 +45,7 @@ const RaceDetails = (props,ownProps)=>{
 
 
     const [poolFinalList, setpoolFinalList] = useState([]);
-    const [RemainingBets, setRemainingBets] = useState();
+    const [RemainingBets, setRemainingBets] = useState([]);
 
     const [finalRemainingBets, setfinalRemainingBets] = useState([]);
 
