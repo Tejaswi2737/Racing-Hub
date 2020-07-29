@@ -435,6 +435,7 @@ const BetSlipHome=(props) =>{
 
     const betSlipPlaceInput=(item)=>{
         
+        
         var pos=(_.findIndex(RemainingBets, item));
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
@@ -528,6 +529,7 @@ const BetSlipHome=(props) =>{
     };
 
     const betSlipPlaceInputQuinella=(item)=>{
+        console.log(item)
         var pos=(_.findIndex(RemainingBetsQuienlla, item));
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
@@ -589,7 +591,7 @@ const BetSlipHome=(props) =>{
             </>
         )
     };
-    const betSlipBetDetail =(WinMoney)=>{
+    const betSlipBetDetail =()=>{
         return(
             <>
             {RemainingBets?(startSlip)?RemainingBets.map(item=>{

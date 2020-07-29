@@ -78,7 +78,6 @@ const RaceDetails = (props,ownProps)=>{
         setplace_slot(initialValue)
     }, [initialValue,initialValuePlace])
     useEffect(() => {
-        console.log(pathValues.slot)
         props.fetchRaceDetails(place_slot);
     }, [place_slot,place])
 

@@ -102,7 +102,6 @@ export const fetchMeetingDetails =  () => {
   }
 };
 export const fetchRaceDetails =  (props) => {
-  console.log(props)
   var data={}
   switch(props) {
     case 1:
