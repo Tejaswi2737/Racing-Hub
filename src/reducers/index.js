@@ -32,12 +32,37 @@ import remainingBetSlipQuinellaReducer from  "./remainingBetSlipDataquinella";
 import deleteSingleBetQuinellaReducer from "./deleteSingleBetquinella";
 import deleteAllBetsQuinellaReducer from "./deleteAllBetsquinella";
 
+
+import allBetSlipDataTrifectareducer from "./allBetSlipDataTrifecta";
+import screenStatusTrifectaReducers from "./screenStatusReducersTrifecta";
+import postWinPlaceTrifectaReducer from "./postWinPlaceTrifecta";
+import remainingBetSlipTrifectaReducer from  "./remainingBetSlipDataTrifecta";
+import deleteSingleBetTrifectaReducer from "./deleteSingleBetTrifecta";
+import deleteAllBetsTrifectaReducer from "./deleteAllBetsTrifecta";
+
+
+import allBetSlipDataFirst4reducer from "./allBetSlipDataFirst4";
+import screenStatusFirst4Reducers from "./screenStatusReducersFirst4";
+import postWinPlaceFirst4Reducer from "./postWinPlaceFirst4";
+import remainingBetSlipFirst4Reducer from  "./remainingBetSlipDataFirst4";
+import deleteSingleBetFirst4Reducer from "./deleteSingleBetFirst4";
+import deleteAllBetsFirst4Reducer from "./deleteAllBetsFirst4";
+
+
 import allBetSlipDataDuetreducer from "./allBetSlipDataDuet";
 import screenStatusDuetReducers from "./screenStatusReducersDuet";
 import postWinPlaceDuetReducer from "./postWinPlaceDuet";
 import remainingBetSlipDuetReducer from  "./remainingBetSlipDataDuet";
 import deleteSingleBetDuetReducer from "./deleteSingleBetDuet";
 import deleteAllBetsDuetReducer from "./deleteAllBetsDuet";
+
+
+import allBetSlipDataExactareducer from "./allBetSlipDataExacta";
+import screenStatusExactaReducers from "./screenStatusReducersquienlla";
+import postWinPlaceExactaReducer from "./postWinPlaceExacta";
+import remainingBetSlipExactaReducer from  "./remainingBetSlipDataExacta";
+import deleteSingleBetExactaReducer from "./deleteSingleBetExacta";
+import deleteAllBetsExactaReducer from "./deleteAllBetsExacta";
 
 export const rootReducer = combineReducers({
     firebase: firebaseReducer,
@@ -54,7 +79,6 @@ export default combineReducers({
     betSlipInd: betSlipIndreducer,
     countBetSlip:countBetSlipReducer,
     deleteBetSlip:deleteBetSlipReducer,
-    
 
     allBetSlip: allBetSlipDatareducer,
     screenStatus:screenStatusReducers,
@@ -63,7 +87,6 @@ export default combineReducers({
     deleteSingleBet:deleteSingleBetReducer,
     deleteAllBet:deleteAllBetsReducer,
 
-
     allBetSlipQuinella: allBetSlipDataQuinellareducer,
     screenStatusQuinella:screenStatusQuinellaReducers,
     remainingBetSlipQuinella:remainingBetSlipQuinellaReducer,
@@ -71,11 +94,32 @@ export default combineReducers({
     deleteSingleBetQuinella:deleteSingleBetQuinellaReducer,
     deleteAllBetQuinella:deleteAllBetsQuinellaReducer,
 
+    allBetSlipTrifecta: allBetSlipDataTrifectareducer,
+    screenStatusTrifecta:screenStatusTrifectaReducers,
+    remainingBetSlipTrifecta:remainingBetSlipTrifectaReducer,
+    postWinPlaceTrifecta:postWinPlaceTrifectaReducer,
+    deleteSingleBetTrifecta:deleteSingleBetTrifectaReducer,
+    deleteAllBetTrifecta:deleteAllBetsTrifectaReducer,
+
+
+    allBetSlipFirst4: allBetSlipDataFirst4reducer,
+    screenStatusFirst4:screenStatusFirst4Reducers,
+    remainingBetSlipFirst4:remainingBetSlipFirst4Reducer,
+    postWinPlaceFirst4:postWinPlaceFirst4Reducer,
+    deleteSingleBetFirst4:deleteSingleBetFirst4Reducer,
+    deleteAllBetFirst4:deleteAllBetsFirst4Reducer,
 
     allBetSlipDuet: allBetSlipDataDuetreducer,
     screenStatusDuet:screenStatusDuetReducers,
-    remainingBetSlipDuet:postWinPlaceDuetReducer,
-    postWinPlaceDuet:remainingBetSlipDuetReducer,
+    remainingBetSlipDuet:remainingBetSlipDuetReducer,
+    postWinPlaceDuet:postWinPlaceDuetReducer,
     deleteSingleBetDuet:deleteSingleBetDuetReducer,
-    deleteAllBetDuet:deleteAllBetsDuetReducer
+    deleteAllBetDuet:deleteAllBetsDuetReducer,
+
+    allBetSlipExacta: allBetSlipDataExactareducer,
+    screenStatusExacta:screenStatusExactaReducers,
+    remainingBetSlipExacta:remainingBetSlipExactaReducer,
+    postWinPlaceExacta:postWinPlaceExactaReducer,
+    deleteSingleBetExacta:deleteSingleBetExactaReducer,
+    deleteAllBetExacta:deleteAllBetsExactaReducer
 });

@@ -6,14 +6,7 @@ import MediaQuery from 'react-responsive';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 
-import { 
-    fetchNextRace,
-    addBetSlipData,
-    betSlipScreen,
-    remainingBetSlipData,
-    betSlipScreenQuinella,
-    betSlipScreenDuet
-} from "../../actions";
+import { fetchNextRace,addBetSlipData,betSlipScreen,remainingBetSlipData,betSlipScreenQuinella } from "../../actions";
 import MenuView from "../Nav/Menu";
 
 import Header from '../Nav/Header';
@@ -26,11 +19,8 @@ const NextScreen=(props) =>{
     useEffect(() => {
         props.fetchNextRace();
       }, []);
-    props.betSlipScreen(false);
-    props.betSlipScreenQuinella(false);
-    props.betSlipScreenDuet(false);
-
-
+    props.betSlipScreen(false)
+    props.betSlipScreenQuinella(false)
     const [firstTime, setfirstTime] = useState();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
@@ -126,8 +116,6 @@ const mapStateToProps=(state)=> {
         screenStatus:state.screenStatus,
         remainingBetSlip:state.remainingBetSlip,
         betSlipInd:state.betSlipInd,
-        screenStatusDuet: state.screenStatusDuet,
-
     }
 }
 export default connect(mapStateToProps, { 
@@ -135,6 +123,5 @@ export default connect(mapStateToProps, {
     betSlipScreen,
     betSlipScreenQuinella,
     remainingBetSlipData,
-    betSlipScreenDuet,
-    
+    addBetSlipData
  } )(NextScreen);

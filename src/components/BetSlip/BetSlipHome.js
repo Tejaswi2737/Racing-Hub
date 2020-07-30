@@ -8,8 +8,9 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.min.css';
 import { 
     addBetSlipData,
-    allBetSlipData,
     deleteBetSlipData,
+
+    allBetSlipData,
     remainingBetSlipData,
     betSlipScreen,
     postWinPlaceBets,
@@ -22,6 +23,28 @@ import {
     postWinPlaceBetsQuinella,
     deleteSingleBetQuinella,
     deleteAllBetsQuinella,
+
+    
+    allBetSlipDataTrifecta,
+    remainingBetSlipDataTrifecta,
+    betSlipScreenTrifecta,
+    postWinPlaceBetsTrifecta,
+    deleteSingleBetTrifecta,
+    deleteAllBetsTrifecta,
+
+    allBetSlipDataFirst4,
+    remainingBetSlipDataFirst4,
+    betSlipScreenFirst4,
+    postWinPlaceBetsFirst4,
+    deleteSingleBetFirst4,
+    deleteAllBetsFirst4,
+
+    allBetSlipDataExacta,
+    remainingBetSlipDataExacta,
+    betSlipScreenExacta,
+    postWinPlaceBetsExacta,
+    deleteSingleBetExacta,
+    deleteAllBetsExacta,
 
     allBetSlipDataDuet,
     remainingBetSlipDataDuet,
@@ -863,6 +886,29 @@ const mapStateToProps=(state)=> {
         deleteSingleBetQuinella: state.deleteSingleBetQuinella,
         deleteAllBetQuinella: state.deleteAllBetQuinella,
 
+        
+        allBetSlipTrifecta: state.allBetSlipTrifecta,
+        screenStatusTrifecta: state.screenStatusTrifecta,
+        remainingBetSlipTrifecta: state.remainingBetSlipTrifecta,
+        postWinPlaceTrifecta: state.postWinPlaceTrifecta,
+        deleteSingleBetTrifecta: state.deleteSingleBetTrifecta,
+        deleteAllBetTrifecta: state.deleteAllBetTrifecta,
+
+        allBetSlipFirst4: state.allBetSlipFirst4,
+        screenStatusFirst4: state.screenStatusFirst4,
+        remainingBetSlipFirst4: state.remainingBetSlipFirst4,
+        postWinPlaceFirst4: state.postWinPlaceFirst4,
+        deleteSingleBetFirst4: state.deleteSingleBetFirst4,
+        deleteAllBetFirst4: state.deleteAllBetFirst4,
+
+
+        allBetSlipExacta: state.allBetSlipExacta,
+        screenStatusExacta: state.screenStatusExacta,
+        remainingBetSlipExacta: state.remainingBetSlipExacta,
+        postWinPlaceExacta: state.postWinPlaceExacta,
+        deleteSingleBetExacta: state.deleteSingleBetExacta,
+        deleteAllBetExacta: state.deleteAllBetExacta,
+
         allBetSlipDuet: state.allBetSlipDuet,
         screenStatusDuet: state.screenStatusDuet,
         remainingBetSlipDuet: state.remainingBetSlipDuet,
@@ -889,7 +935,35 @@ export default connect(mapStateToProps,
         postWinPlaceBetsQuinella,
         deleteSingleBetQuinella,
         deleteAllBetsQuinella,
+        
 
+
+        
+        allBetSlipDataTrifecta,
+        remainingBetSlipDataTrifecta,
+        betSlipScreenTrifecta,
+        postWinPlaceBetsTrifecta,
+        deleteSingleBetTrifecta,
+        deleteAllBetsTrifecta,
+
+
+        
+        allBetSlipDataFirst4,
+        remainingBetSlipDataFirst4,
+        betSlipScreenFirst4,
+        postWinPlaceBetsFirst4,
+        deleteSingleBetFirst4,
+        deleteAllBetsFirst4,
+
+        
+        allBetSlipDataExacta,
+        remainingBetSlipDataExacta,
+        betSlipScreenExacta,
+        postWinPlaceBetsExacta,
+        deleteSingleBetExacta,
+        deleteAllBetsExacta,
+
+        
         allBetSlipDataDuet,
         remainingBetSlipDataDuet,
         betSlipScreenDuet,
