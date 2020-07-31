@@ -59,10 +59,14 @@ const BetSlipHome=(props) =>{
     const [mobileRemaining, setmobileRemaining] = useState([]);
     const [desktopRemin, setdesktopRemin] = useState([]);
     const [deletedBets, setdeletedBets] = useState([]);
-    const [RemainingBets, setRemainingBets] = useState([]);
-    const [finalRemainingBets, setfinalRemainingBets] = useState([]);
+
     const [placeWinPlaceBetList, setplaceWinPlaceBetList] = useState([]);
-    const [placeWinPlaceBetListQuinella, setplaceWinPlaceBetListQuinella] = useState([])
+    const [placeWinPlaceBetListQuinella, setplaceWinPlaceBetListQuinella] = useState([]);
+    const [placeWinPlaceBetListDuet, setplaceWinPlaceBetListDuet] = useState([])
+    const [placeWinPlaceBetListTrifecta, setplaceWinPlaceBetListTrifecta] = useState([])
+    const [placeWinPlaceBetListFirst4, setplaceWinPlaceBetListFirst4] = useState([])
+    const [placeWinPlaceBetListExacta, setplaceWinPlaceBetListExacta] = useState([])
+
     const [showCurrency, setshowCurrency] = useState(false)
     const [BetSlipDoneJson, setBetSlipDoneJson] = useState();
     const [deleted,setdeleted]=useState(false)
@@ -73,9 +77,20 @@ const BetSlipHome=(props) =>{
     const [localRemaining, setlocalRemaining] = useState([]);
 
     const [poolFinalListQuienlla, setpoolFinalListQuienlla] = useState([]);
-    const [RemainingBetsQuienlla, setRemainingBetsQuienlla] = useState([]);
 
+    const [RemainingBets, setRemainingBets] = useState([]);
+    const [RemainingBetsQuienlla, setRemainingBetsQuienlla] = useState([]);
+    const [RemainingBetsTrifecta, setRemainingBetsTrifecta] = useState([]);
+    const [RemainingBetsFirst4, setRemainingBetsFirst4] = useState([]);
+    const [RemainingBetsExacta, setRemainingBetsExacta] = useState([]);
+    const [RemainingBetsDuet, setRemainingBetsDuet] = useState([]);
+    
+    const [finalRemainingBets, setfinalRemainingBets] = useState([]);
     const [finalRemainingBetsQuienlla, setfinalRemainingBetsQuienlla] = useState([]);
+    const [finalRemainingBetsTrifecta, setfinalRemainingBetsTrifecta] = useState([]);
+    const [finalRemainingBetsFirst4, setfinalRemainingBetsFirst4] = useState([]);
+    const [finalRemainingBetsExacta, setfinalRemainingBetsExacta] = useState([]);
+    const [finalRemainingBetsDuet, setfinalRemainingBetsDuet] = useState([]);
 
     useEffect(() => {
         var users;
@@ -94,7 +109,6 @@ const BetSlipHome=(props) =>{
         if(window.innerWidth>980 && performance.navigation.type == 0 ) {
             var users=props.allBetSlip;
             var rem=props.remainingBetSlip.length<1?JSON.parse(window.localStorage.getItem('betSlip')):props.remainingBetSlip
-            console.log(rem)
             if(props.screenStatus) {
                 if(rem) {
                     users = [users, ...rem];
@@ -278,9 +292,110 @@ const BetSlipHome=(props) =>{
         };
 
     }, [props.allBetSlipQuinella]);
-    
+
+    useEffect(() => {
+        var users;
+        props.postWinPlaceBetsDuet([]);
+        if(window.innerWidth>980 && performance.navigation.type >=1 ) {
+            var users=props.allBetSlipDuet;
+            var rem=props.remainingBetSlipDuet.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipDuet')):props.remainingBetSlipDuet
+            if(props.screenStatus) {
+                users = [users, ...rem];
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }        
+        }
+        if(window.innerWidth>980 && performance.navigation.type == 0 ) {
+            var users=props.allBetSlipDuet;
+            var rem=props.remainingBetSlipDuet.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipDuet')):props.remainingBetSlipDuet
+            if(props.screenStatusDuet) {
+                if(rem) {
+                    users = [users, ...rem];
+                }
+            } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
+        }
+        if (performance.navigation.type >= 1 && window.innerWidth<980) {
+            props.remainingBetSlipDataDuet(JSON.parse(window.localStorage.getItem('betSlipDuet')))
+            users=JSON.parse(window.localStorage.getItem('betSlipDuet'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980) {
+            var users=props.remainingBetSlipDuet;
+        }
+        if(props.remainingBetSlipDuet) {
+            users=Object.values(users)
+        };
+
+        var grouped = _.reduce(users, (result, user) => {
+            if(user){
+                    (result[user.name] || (result[user.name] = [])).push(user);  
+                    return result;
+            }    
+        }, {});
+        var poolList=[];
+        if(grouped) {
+            if(Object.keys(grouped)){
+                Object.keys(grouped).map(poolname=>{
+                    if(poolname!="undefined") {
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.runners);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList=[];
+                        var duetList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {runners: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList.push(users[pos].runners)
+                                    duetList=grouped[poolname][grouped[poolname].length-1].duet
+                                } 
+                            }
+                            }
+                        if (itemList.length){
+                            var itemPool={"name":poolname,"runners":itemList, "duet": duetList }
+                        }
+                        if(poolFinalList){
+                            poolList.push(itemPool)
+                        } else {
+                            poolList=itemPool
+                        }
+                    }     
+                })
+                setRemainingBetsDuet(poolList);
+                setstartSlip(true)
+            }
+        };
+
+    }, [props.allBetSlipDuet]);
+
+
     const deleteSingleBetfun=(item)=>{
-            if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]){
+            if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0]){
                 setstartSlip(false)
                 setRemainingBets([])
                 localStorage.setItem('betSlip',JSON.stringify([]));
@@ -298,7 +413,7 @@ const BetSlipHome=(props) =>{
             }
     };
     const deleteSingleBetfunQuinella=(item)=>{
-        if (RemainingBetsQuienlla.length==1  && !RemainingBets[0]){
+        if (RemainingBetsQuienlla.length==1  && !RemainingBets[0] && !RemainingBetsDuet[0]){
             setstartSlip(false)
             setRemainingBetsQuienlla([])
             localStorage.setItem('betSlipQuinella',JSON.stringify([]));
@@ -315,7 +430,17 @@ const BetSlipHome=(props) =>{
             setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(item.runners),"win": item.win ,"place": item.place}]);
         }
 };
-
+const deleteSingleBetfunDuet=(item)=>{
+    if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]){
+        setstartSlip(false)
+        setRemainingBetsDuet([])
+        localStorage.setItem('betSlipDuet',JSON.stringify([]));
+    }
+    var obje=RemainingBetsDuet.filter(e1=> { return e1 != item })
+    setRemainingBetsDuet(obje)
+    localStorage.setItem('betSlipDuet',JSON.stringify(obje))
+    props.deleteSingleBetDuet([])
+};
     const handleDeleteAll=()=>{
             if (RemainingBets.length==1){
                 setstartSlip(false)
@@ -335,8 +460,10 @@ const BetSlipHome=(props) =>{
              })
             setRemainingBets([]);
             setRemainingBetsQuienlla([]);
+            setRemainingBetsDuet([])
             localStorage.setItem('betSlip',JSON.stringify([]));
             localStorage.setItem('betSlipQuinella',JSON.stringify([]))
+            localStorage.setItem('betSlipDuet',JSON.stringify([]))
             setshowCurrency(false);
     };
 
@@ -388,6 +515,30 @@ const BetSlipHome=(props) =>{
         }
 
     }, [RemainingBetsQuienlla]);
+
+    useEffect(() => {
+        if (RemainingBetsDuet) {
+            setfinalRemainingBetsDuet([])
+            RemainingBetsDuet.map(items=>{
+                if(items) {
+                    if(items.runners.length>1) {
+                        items.runners.map(runnnerInd=>{
+                            setfinalRemainingBetsDuet(oldArray => [...oldArray, 
+                                {"name":items.name,"runners":runnnerInd,
+                                "duet": items.duet }]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsDuet(oldArray => [...oldArray,
+                            {"name":items.name,"runners":items.runners[0],
+                            "duet": items.duet }])
+                    }
+                }
+            })
+        }
+
+    }, [RemainingBetsDuet]);
 
     useEffect(() => {
         if (finalRemainingBets) {
@@ -466,6 +617,36 @@ const BetSlipHome=(props) =>{
         }
     }, [finalRemainingBetsQuienlla]);
 
+    useEffect(() => {
+        if (finalRemainingBetsDuet) {
+            setplaceWinPlaceBetListDuet([]);
+            if(window.innerWidth) {
+                localStorage.setItem('betSlipDuet',JSON.stringify(finalRemainingBetsDuet))
+                props.remainingBetSlipDataDuet(finalRemainingBetsDuet)
+            }
+            finalRemainingBetsDuet.map(items=>{
+                if(items) {
+                    if( items.win>0)  {
+                        setplaceWinPlaceBetListDuet(oldArray => [...oldArray,
+                            {
+                                "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
+                                "bet_pool_fh": items.name+'q',
+                                "stake_cents": items.quinella,
+                                "combinations":[
+                                {
+                                "place":1,
+                                "runners":[items.runners]
+                                }
+                                ]
+                            }                          
+                        ])
+                        
+                    }
+                }
+            })
+        }
+    }, [finalRemainingBetsDuet]);
+
     const betSlipHeader=()=>{
         return(
             <SimpleBar style={{ maxHeight: '100vh' }}>
@@ -487,8 +668,6 @@ const BetSlipHome=(props) =>{
 
 
     const betSlipPlaceInput=(item)=>{
-        
-        
         var pos=(_.findIndex(RemainingBets, item));
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
@@ -582,7 +761,6 @@ const BetSlipHome=(props) =>{
     };
 
     const betSlipPlaceInputQuinella=(item)=>{
-        console.log(item)
         var pos=(_.findIndex(RemainingBetsQuienlla, item));
         const updateFieldChanged = (e,item) => {
             e.preventDefault();
@@ -644,6 +822,71 @@ const BetSlipHome=(props) =>{
             </>
         )
     };
+
+    const betSlipPlaceInputDuet=(item)=>{
+        var pos=(_.findIndex(RemainingBetsDuet, item));
+        const updateFieldChanged = (e,item) => {
+            e.preventDefault();
+            var pos=(_.findIndex(RemainingBetsDuet, item))
+            var newArr = [...RemainingBetsDuet]; 
+            newArr[pos][e.target.name] = parseInt(e.target.value); 
+            newArr[pos][e.target.name]=newArr[pos][e.target.name]
+            setRemainingBetsDuet(newArr); 
+        }
+        return(
+            <>
+                <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
+                    <ul className="">
+                        <li className="">
+                            <div className="bet-card-info">
+                                <label className="bet-info-value">
+                                    Duet
+                                </label>
+                                <div className="bet-card-input">
+                                    <stake-input className="">
+                                        <span className="stake-input">
+                                            <span className="currency">
+                                                $
+                                            </span>
+                                            <input 
+                                                type="number"
+                                                onClick={()=>{
+                                                    settypeBet('duet')
+                                                }} 
+                                                key={RemainingBetsDuet[pos]['name']+'duet'}
+                                                name='duet'
+                                                placeholder={null}
+                                                value={RemainingBetsDuet[pos]['duet']}
+                                                min={0}
+                                                onChange={(e)=>updateFieldChanged(e,item)} 
+                                                className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                            </input>
+                                        </span>
+                                    </stake-input>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="">
+                            <div className="bet-card-info">
+                                <bet-cost className="">
+                                    <label className="bet-info-label">
+                                        Bet Cost
+                                    </label>
+                                    <span className="bet-info-value">
+                                        ${(!(RemainingBetsDuet[pos]['duet']))?0:
+                                        (RemainingBetsDuet[pos]['duet'])
+                                        }
+                                    </span>
+                                </bet-cost>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </>
+        )
+    };
+
+
     const betSlipBetDetail =()=>{
         return(
             <>
@@ -701,6 +944,7 @@ const BetSlipHome=(props) =>{
                                             <button className="bet-card-remove">
                                                 <i onClick={()=>{props.deleteSingleBet(item)
                                                             {deleteSingleBetfun(item)}
+                                                            
                                                             setdeleted(true)
                                                             setshowCurrency(false)}}
                                                 className="icon-remove" style={{height:'5rem'}}>
@@ -796,6 +1040,83 @@ const BetSlipHome=(props) =>{
         </>
         )
     }
+
+    const betSlipBetDetailDuet =()=>{
+        return(
+            <>
+            {RemainingBetsDuet?(startSlip)?RemainingBetsDuet.map(item=>{
+                return(
+                    item?item.name?
+                        <div className="card">
+                        <div className="">
+                            <parimutuel className="">
+                                <section className="bet-card">
+                                    <header className="bet-card-header">
+                                        <h1 className="bet-card-title">
+                                            Duet
+                                        </h1>
+                                        <span className="bet-card-type tote">
+                                            TOTE
+                                        </span>
+                                    </header>
+                                    <div className="bet-card-body">
+                                        <div className="bet-additional-info">
+                                            <ul className="bet-card-race-information">
+                                                <li>
+                                                    {item.name} 
+                                                </li>
+                                            </ul>
+                                            <ul className="bet-card-selections">
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selections
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.runners.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {betSlipPlaceInputDuet(item)}
+                                    </div>
+                                    <footer className="bet-card-footer">
+                                        <div className="bet-card-footer-actions">
+                                            <p className="bet-status">
+                                                {item.duet==0 || !item.duet || item.runners.length<3?"Incomplete Bet":""}
+                                            </p>                                           
+                                            <button className="bet-card-remove">
+                                                <i onClick={()=>{props.deleteSingleBetDuet(item)
+                                                            {deleteSingleBetfunDuet(item)}
+                                                            setdeleted(true)
+                                                            setshowCurrency(false)}}
+                                                className="icon-remove" style={{height:'5rem'}}>
+                                                    <RiDeleteBin6Line/>
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </footer>
+                                </section>
+                            </parimutuel>
+                        </div>
+                    </div>
+                    :"":""
+                )
+            })
+        :"":""}
+        </>
+        )
+    }
     const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
         return(
             <div className="bet-builder-actions-wrapper">
@@ -832,6 +1153,7 @@ const BetSlipHome=(props) =>{
                             props.postWinPlaceBets(placeWinPlaceBetList)
                             setRemainingBets([])
                             setRemainingBetsQuienlla([])
+                            setRemainingBetsDuet([])
                             props.deleteAllBets(true)
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
@@ -854,6 +1176,7 @@ const BetSlipHome=(props) =>{
                                     <div className="bet-cards-wrapper">
                                         {betSlipBetDetail(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                         {betSlipBetDetailQuinella(WinMoney, PlaceMoney,BetSlipDoneJson)}
+                                        {betSlipBetDetailDuet(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                     </div>
                                 </div>
                             </div>
