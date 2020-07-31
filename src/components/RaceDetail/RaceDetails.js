@@ -1176,33 +1176,32 @@ const mapStateToProps=(state,ownProps)=> {
         racingDetail:state.racingDetail,
         betSlipInd:state.betSlipInd,
         countBetSlip:state.countBetSlip,
-        screenStatus:state.screenStatus,
-        remainingBetSlip:state.remainingBetSlip,
-        allBetSlip:state.allBetSlip,
+
         bet_pool_fh_1:ownProps.bet_pool_fh_1,
         bet_pool_fh_2:ownProps.bet_pool_fh_2,
         pathParams:state.pathParams,
+
+        allBetSlip:state.allBetSlip,
+        screenStatus:state.screenStatus,
+        remainingBetSlip:state.remainingBetSlip,
         deleteSingleBetData:state.deleteSingleBet,
         deleteAllBetData:state.deleteAllBet,
 
         allBetSlipQuinella: state.allBetSlipQuinella,
         screenStatusQuinella: state.screenStatusQuinella,
         remainingBetSlipQuinella: state.remainingBetSlipQuinella,
-        postWinPlaceQuinella: state.postWinPlaceQuinella,
         deleteSingleBetQuinella: state.deleteSingleBetQuinella,
         deleteAllBetQuinella: state.deleteAllBetQuinella,
 
         allBetSlipTrifecta: state.allBetSlipTrifecta,
         screenStatusTrifecta: state.screenStatusTrifecta,
         remainingBetSlipTrifecta: state.remainingBetSlipTrifecta,
-        postWinPlaceTrifecta: state.postWinPlaceTrifecta,
         deleteSingleBetTrifecta: state.deleteSingleBetTrifecta,
         deleteAllBetTrifecta: state.deleteAllBetTrifecta,
 
         allBetSlipFirst4: state.allBetSlipFirst4,
         screenStatusFirst4: state.screenStatusFirst4,
         remainingBetSlipFirst4: state.remainingBetSlipFirst4,
-        postWinPlaceFirst4: state.postWinPlaceFirst4,
         deleteSingleBetFirst4: state.deleteSingleBetFirst4,
         deleteAllBetFirst4: state.deleteAllBetFirst4,
 
@@ -1210,14 +1209,12 @@ const mapStateToProps=(state,ownProps)=> {
         allBetSlipExacta: state.allBetSlipExacta,
         screenStatusExacta: state.screenStatusExacta,
         remainingBetSlipExacta: state.remainingBetSlipExacta,
-        postWinPlaceExacta: state.postWinPlaceExacta,
         deleteSingleBetExacta: state.deleteSingleBetExacta,
         deleteAllBetExacta: state.deleteAllBetExacta,
 
         allBetSlipDuet: state.allBetSlipDuet,
         screenStatusDuet: state.screenStatusDuet,
         remainingBetSlipDuet: state.remainingBetSlipDuet,
-        postWinPlaceDuet: state.postWinPlaceDuet,
         deleteSingleBetDuet: state.deleteSingleBetDuet,
         deleteAllBetDuet: state.deleteAllBetDuet,
         
@@ -1244,8 +1241,6 @@ export default connect(mapStateToProps,
         deleteSingleBetQuinella,
         deleteAllBetsQuinella,
 
-
-
         
         allBetSlipDataTrifecta,
         remainingBetSlipDataTrifecta,
@@ -1253,7 +1248,6 @@ export default connect(mapStateToProps,
         postWinPlaceBetsTrifecta,
         deleteSingleBetTrifecta,
         deleteAllBetsTrifecta,
-
 
         
         allBetSlipDataFirst4,
@@ -1280,6 +1274,3 @@ export default connect(mapStateToProps,
         deleteAllBetsDuet
         })
     (RaceDetails);
-
-
-
