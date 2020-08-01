@@ -1616,8 +1616,8 @@ const BetSlipHome=(props) =>{
                                     <footer className="bet-card-footer">
                                         <div className="bet-card-footer-actions">
                                             <p className="bet-status">
-                                                {item.first4==0 || !item.first4 || (item.selection1.length<1 && 
-                                                item.selection2.length<1  && item.selection3.length<1 &&
+                                                {item.first4==0 || !item.first4 || (item.selection1.length<1 || 
+                                                item.selection2.length<1 || item.selection3.length<1 ||
                                                 item.selection4.length<1 )
                                                 ?"Incomplete Bet":""}
                                             </p>                                           
@@ -1681,6 +1681,7 @@ const BetSlipHome=(props) =>{
                             setRemainingBets([])
                             setRemainingBetsQuienlla([])
                             setRemainingBetsDuet([])
+                            setRemainingBetsFirst4([])
                             props.deleteAllBets(true)
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">
