@@ -394,6 +394,214 @@ const BetSlipHome=(props) =>{
     }, [props.allBetSlipDuet]);
 
 
+
+    useEffect(() => {
+        var users;
+        props.postWinPlaceBetsFirst4([]);
+        if(window.innerWidth>980 && performance.navigation.type >=1 ) {
+            var users=props.allBetSlipFirst4;
+            var rem=props.remainingBetSlipFirst4.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipFirst4')):props.remainingBetSlipFirst4
+            if(props.screenStatus) {
+                users = [users, ...rem];
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }        
+        }
+        if(window.innerWidth>980 && performance.navigation.type == 0 ) {
+            var users=props.allBetSlipFirst4;
+            var rem=props.remainingBetSlipFirst4.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipFirst4')):props.remainingBetSlipFirst4
+            if(props.screenStatusFirst4) {
+                if(rem) {
+                    users = [users, ...rem];
+                }
+            } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
+        }
+        if (performance.navigation.type >= 1 && window.innerWidth<980) {
+            props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')))
+            users=JSON.parse(window.localStorage.getItem('betSlipFirst4'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980) {
+            var users=props.remainingBetSlipFirst4;
+        }
+        if(props.remainingBetSlipFirst4) {
+            users=Object.values(users)
+        };
+
+        var grouped = _.reduce(users, (result, user) => {
+            if(user){
+                    (result[user.name] || (result[user.name] = [])).push(user);  
+                    return result;
+            }    
+        }, {});
+        var poolList=[];
+        if(grouped) {
+            if(Object.keys(grouped)){
+                Object.keys(grouped).map(poolname=>{
+                    if(poolname!="undefined") {
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection1);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList1=[];
+                        var first4List=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection1: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList1.push(users[pos].selection1)
+                                    first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                } 
+                            }
+                        }
+
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection2);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList2=[];
+                        var first4List=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection2: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList2.push(users[pos].selection2)
+                                    first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                } 
+                            }
+                        }
+                          
+
+
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection3);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList3=[];
+                        var first4List=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection3: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList3.push(users[pos].selection3)
+                                    first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                } 
+                            }
+                        }     
+
+
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection4);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                            return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                        ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                                allNames[name]++
+                            }
+                            else {
+                                allNames[name] = 1
+                            }
+                            return(allNames)
+                            }, {})
+                        var itemList4=[];
+                        var first4List=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection4: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList3.push(users[pos].selection4)
+                                    first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                } 
+                            }
+                        }     
+
+
+
+                        if (itemList1.length || itemList2.length ||itemList3.length ||itemList4.length){
+                            var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"selection3":itemList3,"selection4":itemList4,"first4": first4List}
+                        }
+                        if(poolFinalList){
+                            poolList.push(itemPool)
+                        } else {
+                            poolList=itemPool
+                        }
+                    }     
+                })
+                setRemainingBetsFirst4(poolList)
+            }
+        };
+
+    }, [props.allBetSlipFirst4]);
+
+
+
+
     const deleteSingleBetfun=(item)=>{
             if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0]){
                 setstartSlip(false)
@@ -429,18 +637,32 @@ const BetSlipHome=(props) =>{
         } else {
             setdeletedBets(oldArray => [...oldArray, {"name":item.name,"runners":parseInt(item.runners),"win": item.win ,"place": item.place}]);
         }
-};
-const deleteSingleBetfunDuet=(item)=>{
-    if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]){
-        setstartSlip(false)
-        setRemainingBetsDuet([])
-        localStorage.setItem('betSlipDuet',JSON.stringify([]));
-    }
-    var obje=RemainingBetsDuet.filter(e1=> { return e1 != item })
-    setRemainingBetsDuet(obje)
-    localStorage.setItem('betSlipDuet',JSON.stringify(obje))
-    props.deleteSingleBetDuet([])
-};
+    };
+    const deleteSingleBetfunDuet=(item)=>{
+        if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]){
+            setstartSlip(false)
+            setRemainingBetsDuet([])
+            localStorage.setItem('betSlipDuet',JSON.stringify([]));
+        }
+        var obje=RemainingBetsDuet.filter(e1=> { return e1 != item })
+        setRemainingBetsDuet(obje)
+        localStorage.setItem('betSlipDuet',JSON.stringify(obje))
+        props.deleteSingleBetDuet([])
+    };
+    const deleteSingleBetfunFirst4=(item)=>{
+        if (RemainingBetsFirst4.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0]){
+            setstartSlip(false)
+            setRemainingBetsFirst4([])
+            localStorage.setItem('betSlipFirst4',JSON.stringify([]));
+        }
+        var obje=RemainingBetsFirst4.filter(e1=> { return e1 != item })
+        setRemainingBetsFirst4(obje)
+        localStorage.setItem('betSlipFirst4',JSON.stringify(obje))
+        props.deleteSingleBetFirst4([])
+    };
+
+
+
     const handleDeleteAll=()=>{
             if (RemainingBets.length==1){
                 setstartSlip(false)
@@ -460,10 +682,12 @@ const deleteSingleBetfunDuet=(item)=>{
              })
             setRemainingBets([]);
             setRemainingBetsQuienlla([]);
-            setRemainingBetsDuet([])
+            setRemainingBetsDuet([]);
+            setRemainingBetsFirst4([])
             localStorage.setItem('betSlip',JSON.stringify([]));
-            localStorage.setItem('betSlipQuinella',JSON.stringify([]))
-            localStorage.setItem('betSlipDuet',JSON.stringify([]))
+            localStorage.setItem('betSlipQuinella',JSON.stringify([]));
+            localStorage.setItem('betSlipDuet',JSON.stringify([]));
+            localStorage.setItem('betSlipFirst4',JSON.stringify([]));
             setshowCurrency(false);
     };
 
@@ -540,6 +764,76 @@ const deleteSingleBetfunDuet=(item)=>{
 
     }, [RemainingBetsDuet]);
 
+    
+    useEffect(() => {
+        if (RemainingBetsFirst4 && window.innerWidth) {
+            setfinalRemainingBetsFirst4([])
+            RemainingBetsFirst4.map(items=>{
+                if(items) {
+                    if(items.selection1.length>1) {
+                        items.selection1.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection1":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection1":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+                if(items) {
+                    if(items.selection2.length>1) {
+                        items.selection2.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection2":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection2":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+                if(items) {
+                    if(items.selection3.length>1) {
+                        items.selection3.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection3":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection3":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+                if(items) {
+                    if(items.selection4.length>1) {
+                        items.selection4.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection4":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection4":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+            })
+        }
+    }, [RemainingBetsFirst4]);
+
+
     useEffect(() => {
         if (finalRemainingBets) {
             setplaceWinPlaceBetList([]);
@@ -604,7 +898,7 @@ const deleteSingleBetfunDuet=(item)=>{
                                 "stake_cents": items.quinella,
                                 "combinations":[
                                 {
-                                "place":1,
+                                "quinella":1,
                                 "runners":[items.runners]
                                 }
                                 ]
@@ -630,11 +924,11 @@ const deleteSingleBetfunDuet=(item)=>{
                         setplaceWinPlaceBetListDuet(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
-                                "bet_pool_fh": items.name+'q',
-                                "stake_cents": items.quinella,
+                                "bet_pool_fh": items.name+'d',
+                                "stake_cents": items.duet,
                                 "combinations":[
                                 {
-                                "place":1,
+                                "duet":1,
                                 "runners":[items.runners]
                                 }
                                 ]
@@ -646,6 +940,39 @@ const deleteSingleBetfunDuet=(item)=>{
             })
         }
     }, [finalRemainingBetsDuet]);
+
+    useEffect(() => {
+        if (finalRemainingBetsFirst4) {
+            setplaceWinPlaceBetListFirst4([]);
+            if(window.innerWidth) {
+                localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4))
+                props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4)
+            }
+            finalRemainingBetsFirst4.map(items=>{
+                if(items) {
+                    if( items.first4>0)  {
+                        setplaceWinPlaceBetListFirst4(oldArray => [...oldArray,
+                            {
+                                "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
+                                "bet_pool_fh": items.name+'f',
+                                "stake_cents": items.first4,
+                                "combinations":[
+                                {
+                                "first4":1,
+                                "selection1":[items.selection1],
+                                "selection2":[items.selection2],
+                                "selection3":[items.selection3],
+                                "selection4":[items.selection4]
+                                }
+                                ]
+                            }                          
+                        ])
+                        
+                    }
+                }
+            })
+        }
+    }, [finalRemainingBetsFirst4]);
 
     const betSlipHeader=()=>{
         return(
@@ -886,7 +1213,68 @@ const deleteSingleBetfunDuet=(item)=>{
         )
     };
 
-
+    const betSlipPlaceInputFirst4=(item)=>{
+        var pos=(_.findIndex(RemainingBetsFirst4, item));
+        const updateFieldChanged = (e,item) => {
+            e.preventDefault();
+            var pos=(_.findIndex(RemainingBetsFirst4, item))
+            var newArr = [...RemainingBetsFirst4]; 
+            newArr[pos][e.target.name] = parseInt(e.target.value); 
+            newArr[pos][e.target.name]=newArr[pos][e.target.name]
+            setRemainingBetsFirst4(newArr); 
+        }
+        return(
+            <>
+                <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
+                    <ul className="">
+                        <li className="">
+                            <div className="bet-card-info">
+                                <label className="bet-info-value">
+                                    First4
+                                </label>
+                                <div className="bet-card-input">
+                                    <stake-input className="">
+                                        <span className="stake-input">
+                                            <span className="currency">
+                                                $
+                                            </span>
+                                            <input 
+                                                type="number"
+                                                onClick={()=>{
+                                                    settypeBet('first4')
+                                                }} 
+                                                key={RemainingBetsFirst4[pos]['name']+'first4'}
+                                                name='first4'
+                                                placeholder={null}
+                                                value={RemainingBetsFirst4[pos]['first4']}
+                                                min={0}
+                                                onChange={(e)=>updateFieldChanged(e,item)} 
+                                                className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                            </input>
+                                        </span>
+                                    </stake-input>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="">
+                            <div className="bet-card-info">
+                                <bet-cost className="">
+                                    <label className="bet-info-label">
+                                        Bet Cost
+                                    </label>
+                                    <span className="bet-info-value">
+                                        ${(!(RemainingBetsFirst4[pos]['first4']))?0:
+                                        (RemainingBetsFirst4[pos]['first4'])
+                                        }
+                                    </span>
+                                </bet-cost>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </>
+        )
+    };
     const betSlipBetDetail =()=>{
         return(
             <>
@@ -942,9 +1330,9 @@ const deleteSingleBetfunDuet=(item)=>{
                                                 {item.win +item.place ==0?"Incomplete Bet":""}
                                             </p>                                           
                                             <button className="bet-card-remove">
-                                                <i onClick={()=>{props.deleteSingleBet(item)
-                                                            {deleteSingleBetfun(item)}
-                                                            
+                                                <i onClick={()=>{
+                                                            props.deleteSingleBet(item)
+                                                            {deleteSingleBetfun(item)}                                                           
                                                             setdeleted(true)
                                                             setshowCurrency(false)}}
                                                 className="icon-remove" style={{height:'5rem'}}>
@@ -1016,7 +1404,7 @@ const deleteSingleBetfunDuet=(item)=>{
                                     <footer className="bet-card-footer">
                                         <div className="bet-card-footer-actions">
                                             <p className="bet-status">
-                                                {item.quinella==0 || !item.quinella || item.runners.length<3?"Incomplete Bet":""}
+                                                {item.quinella==0 || !item.quinella || item.runners.length<2?"Incomplete Bet":""}
                                             </p>                                           
                                             <button className="bet-card-remove">
                                                 <i onClick={()=>{props.deleteSingleBetQuinella(item)
@@ -1093,11 +1481,150 @@ const deleteSingleBetfunDuet=(item)=>{
                                     <footer className="bet-card-footer">
                                         <div className="bet-card-footer-actions">
                                             <p className="bet-status">
-                                                {item.duet==0 || !item.duet || item.runners.length<3?"Incomplete Bet":""}
+                                                {item.duet==0 || !item.duet || item.runners.length<2?"Incomplete Bet":""}
                                             </p>                                           
                                             <button className="bet-card-remove">
-                                                <i onClick={()=>{props.deleteSingleBetDuet(item)
+                                                <i onClick={()=>{
+                                                            props.deleteSingleBetDuet(item)
                                                             {deleteSingleBetfunDuet(item)}
+                                                            setdeleted(true)
+                                                            setshowCurrency(false)}}
+                                                className="icon-remove" style={{height:'5rem'}}>
+                                                    <RiDeleteBin6Line/>
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </footer>
+                                </section>
+                            </parimutuel>
+                        </div>
+                    </div>
+                    :"":""
+                )
+            })
+        :"":""}
+        </>
+        )
+    }
+
+    const betSlipBetDetailFirst4 =()=>{
+        return(
+            <>
+            {RemainingBetsFirst4?(startSlip)?RemainingBetsFirst4.map(item=>{
+                return(
+                    item?item.name?
+                        <div className="card">
+                        <div className="">
+                            <parimutuel className="">
+                                <section className="bet-card">
+                                    <header className="bet-card-header">
+                                        <h1 className="bet-card-title">
+                                            betSlipPlaceInputFirst4
+                                        </h1>
+                                        <span className="bet-card-type tote">
+                                            TOTE
+                                        </span>
+                                    </header>
+                                    <div className="bet-card-body">
+                                        <div className="bet-additional-info">
+                                            <ul className="bet-card-race-information">
+                                                <li>
+                                                    {item.name} 
+                                                </li>
+                                            </ul>
+                                            <ul className="bet-card-selections">
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selections1
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection1.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selections2
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection2.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selections3
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection3.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selections4
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection4.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {betSlipPlaceInputFirst4(item)}
+                                    </div>
+                                    <footer className="bet-card-footer">
+                                        <div className="bet-card-footer-actions">
+                                            <p className="bet-status">
+                                                {item.first4==0 || !item.first4 || (item.selection1.length<1 && 
+                                                item.selection2.length<1  && item.selection3.length<1 &&
+                                                item.selection4.length<1 )
+                                                ?"Incomplete Bet":""}
+                                            </p>                                           
+                                            <button className="bet-card-remove">
+                                                <i onClick={()=>{
+                                                            props.deleteSingleBet(item)
+                                                            {deleteSingleBetfunFirst4(item)}  
                                                             setdeleted(true)
                                                             setshowCurrency(false)}}
                                                 className="icon-remove" style={{height:'5rem'}}>
@@ -1177,6 +1704,7 @@ const deleteSingleBetfunDuet=(item)=>{
                                         {betSlipBetDetail(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                         {betSlipBetDetailQuinella(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                         {betSlipBetDetailDuet(WinMoney, PlaceMoney,BetSlipDoneJson)}
+                                        {betSlipBetDetailFirst4(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                     </div>
                                 </div>
                             </div>

@@ -514,6 +514,20 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [finalRemainingBetsDuet]);
 
+
+    useEffect(() => {
+        if (performance.navigation.type === 1 && window.innerWidth<980) {
+            props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')))
+        }
+    }, [performance.navigation.type]);
+
+    useEffect(() => {
+        if(RemainingBetsFirst4 && window.innerWidth ) {
+            props.remainingBetSlipDataDuet(finalRemainingBetsFirst4);
+            localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4));
+        }
+    }, [finalRemainingBetsFirst4]);
+
 // handle click for the win/place bets, 
 // this will execute if the race is open for betting ie., normal now
 // an object is assigned to runner_win_place and in which the bet details are stored
@@ -525,6 +539,7 @@ const RaceDetails = (props,ownProps)=>{
                 });  
                 setrunner_quinella({})
                 setrunner_duet({})
+                setrunner_first4({})
         }
     };
 
@@ -546,6 +561,7 @@ const RaceDetails = (props,ownProps)=>{
             }); 
             setrunner_win_place({})
             setrunner_duet({})
+            setrunner_first4({})
         }
     };
     useEffect(() => {
@@ -566,6 +582,7 @@ const RaceDetails = (props,ownProps)=>{
             }); 
             setrunner_win_place({})
             setrunner_quinella({})
+            setrunner_first4({})
         }
     };
     useEffect(() => {
@@ -576,6 +593,47 @@ const RaceDetails = (props,ownProps)=>{
             }
         }
     }, [runner_duet]);
+
+
+    const handleClickFirst4=(runner_item,selection)=>{
+        if ((raceData[0].raceStatus==="Normal")) {
+            if(selection==1) {
+                setrunner_first4({
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                    ,"selection1":runner_item.runnerNumber,"first4": null
+                }); 
+            }
+            if(selection==2) {
+                setrunner_first4({
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                    ,"selection2":runner_item.runnerNumber,"first4": null
+                }); 
+            }
+            if(selection==3) {
+                setrunner_first4({
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                    ,"selection3":runner_item.runnerNumber,"first4": null
+                }); 
+            }
+            if(selection==4) {
+                setrunner_first4({
+                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
+                    ,"selection4":runner_item.runnerNumber,"first4": null
+                }); 
+            }
+            setrunner_duet({})
+            setrunner_win_place({})
+            setrunner_quinella({})
+        }
+    };
+    useEffect(() => {
+        if ((runner_first4)) {
+            if(runner_first4.name) {
+                {props.allBetSlipDataFirst4(runner_first4)}
+                props.betSlipScreenFirst4(true);
+            }
+        }
+    }, [runner_first4]);
 
 // handling the remaining bets for the non-desktop version
     useEffect(() => {
@@ -589,8 +647,7 @@ const RaceDetails = (props,ownProps)=>{
                     if(rem){
                         users=[...rem]
                     }
-                }
-                
+                }               
             }
             if(performance.navigation.type == 0 ) {
                 var users=props.allBetSlip;
@@ -829,6 +886,194 @@ const RaceDetails = (props,ownProps)=>{
             };
         }
     }, [props.allBetSlipDuet]);
+
+
+
+    useEffect(() => {
+        if(window.innerWidth<980) {
+            if( performance.navigation.type >=1 ) {
+                var users=props.allBetSlipFirst4;
+                var rem=props.remainingBetSlipFirst4.length<1?
+                JSON.parse(window.localStorage.getItem('betSlipFirst4')):
+                props.remainingBetSlipFirst4
+                if(props.screenStatusFirst4) {
+                    users = [users, ...rem];
+                } else {users=[...rem]}
+            }
+            if(performance.navigation.type == 0 ) {
+                var users=props.allBetSlipFirst4;
+                var rem=props.remainingBetSlipFirst4.length<1?
+                JSON.parse(window.localStorage.getItem('betSlipFirst4')):
+                props.remainingBetSlipFirst4
+                if(props.screenStatusFirst4) {
+                    users = [users, ...rem];
+                } else {users=[...rem]}
+            }
+            // var users_win=users.filter(e1=> { return e1.win===null });
+            var grouped = _.reduce(users, (result, user) => {
+                if(user){
+                        (result[user.name] || (result[user.name] = [])).push(user);  
+                        return result;
+                }    
+            }, {});
+            var poolList=[]
+            if(grouped) {
+                if(Object.keys(grouped)){
+                    Object.keys(grouped).map(poolname=>{
+                        if(poolname!="undefined") {
+                            var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                                if(user){
+                                        (result[user.name] || (result[user.name] = [])).push(user.selection1);  
+                                        
+                                        return (Object.values(result).reduce(
+                                            function(accumulator, currentValue) {
+                                              return accumulator.concat(currentValue)
+                                            },
+                                            []
+                                          ));        
+                                }    
+                            }, {});
+                            var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                                if (name in allNames) {
+                                  allNames[name]++
+                                }
+                                else {
+                                  allNames[name] = 1
+                                }
+                                return(allNames)
+                              }, {})
+                            var itemList1=[];
+                            var first4List=null;
+                            for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                                if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                    if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                        var pos=(_.findIndex(users, {selection1: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                        itemList1.push(users[pos].selection1)
+                                        first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                    } 
+                                }
+                            }
+
+                            var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                                if(user){
+                                        (result[user.name] || (result[user.name] = [])).push(user.selection2);  
+                                        
+                                        return (Object.values(result).reduce(
+                                            function(accumulator, currentValue) {
+                                              return accumulator.concat(currentValue)
+                                            },
+                                            []
+                                          ));        
+                                }    
+                            }, {});
+                            var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                                if (name in allNames) {
+                                  allNames[name]++
+                                }
+                                else {
+                                  allNames[name] = 1
+                                }
+                                return(allNames)
+                              }, {})
+                            var itemList2=[];
+                            var first4List=null;
+                            for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                                if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                    if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                        var pos=(_.findIndex(users, {selection2: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                        itemList2.push(users[pos].selection2)
+                                        first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                    } 
+                                }
+                            }
+                              
+
+
+                            var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                                if(user){
+                                        (result[user.name] || (result[user.name] = [])).push(user.selection3);  
+                                        
+                                        return (Object.values(result).reduce(
+                                            function(accumulator, currentValue) {
+                                              return accumulator.concat(currentValue)
+                                            },
+                                            []
+                                          ));        
+                                }    
+                            }, {});
+                            var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                                if (name in allNames) {
+                                  allNames[name]++
+                                }
+                                else {
+                                  allNames[name] = 1
+                                }
+                                return(allNames)
+                              }, {})
+                            var itemList3=[];
+                            var first4List=null;
+                            for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                                if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                    if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                        var pos=(_.findIndex(users, {selection3: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                        itemList3.push(users[pos].selection3)
+                                        first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                    } 
+                                }
+                            }     
+
+
+                            var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                                if(user){
+                                        (result[user.name] || (result[user.name] = [])).push(user.selection4);  
+                                        
+                                        return (Object.values(result).reduce(
+                                            function(accumulator, currentValue) {
+                                                return accumulator.concat(currentValue)
+                                            },
+                                            []
+                                            ));        
+                                }    
+                            }, {});
+                            var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                                if (name in allNames) {
+                                    allNames[name]++
+                                }
+                                else {
+                                    allNames[name] = 1
+                                }
+                                return(allNames)
+                                }, {})
+                            var itemList4=[];
+                            var first4List=null;
+                            for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                                if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                    if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                        var pos=(_.findIndex(users, {selection4: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                        itemList3.push(users[pos].selection4)
+                                        first4List=grouped[poolname][grouped[poolname].length-1].first4
+                                    } 
+                                }
+                            }     
+
+
+
+                            if (itemList1.length || itemList2.length ||itemList3.length ||itemList4.length){
+                                var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"selection3":itemList3,"selection4":itemList4,"first4": first4List}
+                            }
+                            if(poolFinalList){
+                                poolList.push(itemPool)
+                            } else {
+                                poolList=itemPool
+                            }
+                        }     
+                    })
+                    setRemainingBetsFirst4(poolList)
+                }
+            };
+        }
+    }, [props.allBetSlipFirst4]);
+
     
     useEffect(() => {
         if (RemainingBets && window.innerWidth) {
@@ -900,6 +1145,77 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [RemainingBetsDuet]);
 
+
+
+    useEffect(() => {
+        if (RemainingBetsFirst4 && window.innerWidth) {
+            setfinalRemainingBetsFirst4([])
+            RemainingBetsFirst4.map(items=>{
+                if(items) {
+                    if(items.selection1.length>1) {
+                        items.selection1.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection1":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection1":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+                if(items) {
+                    if(items.selection2.length>1) {
+                        items.selection2.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection2":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection2":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+                if(items) {
+                    if(items.selection3.length>1) {
+                        items.selection3.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection3":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection3":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+                if(items) {
+                    if(items.selection4.length>1) {
+                        items.selection4.map(runnnerInd=>{
+                            setfinalRemainingBetsFirst4(oldArray => [...oldArray, 
+                                {"name":items.name,"selection4":runnnerInd,
+                                "first4": items.first4}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsFirst4(oldArray => [...oldArray,
+                            {"name":items.name,"selection4":items.selection1[0],
+                            "first4": items.first4}])
+                    }
+                }
+            })
+        }
+    }, [RemainingBetsFirst4]);
+
+
     const checkStatus=(runner_item)=>{
             var status=props.remainingBetSlipQuinella[0] && todayData[0] &&raceData[0] && props.type==="Quinella" ?
             props.remainingBetSlipQuinella.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
@@ -920,7 +1236,54 @@ const RaceDetails = (props,ownProps)=>{
         ?
         true: false:false
         return status
-}
+    }   
+    const checkStatusFirst4=(runner_item,selection)=>{
+        if(Selection==1) {
+            var status=props.remainingBetSlipDuet[0] && 
+            todayData[0] &&raceData[0] && props.type==="First4" ?
+            props.remainingBetSlipDuet.filter(e => 
+                e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+            && e.selection1 === runner_item.runnerNumber
+            ).length > 0
+            ?
+            true: false:false
+            return status
+        }
+        if(Selection==2) {
+            var status=props.remainingBetSlipDuet[0] && 
+            todayData[0] &&raceData[0] && props.type==="First4" ?
+            props.remainingBetSlipDuet.filter(e => 
+                e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+            && e.selection2 === runner_item.runnerNumber
+            ).length > 0
+            ?
+            true: false:false
+            return status
+        }
+        if(Selection==3) {
+            var status=props.remainingBetSlipDuet[0] && 
+            todayData[0] &&raceData[0] && props.type==="First4" ?
+            props.remainingBetSlipDuet.filter(e => 
+                e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+            && e.selection3 === runner_item.runnerNumber
+            ).length > 0
+            ?
+            true: false:false
+            return status
+        }
+        if(Selection==4) {
+            var status=props.remainingBetSlipDuet[0] && 
+            todayData[0] &&raceData[0] && props.type==="First4" ?
+            props.remainingBetSlipDuet.filter(e => 
+                e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+            && e.selection4 === runner_item.runnerNumber
+            ).length > 0
+            ?
+            true: false:false
+            return status
+        }
+    }   
+
     const runnerInfoBody=(props)=>{
         return(
             <div className="pseudo-body">
@@ -1059,6 +1422,8 @@ const RaceDetails = (props,ownProps)=>{
                                     <input
                                         name="1st"
                                         type="checkbox"
+                                        onClick={()=>handleClickFirst4(runner_item,1)}
+                                        checked={checkStatusFirst4(runner_item,1)}
                                     />                                    
                                     </div>
                                 </div>
@@ -1069,7 +1434,9 @@ const RaceDetails = (props,ownProps)=>{
                                     <input
                                         name="2nd"
                                         type="checkbox"
-                                    />                                    
+                                        onClick={()=>handleClickFirst4(runner_item,2)}
+                                        checked={checkStatusFirst4(runner_item,2)}                                    
+                                        />                                    
                                     </div>
                                 </div>
                             </div>
@@ -1079,7 +1446,9 @@ const RaceDetails = (props,ownProps)=>{
                                     <input
                                         name="3rd"
                                         type="checkbox"
-                                    />                                    
+                                        onClick={()=>handleClickFirst4(runner_item,3)}
+                                        checked={checkStatusFirst4(runner_item,3)}                                    
+                                        />                                    
                                     </div>
                                 </div>
                             </div>
@@ -1089,7 +1458,9 @@ const RaceDetails = (props,ownProps)=>{
                                     <input
                                         name="4th"
                                         type="checkbox"
-                                    />                                    
+                                        onClick={()=>handleClickFirst4(runner_item,4)}
+                                        checked={checkStatusFirst4(runner_item,4)}                                    
+                                        />                                    
                                     </div>
                                 </div>
                             </div>
