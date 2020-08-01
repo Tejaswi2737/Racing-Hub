@@ -575,7 +575,7 @@ const BetSlipHome=(props) =>{
                             if(Object.values(groupedRunnersNo)[i]%2!=0) {
                                 if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
                                     var pos=(_.findIndex(users, {selection4: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                    itemList3.push(users[pos].selection4)
+                                    itemList4.push(users[pos].selection4)
                                     first4List=grouped[poolname][grouped[poolname].length-1].first4
                                 } 
                             }
@@ -603,7 +603,7 @@ const BetSlipHome=(props) =>{
 
 
     const deleteSingleBetfun=(item)=>{
-            if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0]){
+            if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0] && !RemainingBetsFirst4[0]){
                 setstartSlip(false)
                 setRemainingBets([])
                 localStorage.setItem('betSlip',JSON.stringify([]));
@@ -621,7 +621,7 @@ const BetSlipHome=(props) =>{
             }
     };
     const deleteSingleBetfunQuinella=(item)=>{
-        if (RemainingBetsQuienlla.length==1  && !RemainingBets[0] && !RemainingBetsDuet[0]){
+        if (RemainingBetsQuienlla.length==1  && !RemainingBets[0] && !RemainingBetsDuet[0] && !RemainingBetsFirst4[0]){
             setstartSlip(false)
             setRemainingBetsQuienlla([])
             localStorage.setItem('betSlipQuinella',JSON.stringify([]));
@@ -639,7 +639,7 @@ const BetSlipHome=(props) =>{
         }
     };
     const deleteSingleBetfunDuet=(item)=>{
-        if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]){
+        if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0] && !RemainingBetsFirst4[0]){
             setstartSlip(false)
             setRemainingBetsDuet([])
             localStorage.setItem('betSlipDuet',JSON.stringify([]));
@@ -795,7 +795,7 @@ const BetSlipHome=(props) =>{
                     else 
                     {   
                         setfinalRemainingBetsFirst4(oldArray => [...oldArray,
-                            {"name":items.name,"selection2":items.selection1[0],
+                            {"name":items.name,"selection2":items.selection2[0],
                             "first4": items.first4}])
                     }
                 }
@@ -810,7 +810,7 @@ const BetSlipHome=(props) =>{
                     else 
                     {   
                         setfinalRemainingBetsFirst4(oldArray => [...oldArray,
-                            {"name":items.name,"selection3":items.selection1[0],
+                            {"name":items.name,"selection3":items.selection3[0],
                             "first4": items.first4}])
                     }
                 }
@@ -825,7 +825,7 @@ const BetSlipHome=(props) =>{
                     else 
                     {   
                         setfinalRemainingBetsFirst4(oldArray => [...oldArray,
-                            {"name":items.name,"selection4":items.selection1[0],
+                            {"name":items.name,"selection4":items.selection4[0],
                             "first4": items.first4}])
                     }
                 }
@@ -1535,7 +1535,7 @@ const BetSlipHome=(props) =>{
                                             <ul className="bet-card-selections">
                                                 <li>
                                                     <p className="bet-card-label">
-                                                        Selections1
+                                                        Selection1
                                                     </p>
                                                     <span className="bet-card-selection">
                                                         {item.selection1.map(no=>{
@@ -1554,7 +1554,7 @@ const BetSlipHome=(props) =>{
                                                 </li>
                                                 <li>
                                                     <p className="bet-card-label">
-                                                        Selections2
+                                                        Selection2
                                                     </p>
                                                     <span className="bet-card-selection">
                                                         {item.selection2.map(no=>{
@@ -1573,7 +1573,7 @@ const BetSlipHome=(props) =>{
                                                 </li>
                                                 <li>
                                                     <p className="bet-card-label">
-                                                        Selections3
+                                                        Selection3
                                                     </p>
                                                     <span className="bet-card-selection">
                                                         {item.selection3.map(no=>{
@@ -1592,7 +1592,7 @@ const BetSlipHome=(props) =>{
                                                 </li>
                                                 <li>
                                                     <p className="bet-card-label">
-                                                        Selections4
+                                                        Selection4
                                                     </p>
                                                     <span className="bet-card-selection">
                                                         {item.selection4.map(no=>{

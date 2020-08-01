@@ -1177,7 +1177,7 @@ const RaceDetails = (props,ownProps)=>{
                     else 
                     {   
                         setfinalRemainingBetsFirst4(oldArray => [...oldArray,
-                            {"name":items.name,"selection2":items.selection1[0],
+                            {"name":items.name,"selection2":items.selection2[0],
                             "first4": items.first4}])
                     }
                 }
@@ -1192,7 +1192,7 @@ const RaceDetails = (props,ownProps)=>{
                     else 
                     {   
                         setfinalRemainingBetsFirst4(oldArray => [...oldArray,
-                            {"name":items.name,"selection3":items.selection1[0],
+                            {"name":items.name,"selection3":items.selection3[0],
                             "first4": items.first4}])
                     }
                 }
@@ -1207,7 +1207,7 @@ const RaceDetails = (props,ownProps)=>{
                     else 
                     {   
                         setfinalRemainingBetsFirst4(oldArray => [...oldArray,
-                            {"name":items.name,"selection4":items.selection1[0],
+                            {"name":items.name,"selection4":items.selection4[0],
                             "first4": items.first4}])
                     }
                 }
@@ -1217,13 +1217,13 @@ const RaceDetails = (props,ownProps)=>{
 
 
     const checkStatus=(runner_item)=>{
-            var status=props.remainingBetSlipQuinella[0] && todayData[0] &&raceData[0] && props.type==="Quinella" ?
-            props.remainingBetSlipQuinella.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
-            && e.runners === runner_item.runnerNumber
-            ).length > 0
-            ?
-            true: false:false
-            return status
+        var status=props.remainingBetSlipQuinella[0] && todayData[0] &&raceData[0] && props.type==="Quinella" ?
+        props.remainingBetSlipQuinella.filter(e => e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
+        && e.runners === runner_item.runnerNumber
+        ).length > 0
+        ?
+        true: false:false
+        return status
     }
 
     const checkStatusDuet=(runner_item)=>{
@@ -1237,11 +1237,11 @@ const RaceDetails = (props,ownProps)=>{
         true: false:false
         return status
     }   
-    const checkStatusFirst4=(runner_item,selection)=>{
+    const checkStatusFirst4=(runner_item,Selection)=>{
         if(Selection==1) {
-            var status=props.remainingBetSlipDuet[0] && 
+            var status=props.remainingBetSlipFirst4[0] && 
             todayData[0] &&raceData[0] && props.type==="First4" ?
-            props.remainingBetSlipDuet.filter(e => 
+            props.remainingBetSlipFirst4.filter(e => 
                 e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
             && e.selection1 === runner_item.runnerNumber
             ).length > 0
@@ -1250,9 +1250,9 @@ const RaceDetails = (props,ownProps)=>{
             return status
         }
         if(Selection==2) {
-            var status=props.remainingBetSlipDuet[0] && 
+            var status=props.remainingBetSlipFirst4[0] && 
             todayData[0] &&raceData[0] && props.type==="First4" ?
-            props.remainingBetSlipDuet.filter(e => 
+            props.remainingBetSlipFirst4.filter(e => 
                 e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
             && e.selection2 === runner_item.runnerNumber
             ).length > 0
@@ -1261,9 +1261,9 @@ const RaceDetails = (props,ownProps)=>{
             return status
         }
         if(Selection==3) {
-            var status=props.remainingBetSlipDuet[0] && 
+            var status=props.remainingBetSlipFirst4[0] && 
             todayData[0] &&raceData[0] && props.type==="First4" ?
-            props.remainingBetSlipDuet.filter(e => 
+            props.remainingBetSlipFirst4.filter(e => 
                 e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
             && e.selection3 === runner_item.runnerNumber
             ).length > 0
@@ -1272,9 +1272,9 @@ const RaceDetails = (props,ownProps)=>{
             return status
         }
         if(Selection==4) {
-            var status=props.remainingBetSlipDuet[0] && 
+            var status=props.remainingBetSlipFirst4[0] && 
             todayData[0] &&raceData[0] && props.type==="First4" ?
-            props.remainingBetSlipDuet.filter(e => 
+            props.remainingBetSlipFirst4.filter(e => 
                 e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
             && e.selection4 === runner_item.runnerNumber
             ).length > 0
