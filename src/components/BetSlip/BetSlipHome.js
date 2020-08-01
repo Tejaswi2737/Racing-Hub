@@ -601,9 +601,314 @@ const BetSlipHome=(props) =>{
 
 
 
+    useEffect(() => {
+        var users;
+        props.postWinPlaceBetsTrifecta([]);
+        if(window.innerWidth>980 && performance.navigation.type >=1 ) {
+            var users=props.allBetSlipTrifecta;
+            var rem=props.remainingBetSlipTrifecta.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipTrifecta')):props.remainingBetSlipTrifecta
+            if(props.screenStatus) {
+                users = [users, ...rem];
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }        
+        }
+        if(window.innerWidth>980 && performance.navigation.type == 0 ) {
+            var users=props.allBetSlipTrifecta;
+            var rem=props.remainingBetSlipTrifecta.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipTrifecta')):props.remainingBetSlipTrifecta
+            if(props.screenStatusTrifecta) {
+                if(rem) {
+                    users = [users, ...rem];
+                }
+            } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
+        }
+        if (performance.navigation.type >= 1 && window.innerWidth<980) {
+            props.remainingBetSlipDataTrifecta(JSON.parse(window.localStorage.getItem('betSlipTrifecta')))
+            users=JSON.parse(window.localStorage.getItem('betSlipTrifecta'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980) {
+            var users=props.remainingBetSlipTrifecta;
+        }
+        if(props.remainingBetSlipTrifecta) {
+            users=Object.values(users)
+        };
+
+        var grouped = _.reduce(users, (result, user) => {
+            if(user){
+                    (result[user.name] || (result[user.name] = [])).push(user);  
+                    return result;
+            }    
+        }, {});
+        var poolList=[];
+        if(grouped) {
+            if(Object.keys(grouped)){
+                Object.keys(grouped).map(poolname=>{
+                    if(poolname!="undefined") {
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection1);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList1=[];
+                        var trifectaList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection1: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList1.push(users[pos].selection1)
+                                    trifectaList=grouped[poolname][grouped[poolname].length-1].trifecta
+                                } 
+                            }
+                        }
+
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection2);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList2=[];
+                        var trifectaList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection2: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList2.push(users[pos].selection2)
+                                    trifectaList=grouped[poolname][grouped[poolname].length-1].trifecta
+                                } 
+                            }
+                        }
+                          
+
+
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection3);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList3=[];
+                        var trifectaList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection3: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList3.push(users[pos].selection3)
+                                    trifectaList=grouped[poolname][grouped[poolname].length-1].trifecta
+                                } 
+                            }
+                        }     
+
+                        if (itemList1.length || itemList2.length ||itemList3.length ){
+                            var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"selection3":itemList3,"trifecta": trifectaList}
+                        }
+                        if(poolFinalList){
+                            poolList.push(itemPool)
+                        } else {
+                            poolList=itemPool
+                        }
+                    }     
+                })
+                setRemainingBetsTrifecta(poolList)
+            }
+        };
+
+    }, [props.allBetSlipTrifecta]);
+
+
+    useEffect(() => {
+        var users;
+        props.postWinPlaceBetsExacta([]);
+        if(window.innerWidth>980 && performance.navigation.type >=1 ) {
+            var users=props.allBetSlipExacta;
+            var rem=props.remainingBetSlipExacta.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipExacta')):props.remainingBetSlipExacta
+            if(props.screenStatus) {
+                users = [users, ...rem];
+            } else {
+                if(rem){
+                    users=[...rem]
+                }
+            }        
+        }
+        if(window.innerWidth>980 && performance.navigation.type == 0 ) {
+            var users=props.allBetSlipExacta;
+            var rem=props.remainingBetSlipExacta.length<1?
+            JSON.parse(window.localStorage.getItem('betSlipExacta')):props.remainingBetSlipExacta
+            if(props.screenStatusExacta) {
+                if(rem) {
+                    users = [users, ...rem];
+                }
+            } else {
+                    if(rem){
+                        users=[...rem]
+                    }
+                }
+        }
+        if (performance.navigation.type >= 1 && window.innerWidth<980) {
+            props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')))
+            users=JSON.parse(window.localStorage.getItem('betSlipExacta'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980) {
+            var users=props.remainingBetSlipExacta;
+        }
+        if(props.remainingBetSlipExacta) {
+            users=Object.values(users)
+        };
+
+        var grouped = _.reduce(users, (result, user) => {
+            if(user){
+                    (result[user.name] || (result[user.name] = [])).push(user);  
+                    return result;
+            }    
+        }, {});
+        var poolList=[];
+        if(grouped) {
+            if(Object.keys(grouped)){
+                Object.keys(grouped).map(poolname=>{
+                    if(poolname!="undefined") {
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection1);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList1=[];
+                        var exactaList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection1: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList1.push(users[pos].selection1)
+                                    exactaList=grouped[poolname][grouped[poolname].length-1].exacta
+                                } 
+                            }
+                        }
+
+                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
+                            if(user){
+                                    (result[user.name] || (result[user.name] = [])).push(user.selection2);  
+                                    
+                                    return (Object.values(result).reduce(
+                                        function(accumulator, currentValue) {
+                                          return accumulator.concat(currentValue)
+                                        },
+                                        []
+                                      ));        
+                            }    
+                        }, {});
+                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
+                            if (name in allNames) {
+                              allNames[name]++
+                            }
+                            else {
+                              allNames[name] = 1
+                            }
+                            return(allNames)
+                          }, {})
+                        var itemList2=[];
+                        var exactaList=null;
+                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
+                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
+                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
+                                    var pos=(_.findIndex(users, {selection2: parseInt(Object.keys(groupedRunnersNo)[i])}));      
+                                    itemList2.push(users[pos].selection2)
+                                    exactaList=grouped[poolname][grouped[poolname].length-1].exacta
+                                } 
+                            }
+                        }
+                           
+
+                        if (itemList1.length || itemList2.length ){
+                            var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"exacta": exactaList}
+                        }
+                        if(poolFinalList){
+                            poolList.push(itemPool)
+                        } else {
+                            poolList=itemPool
+                        }
+                    }     
+                })
+                setRemainingBetsExacta(poolList)
+            }
+        };
+
+    }, [props.allBetSlipExacta]);
+
+
+
 
     const deleteSingleBetfun=(item)=>{
-            if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0] && !RemainingBetsFirst4[0]){
+            if (RemainingBets.length==1 && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0] && !RemainingBetsFirst4[0] &&!RemainingBetsExacta[0] &&!RemainingBetsTrifecta[0]){
                 setstartSlip(false)
                 setRemainingBets([])
                 localStorage.setItem('betSlip',JSON.stringify([]));
@@ -621,7 +926,7 @@ const BetSlipHome=(props) =>{
             }
     };
     const deleteSingleBetfunQuinella=(item)=>{
-        if (RemainingBetsQuienlla.length==1  && !RemainingBets[0] && !RemainingBetsDuet[0] && !RemainingBetsFirst4[0]){
+        if (RemainingBetsQuienlla.length==1  && !RemainingBets[0] && !RemainingBetsDuet[0] && !RemainingBetsFirst4[0] &&!RemainingBetsExacta[0] &&!RemainingBetsTrifecta[0]){
             setstartSlip(false)
             setRemainingBetsQuienlla([])
             localStorage.setItem('betSlipQuinella',JSON.stringify([]));
@@ -639,7 +944,7 @@ const BetSlipHome=(props) =>{
         }
     };
     const deleteSingleBetfunDuet=(item)=>{
-        if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0] && !RemainingBetsFirst4[0]){
+        if (RemainingBetsDuet.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0] && !RemainingBetsFirst4[0] &&!RemainingBetsExacta[0] &&!RemainingBetsTrifecta[0]){
             setstartSlip(false)
             setRemainingBetsDuet([])
             localStorage.setItem('betSlipDuet',JSON.stringify([]));
@@ -650,7 +955,7 @@ const BetSlipHome=(props) =>{
         props.deleteSingleBetDuet([])
     };
     const deleteSingleBetfunFirst4=(item)=>{
-        if (RemainingBetsFirst4.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0]){
+        if (RemainingBetsFirst4.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0] &&!RemainingBetsExacta[0] &&!RemainingBetsTrifecta[0]){
             setstartSlip(false)
             setRemainingBetsFirst4([])
             localStorage.setItem('betSlipFirst4',JSON.stringify([]));
@@ -661,7 +966,29 @@ const BetSlipHome=(props) =>{
         props.deleteSingleBetFirst4([])
     };
 
+    const deleteSingleBetfunTrifecta=(item)=>{
+        if (RemainingBetsTrifecta.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0] &&!RemainingBetsExacta[0] &&!RemainingBetsFirst4[0]){
+            setstartSlip(false)
+            setRemainingBetsTrifecta([])
+            localStorage.setItem('betSlipTrifecta',JSON.stringify([]));
+        }
+        var obje=RemainingBetsTrifecta.filter(e1=> { return e1 != item })
+        setRemainingBetsTrifecta(obje)
+        localStorage.setItem('betSlipTrifecta',JSON.stringify(obje))
+        props.deleteSingleBetTrifecta([])
+    };
 
+    const deleteSingleBetfunExacta=(item)=>{
+        if (RemainingBetsExacta.length==1  && !RemainingBets[0] && !RemainingBetsQuienlla[0]  && !RemainingBetsDuet[0] &&!RemainingBetsTrifecta[0] &&!RemainingBetsFirst4[0]){
+            setstartSlip(false)
+            setRemainingBetsExacta([])
+            localStorage.setItem('betSlipExacta',JSON.stringify([]));
+        }
+        var obje=RemainingBetsExacta.filter(e1=> { return e1 != item })
+        setRemainingBetsExacta(obje)
+        localStorage.setItem('betSlipExacta',JSON.stringify(obje))
+        props.deleteSingleBetExacta([])
+    };
 
     const handleDeleteAll=()=>{
             if (RemainingBets.length==1){
@@ -683,11 +1010,15 @@ const BetSlipHome=(props) =>{
             setRemainingBets([]);
             setRemainingBetsQuienlla([]);
             setRemainingBetsDuet([]);
-            setRemainingBetsFirst4([])
+            setRemainingBetsFirst4([]);
+            setRemainingBetsExacta([]);
+            setRemainingBetsQuienlla([]);
             localStorage.setItem('betSlip',JSON.stringify([]));
             localStorage.setItem('betSlipQuinella',JSON.stringify([]));
             localStorage.setItem('betSlipDuet',JSON.stringify([]));
             localStorage.setItem('betSlipFirst4',JSON.stringify([]));
+            localStorage.setItem('betSlipTrifecta',JSON.stringify([]));
+            localStorage.setItem('betSlipExacta',JSON.stringify([]));
             setshowCurrency(false);
     };
 
@@ -835,6 +1166,99 @@ const BetSlipHome=(props) =>{
 
 
     useEffect(() => {
+        if (RemainingBetsTrifecta && window.innerWidth) {
+            setfinalRemainingBetsTrifecta([])
+            RemainingBetsTrifecta.map(items=>{
+                if(items) {
+                    if(items.selection1.length>1) {
+                        items.selection1.map(runnnerInd=>{
+                            setfinalRemainingBetsTrifecta(oldArray => [...oldArray, 
+                                {"name":items.name,"selection1":runnnerInd,
+                                "trifecta": items.trifecta}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsTrifecta(oldArray => [...oldArray,
+                            {"name":items.name,"selection1":items.selection1[0],
+                            "trifecta": items.trifecta}])
+                    }
+                }
+                if(items) {
+                    if(items.selection2.length>1) {
+                        items.selection2.map(runnnerInd=>{
+                            setfinalRemainingBetsTrifecta(oldArray => [...oldArray, 
+                                {"name":items.name,"selection2":runnnerInd,
+                                "trifecta": items.trifecta}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsTrifecta(oldArray => [...oldArray,
+                            {"name":items.name,"selection2":items.selection2[0],
+                            "trifecta": items.trifecta}])
+                    }
+                }
+                if(items) {
+                    if(items.selection3.length>1) {
+                        items.selection3.map(runnnerInd=>{
+                            setfinalRemainingBetsTrifecta(oldArray => [...oldArray, 
+                                {"name":items.name,"selection3":runnnerInd,
+                                "trifecta": items.trifecta}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsTrifecta(oldArray => [...oldArray,
+                            {"name":items.name,"selection3":items.selection3[0],
+                            "trifecta": items.trifecta}])
+                    }
+                }
+            })
+        }
+    }, [RemainingBetsTrifecta]);
+
+
+    useEffect(() => {
+        if (RemainingBetsExacta && window.innerWidth) {
+            setfinalRemainingBetsExacta([])
+            RemainingBetsExacta.map(items=>{
+                if(items) {
+                    if(items.selection1.length>1) {
+                        items.selection1.map(runnnerInd=>{
+                            setfinalRemainingBetsExacta(oldArray => [...oldArray, 
+                                {"name":items.name,"selection1":runnnerInd,
+                                "exacta": items.exacta}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsExacta(oldArray => [...oldArray,
+                            {"name":items.name,"selection1":items.selection1[0],
+                            "exacta": items.exacta}])
+                    }
+                }
+                if(items) {
+                    if(items.selection2.length>1) {
+                        items.selection2.map(runnnerInd=>{
+                            setfinalRemainingBetsExacta(oldArray => [...oldArray, 
+                                {"name":items.name,"selection2":runnnerInd,
+                                "exacta": items.exacta}]);
+                        })
+                    } 
+                    else 
+                    {   
+                        setfinalRemainingBetsExacta(oldArray => [...oldArray,
+                            {"name":items.name,"selection2":items.selection2[0],
+                            "exacta": items.exacta}])
+                    }
+                }
+            })
+        }
+    }, [RemainingBetsExacta]);
+
+
+    useEffect(() => {
         if (finalRemainingBets) {
             setplaceWinPlaceBetList([]);
             if(window.innerWidth) {
@@ -973,6 +1397,72 @@ const BetSlipHome=(props) =>{
             })
         }
     }, [finalRemainingBetsFirst4]);
+
+
+
+    useEffect(() => {
+        if (finalRemainingBetsTrifecta) {
+            setplaceWinPlaceBetListTrifecta([]);
+            if(window.innerWidth) {
+                localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta))
+                props.remainingBetSlipDataTrifecta(finalRemainingBetsTrifecta)
+            }
+            finalRemainingBetsTrifecta.map(items=>{
+                if(items) {
+                    if( items.first4>0)  {
+                        setplaceWinPlaceBetListTrifecta(oldArray => [...oldArray,
+                            {
+                                "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
+                                "bet_pool_fh": items.name+'t',
+                                "stake_cents": items.trifecta,
+                                "combinations":[
+                                {
+                                "trifecta":1,
+                                "selection1":[items.selection1],
+                                "selection2":[items.selection2],
+                                "selection3":[items.selection3]
+                                }
+                                ]
+                            }                          
+                        ])
+                        
+                    }
+                }
+            })
+        }
+    }, [finalRemainingBetsTrifecta]);
+
+
+    useEffect(() => {
+        if (finalRemainingBetsExacta) {
+            setplaceWinPlaceBetListExacta([]);
+            if(window.innerWidth) {
+                localStorage.setItem('betSlipExacta',JSON.stringify(finalRemainingBetsExacta))
+                props.remainingBetSlipDataExacta(finalRemainingBetsExacta)
+            }
+            finalRemainingBetsExacta.map(items=>{
+                if(items) {
+                    if( items.exacta>0)  {
+                        setplaceWinPlaceBetListExacta(oldArray => [...oldArray,
+                            {
+                                "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
+                                "bet_pool_fh": items.name+'e',
+                                "stake_cents": items.exacta,
+                                "combinations":[
+                                {
+                                "exacta":1,
+                                "selection1":[items.selection1],
+                                "selection2":[items.selection2]
+                                }
+                                ]
+                            }                          
+                        ])
+                        
+                    }
+                }
+            })
+        }
+    }, [finalRemainingBetsExacta]);
 
     const betSlipHeader=()=>{
         return(
@@ -1275,6 +1765,136 @@ const BetSlipHome=(props) =>{
             </>
         )
     };
+
+
+
+    const betSlipPlaceInputTrifecta=(item)=>{
+        var pos=(_.findIndex(RemainingBetsTrifecta, item));
+        const updateFieldChanged = (e,item) => {
+            e.preventDefault();
+            var pos=(_.findIndex(RemainingBetsTrifecta, item))
+            var newArr = [...RemainingBetsTrifecta]; 
+            newArr[pos][e.target.name] = parseInt(e.target.value); 
+            newArr[pos][e.target.name]=newArr[pos][e.target.name]
+            setRemainingBetsTrifecta(newArr); 
+        }
+        return(
+            <>
+                <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
+                    <ul className="">
+                        <li className="">
+                            <div className="bet-card-info">
+                                <label className="bet-info-value">
+                                    Trifecta
+                                </label>
+                                <div className="bet-card-input">
+                                    <stake-input className="">
+                                        <span className="stake-input">
+                                            <span className="currency">
+                                                $
+                                            </span>
+                                            <input 
+                                                type="number"
+                                                onClick={()=>{
+                                                    settypeBet('trifecta')
+                                                }} 
+                                                key={RemainingBetsTrifecta[pos]['name']+'trifecta'}
+                                                name='trifecta'
+                                                placeholder={null}
+                                                value={RemainingBetsTrifecta[pos]['trifecta']}
+                                                min={0}
+                                                onChange={(e)=>updateFieldChanged(e,item)} 
+                                                className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                            </input>
+                                        </span>
+                                    </stake-input>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="">
+                            <div className="bet-card-info">
+                                <bet-cost className="">
+                                    <label className="bet-info-label">
+                                        Bet Cost
+                                    </label>
+                                    <span className="bet-info-value">
+                                        ${(!(RemainingBetsTrifecta[pos]['trifecta']))?0:
+                                        (RemainingBetsTrifecta[pos]['trifecta'])
+                                        }
+                                    </span>
+                                </bet-cost>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </>
+        )
+    };
+
+
+    const betSlipPlaceInputExacta=(item)=>{
+        var pos=(_.findIndex(RemainingBetsExacta, item));
+        const updateFieldChanged = (e,item) => {
+            e.preventDefault();
+            var pos=(_.findIndex(RemainingBetsExacta, item))
+            var newArr = [...RemainingBetsExacta]; 
+            newArr[pos][e.target.name] = parseInt(e.target.value); 
+            newArr[pos][e.target.name]=newArr[pos][e.target.name]
+            setRemainingBetsExacta(newArr); 
+        }
+        return(
+            <>
+                <form className="common-form bet-card-form ng-valid ng-dirty ng-valid-parse">
+                    <ul className="">
+                        <li className="">
+                            <div className="bet-card-info">
+                                <label className="bet-info-value">
+                                    Exacta
+                                </label>
+                                <div className="bet-card-input">
+                                    <stake-input className="">
+                                        <span className="stake-input">
+                                            <span className="currency">
+                                                $
+                                            </span>
+                                            <input 
+                                                type="number"
+                                                onClick={()=>{
+                                                    settypeBet('exacta')
+                                                }} 
+                                                key={RemainingBetsExacta[pos]['name']+'exacta'}
+                                                name='exacta'
+                                                placeholder={null}
+                                                value={RemainingBetsExacta[pos]['exacta']}
+                                                min={0}
+                                                onChange={(e)=>updateFieldChanged(e,item)} 
+                                                className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
+                                            </input>
+                                        </span>
+                                    </stake-input>
+                                </div>
+                            </div>
+                        </li>
+                        <li className="">
+                            <div className="bet-card-info">
+                                <bet-cost className="">
+                                    <label className="bet-info-label">
+                                        Bet Cost
+                                    </label>
+                                    <span className="bet-info-value">
+                                        ${(!(RemainingBetsExacta[pos]['exacta']))?0:
+                                        (RemainingBetsExacta[pos]['exacta'])
+                                        }
+                                    </span>
+                                </bet-cost>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
+            </>
+        )
+    };
+
     const betSlipBetDetail =()=>{
         return(
             <>
@@ -1519,7 +2139,7 @@ const BetSlipHome=(props) =>{
                                 <section className="bet-card">
                                     <header className="bet-card-header">
                                         <h1 className="bet-card-title">
-                                            betSlipPlaceInputFirst4
+                                            First4
                                         </h1>
                                         <span className="bet-card-type tote">
                                             TOTE
@@ -1644,6 +2264,226 @@ const BetSlipHome=(props) =>{
         </>
         )
     }
+
+
+    const betSlipBetDetailTrifecta =()=>{
+        return(
+            <>
+            {RemainingBetsTrifecta?(startSlip)?RemainingBetsTrifecta.map(item=>{
+                return(
+                    item?item.name?
+                        <div className="card">
+                        <div className="">
+                            <parimutuel className="">
+                                <section className="bet-card">
+                                    <header className="bet-card-header">
+                                        <h1 className="bet-card-title">
+                                            Trifecta
+                                        </h1>
+                                        <span className="bet-card-type tote">
+                                            TOTE
+                                        </span>
+                                    </header>
+                                    <div className="bet-card-body">
+                                        <div className="bet-additional-info">
+                                            <ul className="bet-card-race-information">
+                                                <li>
+                                                    {item.name} 
+                                                </li>
+                                            </ul>
+                                            <ul className="bet-card-selections">
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selection1
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection1.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selection2
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection2.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selection3
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection3.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {betSlipPlaceInputTrifecta(item)}
+                                    </div>
+                                    <footer className="bet-card-footer">
+                                        <div className="bet-card-footer-actions">
+                                            <p className="bet-status">
+                                                {item.trifecta==0 || !item.trifecta || (item.selection1.length<1 || 
+                                                item.selection2.length<1 || item.selection3.length<1 )
+                                                ?"Incomplete Bet":""}
+                                            </p>                                           
+                                            <button className="bet-card-remove">
+                                                <i onClick={()=>{
+                                                            props.deleteSingleBet(item)
+                                                            {deleteSingleBetfunTrifecta(item)}  
+                                                            setdeleted(true)
+                                                            setshowCurrency(false)}}
+                                                className="icon-remove" style={{height:'5rem'}}>
+                                                    <RiDeleteBin6Line/>
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </footer>
+                                </section>
+                            </parimutuel>
+                        </div>
+                    </div>
+                    :"":""
+                )
+            })
+        :"":""}
+        </>
+        )
+    }
+
+    const betSlipBetDetailExacta =()=>{
+        return(
+            <>
+            {RemainingBetsExacta?(startSlip)?RemainingBetsExacta.map(item=>{
+                return(
+                    item?item.name?
+                        <div className="card">
+                        <div className="">
+                            <parimutuel className="">
+                                <section className="bet-card">
+                                    <header className="bet-card-header">
+                                        <h1 className="bet-card-title">
+                                            Exacta
+                                        </h1>
+                                        <span className="bet-card-type tote">
+                                            TOTE
+                                        </span>
+                                    </header>
+                                    <div className="bet-card-body">
+                                        <div className="bet-additional-info">
+                                            <ul className="bet-card-race-information">
+                                                <li>
+                                                    {item.name} 
+                                                </li>
+                                            </ul>
+                                            <ul className="bet-card-selections">
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selection1
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection1.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <p className="bet-card-label">
+                                                        Selection2
+                                                    </p>
+                                                    <span className="bet-card-selection">
+                                                        {item.selection2.map(no=>{
+                                                            return(
+                                                                <>
+                                                                <span>
+                                                                    {no}
+                                                                </span>
+                                                                <span className="runner-seperator">
+                                                                    {" , "}
+                                                                </span>
+                                                                </>
+                                                            )
+                                                        })}
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {betSlipPlaceInputExacta(item)}
+                                    </div>
+                                    <footer className="bet-card-footer">
+                                        <div className="bet-card-footer-actions">
+                                            <p className="bet-status">
+                                                {item.exacta==0 || !item.exacta || (item.selection1.length<1 || 
+                                                item.selection2.length<1 )
+                                                ?"Incomplete Bet":""}
+                                            </p>                                           
+                                            <button className="bet-card-remove">
+                                                <i onClick={()=>{
+                                                            props.deleteSingleBet(item)
+                                                            {deleteSingleBetfunExacta(item)}  
+                                                            setdeleted(true)
+                                                            setshowCurrency(false)}}
+                                                className="icon-remove" style={{height:'5rem'}}>
+                                                    <RiDeleteBin6Line/>
+                                                </i>
+                                            </button>
+                                        </div>
+                                    </footer>
+                                </section>
+                            </parimutuel>
+                        </div>
+                    </div>
+                    :"":""
+                )
+            })
+        :"":""}
+        </>
+        )
+    }
+
+
     const currencyOpen=(WinMoney,PlaceMoney,BetSlipDoneJson,typeBet,ManualPlace,ManualWin)=>{
         return(
             <div className="bet-builder-actions-wrapper">
@@ -1706,6 +2546,8 @@ const BetSlipHome=(props) =>{
                                         {betSlipBetDetailQuinella(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                         {betSlipBetDetailDuet(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                         {betSlipBetDetailFirst4(WinMoney, PlaceMoney,BetSlipDoneJson)}
+                                        {betSlipBetDetailTrifecta(WinMoney, PlaceMoney,BetSlipDoneJson)}
+                                        {betSlipBetDetailExacta(WinMoney, PlaceMoney,BetSlipDoneJson)}
                                     </div>
                                 </div>
                             </div>
