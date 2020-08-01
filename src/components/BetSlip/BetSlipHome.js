@@ -648,6 +648,7 @@ const BetSlipHome=(props) =>{
             }    
         }, {});
         var poolList=[];
+
         if(grouped) {
             if(Object.keys(grouped)){
                 Object.keys(grouped).map(poolname=>{
@@ -789,6 +790,7 @@ const BetSlipHome=(props) =>{
             var users=props.allBetSlipExacta;
             var rem=props.remainingBetSlipExacta.length<1?
             JSON.parse(window.localStorage.getItem('betSlipExacta')):props.remainingBetSlipExacta
+            
             if(props.screenStatusExacta) {
                 if(rem) {
                     users = [users, ...rem];
@@ -817,6 +819,7 @@ const BetSlipHome=(props) =>{
             }    
         }, {});
         var poolList=[];
+
         if(grouped) {
             if(Object.keys(grouped)){
                 Object.keys(grouped).map(poolname=>{
@@ -886,9 +889,10 @@ const BetSlipHome=(props) =>{
                                 } 
                             }
                         }
-                           
+                          
+    
 
-                        if (itemList1.length || itemList2.length ){
+                        if (itemList1.length || itemList2.length  ){
                             var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"exacta": exactaList}
                         }
                         if(poolFinalList){
@@ -1013,6 +1017,7 @@ const BetSlipHome=(props) =>{
             setRemainingBetsFirst4([]);
             setRemainingBetsExacta([]);
             setRemainingBetsQuienlla([]);
+            setRemainingBetsTrifecta([]);
             localStorage.setItem('betSlip',JSON.stringify([]));
             localStorage.setItem('betSlipQuinella',JSON.stringify([]));
             localStorage.setItem('betSlipDuet',JSON.stringify([]));
@@ -1402,6 +1407,7 @@ const BetSlipHome=(props) =>{
 
     useEffect(() => {
         if (finalRemainingBetsTrifecta) {
+            // console.log(finalRemainingBetsTrifecta)
             setplaceWinPlaceBetListTrifecta([]);
             if(window.innerWidth) {
                 localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta))
@@ -2522,6 +2528,8 @@ const BetSlipHome=(props) =>{
                             setRemainingBetsQuienlla([])
                             setRemainingBetsDuet([])
                             setRemainingBetsFirst4([])
+                            setRemainingBetsExacta([])
+                            setRemainingBetsTrifecta([])
                             props.deleteAllBets(true)
                         }}
                         className="bet-builder-button common-button submit-bet-button bet-builder-bet-now-button">

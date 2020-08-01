@@ -539,7 +539,6 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsTrifecta && window.innerWidth ) {
-            // console.log(finalRemainingBetsFirst4)
             props.remainingBetSlipDataTrifecta(finalRemainingBetsTrifecta);
             localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta));
         }
@@ -742,8 +741,6 @@ const RaceDetails = (props,ownProps)=>{
             setrunner_first4({})
         }
     };
-
-
     
     useEffect(() => {
         if ((runner_exacta)) {
@@ -1327,9 +1324,6 @@ const RaceDetails = (props,ownProps)=>{
                                 } 
                             }
                         }     
-
-
-  
                         if (itemList1.length || itemList2.length ||itemList3.length ){
                             var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"selection3":itemList3,"trifecta": trifectaList}
                         }
@@ -1350,6 +1344,7 @@ const RaceDetails = (props,ownProps)=>{
 
  //Exacta
  
+
  useEffect(() => {
     if(window.innerWidth<980) {
         if( performance.navigation.type >=1 ) {
@@ -1447,7 +1442,7 @@ const RaceDetails = (props,ownProps)=>{
                                 } 
                             }
                         }
-
+                           
                         if (itemList1.length || itemList2.length ){
                             var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"exacta": exactaList}
                         }
@@ -1610,6 +1605,7 @@ const RaceDetails = (props,ownProps)=>{
 
 
     useEffect(() => {
+        console.log(RemainingBetsTrifecta)
         if (RemainingBetsTrifecta && window.innerWidth) {
             setfinalRemainingBetsTrifecta([])
             
@@ -1667,6 +1663,7 @@ const RaceDetails = (props,ownProps)=>{
 
 
     useEffect(() => {
+        console.log(RemainingBetsExacta)
         if (RemainingBetsExacta && window.innerWidth) {
             setfinalRemainingBetsExacta([])
             
@@ -1817,7 +1814,6 @@ const RaceDetails = (props,ownProps)=>{
     } 
     const checkStatusExacta=(runner_item,Selection)=>{
         if(Selection==1) {
-            
             var status=props.remainingBetSlipExacta[0] && 
             todayData[0] &&raceData[0] && props.type==="Exacta" ?
             props.remainingBetSlipExacta.filter(e => 
