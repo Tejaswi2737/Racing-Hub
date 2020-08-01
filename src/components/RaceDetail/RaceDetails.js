@@ -523,7 +523,8 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsFirst4 && window.innerWidth ) {
-            props.remainingBetSlipDataDuet(finalRemainingBetsFirst4);
+            // console.log(finalRemainingBetsFirst4)
+            props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4);
             localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4));
         }
     }, [finalRemainingBetsFirst4]);
@@ -1050,7 +1051,7 @@ const RaceDetails = (props,ownProps)=>{
                                 if(Object.values(groupedRunnersNo)[i]%2!=0) {
                                     if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
                                         var pos=(_.findIndex(users, {selection4: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                        itemList3.push(users[pos].selection4)
+                                        itemList4.push(users[pos].selection4)
                                         first4List=grouped[poolname][grouped[poolname].length-1].first4
                                     } 
                                 }
@@ -1150,6 +1151,7 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if (RemainingBetsFirst4 && window.innerWidth) {
             setfinalRemainingBetsFirst4([])
+            
             RemainingBetsFirst4.map(items=>{
                 if(items) {
                     if(items.selection1.length>1) {
@@ -1239,6 +1241,7 @@ const RaceDetails = (props,ownProps)=>{
     }   
     const checkStatusFirst4=(runner_item,Selection)=>{
         if(Selection==1) {
+            
             var status=props.remainingBetSlipFirst4[0] && 
             todayData[0] &&raceData[0] && props.type==="First4" ?
             props.remainingBetSlipFirst4.filter(e => 
