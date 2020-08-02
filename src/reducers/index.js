@@ -58,7 +58,7 @@ import deleteAllBetsDuetReducer from "./deleteAllBetsDuet";
 
 
 import allBetSlipDataExactareducer from "./allBetSlipDataExacta";
-import screenStatusExactaReducers from "./screenStatusReducersquienlla";
+import screenStatusExactaReducers from "./screenStatusReducersExacta";
 import postWinPlaceExactaReducer from "./postWinPlaceExacta";
 import remainingBetSlipExactaReducer from  "./remainingBetSlipDataExacta";
 import deleteSingleBetExactaReducer from "./deleteSingleBetExacta";
