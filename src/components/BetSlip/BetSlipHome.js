@@ -2510,7 +2510,10 @@ const BetSlipHome=(props) =>{
                                 Total cost
                             </h1>
                             <p  className="bet-builder-footer-key-info bet-builder-total-bets-cost">
-                            ${_.sumBy(finalRemainingBets, 'win')+_.sumBy(finalRemainingBets, 'place')}
+                            ${_.sumBy(finalRemainingBets, 'win')+_.sumBy(finalRemainingBets, 'place')
+                            +_.sumBy(RemainingBetsDuet, 'duet')+_.sumBy(RemainingBetsExacta, 'exacta')
+                            +_.sumBy(RemainingBetsTrifecta, 'trifecta')+_.sumBy(RemainingBetsQuienlla, 'quinella') 
+                            +_.sumBy(RemainingBetsFirst4, 'first4')}
                             </p>
                         </li>
                     </ul>

@@ -37,17 +37,6 @@ const NextScreen=(props) =>{
     const [firstTime, setfirstTime] = useState();
     const [showLoading, setShowLoading] = useState(false)
     const timerToClearSomewhere = useRef(false) //now you can pass timer to another component
-    useEffect(() => {
-        if (performance.navigation.type === 1 && window.innerWidth<980) {
-            console.log(JSON.parse(window.localStorage.getItem('betSlip')))
-
-            props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
-        }
-        // if (performance.navigation.type === 1 && window.innerWidth>980) {
-        //     console.log(JSON.parse(window.localStorage.getItem('betSlip')))
-        //     props.addBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
-        // }
-    }, [performance.navigation.type]);
     function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
