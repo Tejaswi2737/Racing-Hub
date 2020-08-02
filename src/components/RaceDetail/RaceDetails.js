@@ -523,7 +523,6 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsFirst4 && window.innerWidth ) {
-            // console.log(finalRemainingBetsFirst4)
             props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4);
             localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4));
         }
@@ -544,19 +543,18 @@ const RaceDetails = (props,ownProps)=>{
         }
     }, [finalRemainingBetsTrifecta]);
 
+    // useEffect(() => {
+    //     if (performance.navigation.type === 1 && window.innerWidth<980) {
+    //         props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')))
+    //     }
+    // }, [performance.navigation.type]);
 
-    useEffect(() => {
-        if (performance.navigation.type === 1 && window.innerWidth<980) {
-            props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')))
-        }
-    }, [performance.navigation.type]);
-
-    useEffect(() => {
-        if(RemainingBetsExacta && window.innerWidth ) {
-            props.remainingBetSlipDataExacta(finalRemainingBetsExacta);
-            localStorage.setItem('betSlipExacta',JSON.stringify(finalRemainingBetsExacta));
-        }
-    }, [finalRemainingBetsExacta]);
+    // useEffect(() => {
+    //     if(RemainingBetsExacta && window.innerWidth ) {
+    //         props.remainingBetSlipDataExacta(finalRemainingBetsExacta);
+    //         localStorage.setItem('betSlipExacta',JSON.stringify(finalRemainingBetsExacta));
+    //     }
+    // }, [finalRemainingBetsExacta]);
 
 // handle click for the win/place bets, 
 // this will execute if the race is open for betting ie., normal now
@@ -720,36 +718,7 @@ const RaceDetails = (props,ownProps)=>{
 
 
     //Exacta
-    const handleClickExacta=(runner_item,selection)=>{
-        if ((raceData[0].raceStatus==="Normal")) {
-            if(selection==1) {
-                setrunner_exacta({
-                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
-                    ,"selection1":runner_item.runnerNumber,"exacta": null
-                }); 
-            }
-            if(selection==2) {
-                setrunner_exacta({
-                    "name":todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber || ""
-                    ,"selection2":runner_item.runnerNumber,"exacta": null
-                }); 
-            }
-            setrunner_duet({})
-            setrunner_win_place({})
-            setrunner_quinella({})
-            setrunner_trifetca({})
-            setrunner_first4({})
-        }
-    };
-    
-    useEffect(() => {
-        if ((runner_exacta)) {
-            if(runner_exacta.name) {
-                {props.allBetSlipDataExacta(runner_exacta)}
-                props.betSlipScreenExacta(true);
-            }
-        }
-    }, [runner_exacta]);
+
 
 
 
@@ -1345,120 +1314,6 @@ const RaceDetails = (props,ownProps)=>{
  //Exacta
  
 
- useEffect(() => {
-    if(window.innerWidth<980) {
-        if( performance.navigation.type >=1 ) {
-            var users=props.allBetSlipExacta;
-            var rem=props.remainingBetSlipExacta.length<1?
-            JSON.parse(window.localStorage.getItem('betSlipExacta')):
-            props.remainingBetSlipExacta
-            if(props.screenStatusExacta) {
-                users = [users, ...rem];
-            } else {users=[...rem]}
-        }
-        if(performance.navigation.type == 0 ) {
-            var users=props.allBetSlipExacta;
-            var rem=props.remainingBetSlipExacta.length<1?
-            JSON.parse(window.localStorage.getItem('betSlipExacta')):
-            props.remainingBetSlipExacta
-            if(props.screenStatusExacta) {
-                users = [users, ...rem];
-            } else {users=[...rem]}
-        }
-        // var users_win=users.filter(e1=> { return e1.win===null });
-        var grouped = _.reduce(users, (result, user) => {
-            if(user){
-                    (result[user.name] || (result[user.name] = [])).push(user);  
-                    return result;
-            }    
-        }, {});
-        var poolList=[]
-        if(grouped) {
-            if(Object.keys(grouped)){
-                Object.keys(grouped).map(poolname=>{
-                    if(poolname!="undefined") {
-                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
-                            if(user){
-                                    (result[user.name] || (result[user.name] = [])).push(user.selection1);  
-                                    
-                                    return (Object.values(result).reduce(
-                                        function(accumulator, currentValue) {
-                                          return accumulator.concat(currentValue)
-                                        },
-                                        []
-                                      ));        
-                            }    
-                        }, {});
-                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
-                            if (name in allNames) {
-                              allNames[name]++
-                            }
-                            else {
-                              allNames[name] = 1
-                            }
-                            return(allNames)
-                          }, {})
-                        var itemList1=[];
-                        var exactaList=null;
-                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
-                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
-                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
-                                    var pos=(_.findIndex(users, {selection1: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                    itemList1.push(users[pos].selection1)
-                                    exactaList=grouped[poolname][grouped[poolname].length-1].exacta
-                                } 
-                            }
-                        }
-
-                        var groupedRunners = _.reduce(grouped[poolname], (result, user) => {
-                            if(user){
-                                    (result[user.name] || (result[user.name] = [])).push(user.selection2);  
-                                    
-                                    return (Object.values(result).reduce(
-                                        function(accumulator, currentValue) {
-                                          return accumulator.concat(currentValue)
-                                        },
-                                        []
-                                      ));        
-                            }    
-                        }, {});
-                        var groupedRunnersNo=groupedRunners.reduce(function (allNames, name) { 
-                            if (name in allNames) {
-                              allNames[name]++
-                            }
-                            else {
-                              allNames[name] = 1
-                            }
-                            return(allNames)
-                          }, {})
-                        var itemList2=[];
-                        var exactaList=null;
-                        for (var i=0;i<Object.keys(groupedRunnersNo).length;i=i+1){
-                            if(Object.values(groupedRunnersNo)[i]%2!=0) {
-                                if(isInteger(parseInt(Object.keys(groupedRunnersNo)[i]))) {
-                                    var pos=(_.findIndex(users, {selection2: parseInt(Object.keys(groupedRunnersNo)[i])}));      
-                                    itemList2.push(users[pos].selection2)
-                                    exactaList=grouped[poolname][grouped[poolname].length-1].exacta
-                                } 
-                            }
-                        }
-                           
-                        if (itemList1.length || itemList2.length ){
-                            var itemPool={"name":poolname,"selection1":itemList1,"selection2":itemList2,"exacta": exactaList}
-                        }
-                        if(poolFinalList){
-                            poolList.push(itemPool)
-                        } else {
-                            poolList=itemPool
-                        }
-                    }     
-                })
-                setRemainingBetsExacta(poolList)
-            }
-        };
-    }
-}, [props.allBetSlipExacta]);
-
 
 
 
@@ -1605,7 +1460,6 @@ const RaceDetails = (props,ownProps)=>{
 
 
     useEffect(() => {
-        console.log(RemainingBetsTrifecta)
         if (RemainingBetsTrifecta && window.innerWidth) {
             setfinalRemainingBetsTrifecta([])
             
@@ -1662,45 +1516,6 @@ const RaceDetails = (props,ownProps)=>{
 
 
 
-    useEffect(() => {
-        console.log(RemainingBetsExacta)
-        if (RemainingBetsExacta && window.innerWidth) {
-            setfinalRemainingBetsExacta([])
-            
-            RemainingBetsExacta.map(items=>{
-                if(items) {
-                    if(items.selection1.length>1) {
-                        items.selection1.map(runnnerInd=>{
-                            setfinalRemainingBetsExacta(oldArray => [...oldArray, 
-                                {"name":items.name,"selection1":runnnerInd,
-                                "exacta": items.exacta}]);
-                        })
-                    } 
-                    else 
-                    {   
-                        setfinalRemainingBetsExacta(oldArray => [...oldArray,
-                            {"name":items.name,"selection1":items.selection1[0],
-                            "exacta": items.exacta}])
-                    }
-                }
-                if(items) {
-                    if(items.selection2.length>1) {
-                        items.selection2.map(runnnerInd=>{
-                            setfinalRemainingBetsExacta(oldArray => [...oldArray, 
-                                {"name":items.name,"selection2":runnnerInd,
-                                "exacta": items.exacta}]);
-                        })
-                    } 
-                    else 
-                    {   
-                        setfinalRemainingBetsExacta(oldArray => [...oldArray,
-                            {"name":items.name,"selection2":items.selection2[0],
-                            "exacta": items.exacta}])
-                    }
-                }
-            })
-        }
-    }, [RemainingBetsExacta]);
 
 
 
@@ -1812,30 +1627,8 @@ const RaceDetails = (props,ownProps)=>{
             return status
         }
     } 
-    const checkStatusExacta=(runner_item,Selection)=>{
-        if(Selection==1) {
-            var status=props.remainingBetSlipExacta[0] && 
-            todayData[0] &&raceData[0] && props.type==="Exacta" ?
-            props.remainingBetSlipExacta.filter(e => 
-                e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
-            && e.selection1 === runner_item.runnerNumber
-            ).length > 0
-            ?
-            true: false:false
-            return status
-        }
-        if(Selection==2) {
-            var status=props.remainingBetSlipExacta[0] && 
-            todayData[0] &&raceData[0] && props.type==="Exacta" ?
-            props.remainingBetSlipExacta.filter(e => 
-                e.name === todayData[0].meetingName+" "+"("+todayData[0].location+")"+" Race "+raceData[0].raceNumber
-            && e.selection2 === runner_item.runnerNumber
-            ).length > 0
-            ?
-            true: false:false
-            return status
-        }
-    } 
+
+
     const runnerInfoBody=(props)=>{
         return(
             <div className="pseudo-body">
@@ -2030,8 +1823,7 @@ const RaceDetails = (props,ownProps)=>{
                                     <input
                                         name="1st"
                                         type="checkbox"
-                                        onClick={()=>handleClickExacta(runner_item,1)}
-                                        checked={checkStatusExacta(runner_item,1)}   
+
                                     />                                    
                                     </div>
                                 </div>
@@ -2042,8 +1834,6 @@ const RaceDetails = (props,ownProps)=>{
                                     <input
                                         name="2nd"
                                         type="checkbox"
-                                        onClick={()=>handleClickExacta(runner_item,2)}
-                                        checked={checkStatusExacta(runner_item,2)}   
                                     />                                    
                                     </div>
                                 </div>
