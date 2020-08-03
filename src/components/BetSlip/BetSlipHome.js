@@ -1316,7 +1316,7 @@ const BetSlipHome=(props) =>{
                 localStorage.setItem('betSlipQuinella',JSON.stringify(finalRemainingBetsQuienlla))
                 props.remainingBetSlipDataQuinella(finalRemainingBetsQuienlla)
             }
-            finalRemainingBetsQuienlla.map(items=>{
+            RemainingBetsQuienlla.map(items=>{
                 if(items) {
                     if( items.quinella>0)  {
                         setplaceWinPlaceBetListQuinella(oldArray => [...oldArray,
@@ -2544,9 +2544,14 @@ const BetSlipHome=(props) =>{
                             props.postWinPlaceBetsQuinella(placeWinPlaceBetListQuinella)
                             props.postWinPlaceBetsTrifecta(placeWinPlaceBetListTrifecta)
                             props.postWinPlaceBetsFirst4(placeWinPlaceBetListFirst4)
-                            props.postWinPlaceBetsExacta(placeWinPlaceBetListExacta)
-                            props.postWinPlaceBetsDuet(placeWinPlaceBetListDuet)
-                            
+                            props.postWinPlaceBetsExacta(placeWinPlaceBetListExacta)                                                                                 
+                            props.postWinPlaceBetsDuet(placeWinPlaceBetListDuet)   
+                        //    {RemainingBets.length?props.postWinPlaceBets(placeWinPlaceBetList):""}
+                        //    {RemainingBetsQuienlla.length?props.postWinPlaceBetsQuinella(placeWinPlaceBetListQuinella):""}
+                        //    {RemainingBetsTrifecta.length?props.postWinPlaceBetsTrifecta(placeWinPlaceBetListTrifecta):""}
+                        //    {RemainingBetsFirst4.length?props.postWinPlaceBetsFirst4(placeWinPlaceBetListFirst4):""}
+                        //    {RemainingBetsExacta.length?props.postWinPlaceBetsExacta(placeWinPlaceBetListExacta):""}
+                        //   {RemainingBetsDuet.length?props.postWinPlaceBetsDuet(placeWinPlaceBetListDuet):""}                           
                             setRemainingBets([])
                             setRemainingBetsQuienlla([])
                             setRemainingBetsDuet([])
