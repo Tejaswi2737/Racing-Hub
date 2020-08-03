@@ -475,12 +475,14 @@ const RaceDetails = (props,ownProps)=>{
 // the information of pending bets in the win place
     useEffect(() => {
         if (performance.navigation.type === 1 && window.innerWidth<980) {
+            console.log('eneted navigation')
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
 
     useEffect(() => {
         if(RemainingBets && window.innerWidth ) {
+            console.log('entered set')
             props.remainingBetSlipData(finalRemainingBets);
             localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
         }

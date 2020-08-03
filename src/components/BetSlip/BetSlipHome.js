@@ -1280,7 +1280,7 @@ const BetSlipHome=(props) =>{
                                 "combinations":[
                                 {
                                 "place":1,
-                                "runners":[items.runners]
+                                "runners":items.runners
                                 }
                                 ]
                             }                          
@@ -1296,7 +1296,7 @@ const BetSlipHome=(props) =>{
                                 "combinations":[
                                 {
                                 "place":2,
-                                "runners":[items.runners]
+                                "runners":items.runners
                                 }
                                 ]
                             }                           
@@ -1318,18 +1318,17 @@ const BetSlipHome=(props) =>{
             }
             finalRemainingBetsQuienlla.map(items=>{
                 if(items) {
-                    if( items.win>0)  {
+                    if( items.quinella>0)  {
                         setplaceWinPlaceBetListQuinella(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
                                 "bet_pool_fh": items.name+'q',
                                 "stake_cents": items.quinella,
-                                "combinations":[
+                                "combinations":
                                 {
-                                "quinella":1,
-                                "runners":[items.runners]
+                                "runners":items.runners
                                 }
-                                ]
+                                
                             }                          
                         ])
                         
@@ -1346,20 +1345,17 @@ const BetSlipHome=(props) =>{
                 localStorage.setItem('betSlipDuet',JSON.stringify(finalRemainingBetsDuet))
                 props.remainingBetSlipDataDuet(finalRemainingBetsDuet)
             }
-            finalRemainingBetsDuet.map(items=>{
+            RemainingBetsDuet.map(items=>{
                 if(items) {
-                    if( items.win>0)  {
+                    if( items.duet>0)  {
                         setplaceWinPlaceBetListDuet(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
                                 "bet_pool_fh": items.name+'d',
                                 "stake_cents": items.duet,
-                                "combinations":[
-                                {
-                                "duet":1,
-                                "runners":[items.runners]
+                                "combinations":{
+                                "runners":items.runners
                                 }
-                                ]
                             }                          
                         ])
                         
@@ -1376,7 +1372,8 @@ const BetSlipHome=(props) =>{
                 localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4))
                 props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4)
             }
-            finalRemainingBetsFirst4.map(items=>{
+            RemainingBetsFirst4.map(items=>{
+                console.log(items)
                 if(items) {
                     if( items.first4>0)  {
                         setplaceWinPlaceBetListFirst4(oldArray => [...oldArray,
@@ -1385,13 +1382,21 @@ const BetSlipHome=(props) =>{
                                 "bet_pool_fh": items.name+'f',
                                 "stake_cents": items.first4,
                                 "combinations":[
-                                {
-                                "first4":1,
-                                "selection1":[items.selection1],
-                                "selection2":[items.selection2],
-                                "selection3":[items.selection3],
-                                "selection4":[items.selection4]
-                                }
+                                
+                                    {
+                                        "place":1,
+                                        "runners":items.selection1,
+                                    },{
+                                        "place":2,
+                                        "runners":items.selection2,                      
+                                    },{
+                                        "place":3,
+                                        "runners":items.selection3,
+                                    },{
+                                        "place":4,
+                                        "runners":items.selection4,
+                                    }
+
                                 ]
                             }                          
                         ])
@@ -1411,21 +1416,27 @@ const BetSlipHome=(props) =>{
                 localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta))
                 props.remainingBetSlipDataTrifecta(finalRemainingBetsTrifecta)
             }
-            finalRemainingBetsTrifecta.map(items=>{
+            RemainingBetsTrifecta.map(items=>{
                 if(items) {
-                    if( items.first4>0)  {
+                    if( items.trifecta>0)  {
                         setplaceWinPlaceBetListTrifecta(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
                                 "bet_pool_fh": items.name+'t',
                                 "stake_cents": items.trifecta,
                                 "combinations":[
-                                {
-                                "trifecta":1,
-                                "selection1":[items.selection1],
-                                "selection2":[items.selection2],
-                                "selection3":[items.selection3]
-                                }
+                                
+                                    {
+                                        "place":1,
+                                        "runners":items.selection1,
+                                    },{
+                                        "place":2,
+                                        "runners":items.selection2,                      
+                                    },{
+                                        "place":3,
+                                        "runners":items.selection3,
+                                    }
+
                                 ]
                             }                          
                         ])
@@ -1444,21 +1455,24 @@ const BetSlipHome=(props) =>{
                 localStorage.setItem('betSlipExacta',JSON.stringify(finalRemainingBetsExacta))
                 props.remainingBetSlipDataExacta(finalRemainingBetsExacta)
             }
-            finalRemainingBetsExacta.map(items=>{
+            RemainingBetsExacta.map(items=>{
                 if(items) {
-                    if( items.first4>0)  {
+                    if( items.exacta>0)  {
                         setplaceWinPlaceBetListExacta(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
                                 "bet_pool_fh": items.name+'e',
                                 "stake_cents": items.exacta,
                                 "combinations":[
-                                {
-                                "exacta":1,
-                                "selection1":[items.selection1],
-                                "selection2":[items.selection2]
                                 
-                                }
+                                    {
+                                        "place":1,
+                                        "runners":items.selection1,
+                                    },{
+                                        "place":2,
+                                        "runners":items.selection2,                      
+                                    }
+
                                 ]
                             }                          
                         ])
@@ -2527,6 +2541,12 @@ const BetSlipHome=(props) =>{
                         </button>
                         <button  onClick={()=>{
                             props.postWinPlaceBets(placeWinPlaceBetList)
+                            props.postWinPlaceBetsQuinella(placeWinPlaceBetListQuinella)
+                            props.postWinPlaceBetsTrifecta(placeWinPlaceBetListTrifecta)
+                            props.postWinPlaceBetsFirst4(placeWinPlaceBetListFirst4)
+                            props.postWinPlaceBetsExacta(placeWinPlaceBetListExacta)
+                            props.postWinPlaceBetsDuet(placeWinPlaceBetListDuet)
+                            
                             setRemainingBets([])
                             setRemainingBetsQuienlla([])
                             setRemainingBetsDuet([])
