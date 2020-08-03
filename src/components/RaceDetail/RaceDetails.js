@@ -475,16 +475,19 @@ const RaceDetails = (props,ownProps)=>{
 // the information of pending bets in the win place
     useEffect(() => {
         if (performance.navigation.type === 1 && window.innerWidth<980) {
-            console.log('eneted navigation')
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
 
     useEffect(() => {
         if(RemainingBets && window.innerWidth ) {
-            console.log('entered set')
-            props.remainingBetSlipData(finalRemainingBets);
-            localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
+            if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')));
+            }
+            else  {
+                props.remainingBetSlipData(finalRemainingBets);
+                localStorage.setItem('betSlip',JSON.stringify(finalRemainingBets));
+            }
         }
     }, [finalRemainingBets]);
 
@@ -497,8 +500,14 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsQuienlla && window.innerWidth ) {
-            props.remainingBetSlipDataQuinella(finalRemainingBetsQuienlla);
-            localStorage.setItem('betSlipQuinella',JSON.stringify(finalRemainingBetsQuienlla));
+            if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')));
+            } 
+            else {
+                props.remainingBetSlipDataQuinella(finalRemainingBetsQuienlla);
+                localStorage.setItem('betSlipQuinella',JSON.stringify(finalRemainingBetsQuienlla));
+            }
+
         }
     }, [finalRemainingBetsQuienlla]);
 
@@ -511,8 +520,13 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsDuet && window.innerWidth ) {
-            props.remainingBetSlipDataDuet(finalRemainingBetsDuet);
-            localStorage.setItem('betSlipDuet',JSON.stringify(finalRemainingBetsDuet));
+            if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataDuet(JSON.parse(window.localStorage.getItem('betSlipDuet')));
+            } 
+            else {
+                props.remainingBetSlipDataDuet(finalRemainingBetsDuet);
+                localStorage.setItem('betSlipDuet',JSON.stringify(finalRemainingBetsDuet));
+            }
         }
     }, [finalRemainingBetsDuet]);
 
@@ -525,8 +539,13 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsFirst4 && window.innerWidth ) {
-            props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4);
-            localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4));
+            if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')));
+            } 
+            else {
+                props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4);
+                localStorage.setItem('betSlipFirst4',JSON.stringify(finalRemainingBetsFirst4));
+            }
         }
     }, [finalRemainingBetsFirst4]);
 
@@ -540,8 +559,13 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsTrifecta && window.innerWidth ) {
-            props.remainingBetSlipDataTrifecta(finalRemainingBetsTrifecta);
-            localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta));
+            if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataTrifecta(JSON.parse(window.localStorage.getItem('betSlipTrifecta')));
+            } 
+            else {
+                props.remainingBetSlipDataTrifecta(finalRemainingBetsTrifecta);
+                localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta));
+            }
         }
     }, [finalRemainingBetsTrifecta]);
 
@@ -553,8 +577,13 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         if(RemainingBetsExacta && window.innerWidth ) {
-            props.remainingBetSlipDataExacta(finalRemainingBetsExacta);
-            localStorage.setItem('betSlipExacta',JSON.stringify(finalRemainingBetsExacta));
+            if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')));
+            } 
+            else {
+                props.remainingBetSlipDataExacta(finalRemainingBetsExacta);
+                localStorage.setItem('betSlipExacta',JSON.stringify(finalRemainingBetsExacta));
+            }
         }
     }, [finalRemainingBetsExacta]);
 
