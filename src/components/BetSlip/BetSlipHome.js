@@ -1318,7 +1318,7 @@ const BetSlipHome=(props) =>{
             }
             RemainingBetsQuienlla.map(items=>{
                 if(items) {
-                    if( items.quinella>0)  {
+                    if( items.quinella>0 && items.runners>1)  {
                         setplaceWinPlaceBetListQuinella(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
@@ -1347,7 +1347,7 @@ const BetSlipHome=(props) =>{
             }
             RemainingBetsDuet.map(items=>{
                 if(items) {
-                    if( items.duet>0)  {
+                    if( items.duet>0 && items.runners>1)  {
                         setplaceWinPlaceBetListDuet(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
@@ -1373,9 +1373,8 @@ const BetSlipHome=(props) =>{
                 props.remainingBetSlipDataFirst4(finalRemainingBetsFirst4)
             }
             RemainingBetsFirst4.map(items=>{
-                console.log(items)
                 if(items) {
-                    if( items.first4>0)  {
+                    if( items.first4>0 && items.runners>3)  {
                         setplaceWinPlaceBetListFirst4(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
@@ -1418,7 +1417,7 @@ const BetSlipHome=(props) =>{
             }
             RemainingBetsTrifecta.map(items=>{
                 if(items) {
-                    if( items.trifecta>0)  {
+                    if( items.trifecta>0 && items.runners>2 )  {
                         setplaceWinPlaceBetListTrifecta(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
@@ -1457,7 +1456,7 @@ const BetSlipHome=(props) =>{
             }
             RemainingBetsExacta.map(items=>{
                 if(items) {
-                    if( items.exacta>0)  {
+                    if( items.exacta>0 && items.runners>1 )  {
                         setplaceWinPlaceBetListExacta(oldArray => [...oldArray,
                             {
                                 "bet_fh": "tk_integ_"+Date.now()+"_"+items.name,
@@ -1630,7 +1629,7 @@ const BetSlipHome=(props) =>{
                                                 key={RemainingBetsQuienlla[pos]['name']+'quinella'}
                                                 name='quinella'
                                                 placeholder={null}
-                                                value={RemainingBetsQuienlla[pos]['quienlla']}
+                                                value={RemainingBetsQuienlla[pos]['quinella']}
                                                 min={0}
                                                 onChange={(e)=>updateFieldChanged(e,item)} 
                                                 className="common-textfield ng-valid stake-input-has-focus ng-touched ng-not-empty ng-dirty ng-valid-parse">
@@ -2552,6 +2551,13 @@ const BetSlipHome=(props) =>{
                         //    {RemainingBetsFirst4.length?props.postWinPlaceBetsFirst4(placeWinPlaceBetListFirst4):""}
                         //    {RemainingBetsExacta.length?props.postWinPlaceBetsExacta(placeWinPlaceBetListExacta):""}
                         //   {RemainingBetsDuet.length?props.postWinPlaceBetsDuet(placeWinPlaceBetListDuet):""}                           
+                            localStorage.setItem('prevBets',JSON.stringify([
+                                placeWinPlaceBetList,
+                                placeWinPlaceBetListDuet,
+                                placeWinPlaceBetListQuinella,
+                                placeWinPlaceBetListTrifecta,
+                                placeWinPlaceBetListDuet,
+                                placeWinPlaceBetListFirst4]))
                             setRemainingBets([])
                             setRemainingBetsQuienlla([])
                             setRemainingBetsDuet([])

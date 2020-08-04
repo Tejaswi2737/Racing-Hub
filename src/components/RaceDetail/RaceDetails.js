@@ -137,7 +137,7 @@ const RaceDetails = (props,ownProps)=>{
 
     useEffect(() => {
         const data =window.localStorage.getItem('pathParams')
-        if (data) {
+        if (data.slot ) {
             setpathValues(JSON.parse(data))
             setplace_slot(JSON.parse(data).slot)
             setplace(JSON.parse(data).place)
@@ -2280,7 +2280,6 @@ const RaceDetails = (props,ownProps)=>{
 };
 
 const mapStateToProps=(state,ownProps)=> {
-    // console.log(ownProps.type)
     return{ 
         todayRacing:state.todayRacing,
         slot:ownProps.slot,
