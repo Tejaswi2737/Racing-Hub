@@ -2109,8 +2109,8 @@ const RaceDetails = (props,ownProps)=>{
         return(
             <div className="race-runners-wrapper results">
                 <div className="pseudo-table">
-                    {runnerInfoheader(props)}
-                    {runnerInfoBody(props)}
+                    {props.racingDetail?runnerInfoheader(props):""}
+                    {props.racingDetail?runnerInfoBody(props):""}
                 </div>
             </div>
         )
@@ -2286,7 +2286,7 @@ const RaceDetails = (props,ownProps)=>{
                                 </section>
                             </div>
                         </div>
-                        {poolTot(props)}
+                        {props.racingDetail?poolTot(props):""}
                     </div>
                 </ui-view>
             </div>
