@@ -474,7 +474,7 @@ const RaceDetails = (props,ownProps)=>{
 // fetching the info for non-desktop versions, from the local storage.,
 // the information of pending bets in the win place
     useEffect(() => {
-        if (performance.navigation.type === 1 && window.innerWidth<980) {
+        if (performance.navigation.type === 1 && window.innerWidth<980 ) {
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
         }
     }, [performance.navigation.type]);
@@ -482,6 +482,9 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if(RemainingBets && window.innerWidth ) {
             if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')));
+            }
+            if(performance.navigation.type==0 && window.innerWidth<980 &&  !props.allBetSlip.name) {
                 props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')));
             }
             else  {
@@ -501,6 +504,9 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if(RemainingBetsQuienlla && window.innerWidth ) {
             if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')));
+            } 
+            if(performance.navigation.type==0 && window.innerWidth<980 && !props.allBetSlipQuinella.name) {
                 props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')));
             } 
             else {
@@ -523,6 +529,9 @@ const RaceDetails = (props,ownProps)=>{
             if(performance.navigation.type==1 && window.innerWidth<980) {
                 props.remainingBetSlipDataDuet(JSON.parse(window.localStorage.getItem('betSlipDuet')));
             } 
+            if(performance.navigation.type==0 && window.innerWidth<980 && !props.allBetSlipDuet.name) {
+                props.remainingBetSlipDataDuet(JSON.parse(window.localStorage.getItem('betSlipDuet')));
+            } 
             else {
                 props.remainingBetSlipDataDuet(finalRemainingBetsDuet);
                 localStorage.setItem('betSlipDuet',JSON.stringify(finalRemainingBetsDuet));
@@ -540,6 +549,9 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if(RemainingBetsFirst4 && window.innerWidth ) {
             if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')));
+            } 
+            if(performance.navigation.type==0 && window.innerWidth<980 && !props.allBetSlipFirst4.name) {
                 props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')));
             } 
             else {
@@ -562,6 +574,9 @@ const RaceDetails = (props,ownProps)=>{
             if(performance.navigation.type==1 && window.innerWidth<980) {
                 props.remainingBetSlipDataTrifecta(JSON.parse(window.localStorage.getItem('betSlipTrifecta')));
             } 
+            if(performance.navigation.type==0 && window.innerWidth<980 && !props.allBetSlipTrifecta.name) {
+                props.remainingBetSlipDataTrifecta(JSON.parse(window.localStorage.getItem('betSlipTrifecta')));
+            } 
             else {
                 props.remainingBetSlipDataTrifecta(finalRemainingBetsTrifecta);
                 localStorage.setItem('betSlipTrifecta',JSON.stringify(finalRemainingBetsTrifecta));
@@ -578,6 +593,9 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         if(RemainingBetsExacta && window.innerWidth ) {
             if(performance.navigation.type==1 && window.innerWidth<980) {
+                props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')));
+            } 
+            if(performance.navigation.type==0 && window.innerWidth<980 && !props.allBetSlipExacta.name) {
                 props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')));
             } 
             else {

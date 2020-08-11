@@ -124,7 +124,11 @@ const BetSlipHome=(props) =>{
             props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
             users=JSON.parse(window.localStorage.getItem('betSlip'))
         } 
-        if(performance.navigation.type == 0 && window.innerWidth<980) {
+        if (performance.navigation.type ==0 && window.innerWidth<980 && !props.allBetSlip.name) {
+            props.remainingBetSlipData(JSON.parse(window.localStorage.getItem('betSlip')))
+            users=JSON.parse(window.localStorage.getItem('betSlip'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980 && props.allBetSlip.name) {
             var users=props.remainingBetSlip;
         }
         if(props.remainingBetSlip) {
@@ -226,7 +230,11 @@ const BetSlipHome=(props) =>{
             props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')))
             users=JSON.parse(window.localStorage.getItem('betSlipQuinella'))
         } 
-        if(performance.navigation.type == 0 && window.innerWidth<980) {
+        if (performance.navigation.type == 0 && window.innerWidth<980 && !props.allBetSlipQuinella.name) {
+            props.remainingBetSlipDataQuinella(JSON.parse(window.localStorage.getItem('betSlipQuinella')))
+            users=JSON.parse(window.localStorage.getItem('betSlipQuinella'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980 && props.allBetSlipQuinella.name) {
             var users=props.remainingBetSlipQuinella;
         }
         if(props.remainingBetSlipQuinella) {
@@ -326,7 +334,11 @@ const BetSlipHome=(props) =>{
             props.remainingBetSlipDataDuet(JSON.parse(window.localStorage.getItem('betSlipDuet')))
             users=JSON.parse(window.localStorage.getItem('betSlipDuet'))
         } 
-        if(performance.navigation.type == 0 && window.innerWidth<980) {
+        if (performance.navigation.type == 0 && window.innerWidth<980 && !props.allBetSlipDuet.name) {
+            props.remainingBetSlipDataDuet(JSON.parse(window.localStorage.getItem('betSlipDuet')))
+            users=JSON.parse(window.localStorage.getItem('betSlipDuet'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980 && props.allBetSlipDuet.name) {
             var users=props.remainingBetSlipDuet;
         }
         if(props.remainingBetSlipDuet) {
@@ -428,7 +440,11 @@ const BetSlipHome=(props) =>{
             props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')))
             users=JSON.parse(window.localStorage.getItem('betSlipFirst4'))
         } 
-        if(performance.navigation.type == 0 && window.innerWidth<980) {
+        if (performance.navigation.type ==0 && window.innerWidth<980 && !props.allBetSlipFirst4.name) {
+            props.remainingBetSlipDataFirst4(JSON.parse(window.localStorage.getItem('betSlipFirst4')))
+            users=JSON.parse(window.localStorage.getItem('betSlipFirst4'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980 && props.allBetSlipFirst4.name) {
             var users=props.remainingBetSlipFirst4;
         }
         if(props.remainingBetSlipFirst4) {
@@ -635,7 +651,11 @@ const BetSlipHome=(props) =>{
             props.remainingBetSlipDataTrifecta(JSON.parse(window.localStorage.getItem('betSlipTrifecta')))
             users=JSON.parse(window.localStorage.getItem('betSlipTrifecta'))
         } 
-        if(performance.navigation.type == 0 && window.innerWidth<980) {
+        if (performance.navigation.type == 0 && window.innerWidth<980 && !props.allBetSlipTrifecta.name) {
+            props.remainingBetSlipDataTrifecta(JSON.parse(window.localStorage.getItem('betSlipTrifecta')))
+            users=JSON.parse(window.localStorage.getItem('betSlipTrifecta'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980 && props.allBetSlipTrifecta.name) {
             var users=props.remainingBetSlipTrifecta;
         }
         if(props.remainingBetSlipTrifecta) {
@@ -805,7 +825,11 @@ const BetSlipHome=(props) =>{
             props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')))
             users=JSON.parse(window.localStorage.getItem('betSlipExacta'))
         } 
-        if(performance.navigation.type == 0 && window.innerWidth<980) {
+        if (performance.navigation.type == 0 && window.innerWidth<980 && !props.allBetSlipExacta.name) {
+            props.remainingBetSlipDataExacta(JSON.parse(window.localStorage.getItem('betSlipExacta')))
+            users=JSON.parse(window.localStorage.getItem('betSlipExacta'))
+        } 
+        if(performance.navigation.type == 0 && window.innerWidth<980  && props.allBetSlipExacta.name) {
             var users=props.remainingBetSlipExacta;
         }
         if(props.remainingBetSlipExacta) {
