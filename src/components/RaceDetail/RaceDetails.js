@@ -175,13 +175,13 @@ const RaceDetails = (props,ownProps)=>{
     useEffect(() => {
         props.fetchTodayRacing();
     }, [])
-    useEffect(() => {
+    useEffect(() => {       
         if(props.todayRacing) {
             var newArray=props.todayRacing.filter(function (el) {
                 return (
-                    el.meetingName ===pathValues.place &&
-                    el.raceType===pathValues.raceType &&
-                    el.venueMnemonic=== pathValues.code 
+                    el.meetingName ===JSON.parse(window.localStorage.getItem('pathParams')).place &&
+                    el.raceType===JSON.parse(window.localStorage.getItem('pathParams')).raceType &&
+                    el.venueMnemonic=== JSON.parse(window.localStorage.getItem('pathParams')).code 
                 )
               });
             settodayData(newArray)
@@ -194,7 +194,7 @@ const RaceDetails = (props,ownProps)=>{
                 var dataass=todayData[0].races
                 var newArray=dataass.filter(function (el) {
                     return (
-                        el.raceNumber ===pathValues.slot 
+                        el.raceNumber ===JSON.parse(window.localStorage.getItem('pathParams')).slot
                     )
                   });
                 setraceData(newArray)            
@@ -2270,7 +2270,7 @@ const RaceDetails = (props,ownProps)=>{
             <div className="left-column">
                 <ui-view>
                     <div className="all-tables">
-                        {raceName(props)}
+                        {raceData?raceName(props):""}
                         <div className="page-section">
                         </div>
                         <div className="page-section">  
